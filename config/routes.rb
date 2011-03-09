@@ -1,4 +1,24 @@
 Sotaca::Application.routes.draw do
+  get "pages/index"
+
+  get "pages/home"
+
+  get "pages/just_in"
+
+  get "pages/info"
+
+  get "pages/our_story"
+
+  get "pages/contact"
+
+  get "pages/terms"
+
+  get "pages/press"
+
+  get "pages/whole_sale"
+
+  get "pages/blog"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
