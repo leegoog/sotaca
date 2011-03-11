@@ -21,8 +21,9 @@ gem 'rails', '3.0.5'
 # gem 'nokogiri'
 
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
+gem 'sqlite3-ruby', :require => 'sqlite3'   
+gem 'nifty-generators'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # gem 'aws-s3', :require => 'aws/s3'
 
@@ -33,7 +34,10 @@ group :development do
   gem 'rspec-rails', '2.5.0'
 end
 
-group :test do
+group :test do    
   gem 'rspec', '2.5.0'
-  gem 'webrat', '0.7.1'
+  gem 'webrat', '0.7.1'   
+  gem 'mocha'
 end
+
+
