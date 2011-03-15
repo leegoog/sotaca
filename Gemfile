@@ -20,10 +20,12 @@ gem 'rails', '3.0.5'
 # gem 'bj'
 # gem 'nokogiri'
 
-
+gem 'jquery-rails'
 gem 'sqlite3-ruby', :require => 'sqlite3'   
 gem 'nifty-generators'
-gem "bcrypt-ruby", :require => "bcrypt"
+gem 'bcrypt-ruby', :require => "bcrypt" 
+gem 'cancan'  
+
 
 # gem 'aws-s3', :require => 'aws/s3'
 
