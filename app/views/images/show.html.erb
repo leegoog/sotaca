@@ -1,0 +1,16 @@
+<% title "Image" %>
+
+<p>
+  <strong>Tile:</strong>
+  <%= @image.tile %>
+</p>
+<p>
+  <strong>Product:</strong>
+  <%= @image.product_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_image_path(@image) %> |
+  <%= link_to "Destroy", @image, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", images_path %>
+</p>

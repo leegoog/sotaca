@@ -1,0 +1,12 @@
+<%= form_for @image do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :tile %><br />
+    <%= f.text_field :tile %>
+  </p>
+  <p>
+    <%= f.label :product_id %><br />
+    <%= f.text_field :product_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
