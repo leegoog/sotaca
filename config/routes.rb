@@ -11,25 +11,25 @@ Sotaca::Application.routes.draw do
 
   resources :users
 
-  get "pages/index"
+  match 'index' => "pages#index"
 
-  get "pages/home"
+  match 'home' => "pages#home"
 
-  get "pages/just_in"
+  match 'just_in' => "pages#just_in"
 
-  get "pages/info"
+  match 'info' => "pages#info"
 
-  get "pages/our_story"
+  match 'our_story' => "pages#our_story"
 
-  get "pages/contact"
+  match 'contact' => "pages#contact"
 
-  get "pages/terms"
+  match 'terms' => "pages#terms"
 
-  get "pages/press"
+  match 'press' => "pages#press"
 
-  get "pages/whole_sale"
+  match 'whole_sale' => "pages#whole_sale"
 
-  get "pages/blog"
+  match 'blog' => "pages#blog"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
