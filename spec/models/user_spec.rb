@@ -1,11 +1,15 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
+require "cancan/matchers"
+
+
 describe User do
   def new_user(attributes = {})
     attributes[:username] ||= 'foo'
     attributes[:email] ||= 'foo@example.com'
     attributes[:password] ||= 'abc123'
     attributes[:password_confirmation] ||= attributes[:password]
+    attributes[:admin] ||= 'false'
     User.new(attributes)
   end
 
@@ -78,4 +82,12 @@ describe User do
     new_user(:username => 'foobar', :password => 'secret').save!
     User.authenticate('foobar', 'badpassword').should be_nil
   end
+  
+  it "should not allow delete if user is non-admin" do
+    @test_user = new_user
+    ability = Ability.new(@test_user)
+    ability.should_not be_able_to(:destroy, Product.new)
+  end
+
+  
 end

@@ -19,9 +19,16 @@ describe Product do
     new_product.should be_valid
   end
   
-  it "should not be valid without title" do
-    new_product(:title => '').should_not be_valid
-    new_product(:title => '').should have(1).error_on(:title)
+  it "should not be valid without product name" do
+    @test_product = new_product(:title => '')
+    @test_product.should_not be_valid
+    @test_product.should have(1).error_on(:title)
+  end
+  
+  it "should not be valid without a price" do
+    @test_product = new_product(:price => '')
+    @test_product.should_not be_valid
+    @test_product.should have(1).error_on(:price)
   end
   
 end

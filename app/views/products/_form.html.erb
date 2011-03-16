@@ -11,6 +11,15 @@
   <p>
     <%= f.label :price %><br />
     <%= f.text_field :price %>
-  </p>
+  </p>   
+ 
+  <%= f.fields_for :images do |builder| %> 
+		<p>
+			<%= builder.label :title, "Image Title"%> 
+			<%= builder.text_field :title %>
+		</p>
+  <% end %>
+   
+	
   <p><%= f.submit %></p>
 <% end %>
