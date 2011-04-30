@@ -8,12 +8,69 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
-    </div>
+	<div id="container">
+	  <div class="header">
+	  	
+	  	<div class="top">
+	  	
+	  		<div id="logo">		
+	  			<%= image_tag ('logo.jpg') %>
+	  		</div>
+	  		<div id="languages">
+	  			<ul>
+	  				<li><a href="#">chinese</a></li>
+	  				<li><a href="#">english</a></li>
+	  			</ul>
+	  		</div>
+	  	
+	  	</div>
+	  	<div class="middle">
+	  		<div id="login_menu">
+	  			<ul>
+	  				<li><a href="/login/">Login</a></li>
+	  				<li><a href="/signup/">Register</a></li>
+	  			</ul>
+	  				
+	  		</div>
+	  		<div id="cart_menu">
+	  			<ul>
+	  				<li>
+					<%= image_tag("cart.jpg")%>
+					</li>
+					<li>
+					<a href="#">empty</a>
+					
+					</li>
+	  				<li><a href="/checkout/">Checkout</a></li>
+	  			</ul>
+	  		</div>
+	  	</div>
+	  	<div id="main_navi">
+	  		<ul>
+	  			<li><a href="/home/">Home</a></li>
+	  			<li><a href="/just_in/">Just in</a></li>
+	  			<li><a href="/products/">Shop</a></li>
+	  			<li><a href="/info/">Info</a></li>
+	  			<li><a href="/our_story/">Our Story</a></li>
+	  		</ul>
+	  	</div>
+	  	
+	  </div>
+	  
+	  <div id="content">
+	    <% flash.each do |name, msg| %>
+	      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	    <% end %>
+	    <%= content_tag :h1, yield(:title) if show_title? %>
+	    <%= yield %>
+	  </div>
+	  <div class="footer">
+		<ul>
+			<li><a href="/contact/">contact us</a></li>
+			<li><a href="/terms/">terms</a></li>
+			<li><a href="/press/">press</a></li>
+			<li><a href="/whole_sale/">whole sale</a></li>
+			<li><a href="/blog/">blog</a></li>						
+	</div>
   </body>
 </html>

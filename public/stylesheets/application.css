@@ -1,5 +1,5 @@
 body {
-  background-color: #4B7399;
+  background-color: #fff;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -18,13 +18,98 @@ a {
   overflow: hidden;
 }
 
-#container {
-  width: 75%;
+
+#container{
+  width: 80%;
   margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
   margin-top: 20px;
+}
+
+.header ul {
+	list-style: none;
+	list-style-type: none;
+	padding: 0;
+}
+.header ul li{
+float: left;
+margin: 0 5px;
+}
+
+.header ul li a{
+text-decoration: none;
+}
+
+#logo {
+	float: left;
+}
+
+#languages {
+	float: right;
+}
+#languages a{
+	color: black;
+}
+
+.middle {
+	padding:0;
+	margin: 10px 0;
+	clear: both;
+	height: 25px;
+}
+#login_menu {
+	float: left;
+}
+
+#login_menu a {
+	color: #95006a !important;
+	font-weight: bold;
+}
+
+#cart_menu a {
+	color: #000 !important;
+	font-weight: bold;
+}
+
+#cart_menu {
+	float: right;
+}
+#cart {
+	margin-top: -20px;
+}
+
+#main_navi {
+	clear: both;
+	margin-top: 20px;
+	background-color: #000;
+	width: 100%;
+	height: 30px;
+}
+
+#main_navi ul {
+	margin-left: 20px;
+}
+
+#main_navi ul li{
+	height: 20px;
+	padding: 5px;
+}
+#main_navi ul li a{
+	padding-top: 5px;
+	color: #fff;
+}
+#main_navi ul li:hover,#main_navi ul li.active {
+	background-color: #fff;
+}
+#main_navi ul li:hover a,#main_navi ul li.active a{
+	color: #95006a;
+}
+
+
+
+#content{
+  margin-top: 20px;
+  border: solid 2px black;
+  padding: 20px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
