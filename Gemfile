@@ -22,9 +22,12 @@ gem 'rails', '3.0.5'
 
 gem 'jquery-rails'
 gem 'sqlite3-ruby', :require => 'sqlite3'   
-gem 'nifty-generators'
 gem 'bcrypt-ruby', :require => "bcrypt" 
 gem 'cancan'  
+gem 'mysql'
+gem 'carrierwave'
+gem 'rmagick'
+gem "nested_form"
 
 
 # gem 'aws-s3', :require => 'aws/s3'
@@ -33,11 +36,14 @@ gem 'cancan'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development do
+  gem 'nifty-generators'
   gem 'rspec-rails', '2.5.0'
+  gem 'cucumber'
 end
 
 group :test do    
   gem 'rspec', '2.5.0'
+  gem 'cucumber'
   gem 'webrat', '0.7.1'   
   gem 'mocha'
 end

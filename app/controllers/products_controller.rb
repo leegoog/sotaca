@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new   
-    3.times { @product.images.build }
+    @product.assets.build
   end
 
   def create
@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.assets.build
   end
 
   def update

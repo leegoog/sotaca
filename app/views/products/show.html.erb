@@ -12,7 +12,12 @@
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
-
+<% for asset in @product.assets do %>
+<p>
+  <strong>image:</strong>
+  <%= image_tag asset.image_url(:thumb).to_s %>
+</p>
+<% end %>
 <p>
   <%= link_to "Edit", edit_product_path(@product) %> |
   <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |

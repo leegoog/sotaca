@@ -1,9 +1,13 @@
 Sotaca::Application.routes.draw do
+
+
   resources :categories
 
-  resources :images
+  resources :products do 
+      resources :assets
+  end
 
-  resources :products
+  resources :assets
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
