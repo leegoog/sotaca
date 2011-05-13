@@ -5,10 +5,10 @@
     <div class="product">
 	  <h3><%= product.title %></h3>
 	  <p><%= product.description %></p>
-	   
+	   <%= debug product %>
 		<div class="images">
-			<% for img in product.images %> 
-				<p><%= img.title %></p>
+			<% product.assets.each do |asset| %>
+				<%= link_to(image_tag(asset.image.url(:thumb)), asset.image.url) %>
 			<% end %>
 	    </div> 
 		
@@ -21,6 +21,6 @@
    	</div>
   <% end %>
 
-<% if can? :create, Product %>
+
 <p><%= link_to "New Product", new_product_path(product) %></p>
-<% end %>
+

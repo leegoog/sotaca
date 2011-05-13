@@ -1,25 +1,45 @@
-<%= form_for @product do |f| %>
-  <%= f.error_messages %>
-  <p>
+<%= nested_form_for @product, :html => {:multipart => true} do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
-  </p>   
- 
-  <%= f.fields_for :images do |builder| %> 
-		<p>
-			<%= builder.label :title, "Image Title"%> 
-			<%= builder.text_field :title %>
-		</p>
-  <% end %>
-   
+  </div>	
+<br/>
+	<%= f.fields_for :assets do |asset| %>	
 	
-  <p><%= f.submit %></p>
+		<% if asset.object.new_record? %>
+			<%= asset.file_field(:image) %>
+	
+		<% else %> 
+			<%= image_tag(asset.object.image.url(:thumb)) %>
+			<%= asset.hidden_field :_destroy %>
+			<%= asset.link_to_remove "remove" %>
+		<% end %>
+	
+	<% end %>
+	
+	<p><%= f.link_to_add "Add image", :assets %></p>
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
