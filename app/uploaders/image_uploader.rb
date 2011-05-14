@@ -17,12 +17,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
-
+  #def default_url
+  #  "/images/fallback/"+version_name+"/dummy.jpg"
+  #end
+ 
   # Process files as they are uploaded:
-   process :resize_to_fit => [800, 800]
+  # process :resize_to_fit => [550, 550]
   #
   # def scale(width, height)
   #   # do something
@@ -30,7 +30,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :resize_to_limit => [200, 200]
+     process :resize_to_limit => [200, 150]
+   end
+   version :big do
+     process :resize_to_limit => [550, 550]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.

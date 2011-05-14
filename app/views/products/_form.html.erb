@@ -16,6 +16,10 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :subtitle %><br />
+    <%= f.text_field :subtitle %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
@@ -25,7 +29,6 @@
   </div>	
 <br/>
 	<%= f.fields_for :assets do |asset| %>	
-	
 		<% if asset.object.new_record? %>
 			<%= asset.file_field(:image) %>
 	
