@@ -1,26 +1,8 @@
 <% title "Products" %>
 
 
-  <% for product in @products %>
-    <div class="product">
-	  <h3><%= product.title %></h3>
-	  <p><%= product.description %></p>
-	   <%= debug product %>
-		<div class="images">
-			<% product.assets.each do |asset| %>
-				<%= link_to(image_tag(asset.image.url(:thumb)), asset.image.url) %>
-			<% end %>
-	    </div> 
-		
-	   
-      <%= link_to "Details", product %>
-		<% if can? :edit, product %>
-      		<%= link_to "Edit", edit_product_path(product) %>
-      		<%= link_to "Destroy", product, :confirm => 'Are you sure?', :method => :delete %>
-		<% end %>
-   	</div>
-  <% end %>
-
-
+	<%= render @products%>
+<div class="clear"></div>
+<% if can? :create, Product %>
 <p><%= link_to "New Product", new_product_path(product) %></p>
-
+<% end %>

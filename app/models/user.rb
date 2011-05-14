@@ -1,9 +1,18 @@
 class User < ActiveRecord::Base
-  # new columns need to be added here to be writable through mass assignment
-  attr_accessible :username, :email, :password, :password_confirmation
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :password
-  before_save :prepare_password
+  attr_accessor :login
+  
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # new columns need to be added here to be writable through mass assignment
+  attr_accessible :username, :email, :password, :password_confirmation, :login
+
+  
+  has_and_belongs_to_many :roles
 
   validates_presence_of :username
   validates_uniqueness_of :username, :email, :allow_blank => true
@@ -22,6 +31,57 @@ class User < ActiveRecord::Base
   def matching_password?(pass)
     self.password_hash == encrypt_password(pass)
   end
+  
+  protected
+
+  def self.find_for_authentication(conditions={})
+    if conditions[:login] =~ /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i # email regex
+      conditions[:email] = conditions[:login]
+      conditions.delete("login")
+    end
+    super
+  end
+
+   # Attempt to find a user by it's email. If a record is found, send new
+   # password instructions to it. If not user is found, returns a new user
+   # with an email not found error.
+   def self.send_reset_password_instructions(attributes={})
+     recoverable = find_recoverable_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
+     recoverable.send_reset_password_instructions if recoverable.persisted?
+     recoverable
+   end 
+
+   def self.find_recoverable_or_initialize_with_errors(required_attributes, attributes, error=:invalid)
+     (case_insensitive_keys || []).each { |k| attributes[k].try(:downcase!) }
+
+     attributes = attributes.slice(*required_attributes)
+     attributes.delete_if { |key, value| value.blank? }
+
+     if attributes.size == required_attributes.size
+       if attributes.has_key?(:login)
+          login = attributes.delete(:login)
+          record = find_record(login)
+       else  
+         record = where(attributes).first
+       end  
+     end  
+
+     unless record
+       record = new
+
+       required_attributes.each do |key|
+         value = attributes[key]
+         record.send("#{key}=", value)
+         record.errors.add(key, value.present? ? error : :blank)
+       end  
+     end  
+     record
+   end
+
+   def self.find_record(login)
+     where(["username = :value OR email = :value", { :value => login }]).first
+   end
+
 
   private
 

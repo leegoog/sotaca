@@ -21,14 +21,22 @@ gem 'rails', '3.0.5'
 # gem 'nokogiri'
 
 gem 'jquery-rails'
-gem 'sqlite3-ruby', :require => 'sqlite3'   
+#gem 'sqlite3-ruby', :require => 'sqlite3'   
+
+gem 'devise'
 gem 'bcrypt-ruby', :require => "bcrypt" 
 gem 'cancan'  
+
 gem 'mysql'
+
+
 gem 'carrierwave'
 gem 'rmagick'
-gem "nested_form"
 
+
+gem 'nested_form'
+gem 'simple_form'
+gem 'client_side_validations'
 
 # gem 'aws-s3', :require => 'aws/s3'
 
