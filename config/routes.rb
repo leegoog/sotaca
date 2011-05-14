@@ -1,15 +1,9 @@
 Sotaca::Application.routes.draw do
 
-
   
-  devise_scope :user do
-     get "sign_in", :to => "devise/sessions#new"
-  end
+  devise_for :users 
   
-  devise_for :users do
-    get "sign_in", :to => "devise/sessions#new"
-  end
-  
+  resources :users
   
   resources :categories
 
@@ -19,10 +13,6 @@ Sotaca::Application.routes.draw do
 
   resources :assets
 
-
-  resources :sessions
-
-  resources :users
 
   match 'index' => "pages#index"
 
@@ -44,7 +34,6 @@ Sotaca::Application.routes.draw do
 
   match 'blog' => "pages#blog"
   
-  get "/home" => "pages#home", :as => "user_root"
   
 
   # The priority is based upon order of creation:

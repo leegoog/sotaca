@@ -1,9 +1,11 @@
 <div class="product">
-	<div class="image">
+	<div class="image">	
 		<% product.assets.each do |asset| %>
-			<%= link_to(image_tag(asset.image.url(:thumb)), product) %>
+			<%= link_to(image_tag(asset.image.url(:thumb).to_s), product, :title => product.title )%>
 		<% end %>
     </div> 
-  <%= link_to product.title,  product, :class => "title_link"%>
+  <%= link_to product.title,  product, :class => "title_link", :title => product.title %>
+  <span class="subtitle"><%= product.subtitle %></span>
+  <span class="cart"><%= link_to image_tag('cart.gif'), product, :title => "add to cart" %></span>
   <span class="product_price"><%= number_to_currency(product.price, :unit => '&pound;', :format => "%u%n") %></span>
 </div>
