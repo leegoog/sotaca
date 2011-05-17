@@ -1,5 +1,6 @@
 <% title "Products" %>
 
+
 <div class="product_overview">
 	<%= render @products%>
 	
@@ -9,4 +10,10 @@
 <% #if can? :create, Product %>
 <p><%= link_to "New Product", new_product_path(@products.size) %></p>
 <% #end %>
+</div>
+<div id="paginator">
+ Sort by: <%= select_tag(:order_key, options_for_select([['Newest items', 'created_at'], ['Alphabetical', 'title'], ['Prices', 'price']])) %>
+<br/>
+<% # link_to "View all pages", {:controller => "products", :action => "index", :per_page => 1000 } %>
+<%= paginate @products %>
 </div>

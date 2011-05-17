@@ -20,20 +20,25 @@ gem 'rails', '3.0.5'
 # gem 'bj'
 # gem 'nokogiri'
 
-gem 'jquery-rails'
-#gem 'sqlite3-ruby', :require => 'sqlite3'   
 
+# authhorization
 gem 'devise'
 gem 'bcrypt-ruby', :require => "bcrypt" 
 gem 'cancan'  
 
+# database
 gem 'mysql'
 
+# pagination
+gem 'kaminari'
 
+
+# image upload & processing
 gem 'carrierwave'
 gem 'rmagick'
 
-
+# layout stuff
+gem 'jquery-rails'
 gem 'nested_form'
 gem 'simple_form'
 gem 'client_side_validations'

@@ -1,23 +1,59 @@
-<% title "Product" %>
+<% title @product.title %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-<% for asset in @product.assets do %>
-<p>
-  <strong>image:</strong>
-  <%= image_tag asset.image_url(:thumb).to_s %>
-</p>
-<% end %>
+
+<div class="product_detail">
+	<div class="column">
+		<div class="infos">
+			<h1><%= @product.title %></h1>
+			<p class="subtitle">
+			  <%= @product.subtitle %>
+			</p>		
+		  <span class="product_price"><%= number_to_currency(@product.price, :unit => '&pound;', :format => "%u%n") %></span>
+		<br/>
+		<div class="subheadline">
+			Details
+		</div>
+		<p class="red_text">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+		</p>
+		<div class="subheadline">
+			Size & Fit
+		</div>
+		<p class="red_text">
+			Size: between sizes S, M. Length -95 cm
+		</p>		
+		<div class="size_selectors">
+			//todo: size selectors
+		</div>
+		
+		<div class="subheadline">
+			<%= link_to "ADD TO SHOPPING CART", line_items_path(:product_id => @product), :method => :post, :title => "add to cart" %>
+			
+		</div>		
+		<div class="subheadline">
+			ADD TO WISHLIST
+		</div>		
+		<div class="subheadline">
+			TELL A FRIEND
+		</div>		
+		</div>
+	</div>
+	<div class="column" style="width:auto">
+		<div id="main_image">
+			<% @product.assets.first(1).each do |asset| %>
+			  <%= image_tag asset.image_url(:big).to_s %>
+			<% end %>
+		</div>
+	</div>
+	<div class="column"  style="width: 15%">
+		<% for asset in @product.assets do %>
+		<div class="img_item">
+		  <%= image_tag asset.image_url(:thumb).to_s %>
+		</div>
+		<% end %>
+	</div>
+	<div class="clear"></div>
+</div>
 <p>
   <%= link_to "Edit", edit_product_path(@product) %> |
   <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
