@@ -1,6 +1,12 @@
 Sotaca::Application.routes.draw do
 
   
+  resources :orders
+
+  resources :line_items
+
+  resources :carts
+
   devise_for :users 
   
   resources :users
@@ -13,6 +19,7 @@ Sotaca::Application.routes.draw do
 
   resources :assets
 
+  match 'current_cart' => "carts#show", :id => 'current'
 
   match 'index' => "pages#index"
 
