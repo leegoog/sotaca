@@ -1,6 +1,6 @@
 <div class="product">
 	<div class="image">	
-		<% product.assets.each do |asset| %>
+		<% product.assets.first(1).each do |asset| %>
 			<%= link_to(image_tag(asset.image.url(:thumb).to_s), product, :title => product.title )%>
 		<% end %>
     </div> 

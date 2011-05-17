@@ -78,6 +78,8 @@ text-decoration: none;
 	margin-top: -20px;
 }
 
+/*_______________________________________ MAIN NAVIGATION ___*/
+
 #main_navi {
 	clear: both;
 	margin-top: 20px;
@@ -119,9 +121,9 @@ text-decoration: none;
 	padding: 1px;
 }
 #main_navi ul li#search_field input {
-position: absolute;
-right: 45px;
-top: 4px;
+  position: absolute;
+  right: 45px;
+  top: 4px;
 }
 
 
@@ -129,6 +131,7 @@ top: 4px;
   margin-top: 20px;
   border: solid 2px black;
   padding: 20px;
+  position: relative;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -201,6 +204,33 @@ margin: -10px 0 20px -35px;
 	text-decoration: none;
 }
 
+
+/*_______________________________________ PAGINATION __________*/
+
+
+#paginator {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+#content .pagination .page a,
+#content .pagination .next a,
+#content .pagination .prev a,
+#content .pagination .last a,
+#content .pagination .first a {
+	color: #1d1d1d;
+	text-decoration: none;
+}
+
+#content .pagination .current {
+	color: #95006A;
+}
+
+
+
+/*_______________________________________ PRODUCT OVERVIEW ___*/
+
 #content .product_overview .product {
 	height: 200px;
 	float: left;
@@ -248,4 +278,73 @@ margin: -10px 0 20px -35px;
 #content .product_overview .product .image a {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/*_______________________________________ PRODUCT DETAIL ___*/
+
+
+#content .product_detail  {
+	position: relative;
+	min-height: 500px;
+}
+
+#content .product_detail .column {
+	float: left;
+	width: 20%;
+	margin: 10px 30px 10px 0;
+}
+
+#content .product_detail .infos{
+	font-size: 12px;
+	margin-top: -20px;
+}
+
+#content .product_detail .infos .product_price {
+	font-size: 14px;
+}
+
+#content .product_detail .infos .subheadline{
+	background-color: #95006A;
+	color: #fff;
+	width: 100%;
+	margin: 10px 0 10px -20px;
+	padding: 2px;
+	padding-left: 20px;
+	font-size: 14px;
+}
+#content .product_detail .infos .subheadline a{
+	color: #fff;
+	text-decoration: none;
+}
+#content .product_detail .infos .red_text{
+	color: #95006A;
+}
+
+
+#content .product_detail #main_image {
+	border: 1px solid;
+}
+
+#content .product_detail .left_side {
+	position: absolute;
+	width: 240px;
+	left: 0;
+	top: 0;
+
+}
+
+#content .product_detail .middle {
+	width: 550px;
+	position: absolute;
+	left: 250px;
+	top: 0;
+
+}
+
+#content .product_detail .right_side {
+	width: 160;
+	position: absolute;
+	left: 820px;
+	top: 0;
+
 }
