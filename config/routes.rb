@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
   
+  resources :payment_notifications
+
   resources :orders
 
   resources :line_items
@@ -20,6 +22,8 @@ Sotaca::Application.routes.draw do
   resources :assets
 
   match 'current_cart' => "carts#show", :id => 'current'
+  
+  match 'cart/empty' => "carts#empty"
 
   match 'index' => "pages#index"
 
