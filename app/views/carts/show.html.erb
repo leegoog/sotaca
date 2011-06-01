@@ -25,6 +25,7 @@
 
 <p>
   <%= link_to "Continue Shopping", products_path %> |
-  <%= link_to "Checkout", new_order_path %>
+  <%= link_to "Checkout", @cart.paypal_url(products_path, payment_notifications_url) %> |
+  <%= link_to "Emtpy Cart", @cart, :confirm => 'Empty the cart?', :method => :delete %>
 </p>
 
