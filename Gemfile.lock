@@ -29,6 +29,8 @@ GEM
       activesupport (= 3.0.5)
     activesupport (3.0.5)
     arel (2.0.9)
+    awesome_nested_set (2.0.0)
+      activerecord (>= 3.0.0)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.6.0)
@@ -122,6 +124,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_nested_set
   bcrypt-ruby
   cancan
   carrierwave

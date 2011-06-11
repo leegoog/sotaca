@@ -28,7 +28,7 @@
 	  	<div class="middle">
 	  		<div id="login_menu">
 	  			<% if user_signed_in? %>  
-		        Signed in as <%= current_user.email %>. Not you?  
+		        <%= link_to current_user.username, home_url %> |  
 		        <%= link_to "Log out", destroy_user_session_path %>  
 		      <% else %>  
 				<%= link_to "Log in", new_user_session_path %> or  
@@ -63,6 +63,9 @@
 	  </div>
 	  
 	  <div id="content">
+		<div id="left">
+			<%= yield(:left) %>
+		</div>
 	    <% flash.each do |name, msg| %>
 	      <%= content_tag :div, msg, :id => "flash_#{name}" %>
 	    <% end %>

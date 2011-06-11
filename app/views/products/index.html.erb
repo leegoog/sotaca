@@ -1,9 +1,15 @@
 <% title "Products" %>
 
+<% content_for(:left) do %>
+	<ul class="categories">
+	<% for category in @categories %>
+	   <li><%= link_to category.name,  %></li>
+	<% end %>
+	</ul>
+<% end %>
 
 <div class="product_overview">
 	<%= render @products%>
-	
 	<div class="clear"></div>
 </div>
 <div class="admin_panel">

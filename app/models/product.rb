@@ -4,7 +4,9 @@ class Product < ActiveRecord::Base
 
     validates :price, :numericality => { :greater_than => 0 }
     
-    has_many :categories, :through => :categories_products
+    has_many :categorizations
+    has_many :categories, :through => :categorzations
+ 
     has_many :assets, :dependent => :destroy
     
     has_many :line_items

@@ -32,7 +32,6 @@ gem 'mysql'
 # pagination
 gem 'kaminari'
 
-
 # image upload & processing
 gem 'carrierwave'
 gem 'rmagick'
@@ -42,6 +41,7 @@ gem 'jquery-rails'
 gem 'nested_form'
 gem 'simple_form'
 gem 'client_side_validations'
+gem 'awesome_nested_set'
 
 # gem 'aws-s3', :require => 'aws/s3'
 

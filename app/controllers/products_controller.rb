@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.order('title').page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
+    @categories = Category.all
   end
 
   def show
