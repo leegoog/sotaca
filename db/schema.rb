@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601125618) do
+ActiveRecord::Schema.define(:version => 20110602160245) do
 
   create_table "assets", :force => true do |t|
     t.integer  "product_id"
@@ -30,9 +30,19 @@ ActiveRecord::Schema.define(:version => 20110601125618) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
   end
 
   create_table "categories_products", :id => false, :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", :id => false, :force => true do |t|
     t.integer  "product_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -76,6 +86,15 @@ ActiveRecord::Schema.define(:version => 20110601125618) do
     t.string   "country"
     t.string   "card_type"
     t.date     "card_expires_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.integer  "cart_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

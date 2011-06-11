@@ -1,6 +1,9 @@
 class Category < ActiveRecord::Base
+    acts_as_nested_set
+  
     attr_accessible :name, :description     
     
-    has_many :products, :through => :categories_products
+    has_many :categorizations
+    has_many :products, :through => :categorzations
     
 end

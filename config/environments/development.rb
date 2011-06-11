@@ -11,7 +11,6 @@ Sotaca::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.action_controller.relative_url_root = 'http://sotaca.dev/' 
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
