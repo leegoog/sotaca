@@ -1,8 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Asset do
-
-
+  
   def new_asset(attributes = {})
     attributes[:product_id] ||= '1'
     Asset.new(attributes)
@@ -19,6 +18,4 @@ describe Asset do
   it "should be related to a product" do
     new_asset(:product_id => '').should_not be_valid
   end
-  
-  
 end
