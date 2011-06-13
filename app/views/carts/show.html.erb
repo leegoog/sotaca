@@ -21,7 +21,7 @@
       <td>
       	<div class="image">	
 			<% line_item.product.assets.first(1).each do |asset| %>
-				<%= link_to(image_tag(asset.image.url(:thumb).to_s), line_item.product, :title => line_item.product.title )%>
+				<%= link_to(image_tag(asset.image.url(:mini).to_s), line_item.product, :title => line_item.product.title )%>
 			<% end %>
 	    </div>
       </td>
