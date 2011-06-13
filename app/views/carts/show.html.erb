@@ -1,11 +1,15 @@
 <% title "Shopping Cart" %>
 
+<div class="cart_view">
+
+<h2>Shopping Bag</h2>
+
 <table id="line_items">
-  <tr>
+  <tr class="border">
     <th>Product</th>
-    <th>Qty</th>
-    <th class="price">Unit Price</th>
-    <th class="price">Full Price</th>
+    <th>Details</th>
+    <th>Quantity</th>
+    <th>Price</th>
   </tr>
 
 	
@@ -13,23 +17,85 @@
   <% for line_item in @cart.line_items %>
 
 
-    <tr class="<%= cycle :odd, :even %>">
-      <td><%=h line_item.product.title %></td>
-      <td class="qty"><%= line_item.quantity %></td>
-      <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
-      <td class="price"><%= number_to_currency(line_item.full_price) %></td>
+    <tr class="border <%= cycle :odd, :even %>">
+      <td>
+      	<div class="image">	
+			<% line_item.product.assets.first(1).each do |asset| %>
+				<%= link_to(image_tag(asset.image.url(:thumb).to_s), line_item.product, :title => line_item.product.title )%>
+			<% end %>
+	    </div>
+      </td>
+      <td>
+		<div class="details">
+			<b><%= line_item.product.title %></b><br/>
+			   <%= line_item.product.subtitle %><br/>
+			   Unit Price: <%= number_to_currency(line_item.unit_price) %><br/><br/>
+			   Size: L <br/>
+			   Color: black<br/>
+		</div>
+	  </td>
+      <td><b><%= line_item.quantity %></b></td>
+      <td class="price"><b><%= number_to_currency(line_item.full_price) %></b></td>
     </tr>
   <% end %>
+  <tr class="promo">
+    <td>
+      Got a promo code?
+    </td>
+    <td>
+		<input id="promocode" size="21"></input>
+    </td>
+	<td colspan="2">
+		<%= image_tag "update.jpg" %>
+  </tr>
   <tr>
-    <td class="total full_price" colspan="4">
-      Total: <%= number_to_currency @cart.total_price %>
+    <td>
+    </td>
+	<td>
+		  <%= link_to (image_tag "continue_shopping.jpg"), products_path, :title => "continue shopping" %>
+	</td>
+    <td>
+		<b>Sub Total <i>(incl. VAT)</i></b>
+    </td>
+    <td>
+ 		<b><%= number_to_currency @cart.total_price %></b>
     </td>
   </tr>
-</table>
 
+<tr>
+	<td colspan="4">
+		<h2>Shipping country</h2>
+	</td>
+</tr>
+
+<tr>
+	<td colspan="4">
+		<input class="ship_radio" type="radio" name="shipping" value="UK" selected="selected"/> UK Delivery GBP 3.95
+		<input class="ship_radio" type="radio" name="shipping" value="EU" /> EU Delivery GBP 5.95
+		<input class="ship_radio" type="radio" name="shipping" value="INT" /> Intern. Delivery GBP 8.95
+		<input id="shipping_costs" type="hidden" value=""/>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+	</td>
+	<td>
+	<b>Total: </b>
+	</td>
+	<td>
+	<b><%= number_to_currency (@cart.total_price + 3.95) %></b>
+	</td>	
+</tr>
+<tr>
+	<td colspan="2">
+	</td>
+	<td colspan="2">
+		<%= link_to (image_tag "checkout.jpg"), @cart.paypal_url(products_path, payment_notifications_url), :title => "checkout" %>
+	</td>	
+</tr>
+</table>
 <p>
-  <%= link_to "Continue Shopping", products_path %> |
-  <%= link_to "Checkout", @cart.paypal_url(products_path, payment_notifications_url) %> |
   <%= link_to "Emtpy Cart", @cart, :confirm => 'Empty the cart?', :method => :delete %>
 </p>
 
+</div>
