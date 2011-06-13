@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   
+  before_filter :current_cart
+  
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
-  
-  private
   
   def current_cart
     if session[:cart_id]

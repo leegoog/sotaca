@@ -5,10 +5,12 @@ class Cart < ActiveRecord::Base
     
     attr_accessor :total_price, :full_price
     
+    # returns the total cart price
     def total_price
       line_items.to_a.sum { |item| item.full_price }
     end
     
+    # generates an url with article names and prices as parameters to checkout with paypal
     def paypal_url(return_url, notify_url)
         values = {
           :business => 'seller_1307044964_per@trianglecollective.com',
@@ -30,6 +32,8 @@ class Cart < ActiveRecord::Base
       "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
     end
     
+    
+    # adds an item to the cart
     def add_item(product, price)
       current_item = line_items.where(:product_id => product).first
       if current_item
@@ -38,6 +42,11 @@ class Cart < ActiveRecord::Base
       else
         line_items.create!(:product_id => product, :quantity => 1, :unit_price => price)
       end
+    end
+    
+    # returns the number of total items of the cart
+    def number_of_items
+      line_items.count > 0 ? "#{line_items.count} item(s)" : "empty"
     end
      
     
