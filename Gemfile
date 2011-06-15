@@ -33,7 +33,7 @@ gem 'mysql'
 gem 'kaminari'
 
 # image upload & processing
-gem 'aws-s3'
+gem 'fog' # -> s3 cloud
 gem 'carrierwave'
 gem 'rmagick'
 
