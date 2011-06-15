@@ -31,6 +31,10 @@ GEM
     arel (2.0.9)
     awesome_nested_set (2.0.0)
       activerecord (>= 3.0.0)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.6.0)
@@ -119,12 +123,14 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    xml-simple (1.0.16)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   awesome_nested_set
+  aws-s3
   bcrypt-ruby
   cancan
   carrierwave
