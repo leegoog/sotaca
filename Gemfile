@@ -52,14 +52,15 @@ gem 'awesome_nested_set'
 group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '2.5.0'
-  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'capybara'   
 end
 
 group :test do    
   gem 'rspec', '2.5.0'
-  gem 'cucumber'
-  gem 'webrat', '0.7.1'   
-  gem 'mocha'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'capybara'   
 end
 
 

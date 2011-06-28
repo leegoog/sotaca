@@ -5,21 +5,22 @@ class Cart < ActiveRecord::Base
     
     attr_accessor :total_price, :full_price
     
-    # returns the total cart price
+    # returns the cart's total price
     def total_price
       line_items.to_a.sum { |item| item.full_price }
     end
     
     # generates an url with article names and prices as parameters to checkout with paypal
-    def paypal_url(return_url, notify_url)
+    def paypal_encrypted(return_url, notify_url)
         values = {
-          :business => 'seller_1307044964_per@trianglecollective.com',
+          :business => APP_CONFIG[:paypal_email],
           :cmd => '_cart',
           :upload => 1,
           :return => return_url,
           :invoice => id,
           :notify_url => notify_url,
-          :currency_code => 'GBP'
+          :currency_code => 'GBP',
+          :cert_id => APP_CONFIG[:paypal_cert_id]
         }
         line_items.each_with_index do |item, index|
           values.merge!({
@@ -29,7 +30,7 @@ class Cart < ActiveRecord::Base
             "quantity_#{index+1}" => item.quantity
           })
        end
-      "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+     encrypt_for_paypal(values)
     end
     
     
@@ -48,6 +49,21 @@ class Cart < ActiveRecord::Base
     def number_of_items
       line_items.count > 0 ? "#{line_items.count} item(s)" : "empty"
     end
+     
+     PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")  
+     APP_CERT_PEM = File.read("#{Rails.root}/certs/sotaca_cert.pem")  
+     APP_KEY_PEM = File.read("#{Rails.root}/certs/sotaca_key.pem")  
+     
+     # encrypts the cart's line items to process the checkout with paypal, using paypal's public certificate and our public and private key
+     def encrypt_for_paypal(values)  
+         signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_CERT_PEM),
+         OpenSSL::PKey::RSA.new(APP_KEY_PEM, ''),
+         values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  
+         
+         OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT_PEM)],
+         signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"),
+         OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")  
+     end
      
     
 end

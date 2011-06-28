@@ -35,7 +35,7 @@
 		</div>
 	  </td>
       <td><b><%= line_item.quantity %></b></td>
-      <td class="price"><b><%= number_to_currency(line_item.full_price) %></b></td>
+      <td class="price"><b><%= number_to_currency(line_item.full_price, :currency_symbol => "€ ") %></b></td>
     </tr>
   <% end %>
   <tr class="promo">
@@ -90,7 +90,11 @@
 	<td colspan="2">
 	</td>
 	<td colspan="2">
-		<%= link_to (image_tag "checkout.jpg"), @cart.paypal_url("http://stormy-samurai-193.heroku.com/products", "http://stormy-samurai-193.heroku.com/payment_notifications/create"), :title => "checkout" %>
+		<%= form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
+	      <%= hidden_field_tag :cmd, "_s-xclick" %>  
+	      <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url) %>  
+	        <p><%= image_submit_tag ('checkout.jpg') %></p>  
+	    <% end %>
 	</td>	
 </tr>
 </table>
