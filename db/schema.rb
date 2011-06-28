@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602160245) do
+ActiveRecord::Schema.define(:version => 20110615224634) do
 
   create_table "assets", :force => true do |t|
     t.integer  "product_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20110602160245) do
     t.string   "username"
     t.string   "password_salt"
     t.string   "password_hash"
+    t.boolean  "admin"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
