@@ -1,0 +1,18 @@
+development:  
+    paypal_email: seller_1309100742_biz@trianglecollective.com
+    paypal_secret: foobar  
+    paypal_cert_id: EAPUJZHTJJF2L  
+    paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
+  
+test:  
+    paypal_email: test@example.com  
+    paypal_secret: testsecret  
+    paypal_cert_id: X123456789  
+    paypal_url: testpaypalurl  
+  
+production:  
+    paypal_email: seller@example.com  
+    paypal_secret: reallysecretpassword  
+    paypal_cert_id: EDRFGH909CERT  
+    paypal_url: https://www.paypal.com/cgi-bin/webscr  
+

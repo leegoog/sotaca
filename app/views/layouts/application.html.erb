@@ -9,6 +9,38 @@
   </head>
   <body>
 	<div id="container">
+		<% if can? :update, [Product] %>
+		<div class="admin_panel">
+			<a id="admin_button" href="#">Admin Panel</a>
+			<div id="admin_pane">
+				<div class="admin_group">
+					<h3>Products</h3>
+					<ul>
+						<li><%= link_to "add product" %></li>
+						<li><%= link_to "categories" %> </li>
+						<li><%= link_to "offers" %></li>
+					</ul>
+				</div>
+				<div class="admin_group">
+					<h3>Clients</h3>
+					<ul>
+						<li>link1</li>
+						<li>link2</li>
+						<li>link3</li>
+					</ul>
+				</div>
+				<div class="admin_group">
+					<h3>Orders</h3>
+					<ul>
+						<li>link1</li>
+						<li>link2</li>
+						<li>link3</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<br class="clear">
+		<% end %>
 	  <div class="header">
 	  	
 	  	<div class="top">
@@ -56,7 +88,15 @@
 	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/">Shop</a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/">Info</a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/">Our Story</a></li>
-				<li id="search_field"><input size="25" name="search"/><%= image_tag "search.png", :class => "search_button" %></li>
+				<li id="search_field">
+					
+		
+				<% form_tag products_path, :action => "index", :method => "GET" do -%>
+				  <%= text_field_tag :title %>
+				  <%=  image_submit_tag("search.png", :id => "search", :name => "search", :class => "search-button", :disabled => false) %>
+				<%  end -%>
+
+					
 	  		</ul>
 	  	</div>
 	  	
