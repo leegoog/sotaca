@@ -3,7 +3,7 @@
 <% content_for(:left) do %>
 	<ul class="categories">
 	<% for category in @categories %>
-	   <li><%= link_to category.name,  %></li>
+	   <li><%= link_to category.name, :action => "index" , :category => category.id %></li>
 	<% end %>
 	</ul>
 <% end %>

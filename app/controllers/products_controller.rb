@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   #before_filter :authenticate_user!, :except => [:index, :show]
   
   def index
-    @products = Product.order('title').page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
+    @products = Product.scoped
+    @products = @products.where("title like ?", "%" + params[:title] + "%") if params[:title]
+    @products = @products.order('title').page(params[:page]).per( params[:per_page] ? params[:per_page] : 25)
     @categories = Category.all
   end
 
