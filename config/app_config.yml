@@ -11,8 +11,8 @@ test:
     paypal_url: testpaypalurl  
   
 production:  
-    paypal_email: seller@example.com  
+    paypal_email: seller_1309468633_biz@sotaca1898.com  
     paypal_secret: reallysecretpassword  
-    paypal_cert_id: EDRFGH909CERT  
+    paypal_cert_id: 7LV6KE7ADUUEN  
     paypal_url: https://www.paypal.com/cgi-bin/webscr  
 
