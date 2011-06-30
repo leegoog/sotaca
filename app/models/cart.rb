@@ -3,6 +3,8 @@ class Cart < ActiveRecord::Base
     
     has_many :line_items, :dependent => :destroy
     
+    has_one :order
+    
     attr_accessor :total_price, :full_price
     
     # returns the cart's total price

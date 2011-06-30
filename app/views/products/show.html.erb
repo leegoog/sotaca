@@ -35,7 +35,22 @@
 		</div>		
 		<div class="subheadline">
 			TELL A FRIEND
-		</div>		
+		</div>
+		<br/><br/>
+		<div class="subheadline">
+			CATEGORIES
+		</div>
+		<div class="categories">
+			<% if !@product.categories.blank? %>
+			  <% for cat in @product.categories %>
+			   <span class="category_link">
+			    <%= link_to cat.name, :action => 'index', :category => cat.id %>
+				</span>
+			  <% end %>
+			<% else %>
+			  not yet categorized
+			<% end %>
+		</div>
 		</div>
 	</div>
 	<div class="column" style="width:auto">

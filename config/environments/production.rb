@@ -46,4 +46,15 @@ Sotaca::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :production
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      # fill in real data
+      :login => "seller_1309100742_biz_api1.trianglecollective.com",
+      :password => "1309100780",
+      :signature => "AZcrOntOepYO1-CTOQW37j.VmTudAiegMp10HrV4.MygIgob0GkpuJ42"
+    )
+  end
+  
 end

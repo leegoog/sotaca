@@ -9,7 +9,7 @@ Sotaca::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'sotaca.dev' }
 
 
   # Show full error reports and disable caching
@@ -25,5 +25,16 @@ Sotaca::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => "seller_1309100742_biz_api1.trianglecollective.com",
+      :password => "1309100780",
+      :signature => "AZcrOntOepYO1-CTOQW37j.VmTudAiegMp10HrV4.MygIgob0GkpuJ42"
+    )
+  end
+  
+  
 end
 
