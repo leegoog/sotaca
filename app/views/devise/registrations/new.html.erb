@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2><%= t('devise.links.register') %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -16,7 +16,7 @@
   <%= f.password_field :password_confirmation %></p>
 
   <p><%= f.label :locale, "Language" %><br />
-  <%= f.select :locale, [["English", "UK"], ["Chinese", "CN"]] %></p>
+  <%= f.select :locale, [["English", "en"], ["Chinese", "cn"]] %></p>
 
 
   <p><%= f.submit "Sign up" %></p>

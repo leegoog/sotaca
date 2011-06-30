@@ -1,7 +1,7 @@
 Sotaca::Application.routes.draw do
 
   
-  get "traslations/index"
+  resources :translations
 
   get "users/index"
 
