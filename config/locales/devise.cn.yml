@@ -36,3 +36,9 @@ cn:
         subject: '重置密码信息'
       unlock_instructions:
         subject: '解锁信息'
+
+# down here need to be translated additionally
+
+    links:
+      register: '解锁信息'
+      login: '信息解锁'
