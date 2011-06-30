@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_cart
   
+  # before doing anything else in my app, set the locale
   before_filter :set_locale
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -12,15 +13,19 @@ class ApplicationController < ActionController::Base
   end
   
   
-  # check if there is a user with language settings, if not use the deault language or the one from the params
-  def set_locale
-    if session[:user_id]  
-      I18n.locale = params[:locale] || User.find(session[:user_id]).locale
-    else
-      I18n.locale = params[:locale] || I18n.default_locale
-    end
+  # overwrite default url builder to include the locale param
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    { :locale => I18n.locale }
   end
   
+  # check if there is a user with language settings, if not use the deault language or the one from the params
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+  
+  
+  # returns the current cart object or creates a new one
   def current_cart
     if session[:cart_id]
       @current_cart ||= Cart.find(session[:cart_id])

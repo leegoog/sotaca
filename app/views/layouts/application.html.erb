@@ -42,6 +42,8 @@
 		<br class="clear">
 		<% end %>
 	  <div class="header">
+		<%= debug session[:locale] %>
+		<%= l(Date.today) %>
 	  	<h1> <%= t('welcome') %></h1>
 	  	<div class="top">
 	  	
@@ -51,8 +53,8 @@
 			<br/>
 	  		<div id="languages">
 	  			<ul>
-	  				<li><a href="#">chinese</a></li>
-	  				<li><a href="#">english</a></li>
+	  				<li><a href="#"><%= link_to t('chinese'), url_for( :locale => 'cn' ) %></a></li>
+	  				<li><a href="#"><%= link_to t('english'), url_for( :locale => 'en' ) %></a></li>
 	  			</ul>
 	  		</div>
 	  	
@@ -61,10 +63,10 @@
 	  		<div id="login_menu">
 	  			<% if user_signed_in? %>  
 		        <%= link_to current_user.username, home_url %> |  
-		        <%= link_to "Log out", destroy_user_session_path %>  
+		        <%= link_to t("devise.links.logout"), destroy_user_session_path %>  
 		      <% else %>  
-				<%= link_to "Log in", new_user_session_path %> or  
-		        <%= link_to "Register", new_user_registration_path %>  
+				<%= link_to t("devise.links.login"), new_user_session_path %> |  
+		        <%= link_to t("devise.links.register"), new_user_registration_path %>  
 		      <% end %>
 	  				
 	  		</div>
@@ -83,18 +85,18 @@
 	  	</div>
 	  	<div id="main_navi">
 	  		<ul>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/">Home</a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "just_in") %>"><a href="/just_in/">Just in</a></li>
-	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/">Shop</a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/">Info</a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/">Our Story</a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/"><%= t 'home' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "just_in") %>"><a href="/just_in/"><%= t 'pages.just_in' %></a></li>
+	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/"><%= t 'pages.shop' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/"><%= t 'pages.info' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/"><%= t 'pages.our_story' %></a></li>
 				<li id="search_field">
 					
 		
-				<%= form_tag products_path, :action => "index", :method => "GET" do -%>
+				<%= form_tag products_path, :action => "index", :method => "GET" do %>
 				  <%= text_field_tag :title %>
 				  <%=  image_submit_tag("search.png", :id => "search", :name => "search", :class => "search-button", :disabled => false) %>
-				<%  end -%>
+				<%  end %>
 
 					
 	  		</ul>
@@ -109,16 +111,15 @@
 	    <% flash.each do |name, msg| %>
 	      <%= content_tag :div, msg, :id => "flash_#{name}" %>
 	    <% end %>
-	    <% # content_tag :h1, yield(:title) if show_title? %>
 	    <%= yield %>
 	  </div>
 	  <div class="footer">
 		<ul>
-			<li><a href="/contact/">contact us</a></li>
-			<li><a href="/terms/">terms</a></li>
-			<li><a href="/press/">press</a></li>
-			<li><a href="/whole_sale/">whole sale</a></li>
-			<li><a href="/blog/">blog</a></li>						
+			<li><a href="/contact/"><%= t 'pages.contact' %></a></li>
+			<li><a href="/terms/"><%= t 'pages.terms' %></a></li>
+			<li><a href="/press/"><%= t 'pages.press' %></a></li>
+			<li><a href="/whole_sale/"><%= t 'pages.whole_sale' %></a></li>
+			<li><a href="/blog/"><%= t 'pages.whole_sale' %></a></li>						
 	</div>
 	<br/><br/>
   </body>

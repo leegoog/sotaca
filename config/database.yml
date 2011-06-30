@@ -2,6 +2,8 @@
 
 development:
   adapter: mysql
+  encoding: utf8
+  collation: utf8_general_ci
   database: sotaca_development
   username: root
   password: rootz
@@ -16,6 +18,8 @@ development:
 test: &test
   adapter: mysql
   database: sotaca_test
+  encoding: utf8
+  collation: utf8_general_ci
   username: root
   password: rootz
   pool: 5
@@ -24,6 +28,8 @@ test: &test
 
 production:
   adapter: mysql
+  encoding: utf8
+  collation: utf8_general_ci
   database: sotaca_production
   username: root
   password: rootz
