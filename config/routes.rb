@@ -1,6 +1,14 @@
 Sotaca::Application.routes.draw do
 
   
+  get "users/index"
+
+  get "users/show"
+
+  get "user/index"
+
+  get "user/show"
+
   resources :payment_notifications
 
   resources :orders
@@ -13,6 +21,8 @@ Sotaca::Application.routes.draw do
   
   resources :users
   
+  resources :orders
+  
   resources :categories
 
   resources :products do 
@@ -22,6 +32,8 @@ Sotaca::Application.routes.draw do
   resources :assets
 
   match 'current_cart' => "carts#show", :id => 'current'
+  
+  match 'log_in' => "users#sign_in"
   
   match 'cart/empty' => "carts#empty"
 

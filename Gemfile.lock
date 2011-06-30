@@ -15,6 +15,10 @@ GEM
       rack-mount (~> 0.6.13)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
+    activemerchant (1.15.0)
+      activesupport (>= 2.3.8)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
     activemodel (3.0.5)
       activesupport (= 3.0.5)
       builder (~> 2.1.2)
@@ -32,6 +36,8 @@ GEM
     awesome_nested_set (2.0.0)
       activerecord (>= 3.0.0)
     bcrypt-ruby (2.1.4)
+    braintree (2.8.0)
+      builder
     builder (2.1.2)
     cancan (1.6.0)
     capybara (0.4.0)
@@ -68,6 +74,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     excon (0.6.3)
+    factory_girl (1.3.3)
     ffi (0.6.3)
       rake (>= 0.8.7)
     fog (0.8.2)
@@ -158,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemerchant
   awesome_nested_set
   bcrypt-ruby
   cancan
@@ -167,6 +175,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  factory_girl
   fog
   jquery-rails
   kaminari
