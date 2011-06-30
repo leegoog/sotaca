@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   
   # check if there is a user with language settings, if not use the deault language or the one from the params
   def set_locale
-    if session[:user_id]
+    if session[:user_id]  
       I18n.locale = params[:locale] || User.find(session[:user_id]).locale
     else
       I18n.locale = params[:locale] || I18n.default_locale
