@@ -44,6 +44,9 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'awesome_nested_set'
 
+# payment, credit card processing
+gem 'activemerchant'
+
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
@@ -61,6 +64,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'capybara'   
+  gem 'factory_girl'
 end
 
 
