@@ -2,6 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  welcome: "Will kommen"
+  english: 'Englsh'
+  chinese: "没有锁定"
+  
+  pages:
+    blog: 'Blog'
+    contact: 'Contact'
+    home: 'Home'
+    index: 'Index'
+    our_story: 'Our Story'
+    info: 'Info'
+    just_in: 'Just in'
+    press: 'Press'
+    shop: 'Shop'
+    terms: 'Terms'
+    whole_sale: 'Whole Sale'
+    
+    
   date:
     formats:
       default: "%d-%m-%Y"

@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20110630141334) do
     t.string   "password_salt"
     t.string   "password_hash"
     t.boolean  "admin"
-    t.string   "locale",                                :default => "UK"
+    t.string   "locale",                                :default => "en"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
