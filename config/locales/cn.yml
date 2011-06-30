@@ -2,6 +2,22 @@
 # by tsechingho (http://github.com/tsechingho)
 
 cn:
+  welcome: "hung tschaou"
+  
+  pages:
+    blog: '接近一年'
+    contact: '接近一年'
+    home: '接近一年'
+    index: '接近一年'
+    our_story: '不到一秒 Story'
+    info: '不到一秒'
+    just_in: '不到一秒 不到一秒'
+    press: '不到一秒'
+    shop: '不到一秒不到一秒'
+    terms: '不到一秒'
+    whole_sale: '到一秒到一秒'
+  
+  
   date:
     formats:
       default: "%Y-%m-%d"
