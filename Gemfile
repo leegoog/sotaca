@@ -44,6 +44,9 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'awesome_nested_set'
 
+# internationalization
+gem 'i18n'
+
 # payment, credit card processing
 gem 'activemerchant'
 
