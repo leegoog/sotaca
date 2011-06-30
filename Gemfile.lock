@@ -177,6 +177,7 @@ DEPENDENCIES
   devise
   factory_girl
   fog
+  i18n
   jquery-rails
   kaminari
   mysql

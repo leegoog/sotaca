@@ -2,10 +2,6 @@
 # by tsechingho (http://github.com/tsechingho)
 
 cn:
-  activerecord:
-    attributes:
-      user:  
-        login: "Username or email"
   date:
     formats:
       default: "%Y-%m-%d"
@@ -183,6 +179,9 @@ cn:
       prompt: "请选择"
 
   activerecord:
+    attributes:
+      user:  
+        login: "Username or email"
     errors:
       template: # ~ 2.3.5 backward compatible
         header:
