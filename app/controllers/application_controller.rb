@@ -5,10 +5,20 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_cart
   
-#  before_filter :current_cart
+  before_filter :set_locale
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+  
+  
+  # check if there is a user with language settings, if not use the deault language or the one from the params
+  def set_locale
+    if session[:user_id]
+      I18n.locale = params[:locale] || User.find(session[:user_id]).locale
+    else
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
   end
   
   def current_cart

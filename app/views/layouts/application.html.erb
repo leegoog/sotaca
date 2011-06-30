@@ -16,7 +16,7 @@
 				<div class="admin_group">
 					<h3>Products</h3>
 					<ul>
-						<li><%= link_to "add product" %></li>
+						<li><%= link_to "add product", new_product_path %></li>
 						<li><%= link_to "categories" %> </li>
 						<li><%= link_to "offers" %></li>
 					</ul>
@@ -46,7 +46,7 @@
 	  	<div class="top">
 	  	
 	  		<div id="logo">		
-	  			<%= image_tag ('logo.jpg') %>
+	  			<%= link_to image_tag('logo.jpg'), home_url %>
 	  		</div>
 			<br/>
 	  		<div id="languages">
@@ -91,7 +91,7 @@
 				<li id="search_field">
 					
 		
-				<% form_tag products_path, :action => "index", :method => "GET" do -%>
+				<%= form_tag products_path, :action => "index", :method => "GET" do -%>
 				  <%= text_field_tag :title %>
 				  <%=  image_submit_tag("search.png", :id => "search", :name => "search", :class => "search-button", :disabled => false) %>
 				<%  end -%>
