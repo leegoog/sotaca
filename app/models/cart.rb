@@ -4,6 +4,7 @@ class Cart < ActiveRecord::Base
     has_many :line_items, :dependent => :destroy
     
     has_one :order
+    has_one :user
     
     attr_accessor :total_price, :full_price
     
@@ -13,7 +14,7 @@ class Cart < ActiveRecord::Base
     end
     
     # generates an url with article names and prices as parameters to checkout with paypal
-    def paypal_encrypted(return_url, notify_url)
+    def paypal_encrypted(return_url, notify_url, currency)
         values = {
           :business => APP_CONFIG[:paypal_email],
           :cmd => '_cart',
@@ -21,7 +22,7 @@ class Cart < ActiveRecord::Base
           :return => return_url,
           :invoice => id,
           :notify_url => notify_url,
-          :currency_code => 'GBP',
+          :currency_code => currency,
           :cert_id => APP_CONFIG[:paypal_cert_id]
         }
         line_items.each_with_index do |item, index|
@@ -49,7 +50,11 @@ class Cart < ActiveRecord::Base
     
     # returns the number of total items of the cart
     def number_of_items
-      line_items.count > 0 ? "#{line_items.count} item(s)" : "empty"
+      number_of_items = 0
+      line_items.each do |li|
+        number_of_items += li.quantity
+      end
+      number_of_items  
     end
      
      PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")  

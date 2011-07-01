@@ -1,9 +1,9 @@
 class ChangePriceToCentsInUser < ActiveRecord::Migration
   def self.up
-    change_column :products, :price, :integer
+    change_column :products, :price, :integer, :default => 0, :null => false
   end
 
   def self.down
-    change_column :products, :price, :float, :default => 0, :null => false
+    change_column :products, :price, :float
   end
 end

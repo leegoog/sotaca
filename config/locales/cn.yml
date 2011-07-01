@@ -3,10 +3,25 @@
 
 cn:
   welcome: "hung tschaou"
+  chinese: "没有锁定"
   
   store:
     checkout: '结帐'
-    shipping_costs: '邮寄费'
+    shipping_costs: '邮递费'
+    credit_card: '信用卡'
+    cart: '购物'
+    empty: '清空'
+    items: '产品'
+
+  products:
+    related: '你或许也喜欢'
+    categories: '产品分类'
+    details: '产品细节'
+    size_fit: '产品尺寸'
+    add_to_cart: '添加至购物袋'
+    add_to_wishlist: '加入心愿单'
+    tell_a_friend: '分享给好友'
+
   
   pages:
     blog: '博客'
@@ -140,7 +155,7 @@ cn:
         unit: "CN¥"
         separator: "."
         delimiter: ","
-        precision: 2
+        precision: 0
         significant: false
         strip_insignificant_zeros: false
     percentage:

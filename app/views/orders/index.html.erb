@@ -1,0 +1,23 @@
+<h1><%= t 'oders' %></h1>
+
+<table>
+  <tr>
+    <th>Order from</th>
+    <th>Cart</th>
+  </tr>
+
+<% if !@orders.blank? %>
+  <% for order in @orders %>
+    <tr>
+      <td><%= order.created_at.strftime("%d%m%y") %></td>
+      <td><%= order.cart_id %></td>
+      <td><%= link_to "Show", category %></td>
+      <td><%= link_to "Edit", edit_category_path(category) %></td>
+      <td><%= link_to "Destroy", category, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+<% else %>
+  No orders yet.
+<% end %>
+
+</table>

@@ -10,6 +10,11 @@ en:
     checkout: 'Checkout'
     shipping_costs: 'Shipping Costs'
     credit_card: 'Credit Card'
+    cart: 'Cart'
+    empty: 'empty'
+    items: 'item(s)'
+    shopping_bag: 'Shopping bag'
+
   
   pages:
     blog: 'Blog'
@@ -24,7 +29,24 @@ en:
     terms: 'Terms'
     whole_sale: 'Whole Sale'
     translations: 'Translations'
-    
+  
+  products:
+    related: 'Other products you may like'
+    categories: 'Categories'
+    details: 'Details'
+    size_fit: 'Size & Fit'
+    add_to_cart: 'Add to shopping cart'
+    add_to_wishlist: 'Add to wishlist'
+    tell_a_friend: 'Tell a friend'
+    uncategorized: "not yet categorized"
+
+  cart:
+    product: 'Article'
+    quantity: 'Quantity'
+    details: 'Details'
+    price: 'Price'
+    update: 'Update'
+    int_delivery: 'International delivery'
     
   date:
     formats:
@@ -246,6 +268,17 @@ en:
         attributes:
           user:  
             login: "Username or email"
+            username: "Username"
+            email: "EMail"
+            password: "Password"
+            password_confirmation: "Password confirmation"
+          product: 
+            title: "Title"
+            subtitle: "Subtitle"
+            description: "Description"
+            price: "Price"
+            category_names: "Category Names"
+            
   
     
   
