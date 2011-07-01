@@ -62,6 +62,7 @@ en:
       username: 'Username'
       email: 'EMail'
       password: 'Password'
-      username: 'Username'
+      username_or_email: 'Username or EMail'
+      username: 'Usernamel'
       password_confirmation: 'Password Confirmation'
       language: 'Language'
