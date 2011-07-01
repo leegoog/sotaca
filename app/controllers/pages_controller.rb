@@ -6,6 +6,9 @@ class PagesController < ApplicationController
   end
 
   def just_in
+    @products = Product.order('created_at').page(params[:page]).per( params[:per_page] ? params[:per_page] : 25)
+    @categories = Category.all
+    render 'products/index'
   end
 
   def info
