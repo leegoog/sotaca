@@ -17,8 +17,7 @@ class ProductLikesController < ApplicationController
       flash[:notice] = t "like_saved"
       redirect_to product_path(@product_like.product_id)
     else
-      flash[:error] = 'error'
-      render :action => 'new'
+      redirect_to product_path(@product_like.product_id)
     end
   end
 
