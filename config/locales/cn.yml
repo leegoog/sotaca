@@ -4,18 +4,21 @@
 cn:
   welcome: "hung tschaou"
   
+  store:
+    checkout: '结帐'
+    shipping_costs: '邮寄费'
+  
   pages:
-    blog: '接近一年'
-    contact: '接近一年'
-    home: '接近一年'
-    index: '接近一年'
-    our_story: '不到一秒 Story'
-    info: '不到一秒'
-    just_in: '不到一秒 不到一秒'
-    press: '不到一秒'
-    shop: '不到一秒不到一秒'
-    terms: '不到一秒'
-    whole_sale: '到一秒到一秒'
+    blog: '博客'
+    contact: '联系我们'
+    home: '主页'
+    our_story: '我们的故事'
+    info: '购买信息'
+    just_in: '新品上市'
+    press: '媒体'
+    shop: '在线购物'
+    terms: '条款和协议'
+    whole_sale: '合作关系'
   
   
   date:

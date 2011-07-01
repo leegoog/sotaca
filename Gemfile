@@ -44,8 +44,12 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'awesome_nested_set'
 
-# internationalization key-value store
+### internationalization
+# key-value store
 gem 'redis'
+gem 'money'
+gem 'google_currency'
+
 
 # payment, credit card processing
 gem 'activemerchant'
