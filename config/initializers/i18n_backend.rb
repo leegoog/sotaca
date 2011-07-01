@@ -1,5 +1,16 @@
 require "i18n/backend/fallbacks" 
 
+module I18n
+  module Backend
+    class Chain
+      module Implementation
+        def store_translations(locale, data, options = {})
+          backends.first.store_translations(locale, data, {:escape => false})
+        end
+      end
+    end
+  end
+end
 
 # use redis translation store, more info on redis.io
 uri = URI.parse(ENV["REDISTOGO_URL"])
