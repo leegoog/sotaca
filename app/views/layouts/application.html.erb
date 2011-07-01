@@ -50,8 +50,11 @@
 			<br/>
 	  		<div id="languages">
 	  			<ul>
-	  				<li><a href="#"><%= link_to t('chinese'), url_for( :locale => 'cn' ) %></a></li>
-	  				<li><a href="#"><%= link_to t('english'), url_for( :locale => 'en' ) %></a></li>
+	  				<% if params[:locale] == "cn"%>
+	  				  <li><a href="#"><%= link_to t('english'), url_for( :locale => 'en' ) %></a></li>
+					<% else %>
+					  <li><a href="#"><%= link_to t('chinese'), url_for( :locale => 'cn' ) %></a></li>
+					<% end %>
 	  			</ul>
 	  		</div>
 	  	
