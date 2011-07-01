@@ -85,13 +85,13 @@
 	  	</div>
 	  	<div id="main_navi">
 	  		<ul>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/"><%= t 'home' %></a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "just_in") %>"><a href="/just_in/"><%= t 'pages.just_in' %></a></li>
-	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/"><%= t 'pages.shop' %></a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/"><%= t 'pages.info' %></a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/"><%= t 'pages.our_story' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/?locale=<%= I18n.locale %>"><%= t 'home' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "just_in") %>"><a href="/just_in/?locale=<%= I18n.locale %>"><%= t 'pages.just_in' %></a></li>
+	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/?locale=<%= I18n.locale %>"><%= t 'pages.shop' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/?locale=<%= I18n.locale %>"><%= t 'pages.info' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/?locale=<%= I18n.locale %>"><%= t 'pages.our_story' %></a></li>
 	<% if can? :update, [Product] %>
-		<li class="<%= "active" if (params[:controller] == "translations" && params[:action] == "index") %>"><a href="/translations/"><%= t 'pages.translations' %></a></li>	
+		<li class="<%= "active" if (params[:controller] == "translations" && params[:action] == "index") %>"><a href="/translations/?locale=<%= I18n.locale %>"><%= t 'pages.translations' %></a></li>	
 	<% end %>
 	
 				<li id="search_field">
@@ -119,11 +119,11 @@
 	  </div>
 	  <div class="footer">
 		<ul>
-			<li><a href="/contact/"><%= t 'pages.contact' %></a></li>
-			<li><a href="/terms/"><%= t 'pages.terms' %></a></li>
-			<li><a href="/press/"><%= t 'pages.press' %></a></li>
-			<li><a href="/whole_sale/"><%= t 'pages.whole_sale' %></a></li>
-			<li><a href="/blog/"><%= t 'pages.whole_sale' %></a></li>						
+			<li><a href="/contact/?locale=<%= I18n.locale %>"><%= t 'pages.contact' %></a></li>
+			<li><a href="/terms/?locale=<%= I18n.locale %>"><%= t 'pages.terms' %></a></li>
+			<li><a href="/press/?locale=<%= I18n.locale %>"><%= t 'pages.press' %></a></li>
+			<li><a href="/whole_sale/?locale=<%= I18n.locale %>"><%= t 'pages.whole_sale' %></a></li>
+			<li><a href="/blog/?locale=<%= I18n.locale %>"><%= t 'pages.blog' %></a></li>						
 	</div>
 	<br/><br/>
   </body>
