@@ -8,11 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   
-  if RAILS_ENV == "production"
-    storage :s3
-  else
-    storage :file
-  end
+  storage :s3
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

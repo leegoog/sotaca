@@ -79,7 +79,7 @@
 					<%= link_to "#{current_cart.number_of_items}", current_cart_url %>
 					
 					</li>
-	  				<li><a href="/checkout/">Checkout</a></li>
+	  				<li><a href="/orders/new"><%= t 'checkout' %></a></li>
 	  			</ul>
 	  		</div>
 	  	</div>
@@ -90,6 +90,10 @@
 	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/"><%= t 'pages.shop' %></a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/"><%= t 'pages.info' %></a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/"><%= t 'pages.our_story' %></a></li>
+	<% if can? :update, [Product] %>
+		<li class="<%= "active" if (params[:controller] == "translations" && params[:action] == "index") %>"><a href="/translations/"><%= t 'pages.translations' %></a></li>	
+	<% end %>
+	
 				<li id="search_field">
 					
 		

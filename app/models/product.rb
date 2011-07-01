@@ -25,7 +25,10 @@ class Product < ActiveRecord::Base
    # scopes
     scope :by_category, lambda{|cat| where(:category => cat) } 
     
-    
+    composed_of :price,
+                  :class_name => 'Money',
+                  :mapping => %w(price cents),
+                  :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : Money.empty }
     
     # getter method for category_names, used to prepopulate the text_field in the view
     def category_names

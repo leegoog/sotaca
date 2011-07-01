@@ -8,7 +8,7 @@
 			<p class="subtitle">
 			  <%= @product.subtitle %>
 			</p>		
-		  <span class="product_price"><%= number_to_currency(@product.price, :unit => '&pound;', :format => "%u%n") %></span>
+		  <span class="product_price"><%= debug @product.price %></span>
 		<br/>
 		<div class="subheadline">
 			Details
