@@ -401,13 +401,13 @@ margin: -10px 0 20px -35px;
 #content .product_overview {
 	margin-left: 100px;
 }
-#content .cart_view {
+#content .cart_view, #content .faq {
 	width: 80%;
 	border: 1px solid #000;
 	position: relative;
 }
 
-#content .cart_view h2{
+#content .cart_view h2, #content .faq h2{
 	width: 100%;
 	background-color: #93006b;
 	color: #fff;
@@ -415,6 +415,10 @@ margin: -10px 0 20px -35px;
 	font-weight: normal;
 	padding: 2.5px 0;
 	text-indent: 10px;
+}
+
+#content .faq h2{ 
+	text-transform: uppercase;
 }
 
 #line_items tr.border{
@@ -445,4 +449,19 @@ margin: -10px 0 20px -35px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
+}
+
+.faq .question{
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.faq .answer {
+	margin: 10px 0;
+	padding: 5px 10px;
+	display: none;
+}
+
+.faq ul {
+	padding-left: 15px;
 }
