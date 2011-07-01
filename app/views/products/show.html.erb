@@ -12,13 +12,13 @@
 		  <span class="product_price"><%= number_to_currency(@product.price.exchange_to(currency)) %></span>
 		<br/>
 		<div class="subheadline">
-			Details
+			<%= t'products.details' %>
 		</div>
 		<p class="red_text">
 			<%= @product.description %>
 		</p>
 		<div class="subheadline">
-			Size & Fit
+			<%= t 'products.size_fit' %>
 		</div>
 		<p class="red_text">
 			Size: between sizes S, M. Length -95 cm
@@ -28,18 +28,18 @@
 		</div>
 		
 		<div class="subheadline">
-			<%= link_to "ADD TO SHOPPING CART", line_items_path(:product_id => @product), :method => :post, :title => "add to cart" %>
+			<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :title => t('products.add_to_cart') %>
 			
 		</div>		
 		<div class="subheadline">
-			ADD TO WISHLIST
+			<%= t 'products.add_to_wishlist' %>
 		</div>		
 		<div class="subheadline">
-			TELL A FRIEND
+			<%= t 'products.tell_a_friend' %>
 		</div>
 		<br/><br/>
 		<div class="subheadline">
-			CATEGORIES
+			<%= t 'products.categories' %>
 		</div>
 		<div class="categories">
 			<% if !@product.categories.blank? %>
@@ -49,7 +49,7 @@
 				</span>
 			  <% end %>
 			<% else %>
-			  not yet categorized
+     			<%= t 'products.uncategorized' %>
 			<% end %>
 		</div>
 		</div>
@@ -59,6 +59,9 @@
 			<% @product.assets.first(1).each do |asset| %>
 			  <%= image_tag asset.image_url(:big).to_s %>
 			<% end %>
+		</div>
+		<div id="related_products">
+			<h3><%= t 'products.related' %></h3>
 		</div>
 	</div>
 	<div class="column"  style="width: 15%">

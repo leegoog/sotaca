@@ -6,16 +6,21 @@
 
 <table id="line_items">
   <tr class="border">
-    <th><%= t("Product") %></th>
-    <th><%= t("Details") %></th>
-    <th><%= t("Quantity") %></th>
-    <th><%= t("Price") %></th>
+    <th><%= t("cart.product") %></th>
+    <th><%= t("cart.details") %></th>
+    <th><%= t("cart.quantity") %></th>
+    <th><%= t("cart.price") %></th>
   </tr>
 
 	
 
   <% for line_item in @cart.line_items %>
-
+  
+  <% if params[:locale] == "cn" %>
+  <%  currency = 'CNY' %>
+  <% elsif params[:locale] == "en" %>
+  <%  currency = 'GBP' %>
+  <% end %>
 
     <tr class="border <%= cycle :odd, :even %>">
       <td>
@@ -29,13 +34,13 @@
 		<div class="details">
 			<b><%= line_item.product.title %></b><br/>
 			   <%= line_item.product.subtitle %><br/>
-			   Unit Price: <%= number_to_currency(line_item.unit_price) %><br/><br/>
+			   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(currency)) %><br/><br/>
 			   Size: L <br/>
 			   Color: black<br/>
 		</div>
 	  </td>
       <td><b><%= line_item.quantity %></b></td>
-      <td class="price"><b><%= number_to_currency(line_item.full_price, :currency_symbol => "€ ") %></b></td>
+      <td class="price"><b><%= number_to_currency(line_item.full_price.exchange_to(currency)) %></b></td>
     </tr>
   <% end %>
   <tr class="promo">
@@ -83,7 +88,7 @@
 	<b>Total: </b>
 	</td>
 	<td>
-	<b><%= number_to_currency (@cart.total_price + 3.95) %></b>
+	<b><%= number_to_currency (@cart.total_price + 395.to_money(:GBP)) %></b>
 	</td>	
 </tr>
 <tr>
@@ -92,7 +97,7 @@
 	<td colspan="2">
 		<%= form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
 	      <%= hidden_field_tag :cmd, "_s-xclick" %>  
-	      <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url) %>  
+	      <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url, @cart.line_items.first.unit_price.currency_as_string ) %>  
 	        <p><%= image_submit_tag ('checkout.jpg') %></p>  
 	    <% end %>
 	</td>	
