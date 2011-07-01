@@ -1,8 +1,21 @@
 class OrdersController < ApplicationController
+  
+  # lists all orders of a client (if customer) or all orders (if admin)
+  
+  def index 
+    if !current_user.admin?
+      @orders = Order.cart.user.orders    
+    else
+      @orders = Order.all 
+    end
+  end
+  
+  
+  # renders the new order template => credit card processing
   def new
     @order = Order.new
   end
-
+  
   # creates a new order from the current_cart
   def create
     @order = current_cart.build_order(params[:order])
