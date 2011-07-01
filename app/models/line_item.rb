@@ -15,4 +15,9 @@ class LineItem < ActiveRecord::Base
     self.quantity += 1
   end
   
+  composed_of :unit_price,
+                :class_name => 'Money',
+                :mapping => %w(unit_price cents),
+                :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : Money.empty }
+  
 end
