@@ -473,6 +473,7 @@ margin: -10px 0 20px -35px;
 
 #likes {
 	position: relative;
+	float:right;
 }
 #likes .heart {
 	width: 50px;
