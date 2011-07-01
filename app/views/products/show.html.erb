@@ -8,7 +8,8 @@
 			<p class="subtitle">
 			  <%= @product.subtitle %>
 			</p>		
-		  <span class="product_price"><%= debug @product.price %></span>
+		<% params[:locale] == "cn" ? currency = 'YEN' : currency = 'GBP'%>
+		  <span class="product_price"><%= number_to_currency(@product.price.exchange_to(currency)) %></span>
 		<br/>
 		<div class="subheadline">
 			Details
