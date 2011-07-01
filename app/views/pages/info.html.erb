@@ -1,7 +1,16 @@
 <% title t 'pages.info' %>
 
 <% content_for(:head) do %>
- <% javascript_include_tag "faq", :cache => true %>
+ <script type="text/javascript" charset="utf-8">
+ 	$(function () {
+		$('a.question').each(function () {
+			$(this).click(function () {
+				$(this).next().next().slideToggle();
+				//alert('muh');
+			})
+		})
+	});
+ </script>
 <% end %>
 
 <h1><%= t 'pages.info' %></h1>
