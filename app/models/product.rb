@@ -8,7 +8,11 @@ class Product < ActiveRecord::Base
     has_many :categorizations, :dependent => :destroy
     has_many :categories, :through => :categorizations
  
+    has_many :users, :through => :likes
+    has_many :likes, :class_name => 'ProductLike', :dependent => :destroy
+    
     has_many :assets, :dependent => :destroy
+    
     
    # for cart
     has_many :line_items

@@ -469,3 +469,18 @@ margin: -10px 0 20px -35px;
 .product_detail .infos h1 {
 	font-size: 14px;
 }
+
+
+#likes {
+	position: relative;
+}
+#likes .heart {
+	width: 50px;
+}
+
+#likes #count {
+	font-size: 16px;
+	position: absolute;
+	top: 30px;
+	left: 40px;
+}

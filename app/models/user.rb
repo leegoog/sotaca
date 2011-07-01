@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   
   has_many :carts
   
+  has_many :products, :through => :likes
+  has_many :likes, :class_name => 'ProductLike', :dependent => :destroy
+  
   has_and_belongs_to_many :roles
 
   validates_presence_of :username
