@@ -48,12 +48,11 @@ Sotaca::Application.configure do
   config.active_support.deprecation = :notify
   
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :production
+    ActiveMerchant::Billing::Base.mode = :test
     ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-      # fill in real data
-      :login => "seller_1309100742_biz_api1.trianglecollective.com",
-      :password => "1309100780",
-      :signature => "AZcrOntOepYO1-CTOQW37j.VmTudAiegMp10HrV4.MygIgob0GkpuJ42"
+      :login => "seller_1309468633_biz_api1.sotaca1898.com",
+      :password => "1309468677",
+      :signature => "A2TmxPHrKbxkYzrV0vR-LLSlaaL7A3nJ6XG47NViW-7kPA5zro5L-vSX "
     )
   end
   
