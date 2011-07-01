@@ -12,6 +12,11 @@ Feature: managing products
   
   Scenario: adding a valid product
     Given I have no products
+    And the following user records
+      | username | password | admin |
+      | bob      | secret   | false |
+      | admin    | secret   | true  |
+    And I am logged in as "admin" with password "secret"
     And I am on the list of products
     When I follow "New Product"
     And I fill in "product_title" with "bacon"
@@ -22,14 +27,19 @@ Feature: managing products
     And I should see "10.00"
     And I should have 1 product
     
-    Scenario: adding a invalid product
-      Given I have no products
-      And I am on the list of products
-      When I follow "New Product"
-      And I fill in "product_title" with ""
-      And I fill in "product_price" with "AB"
-      And I press "Create"
-      And I should see "error"
+  Scenario: adding a invalid product
+    Given I have no products
+    And the following user records
+      | username | password | admin |
+      | bob      | secret   | false |
+      | admin    | secret   | true  |
+    And I am logged in as "admin" with password "secret"
+    And I am on the list of products
+    When I follow "New Product"
+    And I fill in "product_title" with ""
+    And I fill in "product_price" with "AB"
+    And I press "Create"
+    And I should see "error"
 
 
   

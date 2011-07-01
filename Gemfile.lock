@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/svenfuchs/i18n.git
+  revision: 8ad0f4b65406e380becbf4c553f1919f15029ddd
+  ref: 8ad0f4b65406e380becbf4c553f1919f15029ddd
+  specs:
+    i18n (0.5.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -91,7 +98,6 @@ GEM
       json (~> 1.4.6)
     google_currency (1.2.0)
       money (~> 3.5)
-    i18n (0.5.0)
     jquery-rails (0.2.7)
       rails (~> 3.0)
       thor (~> 0.14.4)
@@ -183,6 +189,7 @@ DEPENDENCIES
   factory_girl
   fog
   google_currency
+  i18n!
   jquery-rails
   kaminari
   money
