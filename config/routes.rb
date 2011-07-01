@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
   
+  resources :product_likes
+
   resources :translations
 
   get "users/index"
