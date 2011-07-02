@@ -1,5 +1,14 @@
 <% title "Products" %>
 
+<% content_for (:head) do %>
+ <script type="text/javascript" charset="utf-8">
+ 	$(function(){
+		$('div[id^="photo"] img').load(function(){
+			$(this).closest('div').find('.loading').fadeOut("slow");
+		});
+	});
+ </script>
+<% end %>
 <% content_for(:left) do %>
 	<ul class="categories">
 	<% for category in @categories %>

@@ -1,8 +1,11 @@
 <div class="product">
-	<div class="image">	
+	<div class="image" id="<%= 'photo'+product.id.to_s+'_loading' %>">	
+		<span class="loading"></span>
+		<span class="photo">
 		<% product.assets.first(1).each do |asset| %>
 			<%= link_to(image_tag(asset.image.url(:thumb).to_s), product, :title => product.title )%>
 		<% end %>
+		</span>
     </div> 
   <%= link_to product.title,  product, :class => "title_link", :title => product.title %>
   <span class="cart"><%= link_to image_tag('cart.gif'), line_items_path(:product_id => product), :method => :post, :title => "add to cart" %></span>
