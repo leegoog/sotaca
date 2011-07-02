@@ -22,6 +22,7 @@ Sotaca::Application.configure do
   # config.log_level = :debug
 
   config.action_mailer.default_url_options = { :host => 'http://stormy-samurai-193.heroku.com/' }
+  config.action_mailer.delivery_method = :smtp #:sendmail #:smtp
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
