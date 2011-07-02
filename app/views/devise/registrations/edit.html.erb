@@ -18,6 +18,16 @@
   <p><%= f.label t 'devise.links.current_password' %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></p>
 
+  <% if current_user.admin? %>
+  <p><%= f.label :admin %><br />
+  <%= f.check_box :admin %></p>
+  <% end %>
+
+  <p><%= f.label t 'devise.links.language' %><br />
+  <%= f.select :locale, [["English", "en"], ["#{t'chinese'}", "cn"]] %></p>
+
+
+
   <p><%= f.submit "Update" %></p>
 <% end %>
 
