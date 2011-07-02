@@ -63,6 +63,6 @@ en:
       email: 'EMail'
       password: 'Password'
       username_or_email: 'Username or EMail'
-      username: 'Usernamel'
+      username: 'Username'
       password_confirmation: 'Password Confirmation'
       language: 'Language'
