@@ -74,7 +74,7 @@
 			<h3><%= t 'products.related' %></h3>
 		</div>
 	</div>
-	<div class="column"  style="width: 15%">
+	<div class="column"  style="width: 125px">
 		<% for asset in @product.assets do %>
 		<div class="img_item">
 		  <%= image_tag asset.image_url(:thumb).to_s %>
