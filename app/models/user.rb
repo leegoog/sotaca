@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   
   protected
 
+ 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)
