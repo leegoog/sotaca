@@ -1,5 +1,12 @@
 <% title @product.title %>
 
+<% content_for (:head) do %>
+ <script type="text/javascript" charset="utf-8">
+	changeImage = function (url) {
+		$('#main_image img').attr("src", url);
+	}
+ </script>
+<% end %>
 
 <div class="product_detail">
 	<div class="column">
@@ -77,7 +84,9 @@
 	<div class="column"  style="width: 125px">
 		<% for asset in @product.assets do %>
 		<div class="img_item">
+		  <a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')">
 		  <%= image_tag asset.image_url(:thumb).to_s %>
+		  </a>
 		</div>
 		<% end %>
 	</div>
