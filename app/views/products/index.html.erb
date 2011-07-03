@@ -2,9 +2,10 @@
 
 <% content_for (:head) do %>
  <script type="text/javascript" charset="utf-8">
+
  	$(function(){
 		$('div[id^="photo"] img').load(function(){
-			$(this).closest('div').find('.loading').fadeOut("slow");
+				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
 	});
  </script>
