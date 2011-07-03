@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+   translates :title, :subtitle, :description, :fallbacks_for_empty_translations => true
+   accepts_nested_attributes_for :translations # allows multiple translations in the same request
    
    # validations
     validates_presence_of :title, :price

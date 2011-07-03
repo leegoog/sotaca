@@ -21,11 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :cols => 30, :rows => 10  %>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+	<%= f.label :price %><br />
+	<% if @product.new_record? %>
+		 <%= f.text_field :price %>
+	<% else %>
+		<%= f.text_field :price, :value => @product.price.exchange_to('GBP') %>
+	<% end %>
   </div>
   <div class="field">
     <%= f.label :category_names %><br />
@@ -45,6 +49,22 @@
 	<% end %>
 	
 	<p><%= f.link_to_add "Add image", :assets %></p>
+
+    <h2>Chinese translations</h2>
+    <%= f.globalize_fields_for(:cn) do |g| %>
+      <div class="field">
+        <%= g.label :title %><br />
+        <%= g.text_field :title %>
+      </div>
+      <div class="field">
+        <%= g.label :subtitle %><br />
+        <%= g.text_field :subtitle %>
+      </div>
+      <div class="field">
+        <%= g.label :description %><br />
+        <%= g.text_area :description, :cols => 30, :rows => 10 %>
+      </div>
+    <% end %>
 	
   <div class="actions">
     <%= f.submit %>
