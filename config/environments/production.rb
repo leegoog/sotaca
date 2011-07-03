@@ -19,10 +19,11 @@ Sotaca::Application.configure do
   # just comment this out and Rails will serve the files
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   config.action_mailer.default_url_options = { :host => 'http://stormy-samurai-193.heroku.com/' }
-  config.action_mailer.delivery_method = :smtp #:sendmail #:smtp
+  config.action_mailer.delivery_method = :smtp || :sendmail #:smtp
+  config.action_mailer.perform_deliveries    = true
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
@@ -38,7 +39,7 @@ Sotaca::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Disable delivery errors, bad email addresses will be ignored
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable threaded mode
   # config.threadsafe!

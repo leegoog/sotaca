@@ -47,6 +47,7 @@ gem 'awesome_nested_set'
 ### internationalization
 # key-value store
 gem 'i18n', :git => "git://github.com/svenfuchs/i18n.git", :ref => "8ad0f4b65406e380becbf4c553f1919f15029ddd"
+gem 'globalize3'
 gem 'redis'
 gem 'money'
 gem 'google_currency'

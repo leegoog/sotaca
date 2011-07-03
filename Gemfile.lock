@@ -96,6 +96,9 @@ GEM
     formatador (0.1.4)
     gherkin (2.3.3)
       json (~> 1.4.6)
+    globalize3 (0.1.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     google_currency (1.2.0)
       money (~> 3.5)
     jquery-rails (0.2.7)
@@ -190,6 +193,7 @@ DEPENDENCIES
   devise
   factory_girl
   fog
+  globalize3
   google_currency
   i18n!
   jquery-rails
