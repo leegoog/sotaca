@@ -1,0 +1,8 @@
+<br/><br/>
+<%= simple_form_for @user do |f| %>
+	<%= f.input :username %>
+	<%= f.input :email %>
+	<%= f.input :admin, :label => "Admin (!)", :hint => "Careful! Has full access to create and delete records!" %>
+	<%= f.input :confirmed_at %>
+    <%= f.submit %>
+<% end %>

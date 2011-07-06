@@ -1,2 +1,23 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% title 'Users' %>
+
+<table>
+  <tr>
+    <th>Username</th>
+	<th>Country</th>
+	<th>E-Mail</th>
+  </tr>
+  <% for user in @users %>
+    <tr class="<%= cycle('white','grey')-%>">
+      <td><%= user.username %></td>
+      <td><%= user.locale %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to "Show", user %></td>
+	  <% if current_user.admin? || current_user == @user %>
+      <td><%= link_to "Edit", edit_user_path(user) %></td> 
+	  <% end %>
+	  <% if current_user.admin?%>
+      <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+	  <% end %>
+    </tr>
+  <% end %>
+</table>
