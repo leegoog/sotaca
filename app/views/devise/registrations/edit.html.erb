@@ -21,6 +21,10 @@
   <% if current_user.admin? %>
   <p><%= f.label :admin %><br />
   <%= f.check_box :admin %></p>
+
+  <p><%= f.label :confirmed_at %><br />
+  <%= f.datetime :confirmed_at %></p>
+
   <% end %>
 
   <p><%= f.label t 'devise.links.language' %><br />
