@@ -1,14 +1,12 @@
 <% title "Article Set" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @article_set.name %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @article_set.user_id %>
-</p>
+<% content_for (:head) do%>
+	<%= javascript_include_tag 'rotate.2.1.js', :cache => true %>
+<% end %>
 
+<p>
+	<%= render @article_set %>
+</p>	
 <p>
   <%= link_to "Edit", edit_article_set_path(@article_set) %> |
   <%= link_to "Destroy", @article_set, :confirm => 'Are you sure?', :method => :delete %> |
