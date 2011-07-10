@@ -1,15 +1,31 @@
 <% content_for (:head) do%>
 	<%= javascript_include_tag 'jquery-ui.min.js', :cache => true %>
+	<%= javascript_include_tag 'rotate.2.1.js', :cache => true %>
 	<%= javascript_include_tag 'canvas.js', :cache => true %>
 	<%= stylesheet_link_tag 'jquery-ui', :cache => true %>
 	<%= stylesheet_link_tag 'canvas', :cache => true %>
+	<script type="text/javascript" charset="utf-8">
+		var _set_id = <%= @article_set_id %>;
+	</script>
+
 <% end %>
 
-<table cellspacing="8" cellpadding="0" style="height: 473px;" id="app" class="wide">
+<table cellspacing="8" cellpadding="0" style="height: 480px;" id="app" class="wide">
 	<tbody>
-		<tr valign="top" height="100%">
-        	<td width="60%" id="canvas_container">
-            	<div style="height: 464px;" class="unlocked" classname="unlocked" id="canvas" trackcontext="canvas">
+		<tr class="toolbox" height="20px" width="600px">	
+			<td>
+				<ul>
+					<li><a href="javascript:rotateItem(-2)" title="<%= t('sets.rotate_left') %>"><%= image_tag "icons/arrow_rotate_anticlockwise.png" %></a></li>
+					<li><a href="javascript:rotateItem(2)" title="<%= t('sets.rotate_right') %>"><%= image_tag "icons/arrow_rotate_clockwise.png" %></a></li>
+					<li><a href="javascript:moveItem(-1)" title="<%= t('sets.move_back') %>"><%= image_tag "icons/bullet_arrow_down.png" %></a></li>
+					<li><a href="javascript:moveItem(1)" title="<%= t('sets.move_forward') %>"><%= image_tag "icons/bullet_arrow_up.png" %></a></li>
+				</ul>
+				
+			</td>
+		</tr>
+		<tr valign="top" height="460px">
+        	<td width="600px" id="canvas_container">
+            	<div style="height: 460px;" class="unlocked" classname="unlocked" id="canvas" trackcontext="canvas">
 
                 </div>
             </td>
@@ -19,7 +35,7 @@
 					<div class="articles">
 						<% for product in @products %>
 						<% product.assets.first(1).each do |asset| %>
-						  <a class="inventory_item" href="javascript:addToCanvas('<%= asset.image.url(:thumb).to_s %>' , '<%= product.title %>')" >
+						  <a class="inventory_item" href="javascript:addToCanvas('<%= asset.image.url(:thumb).to_s %>' , '<%= product.title %>', '<%= product.id %>')" >
 							<%= image_tag asset.image.url(:mini).to_s, :title => product.title %>
 						  </a>
 						<% end %>
@@ -38,21 +54,14 @@
 
 
 
-<%= form_for @article_set do |f| %>
+<%= nested_form_for @article_set do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-    <%= f.hidden_field :user_id, :value => 99 %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
-	<p>
-		<%= f.fields_for :set_items do |item| %>
-			<%= item.label :user_id %>
-			<%= item.text_field :user_id %>
-			<%= item.label :product_id %>
-			<%= item.text_field :product_id %>
-			<%= item.label :width %>
-			<%= item.text_field :width %>
-		<% end %>
+	<p id="set_items">
+	</p>
   <p><%= f.submit %></p>
 <% end %>
