@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110710084256) do
+ActiveRecord::Schema.define(:version => 20110710152450) do
 
   create_table "article_sets", :force => true do |t|
     t.string   "name"
@@ -156,15 +156,16 @@ ActiveRecord::Schema.define(:version => 20110710084256) do
   end
 
   create_table "set_items", :force => true do |t|
-    t.integer  "set_id"
+    t.integer  "article_set_id"
     t.integer  "product_id"
-    t.integer  "pos_x"
-    t.integer  "pos_y"
-    t.integer  "width"
-    t.integer  "height"
-    t.integer  "z_index"
+    t.string   "pos_x"
+    t.string   "pos_y"
+    t.string   "width"
+    t.string   "height"
+    t.string   "z_index"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rotation"
   end
 
   create_table "users", :force => true do |t|
