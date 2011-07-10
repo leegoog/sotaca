@@ -12,26 +12,24 @@ addToCanvas = function (url, title, id) {
 	// load image
 	$('#canvas').load(url, function() {
 	  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
+   	  $( ".canvas_item" ).draggable({
+   	  	 							containment: '#canvas',
+   	  								stop: function(event, ui) { updateAttributes(id); }
+   	  							});
+   	  $( ".canvas_item img" ).resizable({ 
+   	  									handles: 'sw, se, ne, nw',
+   	  									stop: function(event, ui) { updateAttributes(id); }
+   	 
+   	  								});
+   	  $( "#canvas .canvas_item" ).live("click", function () {
+   	  	$( ".canvas_item" ).removeClass("active_element");
+   	  	$(this).addClass("active_element");
+   	  	return false;
+   	  });
+   	  zi++;
+   	  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
+   	  addSetItem(id);
 	});
-	
-	
-	$( ".canvas_item" ).draggable({
-		 							containment: '#canvas',
-									stop: function(event, ui) { updateAttributes(id); }
-								});
-	$( ".canvas_item img" ).resizable({ 
-										handles: 'sw, se, ne, nw',
-										stop: function(event, ui) { updateAttributes(id); }
-							
-									});
-	$( "#canvas .canvas_item" ).live("click", function () {
-		$( ".canvas_item" ).removeClass("active_element");
-		$(this).addClass("active_element");
-		return false;
-	});
-	zi++;
-	$( ".canvas_item .ui-wrapper" ).css("overflow", "");
-	addSetItem(id);
 }
 
 rotateItem = function (degree) {
