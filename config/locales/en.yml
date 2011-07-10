@@ -14,6 +14,12 @@ en:
     empty: 'empty'
     items: 'item(s)'
     shopping_bag: 'Shopping bag'
+    
+  sets:
+    rotate_left: "Rotate left"
+    rotate_right: "Rotate right"
+    move_back: "Send Image backwards"
+    move_forward: "Bring Image forwards"
 
   
   pages:
@@ -30,6 +36,7 @@ en:
     whole_sale: 'Whole Sale'
     translations: 'Translations'
     admin: 'Admin'
+    sets: 'Sets'
   
   products:
     related: 'Other products you may like'

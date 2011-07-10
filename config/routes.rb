@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
   
+  get "set_items/create"
+
   get "admin/index"
 
   resources :article_sets
