@@ -10,7 +10,7 @@ $(function () {
 addToCanvas = function (url, title, id) {
 	
 	// load image
-	$('#result').load(url, function() {
+	$('#canvas').load(url, function() {
 	  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
 	});
 	
