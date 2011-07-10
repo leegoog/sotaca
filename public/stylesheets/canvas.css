@@ -1,0 +1,25 @@
+#canvas {
+	background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    height: 100%;
+    min-width: 300px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 5;
+}
+
+#panel {
+	min-width: 300px;
+    z-index: 10;
+}
+
+
+#panel .inventory_item {
+	float: left;
+	padding: 5px;
+}
+
+.canvas_item {
+	width: auto !important;
+}

@@ -16,6 +16,9 @@ class Product < ActiveRecord::Base
     has_many :assets, :dependent => :destroy
     
     
+    has_many :article_sets, :through => :set_items
+    has_many :set_items
+    
    # for cart
     has_many :line_items
     
