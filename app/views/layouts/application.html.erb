@@ -4,43 +4,12 @@
     <title><%= content_for?(:title) ? "Sotaca 1898 - #{yield(:title)}" : "Sotaca 1898" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :defaults, "nested_form"  %>
+	<%= favicon_link_tag %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
 	<div id="container">
-		<% if can? :update, [Product] %>
-		<div class="admin_panel">
-			<a id="admin_button" href="#">Admin Panel</a>
-			<div id="admin_pane">
-				<div class="admin_group">
-					<h3>Products</h3>
-					<ul>
-						<li><%= link_to "add product", new_product_path %></li>
-						<li><%= link_to "categories" %> </li>
-						<li><%= link_to "offers" %></li>
-					</ul>
-				</div>
-				<div class="admin_group">
-					<h3>Clients</h3>
-					<ul>
-						<li>link1</li>
-						<li>link2</li>
-						<li>link3</li>
-					</ul>
-				</div>
-				<div class="admin_group">
-					<h3>Orders</h3>
-					<ul>
-						<li>link1</li>
-						<li>link2</li>
-						<li>link3</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<br class="clear">
-		<% end %>
 	  <div class="header">
 	  	<div class="top">
 	  	
@@ -71,10 +40,8 @@
 	  				
 	  		</div>
 	  		<div id="cart_menu">
+			 <span id="cart_image"><%= image_tag("cart.jpg")%></span>
 	  			<ul>
-	  				<li>
-					<%= image_tag("cart.jpg")%>
-					</li>
 					<li>
 					<%= link_to "#{current_cart.number_of_items}", current_cart_url %>
 					
@@ -91,7 +58,7 @@
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/?locale=<%= I18n.locale %>"><%= t 'pages.info' %></a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/?locale=<%= I18n.locale %>"><%= t 'pages.our_story' %></a></li>
 	<% if can? :update, [Product] %>
-		<li class="<%= "active" if (params[:controller] == "translations" && params[:action] == "index") %>"><a href="/translations/?locale=<%= I18n.locale %>"><%= t 'pages.translations' %></a></li>	
+		<li class="<%= "active" if (params[:controller] == "admin" && params[:action] == "index") %>"><a href="/admin/"><%= t 'pages.admin' %></a></li>	
 	<% end %>
 	
 				<li id="search_field">

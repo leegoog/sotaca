@@ -1,6 +1,10 @@
 Sotaca::Application.routes.draw do
 
   
+  get "admin/index"
+
+  resources :article_sets
+
   resources :product_likes
 
   resources :translations
@@ -38,6 +42,12 @@ Sotaca::Application.routes.draw do
   match 'current_cart' => "carts#show", :id => 'current'
   
   match 'log_in' => "users#sign_in"
+  
+  match 'sets' => "article_sets#index"
+
+  match 'shop' => "products#index"
+  
+  match 'admin' => "admin#index"
   
   match 'cart/empty' => "carts#empty"
 

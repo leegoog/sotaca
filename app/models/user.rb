@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   
   has_many :carts
   
+  has_many :article_sets
+  
   has_many :products, :through => :likes
   has_many :likes, :class_name => 'ProductLike', :dependent => :destroy
   
