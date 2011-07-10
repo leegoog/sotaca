@@ -1,4 +1,7 @@
 class ArticleSetsController < ApplicationController
+  
+  before_filter :authenticate_user!, :except => [:index, :show]
+  
   def index
     @article_sets = ArticleSet.all
   end
@@ -9,6 +12,7 @@ class ArticleSetsController < ApplicationController
 
   def new
     @article_set = ArticleSet.new
+    @article_set_id = ArticleSet.count+1
     @products = Product.all
   end
 

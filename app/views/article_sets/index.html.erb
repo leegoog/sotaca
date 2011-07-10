@@ -1,5 +1,9 @@
 <% title "Article Sets" %>
 
+<% content_for (:head) do%>
+	<%= javascript_include_tag 'rotate.2.1.js', :cache => true %>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>

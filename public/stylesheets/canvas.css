@@ -22,4 +22,32 @@
 
 .canvas_item {
 	width: auto !important;
+	cursor: move;
+}
+
+.active_element .ui-wrapper{
+	border: 1px dashed #95006A;
+}
+
+.toolbox ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.toolbox ul li{
+	float:left;
+	padding: 5px;
+}
+
+ .ui-resizable-handle {
+	background: none;
+}
+
+.active_element .ui-resizable-handle {
+	background: url("/images/icons/handle.png") no-repeat !important;
+}
+
+.ui-resizable-se {
+	margin-right: -11px;
+	margin-bottom: -8px;
 }
