@@ -1,0 +1,19 @@
+<% title "Article Sets" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+  </tr>
+  <% for article_set in @article_sets %>
+    <tr>
+      <td><%= article_set.name %></td>
+      <td><%= article_set.user_id %></td>
+      <td><%= link_to "Show", article_set %></td>
+      <td><%= link_to "Edit", edit_article_set_path(article_set) %></td>
+      <td><%= link_to "Destroy", article_set, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Article Set", new_article_set_path(article_set) %></p>

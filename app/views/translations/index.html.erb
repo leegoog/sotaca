@@ -1,10 +1,17 @@
 <h1>Translations</h1>  
   
-<ul>  
+<table class="translations">  
+	<tr>
+		<th>Key</th>
+		<th>Value</th>
+	</tr>
   <% @translations.keys.each do |key| %>  
-    <li><%= key %>: <%= @translations[key] %></li>  
+	<tr>
+    <td><%= key %> </td>
+    <td> <%= @translations[key] %></td>  
+	</tr>
   <% end %>  
-</ul>
+</table>
   
 <h2>Add Translation</h2>  
 <%= form_tag "/translations/" do %>  
@@ -18,7 +25,7 @@
   </p>  
   <p>  
     <%= label_tag :value %><br />  
-    <%= text_field_tag :value %>  
+    <%= text_area_tag :value %>  
   </p>  
   <p><%= submit_tag "Submit" %></p>  
 <% end %>

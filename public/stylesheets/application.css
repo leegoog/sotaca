@@ -27,7 +27,8 @@ a:hover {
 #container{
   width: 1024px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 20px; 
+  position: relative;
 }
 
 .header ul {
@@ -554,4 +555,19 @@ margin: -10px 0 20px -35px;
   color: #ccc;
   display: block;
   font-style: italic;
+}
+
+#content .language {
+	float: left;
+	margin-right: 20px;
+}
+
+table.translations {
+	font-size: 10px;
+}
+
+#cart_image {
+	position: absolute;
+	right: 100px;
+	top: 50px;
 }

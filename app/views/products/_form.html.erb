@@ -10,19 +10,42 @@
       </ul>
     </div>
   <% end %>
+<div class="language">
+    <h2>English</h2>
+ <%= f.globalize_fields_for(:en) do |g| %>
+  <div class="field">
+    <%= g.label :title %><br />
+    <%= g.text_field :title %>
+  </div>
+  <div class="field">
+    <%= g.label :subtitle %><br />
+    <%= g.text_field :subtitle %>
+  </div>
+  <div class="field">
+    <%= g.label :description %><br />
+    <%= g.text_area :description, :cols => 30, :rows => 10  %>
+  </div>
+  <% end %>
+</div>
+<div class="language">
+    <h2>Chinese</h2>
+    <%= f.globalize_fields_for(:cn) do |g| %>
+      <div class="field">
+        <%= g.label :title %><br />
+        <%= g.text_field :title %>
+      </div>
+      <div class="field">
+        <%= g.label :subtitle %><br />
+        <%= g.text_field :subtitle %>
+      </div>
+      <div class="field">
+        <%= g.label :description %><br />
+        <%= g.text_area :description, :cols => 50, :rows => 10 %>
+      </div>
+    <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :subtitle %><br />
-    <%= f.text_field :subtitle %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :cols => 30, :rows => 10  %>
-  </div>
+<br class="clear">
   <div class="field">
 	<%= f.label :price %><br />
 	<% if @product.new_record? %>
@@ -36,6 +59,7 @@
     <%= f.text_field :category_names %>
   </div>	
 <br/>
+<h2>Images</h2>
 	<%= f.fields_for :assets do |asset| %>	
 		<% if asset.object.new_record? %>
 			<%= asset.file_field(:image) %>
@@ -43,29 +67,13 @@
 		<% else %> 
 			<%= image_tag(asset.object.image.url(:thumb)) %>
 			<%= asset.hidden_field :_destroy %>
-			<%= asset.link_to_remove "remove" %>
+			<%= asset.link_to_remove "X", :confirm => "Delete this Image" %>
 		<% end %>
 	
 	<% end %>
 	
 	<p><%= f.link_to_add "Add image", :assets %></p>
 
-    <h2>Chinese translations</h2>
-    <%= f.globalize_fields_for(:cn) do |g| %>
-      <div class="field">
-        <%= g.label :title %><br />
-        <%= g.text_field :title %>
-      </div>
-      <div class="field">
-        <%= g.label :subtitle %><br />
-        <%= g.text_field :subtitle %>
-      </div>
-      <div class="field">
-        <%= g.label :description %><br />
-        <%= g.text_area :description, :cols => 30, :rows => 10 %>
-      </div>
-    <% end %>
-	
   <div class="actions">
     <%= f.submit %>
   </div>
