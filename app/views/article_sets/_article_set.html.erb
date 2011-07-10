@@ -1,8 +1,12 @@
+<% title "Set: #{@article_set.name}"%>
+
+
+<h2><%= @article_set.name %></h2>
 <table cellspacing="8" cellpadding="0" style="height: 480px;" id="app" class="wide">
 	<tbody>
 		<tr valign="top" height="460px">
         	<td width="600px" id="canvas_container">
-            	<div style="height: 460px; border: 1px solid #ccc;" class="unlocked" classname="unlocked" id="canvas" trackcontext="canvas">
+            	<div style="height: 460px; border: 1px solid #ccc; position: relative;" class="unlocked" classname="unlocked" id="canvas" trackcontext="canvas">
 					<% for item in @article_set.set_items %>
 						<div id="set_item_<%= item.id %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= item.pos_y %>;left:<%= item.pos_x %>;">
 							<% item.product.assets.first(1).each do |asset| %>
