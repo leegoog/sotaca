@@ -29,6 +29,7 @@ en:
     terms: 'Terms'
     whole_sale: 'Whole Sale'
     translations: 'Translations'
+    admin: 'Admin'
   
   products:
     related: 'Other products you may like'

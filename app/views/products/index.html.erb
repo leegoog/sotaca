@@ -8,6 +8,9 @@
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
 	});
+	$(window).load(function() {
+	$('.loading').fadeOut('slow');
+	});
  </script>
 <% end %>
 <% content_for(:left) do %>

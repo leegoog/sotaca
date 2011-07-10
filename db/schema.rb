@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110703123932) do
+ActiveRecord::Schema.define(:version => 20110710084256) do
+
+  create_table "article_sets", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id",      :null => false
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assets", :force => true do |t|
     t.integer  "product_id"
@@ -43,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20110703123932) do
     t.datetime "updated_at"
   end
 
-  create_table "categorizations", :id => false, :force => true do |t|
+  create_table "categorizations", :force => true do |t|
     t.integer  "product_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -143,6 +151,18 @@ ActiveRecord::Schema.define(:version => 20110703123932) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "set_items", :force => true do |t|
+    t.integer  "set_id"
+    t.integer  "product_id"
+    t.integer  "pos_x"
+    t.integer  "pos_y"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "z_index"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
