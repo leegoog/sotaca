@@ -4,6 +4,7 @@ var top = 0;
 var left = 0;
 var drag_w = 0;
 var drag_h = 0;
+var articles_in_set = [];
 	
 $(function () {
 	$('#canvas').live("click", function (e) {
@@ -39,33 +40,53 @@ $(function () {
 })	
 	
 addToCanvas = function (url, title, id, left, top) {
-	left = left || $('#canvas').width() / 2 ;
-	top = top || $('#canvas').height() / 2;
-	//alert("left: " + left + ", top: " + top);
-	// load image
-	$('#canvas').load(url, function() {
-	  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
-   	  $( ".canvas_item" ).draggable({
-   	  	 							containment: '#canvas',
-   	  								stop: function(event, ui) { updateAttributes(id); }
-   	  							});
-   	  $( ".canvas_item img" ).resizable({ 
-   	  									handles: 'sw, se, ne, nw',
-   	  									stop: function(event, ui) { updateAttributes(id); }
-   	 
-   	  								});
-   	  $( "#canvas .canvas_item" ).live("click", function () {
-   	  	$( ".canvas_item" ).removeClass("active_element");
-   	  	$(this).addClass("active_element");
-   	  	return false;
-   	  });
-
 	
-   	  zi++;
-   	  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
-   	  addSetItem(id);
-	});
-	$('#drag_here').hide();
+	// check if this article is already in the set
+	if($.inArray(id, articles_in_set) >= 0) {
+		alert("This article is already in your set");
+		return false;
+	}
+	else {
+		// article not yet inside, so do all the stuff 
+
+		left = left || $('#canvas').width() / 2 ;
+		top = top || $('#canvas').height() / 2;
+		//alert("left: " + left + ", top: " + top);
+		// load image
+		$('#canvas').load(url, function() {
+		  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
+   		  $( ".canvas_item" ).draggable({
+   		  	 							containment: '#canvas',
+   		  								stop: function(event, ui) { 
+															updateAttributes(id); 
+															
+															}
+   		  							});
+   		  $( ".canvas_item img" ).resizable({ 
+   		  									handles: 'sw, se, ne, nw',
+   		  									stop: function(event, ui) { 
+															
+															updateAttributes(id); 
+															
+															}
+   		 
+   		  								});
+   		  $( "#canvas .canvas_item" ).live("click", function () {
+   		  	$( ".canvas_item" ).removeClass("active_element");
+   		  	$(this).addClass("active_element");
+   		  	return false;
+   		  });
+    	
+		
+   		  zi++;
+   		  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
+   		  addSetItem(id);
+		});
+		$('#drag_here').hide();
+		
+		// add article to array
+		articles_in_set.push(id);
+	}
 }
 
 rotateItem = function (degree) {
