@@ -1,17 +1,50 @@
 var zi = 11;
 var set_item_counter = 0;
+var top = 0;
+var left = 0;
+var drag_w = 0;
+var drag_h = 0;
 	
 $(function () {
 	$('#canvas').live("click", function (e) {
 		$( ".canvas_item" ).removeClass("active_element");
-	})
+	});
+	$('.inventory_item').draggable({
+					opacity: .5,
+					revert: true,
+					zindex: 9999,
+					helper: 'clone',
+					reverDuration: 100,
+					start: function(){
+				        $(this).css({opacity:0});
+						drag_w =  $(this).width();
+						drag_h =  $(this).height(); 
+				    },
+					stop: function(event, ui){
+				       	// set origin again visible
+				 		$(this).css({opacity:1});
+						// calculate offsets
+						// calculate where it was dropped
+						top = ui.position.top - 50;	// TODO: calculate more accurate depending on the AJAX Image thats loaded
+						left = ui.position.left - 30;
+						// add to canvas
+						addToCanvas( $(this).attr("rel"), $(this).attr("title"), $(this).attr("id"), left, top);
+				    }
+	});
+	$('#canvas').droppable({
+					accept: ".inventory_item",
+					tolerance: "intersect"					
+	});
+
 })	
 	
-addToCanvas = function (url, title, id) {
-	
+addToCanvas = function (url, title, id, left, top) {
+	left = left || $('#canvas').width() / 2 ;
+	top = top || $('#canvas').height() / 2;
+	//alert("left: " + left + ", top: " + top);
 	// load image
 	$('#canvas').load(url, function() {
-	  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
+	  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
    	  $( ".canvas_item" ).draggable({
    	  	 							containment: '#canvas',
    	  								stop: function(event, ui) { updateAttributes(id); }
@@ -26,10 +59,13 @@ addToCanvas = function (url, title, id) {
    	  	$(this).addClass("active_element");
    	  	return false;
    	  });
+
+	
    	  zi++;
    	  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
    	  addSetItem(id);
 	});
+	$('#drag_here').hide();
 }
 
 rotateItem = function (degree) {
@@ -87,3 +123,33 @@ updateAttributes = function(id) {
 	$("#item_"+id +"_pos_z_index").val(item.css("z-index"));
 	$("#item_"+id +"_rotation").val(item.attr("data-rotate"));
 }
+
+changeSize = function (size) {
+	var factor = (100 + (size * 10)) / 100;
+	
+	$('.canvas_item').each(function () {
+		var diff_h, diff_w  = 0;
+		var wrapper = $(this).find('.ui-wrapper');
+		var image = $(this).find('img.ui-resizable');
+		// save old values for difference calculation
+		var width_old = image.width();
+		var height_old = image.height();
+		// resize the item by factor
+		image.width(width_old * factor);
+		image.height(height_old * factor);
+		// resize wrapper as well to stay consistent with jquery ui resizable
+		wrapper.width(width_old * factor);
+		wrapper.height(height_old * factor);
+		// get difference
+		diff_w = width_old - image.width();
+		diff_h = height_old - image.height();
+		// change offsets by difference
+		$(this).css("left", $(this).css("left")+diff_w);
+		$(this).css("top", $(this).css("top")+diff_h);
+		// update hidden form fields
+		updateAttributes($(this).attr('data-article'));
+	});
+	
+} 
+  
+    

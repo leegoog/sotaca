@@ -31,12 +31,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
    version :thumb do
      process :resize_to_fit => [165, 220]
+     process :convert => 'png'
    end
    version :mini do
      process :resize_to_fit => [80, 80]
+     process :convert => 'png'
    end
    version :big do
      process :resize_to_fit => [600, 800]
+     process :convert => 'png'
    end
 
 
@@ -46,9 +49,8 @@ class ImageUploader < CarrierWave::Uploader::Base
      %w(jpg jpeg gif png)
    end
 
-  # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+   def filename
+     super.chomp(File.extname(super)) + '.png'
+   end
 
 end
