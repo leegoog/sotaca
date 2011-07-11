@@ -63,3 +63,14 @@
 	left: 130px;
 	top: 160px;
 }
+
+.canvas_item .delete_link {
+	position: relative;
+	margin-left: 48%;
+	margin-top: -15px;
+	font-size: 12px;
+	display: none;
+}
+.active_element .delete_link {
+	display: block;
+}
