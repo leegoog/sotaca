@@ -24,17 +24,20 @@ $(function () {
 					stop: function(event, ui){
 				       	// set origin again visible
 				 		$(this).css({opacity:1});
-						// calculate offsets
-						// calculate where it was dropped
-						top = ui.position.top - 50;	// TODO: calculate more accurate depending on the AJAX Image thats loaded
-						left = ui.position.left - 30;
-						// add to canvas
-						addToCanvas( $(this).attr("rel"), $(this).attr("title"), $(this).attr("id"), left, top);
 				    }
 	});
 	$('#canvas').droppable({
 					accept: ".inventory_item",
-					tolerance: "intersect"					
+					tolerance: "intersect",
+					drop: function (event, ui) {
+						// add to canvas
+						
+						var canvas = $("#canvas").offset();
+						
+						alert("canvas, top: " + canvas.top +", left: " + canvas.left );
+						
+						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-canvas.left, event.clientY-canvas.top);
+					}					
 	});
 
 })	
@@ -51,6 +54,10 @@ addToCanvas = function (url, title, id, left, top) {
 
 		left = left || $('#canvas').width() / 2 ;
 		top = top || $('#canvas').height() / 2;
+		
+		if (left > 600) left = 300;
+		if (top > 460) top = 220;
+		
 		//alert("left: " + left + ", top: " + top);
 		// load image
 		$('#canvas').load(url, function() {
@@ -172,5 +179,12 @@ changeSize = function (size) {
 	});
 	
 } 
+
+function showCoords(evt){
+  alert(
+    "clientX value: " + evt.clientX + "\n"
+    + "clientY value: " + evt.clientY + "\n"
+  );
+}
   
     
