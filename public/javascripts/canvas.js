@@ -30,12 +30,11 @@ $(function () {
 					accept: ".inventory_item",
 					tolerance: "intersect",
 					drop: function (event, ui) {
-						// add to canvas
 						
+						// get canvas offset to subtract from coordinates
 						var canvas = $("#canvas").offset();
-						
-						alert("canvas, top: " + canvas.top +", left: " + canvas.left );
-						
+					
+						// add to canvas
 						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-canvas.left, event.clientY-canvas.top);
 					}					
 	});
