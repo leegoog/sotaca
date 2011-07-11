@@ -55,14 +55,14 @@ addToCanvas = function (url, title, id, left, top) {
 		// load image
 		$('#canvas').load(url, function() {
 		  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><img src='" + url +"' title='" + title +"' /></div");
-   		  $( ".canvas_item" ).draggable({
+   		  $( "#set_item_" + id).draggable({
    		  	 							containment: '#canvas',
    		  								stop: function(event, ui) { 
 															updateAttributes(id); 
 															
 															}
    		  							});
-   		  $( ".canvas_item img" ).resizable({ 
+   		  $( "#set_item_" + id+" img" ).resizable({ 
    		  									handles: 'sw, se, ne, nw',
    		  									stop: function(event, ui) { 
 															
