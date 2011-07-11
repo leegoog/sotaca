@@ -20,6 +20,7 @@ en:
     rotate_right: "Rotate right"
     move_back: "Send Image backwards"
     move_forward: "Bring Image forwards"
+    discard: "Discard Set"
 
   
   pages:
