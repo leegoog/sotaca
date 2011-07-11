@@ -17,7 +17,7 @@ $(function () {
 					helper: 'clone',
 					reverDuration: 100,
 					start: function(){
-				        $(this).css({opacity:0});
+				        $(this).css({opacity:0.2});
 						drag_w =  $(this).width();
 						drag_h =  $(this).height(); 
 				    },
@@ -33,9 +33,9 @@ $(function () {
 						
 						// get canvas offset to subtract from coordinates
 						var canvas = $("#canvas").offset();
-					
+						
 						// add to canvas
-						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-canvas.left, event.clientY-canvas.top);
+						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-(canvas.left+10), event.clientY-(canvas.top-120));
 					}					
 	});
 
@@ -123,8 +123,8 @@ addSetItem = function(id) {
 	var str = "";
 	
 	str += "<input type='hidden' name='article_set[set_items_attributes][" + set_item_counter + "][product_id]' value='" + id + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_width' name='article_set[set_items_attributes][" + set_item_counter + "][width]' value='" + image.css("width") + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_height' name='article_set[set_items_attributes][" + set_item_counter + "][height]' value='" + image.css("height") + "'/>";
+	str += "<input type='hidden' id='item_" + id + "_width' name='article_set[set_items_attributes][" + set_item_counter + "][width]' value='" + image.width() + "'/>";
+	str += "<input type='hidden' id='item_" + id + "_height' name='article_set[set_items_attributes][" + set_item_counter + "][height]' value='" + image.height() + "'/>";
 	str += "<input type='hidden' id='item_" + id + "_z_index' name='article_set[set_items_attributes][" + set_item_counter + "][z_index]' value='" + item.css("z-index") + "'/>";
 	str += "<input type='hidden' id='item_" + id + "_pos_x' name='article_set[set_items_attributes][" + set_item_counter + "][pos_x]' value='" + item.css("left") + "'/>";
 	str += "<input type='hidden' id='item_" + id + "_pos_y' name='article_set[set_items_attributes][" + set_item_counter + "][pos_y]' value='" + item.css("top") + "'/>";
@@ -143,8 +143,8 @@ updateAttributes = function(id) {
 	var item = $("#set_item_"+id);
 	var image = $("#set_item_"+id+" img");
 	
-	$("#item_"+id +"_width").val(image.css("width"));
-	$("#item_"+id +"_height").val(image.css("height"));
+	$("#item_"+id +"_width").val(image.width());
+	$("#item_"+id +"_height").val(image.height());
 	$("#item_"+id +"_pos_x").val(item.css("left"));
 	$("#item_"+id +"_pos_y").val(item.css("top"));
 	$("#item_"+id +"_z_index").val(item.css("z-index"));
@@ -199,3 +199,12 @@ deleteItem = function (id) {
 	var idx = articles_in_set.indexOf(id);
 	articles_in_set.splice(idx, 1);
 }  
+
+discardSet = function () {
+	var confirm = window.confirm("Discard this Set and delete all items?");
+	if (confirm) {	
+		articles_in_set = [];
+		$('#canvas').html('<div id="drag_here">Drag Articles here!</div>');
+		$('#set_items').html("");
+	}
+}
