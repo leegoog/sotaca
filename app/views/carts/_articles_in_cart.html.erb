@@ -1,0 +1,23 @@
+<% for line_item in cart.line_items %>
+	  
+	    <tr class="border <%= cycle :odd, :even %>">
+	      <td>
+	      	<div class="image">	
+				<% line_item.product.assets.first(1).each do |asset| %>
+					<%= link_to(image_tag(asset.image.url(:mini).to_s), line_item.product, :title => line_item.product.title )%>
+				<% end %>
+		    </div>
+	      </td>
+	      <td>
+			<div class="details">
+				<b><%= link_to line_item.product.title, line_item.product, :title => t('products.details') %></b><br/>
+				   <%= line_item.product.subtitle %><br/>
+				   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(currency)) %><br/><br/>
+				   Size: L <br/>
+				   Color: black<br/>
+			</div>
+		  </td>
+	      <td><b><%= line_item.quantity %></b></td>
+	      <td class="price"><b><%= number_to_currency(line_item.full_price.exchange_to(currency)) %></b></td>
+	    </tr>
+	  <% end %>
