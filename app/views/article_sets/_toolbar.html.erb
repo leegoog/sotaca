@@ -1,0 +1,14 @@
+<tr class="toolbox" height="20px" width="600px">	
+	<td>
+		<ul>
+			<li><a href="javascript:rotateItem(-2)" title="<%= t('sets.rotate_left') %>"><%= image_tag "icons/arrow_rotate_anticlockwise.png" %></a></li>
+			<li><a href="javascript:rotateItem(2)" title="<%= t('sets.rotate_right') %>"><%= image_tag "icons/arrow_rotate_clockwise.png" %></a></li>
+			<li><a href="javascript:moveItem(-1)" title="<%= t('sets.move_back') %>"><%= image_tag "icons/bullet_arrow_down.png" %></a></li>
+			<li><a href="javascript:moveItem(1)" title="<%= t('sets.move_forward') %>"><%= image_tag "icons/bullet_arrow_up.png" %></a></li>
+			<li><a href="javascript:changeSize(1)" title="<%= t('sets.move_forward') %>">bigger</a></li>
+			<li><a href="javascript:changeSize(-1)" title="<%= t('sets.move_forward') %>">smaller</a></li>
+			<li><a href="javascript:discardSet()" title="<%= t('sets.discard') %>">discard</a></li>
+		</ul>
+		
+	</td>
+</tr>
