@@ -98,7 +98,7 @@ addToCanvas = function (url, title, id, left, top) {
 rotateItem = function (degree) {
 	var rotation = parseInt($('.active_element').attr('data-rotate'));
 	rotation += parseInt(degree);
-	var id = parseInt($('.active_element').attr("data-article"));
+	var id = $('.active_element').attr("data-article");
 	$('.active_element').rotate(rotation);
 	var rotation = $('.active_element').attr('data-rotate', rotation);
 	updateAttributes(id);
@@ -107,10 +107,10 @@ rotateItem = function (degree) {
 
 moveItem = function (amount) {
 	var z = parseInt($('.active_element').css("z-index"));
-	var id = parseInt($('.active_element').attr("data-article"));
+	var id = $('.active_element').attr("data-article");
 	z = z + amount;
 	$('.active_element').css("z-index", z);
-	updateAttributes(id);
+	$('#item_' + id +'_z_index').val(z);
 }
 
 addSetItem = function(id) {
@@ -147,7 +147,7 @@ updateAttributes = function(id) {
 	$("#item_"+id +"_height").val(image.css("height"));
 	$("#item_"+id +"_pos_x").val(item.css("left"));
 	$("#item_"+id +"_pos_y").val(item.css("top"));
-	$("#item_"+id +"_pos_z_index").val(item.css("z-index"));
+	$("#item_"+id +"_z_index").val(item.css("z-index"));
 	$("#item_"+id +"_rotation").val(item.attr("data-rotate"));
 }
 

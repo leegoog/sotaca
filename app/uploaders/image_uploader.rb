@@ -52,6 +52,7 @@ class ImageUploader < CarrierWave::Uploader::Base
    
    def make_transparent 
      manipulate! do |img|
+       img.fuzz = '3%'
        image = Magick::Image.read(img.filename).first
        image.transparent("#ffffff", Magick::TransparentOpacity)
      end 
