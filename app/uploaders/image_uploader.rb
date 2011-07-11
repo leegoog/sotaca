@@ -32,6 +32,7 @@ class ImageUploader < CarrierWave::Uploader::Base
    version :thumb do
      process :resize_to_fit => [165, 220]
      process :convert => 'png'
+     process :make_transparent
    end
    version :mini do
      process :resize_to_fit => [80, 80]
@@ -48,7 +49,27 @@ class ImageUploader < CarrierWave::Uploader::Base
    def extension_white_list
      %w(jpg jpeg gif png)
    end
-
+   
+   def make_transparent 
+     manipulate! do |img|
+       image = Magick::Image.read(img.filename).first
+       image.transparent("#ffffff", Magick::TransparentOpacity)
+     end 
+   end 
+   
+   def shadow
+     manipulate! do |img|
+       layers = Magick::ImageList.new
+       image = Magick::Image.read(img.filename).first
+       shadow = image.clone
+       shadow = shadow.shadow(0, 0, 4.0, 0.5)
+       shadow = shadow.colorize(1.0, 1.0, 1.0, 'gray25')
+       layers << shadow << image
+       result = layers.optimize_layers(Magick::MergeLayer)
+     end
+   end
+   
+   
    def filename
      super.chomp(File.extname(super)) + '.png'
    end
