@@ -7,10 +7,13 @@ class LineItem < ActiveRecord::Base
   belongs_to :cart
   belongs_to :product
   
+  
+  # returns the total price of this line item (quantity * price)
   def full_price
     unit_price * quantity
   end
   
+  # increases the quantity by one
   def increase
     self.quantity += 1
   end
