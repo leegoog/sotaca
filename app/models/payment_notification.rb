@@ -5,6 +5,8 @@ class PaymentNotification < ActiveRecord::Base
   after_create :mark_cart_as_purchased  
 
   private  
+  
+  # marks the referenced cart as purchased
     def mark_cart_as_purchased  
       if status == "Completed"  
         cart.update_attributes(:purchased_at => Time.now)  

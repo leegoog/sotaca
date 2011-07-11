@@ -4,10 +4,6 @@
 	<%= javascript_include_tag 'canvas.js' %>
 	<%= stylesheet_link_tag 'jquery-ui'%>
 	<%= stylesheet_link_tag 'canvas' %>
-	<script type="text/javascript" charset="utf-8">
-		var _set_id = <%= @article_set_id %>;
-	</script>
-
 <% end %>
 
 <table cellspacing="8" cellpadding="0" style="height: 480px;" id="app" class="wide">
@@ -19,6 +15,8 @@
 					<li><a href="javascript:rotateItem(2)" title="<%= t('sets.rotate_right') %>"><%= image_tag "icons/arrow_rotate_clockwise.png" %></a></li>
 					<li><a href="javascript:moveItem(-1)" title="<%= t('sets.move_back') %>"><%= image_tag "icons/bullet_arrow_down.png" %></a></li>
 					<li><a href="javascript:moveItem(1)" title="<%= t('sets.move_forward') %>"><%= image_tag "icons/bullet_arrow_up.png" %></a></li>
+					<li><a href="javascript:changeSize(1)" title="<%= t('sets.move_forward') %>">bigger</a></li>
+					<li><a href="javascript:changeSize(-1)" title="<%= t('sets.move_forward') %>">smaller</a></li>
 				</ul>
 				
 			</td>
@@ -26,7 +24,13 @@
 		<tr valign="top" height="460px">
         	<td width="600px" id="canvas_container">
             	<div style="height: 460px;" class="unlocked" classname="unlocked" id="canvas" trackcontext="canvas">
-
+					<% unless @article_set.new_record? %>
+						<% for item in @article_set.items %>
+							buh
+						<% end %>
+					<% end %>
+					
+						<div id="drag_here">Drag Articles here!</div>
                 </div>
             </td>
             <td width="40%">
@@ -35,7 +39,7 @@
 					<div class="articles">
 						<% for product in @products %>
 						<% product.assets.first(1).each do |asset| %>
-						  <a class="inventory_item" href="javascript:addToCanvas('<%= asset.image.url(:thumb).to_s %>' , '<%= product.title %>', '<%= product.id %>')" >
+						  <a class="inventory_item" title="<%= product.title %>" id="<%= product.id %>" rel="<%= asset.image.url(:thumb).to_s %>" href="javascript:addToCanvas('<%= asset.image.url(:thumb).to_s %>' , '<%= product.title %>', '<%= product.id %>')" >
 							<%= image_tag asset.image.url(:mini).to_s, :title => product.title %>
 						  </a>
 						<% end %>
