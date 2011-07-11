@@ -3,108 +3,16 @@
 <div class="cart_view">
 
 <h2>Shopping Bag</h2>
-
-<table id="line_items">
-  <tr class="border">
-    <th><%= t("cart.product") %></th>
-    <th><%= t("cart.details") %></th>
-    <th><%= t("cart.quantity") %></th>
-    <th><%= t("cart.price") %></th>
-  </tr>
-
 	
+	<% if @cart.line_items.count > 0 %>
+	
+		<%= render :partial => 'overview', :locals => { :cart => @cart } %>
+	    	
+<% else %>
 
-  <% for line_item in @cart.line_items %>
-  
-  <% if params[:locale] == "cn" %>
-  <%  currency = 'CNY' %>
-  <% elsif params[:locale] == "en" %>
-  <%  currency = 'GBP' %>
-  <% end %>
+		<%= render :partial => 'empty' %>
 
-    <tr class="border <%= cycle :odd, :even %>">
-      <td>
-      	<div class="image">	
-			<% line_item.product.assets.first(1).each do |asset| %>
-				<%= link_to(image_tag(asset.image.url(:mini).to_s), line_item.product, :title => line_item.product.title )%>
-			<% end %>
-	    </div>
-      </td>
-      <td>
-		<div class="details">
-			<b><%= line_item.product.title %></b><br/>
-			   <%= line_item.product.subtitle %><br/>
-			   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(currency)) %><br/><br/>
-			   Size: L <br/>
-			   Color: black<br/>
-		</div>
-	  </td>
-      <td><b><%= line_item.quantity %></b></td>
-      <td class="price"><b><%= number_to_currency(line_item.full_price.exchange_to(currency)) %></b></td>
-    </tr>
-  <% end %>
-  <tr class="promo">
-    <td>
-      Got a promo code?
-    </td>
-    <td>
-		<input id="promocode" size="21"></input>
-    </td>
-	<td colspan="2">
-		<%= image_tag "update.jpg" %>
-  </tr>
-  <tr>
-    <td>
-    </td>
-	<td>
-		  <%= link_to (image_tag "continue_shopping.jpg"), products_path, :title => "continue shopping" %>
-	</td>
-    <td>
-		<b>Sub Total <i>(incl. VAT)</i></b>
-    </td>
-    <td>
- 		<b><%= number_to_currency @cart.total_price %></b>
-    </td>
-  </tr>
 
-<tr>
-	<td colspan="4">
-		<h2>Shipping country</h2>
-	</td>
-</tr>
-
-<tr>
-	<td colspan="4">
-		<input class="ship_radio" type="radio" name="shipping" value="UK" selected="selected"/> UK Delivery GBP 3.95
-		<input class="ship_radio" type="radio" name="shipping" value="EU" /> EU Delivery GBP 5.95
-		<input class="ship_radio" type="radio" name="shipping" value="INT" /> Intern. Delivery GBP 8.95
-		<input id="shipping_costs" type="hidden" value=""/>
-	</td>
-</tr>
-<tr>
-	<td colspan="2">
-	</td>
-	<td>
-	<b>Total: </b>
-	</td>
-	<td>
-	<b><%= number_to_currency (@cart.total_price + 395.to_money(:GBP)) %></b>
-	</td>	
-</tr>
-<tr>
-	<td colspan="2">
-	</td>
-	<td colspan="2">
-		<%= form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
-	      <%= hidden_field_tag :cmd, "_s-xclick" %>  
-	      <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url, @cart.line_items.first.unit_price.currency_as_string ) %>  
-	        <p><%= image_submit_tag ('checkout.jpg') %></p>  
-	    <% end %>
-	</td>	
-</tr>
-</table>
-<p>
-  <%= link_to "Emtpy Cart", @cart, :confirm => 'Empty the cart?', :method => :delete %>
-</p>
+<% end %>
 
 </div>

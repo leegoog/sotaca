@@ -1,7 +1,7 @@
 class ProductLike < ActiveRecord::Base
     attr_accessible :user_id, :product_id, :created_at
     
-    validates_presence_of :user_id, :message => "Please log in."
+    validates_presence_of :user_id
     
     belongs_to :user
     belongs_to :product

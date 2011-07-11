@@ -194,5 +194,8 @@ deleteItem = function (id) {
 		item.hide();
 		$('#fields_for_'+id).html("");
 	}
-
+	// id needs also to be deleted from articles_in_set array
+	// get index of element to delete
+	var idx = articles_in_set.indexOf(id);
+	articles_in_set.splice(idx, 1);
 }  
