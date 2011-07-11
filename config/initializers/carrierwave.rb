@@ -7,3 +7,5 @@ CarrierWave.configure do |config|
   config.s3_bucket = 'sotaca'
   config.s3_region = 'eu-west-1'
 end
+
+
