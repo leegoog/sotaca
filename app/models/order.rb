@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
     has_many :transactions, :class_name => "OrderTransaction"
 
     # before create check if cc seems valid
-    validate_on_create :validate_card
+    validate :validate_card, :on => :create
 
     # the actual transaction after all had been validated
     def purchase
@@ -26,6 +26,7 @@ class Order < ActiveRecord::Base
 
     private
 
+    # dummy methods to be replaced by real values
     def purchase_options
       {
         :ip => ip_address,

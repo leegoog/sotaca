@@ -96,13 +96,14 @@ class User < ActiveRecord::Base
 
   private
 
+  # prepares the password for database storage (dont ever save plain text passwords)
   def prepare_password
     unless password.blank?
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = encrypt_password(password)
     end
   end
-
+ # encrypts the password again each time the users logs in to compare with value from database
   def encrypt_password(pass)
     BCrypt::Engine.hash_secret(pass, password_salt)
   end

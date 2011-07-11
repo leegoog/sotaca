@@ -1,6 +1,9 @@
 class Ability
   include CanCan::Ability
 
+
+  # CanCan Method to intialize the current user's abilities for checking what he can and can't do
+  # details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
