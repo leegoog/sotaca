@@ -571,3 +571,20 @@ table.translations {
 	right: 100px;
 	top: 50px;
 }
+
+#articles h3 {
+	margin: -30px 0 0 10px;
+}
+
+#articles .set_article {
+	border: 1px dashed #ccc;
+	margin: 10px;
+}
+#articles .set_article p{
+	padding: 1px 5px;
+	margin: 5px;
+	text-align: right;
+}
+#articles .set_article .image{
+
+}
