@@ -21,7 +21,7 @@
 			<%= t'products.details' %>
 		</div>
 		<p class="red_text">
-			<%= @product.description %>
+			<%= markdown(@product.description) %>
 		</p>
 		<div class="subheadline">
 			<%= t 'products.size_fit' %>
