@@ -16,8 +16,13 @@ class User < ActiveRecord::Base
   
   has_many :article_sets
   
-  has_many :products, :through => :likes
-  has_many :likes, :class_name => 'ProductLike', :dependent => :destroy
+  # can like products
+  has_many :products, :through => :product_likes
+  has_many :product_likes, :dependent => :destroy
+  
+  # can like sets
+  has_many :article_sets, :through => :likes
+  has_many :likes, :class_name => 'ArticleSetLike', :dependent => :destroy
   
   has_and_belongs_to_many :roles
 
