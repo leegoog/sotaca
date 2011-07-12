@@ -37,5 +37,21 @@
     			</div>
             </td>
         </tr>
+		<tr>
+			<td>
+				<div class="comments">
+				  <h2 id="comments_count"><%= pluralize(@article_set.comments.count, "comment") %><span class="showhide"><a id="showhide" href="#">hide</a></h2>
+				  <div id="comments">
+					<%= render @comments %>
+				  </div>
+				<% form_for [@article_set, Comment.new], :remote => true do |f| %>
+				 <%= render 'comment_fields', :f => f %>
+				<% end %>
+				</div>
+			</td>
+			<td>
+			</td>
+		</tr>	
+		
    </tbody>
 </table>

@@ -1,0 +1,5 @@
+$("#comments").prepend("<%= escape_javascript render(@comment) %>");  
+$('#comments_count').html('<%= pluralize(@comment.article_set.comments.count, "Comment") %>');  
+$("#comment_body").val("");
+$("#comments .comment_header:first").effect("highlight", { color:"#D3ECF4"}, 3000);
+$("#comments .comment_body:first").effect("highlight", { color:"#D3ECF4"}, 3000);

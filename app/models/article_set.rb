@@ -14,5 +14,8 @@ class ArticleSet < ActiveRecord::Base
     has_many :users, :through => :likes
     has_many :likes, :class_name => 'ArticleSetLike', :dependent => :destroy
     
+    # comments
+    has_many :comments, :dependent => :destroy 
+    
     accepts_nested_attributes_for :set_items, :allow_destroy => true  
 end
