@@ -128,7 +128,7 @@ text-decoration: none;
 }
 #main_navi ul li#search_field input {
   position: absolute;
-  right: 25px;
+  right: 30px;
   top: 4px;
 }
 
@@ -587,4 +587,19 @@ table.translations {
 }
 #articles .set_article .image{
 
+}
+
+.set_table {
+	width: 100%;
+}
+
+.set_infos h3 {
+	color: #fff;
+	background: #000;
+	width: 100%;
+	padding: 5px 0;
+	text-indent: 10px;
+	font-weight: normal;
+	font-size: 20px;
+	margin-top: 0;
 }

@@ -35,7 +35,7 @@ $(function () {
 						var canvas = $("#canvas").offset();
 						
 						// add to canvas
-						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-(canvas.left+10), event.clientY-(canvas.top-120));
+						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-(canvas.left+10), event.clientY-(canvas.top-80));
 					}					
 	});
 
@@ -135,18 +135,22 @@ addSetItem = function(id) {
 	$('#set_items').append(str2);
 	// counter increase
 	set_item_counter++;
-	
+	//update
+	updateAttributes(id);
 }
 
 
 updateAttributes = function(id) {
 	var item = $("#set_item_"+id);
 	var image = $("#set_item_"+id+" img");
-	
+	var item_offset = item.offset();
+	var canvas_offset = $('#canvas').offset();
+//	alert(item_offset);
+//	alert(canvas_offset);
 	$("#item_"+id +"_width").val(image.width());
 	$("#item_"+id +"_height").val(image.height());
-	$("#item_"+id +"_pos_x").val(item.css("left"));
-	$("#item_"+id +"_pos_y").val(item.css("top"));
+	$("#item_"+id +"_pos_x").val(item_offset.left - canvas_offset.left);
+	$("#item_"+id +"_pos_y").val(item_offset.top - canvas_offset.top);
 	$("#item_"+id +"_z_index").val(item.css("z-index"));
 	$("#item_"+id +"_rotation").val(item.attr("data-rotate"));
 }
