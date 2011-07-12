@@ -2,8 +2,10 @@
 	<div class="image" id="<%= 'photo'+product.id.to_s+'_loading' %>">	
 		<span class="loading"></span>
 		<span class="photo">
-		<% product.assets.first(1).each do |asset| %>
-			<%= link_to(image_tag(asset.image.url(:thumb).to_s), product, :title => product.title )%>
+		<% if product.assets.first %>
+			<%= link_to(image_tag(product.assets.first.image.url(:thumb).to_s), product, :title => product.title )%>
+		<% else %>
+			<%= link_to(image_tag('dummy.jpg', :width => '140'), product, :title => product.title )%>
 		<% end %>
 		</span>
     </div> 
