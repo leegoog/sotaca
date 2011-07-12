@@ -8,6 +8,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.5.0)
     abstract (1.0.0)
     actionmailer (3.0.5)
       actionpack (= 3.0.5)
@@ -40,6 +41,8 @@ GEM
       activesupport (= 3.0.5)
     activesupport (3.0.5)
     arel (2.0.9)
+    autotest-rails (4.1.0)
+      ZenTest
     awesome_nested_set (2.0.0)
       activerecord (>= 3.0.0)
     bcrypt-ruby (2.1.4)
@@ -182,6 +185,7 @@ PLATFORMS
 
 DEPENDENCIES
   activemerchant
+  autotest-rails
   awesome_nested_set
   bcrypt-ruby
   cancan
