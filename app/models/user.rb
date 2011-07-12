@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   has_many :article_sets, :through => :likes
   has_many :likes, :class_name => 'ArticleSetLike', :dependent => :destroy
   
+  # can comment
+  has_many :comments, :dependent => :destroy 
+  
   has_and_belongs_to_many :roles
 
   validates_presence_of :username
