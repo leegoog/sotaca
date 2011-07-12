@@ -4,7 +4,7 @@
         	<td width="<%= (600 * factor).round %>px">
             	<div style="height: <%= (460 * factor).round %>px; border: 1px solid #ccc; position: relative; overflow: hidden;"  classname="locked" class="small_set_canvas locked"  title="<%= article_set.name %> by <%= article_set.user.username %>" onclick="javascript:location.href='<%= article_set_url(article_set.id) %>'">
 					<% for item in article_set.set_items %>
-						<div id="<%= article_set.id %>_set_item_<%= item.id %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= (item.pos_y * factor).round %>;left:<%= (item.pos_x * factor).round %>;">
+						<div id="<%= article_set.id %>_set_item_<%= item.id %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= (item.pos_y * factor).round %>px;left:<%= (item.pos_x * factor).round %>px;">
 								<%= image_tag item.product.assets.first.image.url(:thumb).to_s, :title => item.product.title, :width => (item.width* factor).round.to_s, :height => (item.height * factor).round.to_s %>
 						</div>
 						<script type="text/javascript" charset="utf-8">
