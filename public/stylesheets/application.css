@@ -617,9 +617,7 @@ table.translations {
 .mini_thumb img {
 	width: 50px;
 }
-.mini_thumb:hover img {
-	width: 70px;
-}
+
 .article_liker {
 	position: absolute;
 	right: 5px;
