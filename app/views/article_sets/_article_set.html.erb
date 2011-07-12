@@ -8,10 +8,9 @@
         	<td width="600px" id="canvas_container">
             	<div style="height: 460px; border: 1px solid #ccc; position: relative; overflow: hidden;" class="locked" classname="locked" id="canvas">
 					<% for item in @article_set.set_items %>
-						<div id="set_item_<%= item.id %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= item.pos_y %>;left:<%= item.pos_x %>;">
-							<% item.product.assets.first(1).each do |asset| %>
-								<%= image_tag asset.image.url(:thumb).to_s, :title => item.product.title, :width => item.width, :height => item.height %>
-							<% end %>
+						<div id="set_item_<%= item.id %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= item.pos_y %>px;left:<%= item.pos_x %>px;">
+							
+							<%= image_tag item.product.assets.first.image.url(:thumb).to_s, :title => item.product.title, :width => item.width, :height => item.height %>
 						</div>
 						<script type="text/javascript" charset="utf-8">
 							$('#set_item_<%= item.id %>').rotate(<%= item.rotation %>)
@@ -25,7 +24,7 @@
 					<% for article in  @article_set.set_items %>
 						<div class="set_article">
 							<span class="image">
-								<%= image_tag article.product.assets.first.image.url(:mini).to_s, :title => article.product.title %>
+								<%= link_to image_tag(article.product.assets.first.image.url(:mini).to_s), article.product, :title => article.product.title %>
 							</span>
 							<div style="float:right">
 							<p><%= link_to article.product.title, article.product, :title => t('products.details') %></p>
