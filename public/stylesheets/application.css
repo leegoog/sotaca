@@ -592,6 +592,12 @@ table.translations {
 .set_table {
 	width: 100%;
 }
+.small_set_canvas {
+	cursor: pointer;
+}
+.set_infos {
+	position: relative;
+}
 
 .set_infos h3 {
 	color: #fff;
@@ -600,6 +606,25 @@ table.translations {
 	padding: 5px 0;
 	text-indent: 10px;
 	font-weight: normal;
-	font-size: 20px;
+	font-size: 16px;
 	margin-top: 0;
+}
+.set_infos p {
+	padding: 0px 5px;
+	margin: 2px 0;
+}
+
+.mini_thumb img {
+	width: 50px;
+}
+.mini_thumb:hover img {
+	width: 70px;
+}
+.article_liker {
+	position: absolute;
+	right: 5px;
+	top: 35px;
+}
+.article_liker .heart{
+	width: 50px;
 }

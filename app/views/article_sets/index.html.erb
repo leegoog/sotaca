@@ -6,6 +6,7 @@
 
 
   <% for article_set in @article_sets %>
+	<!-- Pass in 'factor' to define a factor in which size the set should be rendered, standard 0.5 for half size -->
 	<%= render :partial => 'small_set', :locals => { :article_set => article_set, :factor => 0.5 } %>
   <% end %>
 
