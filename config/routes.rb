@@ -3,13 +3,14 @@ Sotaca::Application.routes.draw do
   
   resources :article_set_likes
 
-  resources :comments
 
   get "set_items/create"
 
   get "admin/index"
 
-  resources :article_sets
+  resources :article_sets do
+    resources :comments
+  end
 
   resources :product_likes
 

@@ -1,0 +1,14 @@
+<p class="comment_header">
+<b><%= link_to comment.user.username, comment.user %> </b>
+  <span class="comment_time"><%= time_ago_in_words(comment.created_at) %> ago: 
+
+<% if can? :update, comment %>
+   <%= link_to "x", article_set_comment_path(comment.article_set, comment), :confirm => "delete this comment?", :method => :delete, :title => "delete comment" %>
+<% end %>
+
+</span>
+</p>
+
+<p class="comment_body">
+  <%= markdown(comment.body) %>
+</p>

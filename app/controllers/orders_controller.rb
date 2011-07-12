@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   # lists all orders of a client (if customer) or all orders (if admin)
   
   def index 

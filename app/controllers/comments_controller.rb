@@ -12,13 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
-    if @comment.save
-      flash[:notice] = "Successfully created comment."
-      redirect_to @comment
-    else
-      render :action => 'new'
-    end
+    @comment = Comment.create!(params[:comment])  
   end
 
   def edit
@@ -37,8 +31,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    set = @comment.article_set.id
     @comment.destroy
-    flash[:notice] = "Successfully destroyed comment."
-    redirect_to comments_url
+    flash[:notice] = "comment deleted."
+    redirect_to article_set_path(set)
   end
 end
