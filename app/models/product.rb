@@ -28,7 +28,7 @@ class Product < ActiveRecord::Base
    # callback for create categories through product
     after_save :assign_categories
     
-   # allow creation of assets through product
+   # allow creation & deletion of assets through product
     accepts_nested_attributes_for :assets, :allow_destroy => true
     
    # scopes
