@@ -8,6 +8,7 @@ class ArticleSetsController < ApplicationController
 
   def show
     @article_set = ArticleSet.find(params[:id])
+    @comments = @article_set.comments.order("created_at desc")
   end
 
   def new
@@ -27,8 +28,11 @@ class ArticleSetsController < ApplicationController
   end
 
   def edit
-    @article_set = ArticleSet.find(params[:id])
-    @products = Product.all
+   @article_set = ArticleSet.find(params[:id])
+   @products = Product.all
+   # TODO: until editing is posible, redirect
+   flash[:notice] = "A Set can not be edited once it was published."
+   redirect_to @article_set
   end
 
   def update

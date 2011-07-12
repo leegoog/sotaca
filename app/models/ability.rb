@@ -12,11 +12,8 @@ class Ability
 
     if user.admin?
       can :manage, :all
-      can :read, :all
-    #elsif user.project_manager?
-    #  can :manage, [Product, Asset, Category]
     else
-      can :read, :all
+      can :read, [ArticleSet, Product, Comment]
     end
 
     
