@@ -8,7 +8,7 @@
 								<%= image_tag item.product.assets.first.image.url(:thumb).to_s, :width => (item.width* factor).round.to_s, :height => (item.height * factor).round.to_s %>
 						</div>
 						<script type="text/javascript" charset="utf-8">
-							$('#set_item_<%= item.id %>').rotate(<%= item.rotation %>)
+							$('#<%= article_set.id %>_set_item_<%= item.id %>').rotate(<%= item.rotation %>)
 						</script>
 					<% end %>
                 </div>
