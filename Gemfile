@@ -44,6 +44,7 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'awesome_nested_set'
 gem 'simple_form'
+gem 'redcarpet'  # markdown interpreter
 
 ### internationalization
 # key-value store
