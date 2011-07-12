@@ -15,8 +15,7 @@
 			<p class="subtitle">
 			  <%= @product.subtitle %>
 			</p>		
-		<% params[:locale] == "cn" ? currency = 'YEN' : currency = 'GBP'%>
-		  <span class="product_price"><%= number_to_currency(@product.price.exchange_to(currency)) %></span>
+		  <span class="product_price"><%= number_to_currency(@product.price.exchange_to(session[:currency])) %></span>
 		<br/>
 		<div class="subheadline">
 			<%= t'products.details' %>
@@ -63,9 +62,7 @@
 	</div>
 	<div class="column" style="width:auto">
 		<div id="main_image">
-			<% @product.assets.first(1).each do |asset| %>
-			  <%= image_tag asset.image_url(:big).to_s %>
-			<% end %>
+			  <%= image_tag @product.assets.first.image_url(:big).to_s %>
 		</div>
 		<div id="likes">
 			<span class="image">

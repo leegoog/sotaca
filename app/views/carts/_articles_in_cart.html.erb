@@ -12,12 +12,12 @@
 			<div class="details">
 				<b><%= link_to line_item.product.title, line_item.product, :title => t('products.details') %></b><br/>
 				   <%= line_item.product.subtitle %><br/>
-				   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(currency)) %><br/><br/>
+				   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(session[:currency])) %><br/><br/>
 				   Size: L <br/>
 				   Color: black<br/>
 			</div>
 		  </td>
 	      <td><b><%= line_item.quantity %></b></td>
-	      <td class="price"><b><%= number_to_currency(line_item.full_price.exchange_to(currency)) %></b></td>
+	      <td class="price"><b><%= number_to_currency(line_item.full_price.exchange_to(session[:currency])) %></b></td>
 	    </tr>
 	  <% end %>

@@ -6,7 +6,8 @@ describe ArticleSetsController do
 
   it "index action should render index template" do
     get :index
-    response.should render_template(:index)
+    response.should render_template("index")
+    response.code.should eq(200)
   end
 
   it "show action should render show template" do

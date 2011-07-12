@@ -6,13 +6,11 @@
 	    <th><%= t("cart.price") %></th>
 	  </tr>
 	
-	  <% if params[:locale] == "cn" %>
-	  <%  currency = 'CNY' %>
-	  <% elsif params[:locale] == "en" %>
-	  <%  currency = 'GBP' %>
-	  <% end %>
+	<!--  set currency variable -->	
+	  <%= render :partial => 'currency_setter' %>
+
 	
-	  <%= render :partial => 'articles_in_cart', :locals => { :cart => cart, :currency => currency } %>
+	  <%= render :partial => 'articles_in_cart', :locals => { :cart => cart } %>
 
 	  <tr class="promo">
 	    <td>
@@ -34,7 +32,7 @@
 			<b>Sub Total <i>(incl. VAT)</i></b>
 	    </td>
 	    <td>
-	 		<b><%= number_to_currency (cart.total_price.exchange_to(currency)) %></b>
+	 		<b><%= number_to_currency (cart.total_price.exchange_to(session[:currency])) %></b>
 	    </td>
 	  </tr>
 	

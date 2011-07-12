@@ -66,7 +66,8 @@ group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '2.5.0'
   gem 'cucumber-rails'
-  gem 'capybara'   
+  gem 'autotest-rails'
+  gem 'capybara' 
 end
 
 group :test do    
@@ -75,7 +76,6 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'   
   gem 'factory_girl'
+  gem 'autotest-rails'
+  gem "mocha"
 end
-
-
-gem "mocha", :group => :test
