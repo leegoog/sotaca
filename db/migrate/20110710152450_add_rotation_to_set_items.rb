@@ -1,6 +1,6 @@
 class AddRotationToSetItems < ActiveRecord::Migration
   def self.up
-    add_column :set_items, :rotation, :string
+    add_column :set_items, :rotation, :integer
   end
 
   def self.down
