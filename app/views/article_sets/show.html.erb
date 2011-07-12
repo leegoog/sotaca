@@ -2,6 +2,14 @@
 
 <% content_for (:head) do%>
 	<%= javascript_include_tag 'rotate.2.1.js' %>
+	<%= javascript_include_tag 'tiptip.js' %>
+	<%= stylesheet_link_tag 'tiptip' %>
+	<script type="text/javascript" charset="utf-8">
+		$(function () {
+			$('.img_thumb').tipTip();
+			$('.set_item').tipTip();
+		})
+	</script>
 <% end %>
 
 <p>
