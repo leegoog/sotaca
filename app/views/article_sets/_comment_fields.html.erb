@@ -10,5 +10,5 @@
 	  <%= f.submit "Add Comment" %>
 	</p>
 <% else %>
-	<p> Please <%= link_to t("devise.links.login"), new_session_path(user) %> to leave a comment on this Set.<br />
+	<p> Please <%= link_to t("devise.links.login"), new_session_path(User.new) %> to leave a comment on this Set.<br />
 <% end %>
