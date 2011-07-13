@@ -50,6 +50,11 @@
 				</div>
 			</td>
 			<td>
+				This set was liked by:
+				<ul>
+					<% for user in @article_set.users %>
+					<li><%= link_to user.username, user %></li>
+					<% end %>
 			</td>
 		</tr>	
 		
