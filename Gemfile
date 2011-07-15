@@ -35,7 +35,7 @@ gem 'kaminari'
 # image upload & processing
 gem 'fog' # -> s3 cloud
 gem 'carrierwave'
-gem 'rmagick'
+gem 'rmagick', :require => false
 
 # layout stuff
 gem 'jquery-rails'
@@ -65,18 +65,20 @@ gem 'activemerchant'
 # and rake tasks are available in development mode:
 group :development do
   gem 'nifty-generators'
-  gem 'rspec-rails', '2.5.0'
+  gem 'rspec-rails', '2.6.1'
   gem 'cucumber-rails'
   gem 'autotest-rails'
   gem 'capybara' 
 end
 
 group :test do    
-  gem 'rspec', '2.5.0'
+  gem 'rspec-rails', '2.6.1'
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'capybara'   
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'autotest-rails'
+  gem 'ZenTest'
+  gem 'spork', '~> 0.9.0.rc8'
   gem "mocha"
 end
