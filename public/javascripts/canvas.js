@@ -61,22 +61,28 @@ addToCanvas = function (url, title, id, left, top) {
 		// load image
 		$('#canvas').load(url, function() {
 		  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + id +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
-   		  $( "#set_item_" + id).draggable({
-   		  	 							containment: '#canvas',
-   		  								stop: function(event, ui) { 
+   		  
+
+		  // make new set item draggable and resizable after short timeout
+		  // setTimeout(makeDraggableAndResizable(id), 200);
+		
+		$( "#set_item_" + id).draggable({
+		  	 							containment: '#canvas',
+		  								stop: function(event, ui) { 
 															updateAttributes(id); 
-															
+
 															}
-   		  							});
-   		  $( "#set_item_" + id+" img" ).resizable({ 
-   		  									handles: 'sw, se, ne, nw',
-   		  									stop: function(event, ui) { 
-															
+		  							});
+		  $( "#set_item_" + id+" img" ).resizable({ 
+		  									handles: 'sw, se, ne, nw',
+		  									stop: function(event, ui) { 
+
 															updateAttributes(id); 
-															
+
 															}
-   		 
-   		  								});
+
+		  								});
+
    		  $( "#canvas .canvas_item" ).live("click", function () {
    		  	$( ".canvas_item" ).removeClass("active_element");
    		  	$(this).addClass("active_element");

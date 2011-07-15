@@ -40,7 +40,6 @@ class ImageUploader < CarrierWave::Uploader::Base
    end
    version :big do
      process :resize_to_fit => [600, 650]
-     process :convert => 'png'
    end
 
 
@@ -52,7 +51,7 @@ class ImageUploader < CarrierWave::Uploader::Base
    
    def make_transparent 
      manipulate! do |img|
-       img.fuzz = '3%'
+       img.fuzz = '5%'
        image = Magick::Image.read(img.filename).first
        image.transparent("#ffffff", Magick::TransparentOpacity)
      end 

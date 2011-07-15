@@ -8,7 +8,7 @@ describe ImageUploader do
   before do
     ImageUploader.enable_processing = true
     @uploader = ImageUploader.new(@product, :asset)
-    @uploader.store!(File.open(path_to_file))
+    @uploader.store!(File.open("#{RAILS_ROOT}/thea.jpg"))
   end
 
   after do
@@ -16,8 +16,8 @@ describe ImageUploader do
   end
 
   context 'the thumb version' do
-    it "should scale down a landscape image to be exactly 64 by 64 pixels" do
-      @uploader.thumb.should have_dimensions(64, 64)
+    it "should scale down a landscape image to fit 165 by 165 pixels" do
+      @uploader.thumb.should be_no_larger_than(165, 165)
     end
   end
 
