@@ -44,7 +44,7 @@
 				  <div id="comments">
 					<%= render @comments %>
 				  </div>
-				<% form_for [@article_set, Comment.new], :remote => true do |f| %>
+				<%= form_for [@article_set, Comment.new], :remote => true do |f| %>
 				 <%= render 'comment_fields', :f => f %>
 				<% end %>
 				</div>
