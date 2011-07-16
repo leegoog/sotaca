@@ -23,19 +23,25 @@ class ArticleSet < ActiveRecord::Base
     
     accepts_nested_attributes_for :set_items, :allow_destroy => true  
     
-    after_create :create_collage
+    #after_create :create_collage
     
     
     def create_collage
       # load the template
       
+      
+      img_path = "#{RAILS_ROOT}/tmp/sets/"
+      img_name = "set_#{self.id}_#{Time.now.to_i}.png"
+      
       #template 
       # template = Magick::Image.read("#{RAILS_ROOT}/public/images/set_template.png").first
       # or blank white image
       template = Magick::Image.new(600, 480){
-        self.background_color = 'white'
+        self.background_color = '#ffffff'
        }
       
+      template.format = 'png'
+      # template.filename = img_name
       
       # go through all set items by z_index and add lay it over the template
       for item in self.set_items
@@ -45,23 +51,31 @@ class ArticleSet < ActiveRecord::Base
         # composite item over template offsetting pos_x and pos_y for the template border
         template.composite!(photo, item.pos_x, item.pos_y, Magick::OverCompositeOp)
       end
-      
-      img_path = "#{RAILS_ROOT}/tmp/sets/"
-      img_name = "set_#{self.id}_#{Time.now.to_i}.png"
+
       
       # save composite image to PNG
       template.write(img_path + img_name)  # this works, it generates the desired PNG
-      #save and upload to s3
+      
+      # save and upload to s3
+      
+      # tmp_image = Tempfile.new([img_name, '.png'])
       
       tmp_image = File.open(img_path + img_name)
       
+      #FileUtils.cp(template, tmp_image)
+      # tmp_image = template
+  
       self.blog_image = tmp_image
+      
+      # self.blog_image.store!(template)
         
       self.write_blog_image_identifier
       
       self.save!
       
       File.delete(img_path + img_name)
+      
+      #tmp_image.delete
       
     end
     
