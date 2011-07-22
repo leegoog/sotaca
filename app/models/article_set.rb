@@ -52,21 +52,15 @@ class ArticleSet < ActiveRecord::Base
         template.composite!(photo, item.pos_x, item.pos_y, Magick::OverCompositeOp)
       end
 
-      
-      # save composite image to PNG
-      # template.write(img_path + img_name)  # this works, it generates the desired PNG
-      
-      # save and upload to s3
+      # create temp file 
       
       tmp_image = Tempfile.new([img_name, '.png'])
       
+      # write rmagick image in tempfile
       
       template.write(tmp_image.path)
       
-      #tmp_image = File.open(img_path + img_name)
-      
-      #FileUtils.cp(template, tmp_image)
-      # tmp_image = template
+      # save & upload with carrierwave
   
       self.blog_image = tmp_image
       
