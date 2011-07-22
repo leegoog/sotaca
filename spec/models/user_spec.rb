@@ -14,7 +14,7 @@ describe User do
   
   context "validitions" do
     
-    let(:alice) { User.new(valid_user_attributes)}
+    let(:alice) { Factory.create(:user)}
     
     it "has a valid username" do
       alice.should be_valid
@@ -27,7 +27,7 @@ describe User do
     it "does not accept an invalid email" do
       alice.email = "@de.ca."
       alice.should_not be_valid
-      alice.should have(2).error_on(:email)
+      alice.should have_at_least(1).error_on(:email)
       alice.errors.on(:email).should include("is invalid")
     end
     
@@ -37,12 +37,11 @@ describe User do
     end
     
     it "should use unique usernames" do
-      alice = User.create!(valid_user_attributes)
-      alice2 = User.new(valid_user_attributes)
+      alice2 = User.create(:username => alice.username)
       alice2.should_not be_valid
-      alice2.should have(1).error_on(:username)
-      alice2.should have(2).error_on(:email)
-      alice2.errors.on(:username).should include("already taken")
+      alice2.should have_at_least(1).error_on(:username)
+      alice2.should have_at_least(1).error_on(:email)
+      alice2.errors.on(:username).should include("Username already taken!")
     end
     
 
