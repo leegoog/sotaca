@@ -66,9 +66,7 @@ gem 'activemerchant'
 group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '2.6.1'
-  gem 'cucumber-rails'
   gem 'autotest-rails'
-  gem 'capybara' 
 end
 
 group :test do    
