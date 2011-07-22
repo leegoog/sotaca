@@ -46,7 +46,6 @@ addToCanvas = function (url, title, id, left, top) {
 	// check if this article is already in the set
 	if($.inArray(id, articles_in_set) >= 0) {
 		alert("This article is already in your set");
-		return false;
 	}
 	else {
 		// article not yet inside, so do all the stuff 
@@ -60,8 +59,21 @@ addToCanvas = function (url, title, id, left, top) {
 		//alert("left: " + left + ", top: " + top);
 		// load image
 		$('#canvas').load(url, function() {
-		  $('#canvas').append( "<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; width: auto; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + id +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
+		  $('#canvas').append( 
+			"<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + id +");' title='remove item' >X</a></div><img src='" + url +"' width='100' height='100' title='" + title +"' /></div");
    		  
+
+
+			// workaround to avoid 0px width or height in the callback!
+			pic = $( "#set_item_" + id+" img" );
+
+			pic.removeAttr("width"); 
+			pic.removeAttr("height");
+			
+			pic.attr("width", pic.width());
+			pic.attr("height", pic.height());
+			
+				
 
 		  // make new set item draggable and resizable after short timeout
 		  // setTimeout(makeDraggableAndResizable(id), 200);
@@ -73,15 +85,14 @@ addToCanvas = function (url, title, id, left, top) {
 
 															}
 		  							});
-		  $( "#set_item_" + id+" img" ).resizable({ 
-		  									handles: 'sw, se, ne, nw',
-		  									stop: function(event, ui) { 
+		 pic.resizable({ 
+		  				handles: 'sw, se, ne, nw',
+		  				stop: function(event, ui) { 
 
-															updateAttributes(id); 
+						updateAttributes(id); 
+								}
 
-															}
-
-		  								});
+				});
 
    		  $( "#canvas .canvas_item" ).live("click", function () {
    		  	$( ".canvas_item" ).removeClass("active_element");
