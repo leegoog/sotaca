@@ -5,6 +5,16 @@ var left = 0;
 var drag_w = 0;
 var drag_h = 0;
 var articles_in_set = [];
+var preventPrompt = false;
+
+// checks if the user should be prompted to leave the page or not (he will lose any progress)
+function closeIt() {
+  if(!preventPrompt) {
+        return "Are you sure that you want to leave this page?";
+  }
+  preventPrompt = false;
+}
+
 	
 $(function () {
 	$('#canvas').live("click", function (e) {
@@ -38,6 +48,14 @@ $(function () {
 						addToCanvas( ui.draggable.attr("rel"), ui.draggable.attr("title"), ui.draggable.attr("id"), event.clientX-(canvas.left+10), event.clientY-(canvas.top-80));
 					}					
 	});
+	
+	// when submitting no need to warn user of leaving the page
+	$('#article_set_submit').click(function () {
+		article_set_submit = true;
+	})
+	
+	window.onbeforeunload = closeIt();
+	
 
 })	
 	
