@@ -19,19 +19,19 @@ class ArticleSet < ActiveRecord::Base
     has_many :likes, :class_name => 'ArticleSetLike', :dependent => :destroy
     
     # comments
-    has_many :comments, :dependent => :destroy 
+    has_many :comments, :dependent => :destroy, :order => "created_at desc" 
     
     accepts_nested_attributes_for :set_items, :allow_destroy => true  
     
-    #after_create :create_collage
-    
+    after_create :create_collage
+
     
     def create_collage
       # load the template
       
       
-      img_path = "#{RAILS_ROOT}/tmp/sets/"
-      img_name = "set_#{self.id}_#{Time.now.to_i}.png"
+      img_path = "#{::Rails.root.to_s}/tmp/sets/"
+      img_name = "set_#{self.id}_#{Time.now.to_i}"
       
       #template 
       # template = Magick::Image.read("#{RAILS_ROOT}/public/images/set_template.png").first
@@ -54,13 +54,16 @@ class ArticleSet < ActiveRecord::Base
 
       
       # save composite image to PNG
-      template.write(img_path + img_name)  # this works, it generates the desired PNG
+      # template.write(img_path + img_name)  # this works, it generates the desired PNG
       
       # save and upload to s3
       
-      # tmp_image = Tempfile.new([img_name, '.png'])
+      tmp_image = Tempfile.new([img_name, '.png'])
       
-      tmp_image = File.open(img_path + img_name)
+      
+      template.write(tmp_image.path)
+      
+      #tmp_image = File.open(img_path + img_name)
       
       #FileUtils.cp(template, tmp_image)
       # tmp_image = template
@@ -73,9 +76,9 @@ class ArticleSet < ActiveRecord::Base
       
       self.save!
       
-      File.delete(img_path + img_name)
+      #File.delete(img_path + img_name)
       
-      #tmp_image.delete
+      tmp_image.delete
       
     end
     
