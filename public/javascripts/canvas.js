@@ -88,6 +88,8 @@ addToCanvas = function (url, title, id, left, top) {
 			pic.removeAttr("width"); 
 			pic.removeAttr("height");
 			
+			alert("width" + pic.width() + ", height: " + pic.height());
+			
 			pic.attr("width", pic.width());
 			pic.attr("height", pic.height());
 			
