@@ -1,0 +1,26 @@
+<% title "your order" %>
+
+
+<div class="order_detail">
+	<p>
+		Order#: <%= @order.id %>
+	</p>
+	<p>
+		Name: <%= "#{@order.first_name} #{@order.last_name}" %>
+	</p>
+		
+	<p>
+		Date#: <%= @order.created_at.to_formatted_s %>
+	</p>
+	<p>
+		Payment Method: TODO
+	</p>
+	<p>
+		Total GBP: <%= number_to_currency (@order.cart.total_price) %>
+	</p>
+		
+	<p>
+		Shipping Adress: <%= "#{@order.street} #{@order.house_nr}, #{@order.zipcode} #{@order.city}, #{@order.country}" %>
+	</p>
+
+</div>

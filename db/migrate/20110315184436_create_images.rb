@@ -5,6 +5,7 @@ class CreateImages < ActiveRecord::Migration
       t.integer :product_id
       t.timestamps
     end
+    add_foreign_key(:images, :products, :dependent => :delete)
   end
 
   def self.down

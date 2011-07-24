@@ -5,6 +5,8 @@ class CreateProductLikes < ActiveRecord::Migration
       t.integer :product_id
       t.timestamps
     end
+    add_foreign_key(:product_likes, :products, :dependent => :delete)
+    add_foreign_key(:product_likes, :users, :dependent => :delete)
   end
 
   def self.down
