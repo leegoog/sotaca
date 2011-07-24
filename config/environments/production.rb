@@ -53,11 +53,15 @@ Sotaca::Application.configure do
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+    paypal_option {
       :login => "seller_1309468633_biz_api1.sotaca1898.com",
       :password => "1309468677",
       :signature => "A2TmxPHrKbxkYzrV0vR-LLSlaaL7A3nJ6XG47NViW-7kPA5zro5L-vSX "
-    )
+    }
+    # standard gateway
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+    # gateway for paypal express checkout
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
   
 end

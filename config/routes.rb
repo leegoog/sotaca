@@ -26,7 +26,7 @@ Sotaca::Application.routes.draw do
 
   resources :payment_notifications
 
-  resources :orders
+  resources :orders, :new => { :express => :get }
 
   resources :line_items
 
@@ -51,6 +51,8 @@ Sotaca::Application.routes.draw do
   match 'log_in' => "users#sign_in"
   
   match 'sets' => "article_sets#index"
+  
+  match 'express_checkout' => "orders#express"
 
   match 'shop' => "products#index"
   

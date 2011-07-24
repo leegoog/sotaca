@@ -37,7 +37,10 @@ Sotaca::Application.configure do
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    ::GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+    # standard gateway
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::BogusGateway.new(paypal_options)
+    # gateway for paypal express checkout
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new(paypal_options)
   end
   
 end
