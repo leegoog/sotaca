@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :card_type, :card_expires_on, :card_number, :card_verification, :express_token 
+    attr_accessible :cart_id, :ip_adress, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :card_type, :card_expires_on, :card_number, :card_verification, :express_token 
     
     attr_accessor :card_number, :card_verification
     
@@ -89,15 +89,15 @@ class Order < ActiveRecord::Base
     private
 
     # dummy methods to be replaced by real values
-    def purchase_options
+    def standard_purchase_options
       {
         :ip => ip_address,
         :billing_address => {
-          :name     => "Thomas Maximini",
-          :address1 => "Main St. 123",
-          :city     => "BERLIN",
-          :country  => "DE",
-          :zip      => "10001"
+          :name     => "#{first_name} #{last_name}",
+          :address1 => "#{street} #{house_nr}",
+          :city     => city,
+          :country  => country,
+          :zip      => zipcode
         }
       }
     end
@@ -107,7 +107,8 @@ class Order < ActiveRecord::Base
       {
         :ip => ip_address,
         :token => express_token,
-        :payer_id => express_payer_id
+        :payer_id => express_payer_id,
+        :cart_type => nil
       }
     end
     

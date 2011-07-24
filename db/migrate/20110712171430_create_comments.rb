@@ -6,6 +6,8 @@ class CreateComments < ActiveRecord::Migration
       t.text :body
       t.timestamps
     end
+    add_foreign_key(:comments, :article_sets, :dependent => :delete)
+    add_foreign_key(:comments, :users, :dependent => :delete)
   end
 
   def self.down
