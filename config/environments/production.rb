@@ -33,7 +33,7 @@ Sotaca::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -53,7 +53,7 @@ Sotaca::Application.configure do
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    paypal_option {
+    paypal_options = {
       :login => "seller_1309468633_biz_api1.sotaca1898.com",
       :password => "1309468677",
       :signature => "A2TmxPHrKbxkYzrV0vR-LLSlaaL7A3nJ6XG47NViW-7kPA5zro5L-vSX "

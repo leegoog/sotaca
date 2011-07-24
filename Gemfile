@@ -58,6 +58,9 @@ gem 'google_currency'
 # payment, credit card processing
 gem 'activemerchant'
 
+# add foreign keys to sql databases
+gem 'foreigner'
+
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
