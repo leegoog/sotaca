@@ -53,11 +53,19 @@ class OrdersController < ApplicationController
     if @order.new_record?  
       render 'new'  
     else  
-      # reset session information about order
-      session[:order_step] = session[:order_params] = nil
-      # render :action => "success"
-      flash[:notice] = "Order saved."  
-      redirect_to @order  
+      # order is saved and valid
+      if @order.purchase
+        # order went through gateway successfully
+        # reset session information about order
+        session[:order_step] = session[:order_params] = nil
+        # render :action => "success"
+        flash[:notice] = "Order saved."  
+        redirect_to @order  
+      else
+         # gateway didn't authorize or error
+         flash[:error] = "There was a problem with the transaction."  
+         render :action => "failure"
+      end
     end
   end
 end

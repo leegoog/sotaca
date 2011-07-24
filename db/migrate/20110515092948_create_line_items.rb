@@ -8,6 +8,7 @@ class CreateLineItems < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_foreign_key(:line_items, :carts, :dependent => :delete)
   end
 
   def self.down

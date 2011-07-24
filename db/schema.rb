@@ -20,10 +20,9 @@ ActiveRecord::Schema.define(:version => 20110723235730) do
   end
 
   create_table "article_sets", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "blog_image"
-    t.string   "background_color"
-    t.integer  "user_id",          :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110723235730) do
 
   create_table "assets", :force => true do |t|
     t.integer  "product_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
