@@ -4,7 +4,7 @@
         	<td width="<%= (600 * factor).round %>px">
             	<div title="<%= article_set.name %> by <%= article_set.user.username %>" style="height: <%= (460 * factor).round %>px; border: 1px solid #ccc; position: relative; overflow: hidden;"  classname="locked" class="small_set_canvas locked"  onclick="javascript:location.href='<%= article_set_url(article_set.id) %>'">
 						
-					<%= image_tag article_set.blog_image.url.to_s, :width => (600 * factor).round, :height => (460 * factor).round %>
+					<%= image_tag article_set.blog_image.url.to_s, :width => (600 * factor).round, :height => (460 * factor).round, :alt => "#{article_set.name} by #{article_set.user.username}" %>
                 </div>
             </td>
             <td>

@@ -19,7 +19,7 @@ Feature: managing products
     And I am logged in as "admin" with password "secret"
     And I am on the list of products
     When I follow "New Product"
-    And I fill in "product_title" with "bacon"
+    And I fill in "product_translations_attributes_1_title" with "bacon"
     And I fill in "product_price" with "10"
     And I press "Create"
     Then I should see "Successfully created product."
@@ -36,8 +36,8 @@ Feature: managing products
     And I am logged in as "admin" with password "secret"
     And I am on the list of products
     When I follow "New Product"
-    And I fill in "product_title" with ""
-    And I fill in "product_price" with "AB"
+    And I fill in "product_translations_attributes_1_title" with ""
+    And I fill in "product_price" with ""
     And I press "Create"
     And I should see "error"
 

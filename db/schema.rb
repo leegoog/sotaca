@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715123932) do
+ActiveRecord::Schema.define(:version => 20110723235730) do
 
   create_table "article_set_likes", :force => true do |t|
     t.integer  "user_id"
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(:version => 20110715123932) do
     t.date     "card_expires_on"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "express_token"
+    t.string   "express_payer_id"
   end
 
   create_table "payment_notifications", :force => true do |t|

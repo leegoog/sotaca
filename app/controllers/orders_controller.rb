@@ -12,26 +12,52 @@ class OrdersController < ApplicationController
     end
   end
   
+  # handles paypal xpress checkout
+  def express
+    response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents,
+      :ip => request.remote_ip,
+      :return_url => new_order_url(:order_step => "billing"),
+      :cancel_return_url => products_url
+    )
+    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+  end
   
   # renders the new order template => credit card processing
   def new
-    @order = Order.new
+    session[:order_params] ||= {}  
+    @order = Order.new(session[:order_params])
+    @order.express_token = params[:token]
+    @order.current_step = session[:order_step]
+  end
+  
+  def show
+    @order = Order.find(params[:id])
   end
   
   # creates a new order from the current_cart
   def create
+    # create order through cart 
     @order = current_cart.build_order(params[:order])
-    @order.ip_address = request.remote_ip
-    if @order.save
-      if @order.purchase
-        # order was valid and could be purchased
-        render :action => "success"
-      else
-        # order seemed valid but could not be purchased through gateway
-        render :action => "failure"        
-      end
-    else
-      render :action => 'new'
+    session[:order_params].deep_merge!(params[:order]) if params[:order]  
+    @order = Order.new(session[:order_params])  
+    @order.current_step = session[:order_step]  
+    if params[:back_button]  
+      @order.previous_step  
+    elsif @order.last_step?  
+      @order.save if @order.all_valid? 
+    else  
+      @order.next_step  
+    end  
+    session[:order_step] = @order.current_step  
+      
+    if @order.new_record?  
+      render 'new'  
+    else  
+      # reset session information about order
+      session[:order_step] = session[:order_params] = nil
+      # render :action => "success"
+      flash[:notice] = "Order saved."  
+      redirect_to @order  
     end
   end
 end
