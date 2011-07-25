@@ -1,4 +1,3 @@
-require 'rack/ssl'
 
 Sotaca::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
@@ -6,6 +5,7 @@ Sotaca::Application.configure do
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
+
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
@@ -50,18 +50,8 @@ Sotaca::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
-  # automatically ssl secure session cookie
- config.middleware.insert_before ActionDispatch::Cookies, Rack::SSL
-
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
-  
- config.to_prepare do
-   Devise::SessionsController.ssl_required :new, :create
-   Devise::RegistrationsController.ssl_required :new, :create
- end
-  
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
