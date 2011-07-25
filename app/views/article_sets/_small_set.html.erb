@@ -10,15 +10,16 @@
             <td>
                 <div class="set_infos">
 					<h3><%= article_set.name %></h3>
-					<p>created at: <%= article_set.created_at.to_formatted_s(:long) %></p>
+					<p>published: <%= article_set.created_at.to_formatted_s(:long) %></p>
 					<p>User: <%= link_to article_set.user.username, article_set.user%></p>
+					<p><%= link_to pluralize(article_set.comments.count, "comment"), article_set %></p>
 					<div class="article_liker">
 					   <% form_for ArticleSetLike.new do |f| %>
 					     <%= f.hidden_field :user_id, :value => (current_user ? current_user.id : nil) %>
 			  		     <%= f.hidden_field :article_set_id, :value => article_set.id %>
-					     <%= image_submit_tag "like.jpg", :title => "i like it", :class => "heart" %>
+					     <%= image_submit_tag "like.jpg", :title => "me too", :class => "heart" %>
 					   <% end %>
-					<span id="set_likes_count_<%= article_set.id %>" class="count"><%= article_set.users.count %></span>
+					<span id="set_likes_count_<%= article_set.id %>" title="<%= "#{pluralize(article_set.users.count, 'person')} like this set" %>" class="count"><%= article_set.users.count %></span>
 					</div>
 					<br/>
 					<p> <b> Articles in this set </b> </p>
