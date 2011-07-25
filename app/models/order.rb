@@ -4,7 +4,6 @@ class Order < ActiveRecord::Base
     attr_accessor :card_number, :card_verification
     
     attr_writer :current_step  
-
     
     belongs_to :cart
     

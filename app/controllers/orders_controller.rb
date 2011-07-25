@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   
   before_filter :authenticate_user!
   
+  ssl_required :new, :create, :express
+  
   # lists all orders of a client (if customer) or all orders (if admin)
   
   def index 
@@ -55,9 +57,9 @@ class OrdersController < ApplicationController
     else  
       # order is saved and valid
       if @order.purchase
-        # order went through gateway successfully
         # reset session information about order
         session[:order_step] = session[:order_params] = nil
+        # order went through gateway successfully
         # render :action => "success"
         flash[:notice] = "Order saved."  
         redirect_to @order  
@@ -65,6 +67,8 @@ class OrdersController < ApplicationController
          # gateway didn't authorize or error
          flash[:error] = "There was a problem with the transaction."  
          render :action => "failure"
+         # delete??
+         # @order.destroy
       end
     end
   end
