@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   
   before_filter :authenticate_user!
   
-  ssl_required :new, :create, :express
+  #ssl_required :new, :create, :express
   
   # lists all orders of a client (if customer) or all orders (if admin)
   
