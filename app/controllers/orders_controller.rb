@@ -19,9 +19,11 @@ class OrdersController < ApplicationController
     response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents,
       :ip => request.remote_ip,
       :return_url => new_order_url(:order_step => "billing"),
-      :cancel_return_url => products_url
+      :cancel_return_url => products_url,
+      :currency => "GBP"
     )
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+    Rails.logger.debug response.to_yaml
   end
   
   # renders the new order template => credit card processing

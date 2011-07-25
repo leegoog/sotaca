@@ -23,7 +23,7 @@ Sotaca::Application.configure do
   # See everything in the log (default is :info)
   config.log_level = :debug
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'sotaca.heroku.com' }
   config.action_mailer.delivery_method = :smtp || :sendmail #:smtp
   config.action_mailer.perform_deliveries    = true
 
@@ -35,7 +35,7 @@ Sotaca::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
