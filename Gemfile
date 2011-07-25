@@ -61,6 +61,9 @@ gem 'activemerchant'
 # add foreign keys to sql databases
 gem 'foreigner'
 
+# ssl middleware
+gem 'rack-ssl'
+
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
