@@ -1,15 +1,8 @@
 class ProductLikesController < ApplicationController
   def index
-    @product_likes = ProductLike.all
+    redirect_to products_url
   end
 
-  def show
-    @product_like = ProductLike.find(params[:id])
-  end
-
-  def new
-    @product_like = ProductLike.new
-  end
 
   def create
     @product_like = ProductLike.new(params[:product_like])
@@ -17,21 +10,7 @@ class ProductLikesController < ApplicationController
       flash[:notice] = t "like_saved"
       redirect_to product_path(@product_like.product_id)
     else
-      redirect_to product_path(@product_like.product_id)
-    end
-  end
-
-  def edit
-    @product_like = ProductLike.find(params[:id])
-  end
-
-  def update
-    @product_like = ProductLike.find(params[:id])
-    if @product_like.update_attributes(params[:product_like])
-      flash[:notice] = "Updated"
-      redirect_to product_likes_url
-    else
-      render :action => 'edit'
+      deny_access
     end
   end
 

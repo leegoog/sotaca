@@ -44,6 +44,9 @@ class Product < ActiveRecord::Base
       @category_names || categories.map(&:name).join(' ')
     end
     
+    def to_param
+      "#{id}-#{title.parameterize}"
+    end
     
     private
     

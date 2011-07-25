@@ -5,6 +5,7 @@ en:
   welcome: "Will kommen"
   english: 'English'
   chinese: "没有锁定"
+  needs_login: "You need to log in before."
   
   store:
     checkout: 'Checkout'
