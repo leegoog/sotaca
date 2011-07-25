@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   
-
-  
   protect_from_forgery
+  
+  include SessionsHelper
   
   helper :all # include all helpers, all the time
   
@@ -15,6 +15,17 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
   
+  # Customize the Devise after_sign_in_path_for() for redirecct to previous page after login
+  def after_sign_in_path_for(resource_or_scope)
+    case resource_or_scope
+    when :user, User
+      store_location = session[:return_to]
+      clear_stored_location
+      (store_location.nil?) ? "/" : store_location.to_s
+    else
+      super
+    end
+  end
   
   # overwrite default url builder to include the locale param
   def default_url_options(options={})
