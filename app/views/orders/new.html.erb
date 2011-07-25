@@ -4,6 +4,7 @@
 <% simple_form_for @order do |f| %>  
   <%= f.error_messages %>  
   <%= render "#{@order.current_step}_step", :f => f, :order => @order %>  
+  <%= f.hidden_field :express_token, :value => @order.express_token if @order.express_token? %>
   <p><%= f.submit "Continue" %></p>  
   <p><%= f.submit "Back", :name => "back_button" unless @order.first_step? %></p>
 <% end %>
