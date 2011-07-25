@@ -5,6 +5,14 @@
 	changeImage = function (url) {
 		$('#main_image img').attr("src", url);
 	}
+ 	$(function(){
+		$('.main_image img').load(function(){
+				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
+		});
+	});
+	$(window).load(function() {
+		$('.loading').fadeOut('slow');
+	});	
  </script>
 <% end %>
 
@@ -67,6 +75,8 @@
 			  <% else %>
 				<%= image_tag "dummy.jpg" %>
 			  <% end %>
+			<div class="loading">
+			</div>
 		</div>
 		<div id="likes">
 			<span class="image">

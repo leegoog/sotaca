@@ -502,7 +502,7 @@ margin: -10px 0 20px -35px;
 	color:#494949;
 }
 
-.product_overview .product .image span.loading {
+.product_overview .product .image span.loading, .product_detail .loading {
     background: url(/images/loading.gif) no-repeat scroll center center #fff;
     display: block;
     left: 0;
@@ -642,7 +642,7 @@ table.translations {
   
 .simple_form div.input {  
   margin-bottom: 10px;  
-height: 30px;
+  height: 30px;
 }  
   
 .simple_form div.boolean, .simple_form input[type='submit'] {  
@@ -678,5 +678,12 @@ height: 30px;
   font-style: italic;
 }
 .myhint {
-	margin-left: 0;
+  margin-left: 0;
+}
+.article_liker .count {
+  color: #95006A;
+  font-size: 15px;
+  left: 0;
+  position: absolute;
+  top: 35px;
 }

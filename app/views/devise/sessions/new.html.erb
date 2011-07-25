@@ -1,5 +1,7 @@
 <h2><%= t("devise.links.login") %></h2>
 
+<%= debug session[:return_to] %>
+
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 <p><%= f.label t("devise.links.username_or_email") %><br />
 	<%= f.text_field :login %></p>

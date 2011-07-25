@@ -1,11 +1,15 @@
 class ArticleSetLikesController < ApplicationController
+  def index
+    redirect_to article_sets_url
+  end
+  
   def create
     @article_set_like = ArticleSetLike.new(params[:article_set_like])
     if @article_set_like.save
       flash[:notice] = "You like this Set! Thank you."
       redirect_to article_sets_path
     else
-      render :action => 'new'
+      deny_access
     end
   end
 
