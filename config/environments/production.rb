@@ -1,3 +1,5 @@
+require 'rack/ssl'
+
 Sotaca::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -21,7 +23,7 @@ Sotaca::Application.configure do
   # See everything in the log (default is :info)
   config.log_level = :debug
 
-  config.action_mailer.default_url_options = { :host => 'stormy-samurai-193.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp || :sendmail #:smtp
   config.action_mailer.perform_deliveries    = true
 
@@ -48,8 +50,18 @@ Sotaca::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
+  # automatically ssl secure session cookie
+ config.middleware.insert_before ActionDispatch::Cookies, Rack::SSL
+
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  
+ config.to_prepare do
+   Devise::SessionsController.ssl_required :new, :create
+   Devise::RegistrationsController.ssl_required :new, :create
+ end
+  
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test

@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  
+  ssl_allowed :index 
+  
   def index
   end
 
