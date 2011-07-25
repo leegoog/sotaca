@@ -1,10 +1,11 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
+require 'rack/ssl'
+require 'openssl'
 
 
 
-# quickfix ssl error
-require 'openssl' 
+# quickfix ssl error 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 
@@ -16,6 +17,10 @@ Encoding.default_internal = Encoding::UTF_8
 
 # default currency
 Money.default_currency = Money::Currency.new("GBP")
+
+# set devise authorization to ssl
+# Devise::SessionsController.ssl_required :new, :create
+
 
 
 # redis

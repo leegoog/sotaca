@@ -31,11 +31,11 @@
 	  	<div class="middle">
 	  		<div id="login_menu">
 	  			<% if user_signed_in? %>  
-		        <%= link_to current_user.username, edit_registration_path(current_user) %> |  
-		        <%= link_to t("devise.links.logout"), destroy_user_session_path %>  
+		        <%= link_to current_user.username, edit_registration_url(current_user) %> |  
+		        <%= link_to t("devise.links.logout"), destroy_user_session_url %>  
 		      <% else %>  
-				<%= link_to t("devise.links.login"), new_user_session_path %> |  
-		        <%= link_to t("devise.links.register"), new_user_registration_path %>  
+				<%= link_to t("devise.links.login"), new_user_session_url %> |  
+		        <%= link_to t("devise.links.register"), new_user_registration_url %>  
 		      <% end %>
 	  				
 	  		</div>
