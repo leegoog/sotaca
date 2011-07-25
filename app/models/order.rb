@@ -90,13 +90,14 @@ class Order < ActiveRecord::Base
     # dummy methods to be replaced by real values
     def standard_purchase_options
       {
-        :ip => ip_address,
+        :ip => "204.201.94.103", # test
         :billing_address => {
           :name     => "#{first_name} #{last_name}",
           :address1 => "#{street} #{house_nr}",
           :city     => city,
           :country  => country,
-          :zip      => zipcode
+          :zip      => zipcode,
+          :currency_code => "GBP"
         }
       }
     end
@@ -107,7 +108,8 @@ class Order < ActiveRecord::Base
         :ip => ip_address,
         :token => express_token,
         :payer_id => express_payer_id,
-        :cart_type => nil
+        :cart_type => nil,
+        :currency => "GBP"
       }
     end
     

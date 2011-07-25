@@ -22,3 +22,10 @@
 
 
 <p><%= link_to "New Article Set", new_article_set_path(article_set) %></p>
+
+<div id="paginator">
+ Sort by: <%= select_tag(:order_key, options_for_select([['Newest', 'created_at'], ['Alphabetical', 'name'], ['Highest rated', 'rating'], ['Most commented', 'comments']])) %>
+<br/>
+<% # link_to "View all pages", {:controller => "products", :action => "index", :per_page => 1000 } %>
+<%= paginate @article_sets %>
+</div>

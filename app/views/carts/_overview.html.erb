@@ -33,27 +33,17 @@
 	    </td>
 	  </tr>
 	
-	<%= render :partial => 'shipping' %>
+	<%# render :partial => 'shipping' %>
 
 	<tr>
 		<td colspan="2">
 		</td>
-		<td>
-		<b>Total: </b>
-		</td>
-		<td>
-		<b><%= number_to_currency (cart.total_price + 395.to_money(:GBP)) %></b>
-		</td>	
-	</tr>
-	<tr>
 		<td colspan="2">
-		</td>
-		<td colspan="2">
-			<%= form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
-		      <%= hidden_field_tag :cmd, "_s-xclick" %>  
-		      <%= hidden_field_tag :encrypted, cart.paypal_encrypted(products_url, payment_notifications_url, cart.line_items.first.unit_price.currency_as_string ) %>  
-		        <p><%= image_submit_tag ('checkout.jpg') %></p>  
-		    <% end %>
+			<%# form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
+		      <%# hidden_field_tag :cmd, "_s-xclick" %>  
+		      <%# hidden_field_tag :encrypted, cart.paypal_encrypted(products_url, payment_notifications_url, cart.line_items.first.unit_price.currency_as_string ) %>  
+		        <p><%= link_to image_tag('checkout.jpg'), new_order_url %></p>  
+		    <%# end %>
 		</td>	
 	</tr>
 	</table>
