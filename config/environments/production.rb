@@ -60,6 +60,7 @@ Sotaca::Application.configure do
       :password => "1309468677",
       :signature => "A2TmxPHrKbxkYzrV0vR-LLSlaaL7A3nJ6XG47NViW-7kPA5zro5L-vSX "
     }
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
     # standard gateway
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     # gateway for paypal express checkout
