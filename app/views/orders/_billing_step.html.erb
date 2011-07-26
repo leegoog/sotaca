@@ -20,6 +20,7 @@
 	</div>
 <% else %>
 	<%= f.hidden_field :express_token %>
+	<%= f.hidden_field :ip_address, :value => request.remote_ip %>
 	TODO: express checkout confirmation
 <% end %>
 	<%= f.hidden_field :cart_id, :value => current_cart.id %>

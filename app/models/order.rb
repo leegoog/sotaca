@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
-    attr_accessible :cart_id, :ip_adress, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :card_type, :card_expires_on, :card_number, :card_verification, :express_token 
+    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :card_type, :card_expires_on, :card_number, :card_verification, :express_token 
     
-    attr_accessor :card_number, :card_verification
+    attr_accessor :card_number, :card_verification, :order_number
     
     attr_writer :current_step  
     
@@ -20,7 +20,12 @@ class Order < ActiveRecord::Base
     def purchase
       response = process_purchase
       transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
-      cart.update_attribute(:purchased_at, Time.now) if response.success?
+      if response.success?
+        cart.update_attribute(:purchased_at, Time.now) 
+        Rails.logger.debug "Order nr. generated: #{self.order_number}"
+      else # response failed
+        Rails.logger.debug "response_params: #{response.params.to_yaml}"
+      end
       response.success?
     end
 
@@ -34,13 +39,6 @@ class Order < ActiveRecord::Base
       end
     end
     
-    def process_purchase
-      if condition
-        STANDARD_GATEWAY.purchase(price_in_cents, credit_card, standard_purchase_options)
-      else
-        EXPRESS_GATEWAY.purchase(price_in_cents, credit_card, express_purchase_options)
-      end    
-    end
 
     # price has to be in cents (integer) when communicating with the gateway
     def price_in_cents
@@ -85,7 +83,13 @@ class Order < ActiveRecord::Base
       end  
     end
 
+    # create an unique identifier 'order_number'
+    def order_number
+      "#{Time.now.to_i.to_s[-4..-1]}/#{rand(1_000_000)}"
+    end
+
     private
+    
 
     # dummy methods to be replaced by real values
     def standard_purchase_options
@@ -97,7 +101,7 @@ class Order < ActiveRecord::Base
           :city     => city,
           :country  => country,
           :zip      => zipcode,
-          :currency_code => "GBP"
+          :currency => "GBP"
         }
       }
     end
@@ -116,8 +120,12 @@ class Order < ActiveRecord::Base
     # process purchase through different gateway depending on payment method
     def process_purchase
       if express_token.blank?
+        Rails.logger.debug "contacting credit card gateway..."
+        Rails.logger.debug "price in cents: #{price_in_cents}, options:\n #{standard_purchase_options.to_yaml}"
         STANDARD_GATEWAY.purchase(price_in_cents, credit_card, standard_purchase_options)
       else
+        Rails.logger.debug "contacting paypal express gateway..."
+        Rails.logger.debug "price in cents: #{price_in_cents}, options:\n #{express_purchase_options.to_yaml}"
         EXPRESS_GATEWAY.purchase(price_in_cents, express_purchase_options)
       end
     end
