@@ -36,13 +36,18 @@ Sotaca::Application.configure do
       :password => "1309468677",
       :signature => "A2TmxPHrKbxkYzrV0vR-LLSlaaL7A3nJ6XG47NViW-7kPA5zro5L-vSX "
     }
-    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'    
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'  
+    ActiveMerchant::Billing::PaypalGateway.default_currency = 'GBP'  
+    
+    ActiveMerchant::Billing::PaypalGateway.logger = Logger.new(STDOUT) 
+    ActiveMerchant::Billing::PaypalGateway.wiredump_device = File.open("#{Rails.root}/log/paypal.log", "a+")
+    ActiveMerchant::Billing::PaypalGateway.wiredump_device.sync = true    
     # standard gateway
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     # gateway for paypal express checkout
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+    
   end
-  
   
 end
 
