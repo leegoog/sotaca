@@ -96,7 +96,7 @@ addToCanvas = function (url, title, id, left, top) {
 
 																	}
 				  							});
-				 pic.resizable({ 
+				$( "#set_item_" + id + " img").resizable({ 
 				  				handles: 'sw, se, ne, nw',
 				  				stop: function(event, ui) { 
 
