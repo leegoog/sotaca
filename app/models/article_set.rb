@@ -44,7 +44,7 @@ class ArticleSet < ActiveRecord::Base
       # template.filename = img_name
       
       # go through all set items by z_index and add lay it over the template
-      for item in self.set_items
+      for item in self.set_items.order("z_index asc")
         photo = Magick::Image.read(item.product.assets.first.image.url(:thumb).to_s).first
         photo = photo.scale(item.width, item.height)
         photo = photo.rotate(item.rotation)
