@@ -113,13 +113,15 @@ class Order < ActiveRecord::Base
         :token => express_token,
         :payer_id => express_payer_id,
         :cart_type => nil,
-        :currency => "GBP"
+        :currency => "GBP",
+        :currency_id => "GBP"
       }
     end
     
     # process purchase through different gateway depending on payment method
     def process_purchase
       if express_token.blank?
+        #STANDARD_GATEWAY.wiredump_device = STDOUT
         Rails.logger.debug "contacting credit card gateway..."
         Rails.logger.debug "price in cents: #{price_in_cents}, options:\n #{standard_purchase_options.to_yaml}"
         STANDARD_GATEWAY.purchase(price_in_cents, credit_card, standard_purchase_options)
