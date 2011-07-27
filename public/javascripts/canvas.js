@@ -77,58 +77,51 @@ addToCanvas = function (url, title, id, left, top) {
 		//alert("left: " + left + ", top: " + top);
 		// load image
 		$('#canvas').load(url, function() {
-		  $('#canvas').append( 
-			"<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + id +");' title='remove item' >X</a></div><img src='" + url +"' width='100' height='100' title='" + title +"' /></div");
-   		  
-
-
-			// workaround to avoid 0px width or height in the callback!
-			pic = $( "#set_item_" + id+" img" );
-
-			pic.removeAttr("width"); 
-			pic.removeAttr("height");
 			
-			//alert("width" + pic.width() + ", height: " + pic.height());
-			
-			pic.attr("width", pic.width());
-			pic.attr("height", pic.height());
-			
-				
+			setTimeout(
+			  function() 
+			  {
+				  $('#canvas').append( 
+					"<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + id +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
 
-		  // make new set item draggable and resizable after short timeout
-		  // setTimeout(makeDraggableAndResizable(id), 200);
-		
-		$( "#set_item_" + id).draggable({
-		  	 							containment: '#canvas',
-		  								stop: function(event, ui) { 
-															updateAttributes(id); 
 
-															}
-		  							});
-		 pic.resizable({ 
-		  				handles: 'sw, se, ne, nw',
-		  				stop: function(event, ui) { 
 
-						updateAttributes(id); 
-								}
+				  // make new set item draggable and resizable after short timeout
+				  // setTimeout(makeDraggableAndResizable(id), 200);
 
+				$( "#set_item_" + id).draggable({
+				  	 							containment: '#canvas',
+				  								stop: function(event, ui) { 
+																	updateAttributes(id); 
+
+																	}
+				  							});
+				 pic.resizable({ 
+				  				handles: 'sw, se, ne, nw',
+				  				stop: function(event, ui) { 
+
+								updateAttributes(id); 
+										}
+
+						});
+
+		   		  $( "#canvas .canvas_item" ).live("click", function () {
+		   		  	$( ".canvas_item" ).removeClass("active_element");
+		   		  	$(this).addClass("active_element");
+		   		  	return false;
+		   		  });
+
+
+		   		  zi++;
+		   		  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
+		   		  addSetItem(id);
 				});
+				$('#drag_here').hide();
 
-   		  $( "#canvas .canvas_item" ).live("click", function () {
-   		  	$( ".canvas_item" ).removeClass("active_element");
-   		  	$(this).addClass("active_element");
-   		  	return false;
-   		  });
-    	
-		
-   		  zi++;
-   		  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
-   		  addSetItem(id);
-		});
-		$('#drag_here').hide();
-		
-		// add article to array
-		articles_in_set.push(id);
+				// add article to array
+				articles_in_set.push(id);
+			  }, 200);
+	
 	}
 }
 
