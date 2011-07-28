@@ -9,11 +9,8 @@
 <% if !@orders.blank? %>
   <% for order in @orders %>
     <tr>
-      <td><%= order.created_at.strftime("%d%m%y") %></td>
+      <td><%= order.created_at.to_formatted_s %></td>
       <td><%= order.cart_id %></td>
-      <td><%= link_to "Show", category %></td>
-      <td><%= link_to "Edit", edit_category_path(category) %></td>
-      <td><%= link_to "Destroy", category, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 <% else %>
