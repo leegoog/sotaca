@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
   # can comment
   has_many :comments, :dependent => :destroy 
   
+  # can order
+  has_many :orders
+  
   has_and_belongs_to_many :roles
 
   validates_presence_of :username
