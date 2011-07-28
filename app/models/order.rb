@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
     attr_writer :current_step  
     
     belongs_to :cart
+    belongs_to :user
     
     # transactions will be saved to store errors or details from paypal transactions
     has_many :transactions, :class_name => "OrderTransaction"
@@ -85,25 +86,36 @@ class Order < ActiveRecord::Base
 
     # create an unique identifier 'order_number'
     def order_number
-      "#{Time.now.to_i.to_s[-4..-1]}/#{rand(1_000_000)}"
+      "#{self.id}-#{Time.now.to_i.to_s[-4..-1]}-#{rand(1_000)}"
     end
 
     private
     
 
-    # dummy methods to be replaced by real values
+    # collect order information to send to gateway for payment processing
     def standard_purchase_options
-      {
-        :ip => "204.201.94.103", # test
+      values =  {
+        :ip => "216.113.168.139", # test
+        :currency => "GBP",
+        :invoice => order_number,
         :billing_address => {
           :name     => "#{first_name} #{last_name}",
           :address1 => "#{street} #{house_nr}",
           :city     => city,
           :country  => country,
-          :zip      => zipcode,
-          :currency => "GBP"
+          :zip      => zipcode
         }
       }
+      # merge all line items from cart into values
+       cart.line_items.each_with_index do |item, index|
+         values.merge!({
+           "amount_#{index+1}" => item.unit_price.cents,
+           "item_name_#{index+1}" => item.product.title,
+           "item_number_#{index+1}" => item.id,
+           "quantity_#{index+1}" => item.quantity
+         })
+      end
+      values  # return values
     end
     
     # gather information fpr express purchase
