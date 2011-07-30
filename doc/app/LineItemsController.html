@@ -71,6 +71,8 @@
 					
 					<li><a href="#method-i-create">#create</a></li>
 					
+					<li><a href="#method-i-destroy">#destroy</a></li>
+					
 				</ul>
 			</div>
 			
@@ -111,17 +113,41 @@
 				
 					<li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
 				
+					<li><a href="./Sotaca.html">Sotaca</a></li>
+				
+					<li><a href="./Sotaca/Product.html">Sotaca::Product</a></li>
+				
 					<li><a href="./Ability.html">Ability</a></li>
+				
+					<li><a href="./AdminController.html">AdminController</a></li>
+				
+					<li><a href="./AdminHelper.html">AdminHelper</a></li>
 				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ArticleSet.html">ArticleSet</a></li>
+				
+					<li><a href="./ArticleSetLike.html">ArticleSetLike</a></li>
+				
+					<li><a href="./ArticleSetLikesController.html">ArticleSetLikesController</a></li>
+				
+					<li><a href="./ArticleSetLikesHelper.html">ArticleSetLikesHelper</a></li>
+				
+					<li><a href="./ArticleSetsController.html">ArticleSetsController</a></li>
+				
+					<li><a href="./ArticleSetsHelper.html">ArticleSetsHelper</a></li>
 				
 					<li><a href="./Asset.html">Asset</a></li>
 				
 					<li><a href="./AssetsController.html">AssetsController</a></li>
 				
 					<li><a href="./AssetsHelper.html">AssetsHelper</a></li>
+				
+					<li><a href="./AvatarUploader.html">AvatarUploader</a></li>
+				
+					<li><a href="./BlogImageUploader.html">BlogImageUploader</a></li>
 				
 					<li><a href="./Cart.html">Cart</a></li>
 				
@@ -137,6 +163,12 @@
 				
 					<li><a href="./Category.html">Category</a></li>
 				
+					<li><a href="./Comment.html">Comment</a></li>
+				
+					<li><a href="./CommentsController.html">CommentsController</a></li>
+				
+					<li><a href="./CommentsHelper.html">CommentsHelper</a></li>
+				
 					<li><a href="./Country.html">Country</a></li>
 				
 					<li><a href="./ImageUploader.html">ImageUploader</a></li>
@@ -150,6 +182,8 @@
 					<li><a href="./LineItemsController.html">LineItemsController</a></li>
 				
 					<li><a href="./Order.html">Order</a></li>
+				
+					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
 				
@@ -167,13 +201,39 @@
 				
 					<li><a href="./Product.html">Product</a></li>
 				
+					<li><a href="./ProductLike.html">ProductLike</a></li>
+				
+					<li><a href="./ProductLikesController.html">ProductLikesController</a></li>
+				
+					<li><a href="./ProductLikesHelper.html">ProductLikesHelper</a></li>
+				
 					<li><a href="./ProductsController.html">ProductsController</a></li>
 				
 					<li><a href="./ProductsHelper.html">ProductsHelper</a></li>
 				
 					<li><a href="./Role.html">Role</a></li>
 				
+					<li><a href="./SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="./SetItem.html">SetItem</a></li>
+				
+					<li><a href="./SetItemsController.html">SetItemsController</a></li>
+				
+					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./TranslationsController.html">TranslationsController</a></li>
+				
+					<li><a href="./TraslationsController.html">TraslationsController</a></li>
+				
+					<li><a href="./TraslationsHelper.html">TraslationsHelper</a></li>
+				
 					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserMailer.html">UserMailer</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -223,13 +283,51 @@
 						id="create-source">
 <pre>
    <span class="ruby-comment cmt"># File app/controllers/line_items_controller.rb, line 2</span>
-2:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+2:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
 3:      <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
 4:      <span class="ruby-ivar">@cart</span> = <span class="ruby-identifier">current_cart</span>
 5:      <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">add_item</span>(<span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">price</span>)
 6:      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-node">&quot;Added #{@product.title} to cart.&quot;</span>
 7:      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">current_cart_url</span>
 8:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="destroy-method" class="method-detail ">
+				<a name="method-i-destroy"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">destroy</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="destroy-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/line_items_controller.rb, line 10</span>
+10:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+11:      <span class="ruby-ivar">@line_item</span> = <span class="ruby-constant">LineItem</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+12:      <span class="ruby-ivar">@cart</span> = <span class="ruby-ivar">@line_item</span>.<span class="ruby-identifier">cart</span>
+13:      <span class="ruby-ivar">@line_item</span>.<span class="ruby-identifier">destroy</span>
+14:      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Removed from cart.&quot;</span>
+15:      <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@cart</span>
+16:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
