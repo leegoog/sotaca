@@ -111,17 +111,41 @@
 				
 					<li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
 				
+					<li><a href="./Sotaca.html">Sotaca</a></li>
+				
+					<li><a href="./Sotaca/Product.html">Sotaca::Product</a></li>
+				
 					<li><a href="./Ability.html">Ability</a></li>
+				
+					<li><a href="./AdminController.html">AdminController</a></li>
+				
+					<li><a href="./AdminHelper.html">AdminHelper</a></li>
 				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ArticleSet.html">ArticleSet</a></li>
+				
+					<li><a href="./ArticleSetLike.html">ArticleSetLike</a></li>
+				
+					<li><a href="./ArticleSetLikesController.html">ArticleSetLikesController</a></li>
+				
+					<li><a href="./ArticleSetLikesHelper.html">ArticleSetLikesHelper</a></li>
+				
+					<li><a href="./ArticleSetsController.html">ArticleSetsController</a></li>
+				
+					<li><a href="./ArticleSetsHelper.html">ArticleSetsHelper</a></li>
 				
 					<li><a href="./Asset.html">Asset</a></li>
 				
 					<li><a href="./AssetsController.html">AssetsController</a></li>
 				
 					<li><a href="./AssetsHelper.html">AssetsHelper</a></li>
+				
+					<li><a href="./AvatarUploader.html">AvatarUploader</a></li>
+				
+					<li><a href="./BlogImageUploader.html">BlogImageUploader</a></li>
 				
 					<li><a href="./Cart.html">Cart</a></li>
 				
@@ -137,6 +161,12 @@
 				
 					<li><a href="./Category.html">Category</a></li>
 				
+					<li><a href="./Comment.html">Comment</a></li>
+				
+					<li><a href="./CommentsController.html">CommentsController</a></li>
+				
+					<li><a href="./CommentsHelper.html">CommentsHelper</a></li>
+				
 					<li><a href="./Country.html">Country</a></li>
 				
 					<li><a href="./ImageUploader.html">ImageUploader</a></li>
@@ -150,6 +180,8 @@
 					<li><a href="./LineItemsController.html">LineItemsController</a></li>
 				
 					<li><a href="./Order.html">Order</a></li>
+				
+					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
 				
@@ -167,13 +199,39 @@
 				
 					<li><a href="./Product.html">Product</a></li>
 				
+					<li><a href="./ProductLike.html">ProductLike</a></li>
+				
+					<li><a href="./ProductLikesController.html">ProductLikesController</a></li>
+				
+					<li><a href="./ProductLikesHelper.html">ProductLikesHelper</a></li>
+				
 					<li><a href="./ProductsController.html">ProductsController</a></li>
 				
 					<li><a href="./ProductsHelper.html">ProductsHelper</a></li>
 				
 					<li><a href="./Role.html">Role</a></li>
 				
+					<li><a href="./SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="./SetItem.html">SetItem</a></li>
+				
+					<li><a href="./SetItemsController.html">SetItemsController</a></li>
+				
+					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./TranslationsController.html">TranslationsController</a></li>
+				
+					<li><a href="./TraslationsController.html">TraslationsController</a></li>
+				
+					<li><a href="./TraslationsHelper.html">TraslationsHelper</a></li>
+				
 					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserMailer.html">UserMailer</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -216,7 +274,7 @@
 				<div class="method-description">
 					
 					<p>
-validates_presence_of :product_id
+validates_presence_of :product_id validates_numericality_of :product_id
 </p>
 					
 
@@ -224,13 +282,13 @@ validates_presence_of :product_id
 					<div class="method-source-code"
 						id="image--source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/asset.rb, line 8</span>
- 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image=</span>(<span class="ruby-identifier">val</span>)
- 9:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">valid?</span>
-10:         <span class="ruby-identifier">image_will_change!</span>
-11:         <span class="ruby-keyword kw">super</span>
-12:       <span class="ruby-keyword kw">end</span>
-13:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/asset.rb, line 9</span>
+ 9:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image=</span>(<span class="ruby-identifier">val</span>)
+10:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">valid?</span>
+11:         <span class="ruby-identifier">image_will_change!</span>
+12:         <span class="ruby-keyword kw">super</span>
+13:       <span class="ruby-keyword kw">end</span>
+14:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

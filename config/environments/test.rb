@@ -39,9 +39,9 @@ Sotaca::Application.configure do
     ActiveMerchant::Billing::Base.mode = :test
     ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
     # standard gateway
-    ::STANDARD_GATEWAY = ActiveMerchant::Billing::BogusGateway.new(paypal_options)
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
     # gateway for paypal express checkout
-    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new(paypal_options)
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
   end
   
 end
