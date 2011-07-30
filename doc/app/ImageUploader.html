@@ -71,6 +71,12 @@
 					
 					<li><a href="#method-i-extension_white_list">#extension_white_list</a></li>
 					
+					<li><a href="#method-i-filename">#filename</a></li>
+					
+					<li><a href="#method-i-make_transparent">#make_transparent</a></li>
+					
+					<li><a href="#method-i-shadow">#shadow</a></li>
+					
 					<li><a href="#method-i-store_dir">#store_dir</a></li>
 					
 				</ul>
@@ -124,17 +130,41 @@
 				
 					<li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
 				
+					<li><a href="./Sotaca.html">Sotaca</a></li>
+				
+					<li><a href="./Sotaca/Product.html">Sotaca::Product</a></li>
+				
 					<li><a href="./Ability.html">Ability</a></li>
+				
+					<li><a href="./AdminController.html">AdminController</a></li>
+				
+					<li><a href="./AdminHelper.html">AdminHelper</a></li>
 				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ArticleSet.html">ArticleSet</a></li>
+				
+					<li><a href="./ArticleSetLike.html">ArticleSetLike</a></li>
+				
+					<li><a href="./ArticleSetLikesController.html">ArticleSetLikesController</a></li>
+				
+					<li><a href="./ArticleSetLikesHelper.html">ArticleSetLikesHelper</a></li>
+				
+					<li><a href="./ArticleSetsController.html">ArticleSetsController</a></li>
+				
+					<li><a href="./ArticleSetsHelper.html">ArticleSetsHelper</a></li>
 				
 					<li><a href="./Asset.html">Asset</a></li>
 				
 					<li><a href="./AssetsController.html">AssetsController</a></li>
 				
 					<li><a href="./AssetsHelper.html">AssetsHelper</a></li>
+				
+					<li><a href="./AvatarUploader.html">AvatarUploader</a></li>
+				
+					<li><a href="./BlogImageUploader.html">BlogImageUploader</a></li>
 				
 					<li><a href="./Cart.html">Cart</a></li>
 				
@@ -150,6 +180,12 @@
 				
 					<li><a href="./Category.html">Category</a></li>
 				
+					<li><a href="./Comment.html">Comment</a></li>
+				
+					<li><a href="./CommentsController.html">CommentsController</a></li>
+				
+					<li><a href="./CommentsHelper.html">CommentsHelper</a></li>
+				
 					<li><a href="./Country.html">Country</a></li>
 				
 					<li><a href="./ImageUploader.html">ImageUploader</a></li>
@@ -163,6 +199,8 @@
 					<li><a href="./LineItemsController.html">LineItemsController</a></li>
 				
 					<li><a href="./Order.html">Order</a></li>
+				
+					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
 				
@@ -180,13 +218,39 @@
 				
 					<li><a href="./Product.html">Product</a></li>
 				
+					<li><a href="./ProductLike.html">ProductLike</a></li>
+				
+					<li><a href="./ProductLikesController.html">ProductLikesController</a></li>
+				
+					<li><a href="./ProductLikesHelper.html">ProductLikesHelper</a></li>
+				
 					<li><a href="./ProductsController.html">ProductsController</a></li>
 				
 					<li><a href="./ProductsHelper.html">ProductsHelper</a></li>
 				
 					<li><a href="./Role.html">Role</a></li>
 				
+					<li><a href="./SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="./SetItem.html">SetItem</a></li>
+				
+					<li><a href="./SetItemsController.html">SetItemsController</a></li>
+				
+					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./TranslationsController.html">TranslationsController</a></li>
+				
+					<li><a href="./TraslationsController.html">TraslationsController</a></li>
+				
+					<li><a href="./TraslationsHelper.html">TraslationsHelper</a></li>
+				
 					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserMailer.html">UserMailer</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -241,10 +305,124 @@ you might use something like this:
 					<div class="method-source-code"
 						id="extension-white-list-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 41</span>
-41:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension_white_list</span>
-42:      <span class="ruby-node">%(jpg jpeg gif png)</span>
-43:    <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 48</span>
+48:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension_white_list</span>
+49:      <span class="ruby-node">%(jpg jpeg gif png)</span>
+50:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="filename-method" class="method-detail ">
+				<a name="method-i-filename"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">filename</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="filename-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 73</span>
+73:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filename</span>
+74:      <span class="ruby-keyword kw">super</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-keyword kw">super</span>)) <span class="ruby-operator">+</span> <span class="ruby-value str">'.png'</span>
+75:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="make-transparent-method" class="method-detail ">
+				<a name="method-i-make_transparent"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">make_transparent</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="make-transparent-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 52</span>
+52:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_transparent</span> 
+53:      <span class="ruby-identifier">manipulate!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
+54:        <span class="ruby-identifier">img</span>.<span class="ruby-identifier">fuzz</span> = <span class="ruby-value str">'5%'</span>
+55:        <span class="ruby-identifier">image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">img</span>.<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">first</span>
+56:        <span class="ruby-identifier">image</span>.<span class="ruby-identifier">transparent</span>(<span class="ruby-node">&quot;#ffffff&quot;</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">TransparentOpacity</span>)
+57:      <span class="ruby-keyword kw">end</span> 
+58:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shadow-method" class="method-detail ">
+				<a name="method-i-shadow"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shadow</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="shadow-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 60</span>
+60:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shadow</span>
+61:      <span class="ruby-identifier">manipulate!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
+62:        <span class="ruby-identifier">layers</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">ImageList</span>.<span class="ruby-identifier">new</span>
+63:        <span class="ruby-identifier">image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">img</span>.<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">first</span>
+64:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">image</span>.<span class="ruby-identifier">clone</span>
+65:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">shadow</span>.<span class="ruby-identifier">shadow</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">4.0</span>, <span class="ruby-value">0.5</span>)
+66:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">shadow</span>.<span class="ruby-identifier">colorize</span>(<span class="ruby-value">1.0</span>, <span class="ruby-value">1.0</span>, <span class="ruby-value">1.0</span>, <span class="ruby-value str">'gray25'</span>)
+67:        <span class="ruby-identifier">layers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">shadow</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">image</span>
+68:        <span class="ruby-identifier">result</span> = <span class="ruby-identifier">layers</span>.<span class="ruby-identifier">optimize_layers</span>(<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">MergeLayer</span>)
+69:      <span class="ruby-keyword kw">end</span>
+70:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

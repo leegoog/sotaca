@@ -12,8 +12,7 @@ describe User do
     }
   end
   
-  context "validitions" do
-    
+  context "validitions" do   
     let(:alice) { Factory.create(:user)}
     
     it "has a valid username" do
@@ -43,9 +42,6 @@ describe User do
       alice2.should have_at_least(1).error_on(:email)
       alice2.errors.on(:username).should include("Username already taken!")
     end
-    
-
-    
   end
   
 end
