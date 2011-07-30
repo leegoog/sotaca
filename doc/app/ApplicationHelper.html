@@ -58,6 +58,17 @@
 
 			<!-- Method Quickref -->
 			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-get_cart">#get_cart</a></li>
+					
+					<li><a href="#method-i-markdown">#markdown</a></li>
+					
+				</ul>
+			</div>
+			
 
 			<!-- Included Modules -->
 			
@@ -95,17 +106,41 @@
 				
 					<li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
 				
+					<li><a href="./Sotaca.html">Sotaca</a></li>
+				
+					<li><a href="./Sotaca/Product.html">Sotaca::Product</a></li>
+				
 					<li><a href="./Ability.html">Ability</a></li>
+				
+					<li><a href="./AdminController.html">AdminController</a></li>
+				
+					<li><a href="./AdminHelper.html">AdminHelper</a></li>
 				
 					<li><a href="./ApplicationController.html">ApplicationController</a></li>
 				
 					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./ArticleSet.html">ArticleSet</a></li>
+				
+					<li><a href="./ArticleSetLike.html">ArticleSetLike</a></li>
+				
+					<li><a href="./ArticleSetLikesController.html">ArticleSetLikesController</a></li>
+				
+					<li><a href="./ArticleSetLikesHelper.html">ArticleSetLikesHelper</a></li>
+				
+					<li><a href="./ArticleSetsController.html">ArticleSetsController</a></li>
+				
+					<li><a href="./ArticleSetsHelper.html">ArticleSetsHelper</a></li>
 				
 					<li><a href="./Asset.html">Asset</a></li>
 				
 					<li><a href="./AssetsController.html">AssetsController</a></li>
 				
 					<li><a href="./AssetsHelper.html">AssetsHelper</a></li>
+				
+					<li><a href="./AvatarUploader.html">AvatarUploader</a></li>
+				
+					<li><a href="./BlogImageUploader.html">BlogImageUploader</a></li>
 				
 					<li><a href="./Cart.html">Cart</a></li>
 				
@@ -121,6 +156,12 @@
 				
 					<li><a href="./Category.html">Category</a></li>
 				
+					<li><a href="./Comment.html">Comment</a></li>
+				
+					<li><a href="./CommentsController.html">CommentsController</a></li>
+				
+					<li><a href="./CommentsHelper.html">CommentsHelper</a></li>
+				
 					<li><a href="./Country.html">Country</a></li>
 				
 					<li><a href="./ImageUploader.html">ImageUploader</a></li>
@@ -134,6 +175,8 @@
 					<li><a href="./LineItemsController.html">LineItemsController</a></li>
 				
 					<li><a href="./Order.html">Order</a></li>
+				
+					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
 				
@@ -151,13 +194,39 @@
 				
 					<li><a href="./Product.html">Product</a></li>
 				
+					<li><a href="./ProductLike.html">ProductLike</a></li>
+				
+					<li><a href="./ProductLikesController.html">ProductLikesController</a></li>
+				
+					<li><a href="./ProductLikesHelper.html">ProductLikesHelper</a></li>
+				
 					<li><a href="./ProductsController.html">ProductsController</a></li>
 				
 					<li><a href="./ProductsHelper.html">ProductsHelper</a></li>
 				
 					<li><a href="./Role.html">Role</a></li>
 				
+					<li><a href="./SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="./SetItem.html">SetItem</a></li>
+				
+					<li><a href="./SetItemsController.html">SetItemsController</a></li>
+				
+					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./TranslationsController.html">TranslationsController</a></li>
+				
+					<li><a href="./TraslationsController.html">TraslationsController</a></li>
+				
+					<li><a href="./TraslationsHelper.html">TraslationsHelper</a></li>
+				
 					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserMailer.html">UserMailer</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -182,6 +251,81 @@
 
 		<!-- Methods -->
 		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="get-cart-method" class="method-detail ">
+				<a name="method-i-get_cart"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_cart</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="get-cart-source">
+<pre>
+   <span class="ruby-comment cmt"># File app/helpers/application_helper.rb, line 3</span>
+3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_cart</span>
+4:     <span class="ruby-ivar">@cart</span> = <span class="ruby-identifier">current_cart</span>
+5:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="markdown-method" class="method-detail ">
+				<a name="method-i-markdown"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">markdown</span><span
+						class="method-args">(text)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="markdown-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/helpers/application_helper.rb, line 7</span>
+ 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">markdown</span>(<span class="ruby-identifier">text</span>)  
+ 8:     <span class="ruby-identifier">options</span> = [<span class="ruby-value">:hard_wrap</span>, <span class="ruby-value">:filter_html</span>, <span class="ruby-value">:autolink</span>, <span class="ruby-value">:no_intraemphasis</span>]  
+ 9:     <span class="ruby-constant">Redcarpet</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>, *<span class="ruby-identifier">options</span>).<span class="ruby-identifier">to_html</span>.<span class="ruby-identifier">html_safe</span>  
+10:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
 
 	</div>
 

@@ -18,13 +18,12 @@ describe ArticleSet do
   
   context "has many line items" do
     it "can contain product images" do
+      pending 'need work'
       set.set_items.should be_empty
       visit sets_url
       click_link 'new article set'
       click_on '1'
-      
-    end
-    
+    end  
   end
   
 end
