@@ -18,4 +18,8 @@
       <% countries_array = Country.all.map { |country| [country.name, country.iso] } %>
 	  <%= f.select :country, options_for_select(countries_array), :value => 'UK'  %>
 	</div>
+	
+	
+  <%= f.input :shipping_method, :collection => ShippingMethod.all, :as => :radio, :label_method => :name_and_price %>  
+
 </p>

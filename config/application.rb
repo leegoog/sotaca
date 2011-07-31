@@ -38,6 +38,8 @@ module Sotaca
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
     
+    
+    
     if Rails.env.test?
       initializer :after => :initialize_dependency_mechanism do
       ActiveSupport::Dependencies.mechanism = :load
