@@ -6,7 +6,11 @@
   </p>
   <p>
     <%= f.label :price %><br />
-    <%= f.text_field :price %>
+	<% if @shipping_method.new_record? %>
+		 <%= f.text_field :price %>
+	<% else %>
+		<%= f.text_field :price, :value => @shipping_method.price.exchange_to('GBP') %>
+	<% end %>
   </p>
   <p><%= f.submit %></p>
 <% end %>
