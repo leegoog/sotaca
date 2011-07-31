@@ -8,20 +8,18 @@ class Order < ActiveRecord::Base
     belongs_to :cart
     belongs_to :user
     
+    # shipping method
+    has_one :shipping_method
+    
+    
     # transactions will be saved to store errors or details from paypal transactions
     has_many :transactions, :class_name => "OrderTransaction"
 
     # before create check if cc seems valid
     validate :validate_card, :on => :create
     
-    validates_presence_of :first_name, :if => lambda { |o| o.current_step == "shipping" }  
-    validates_presence_of :last_name, :if => lambda { |o| o.current_step == "shipping" }  
-    validates_presence_of :street, :if => lambda { |o| o.current_step == "shipping" }  
-    validates_presence_of :zipcode, :if => lambda { |o| o.current_step == "shipping" }      
-    validates_presence_of :city, :if => lambda { |o| o.current_step == "shipping" }  
-    validates_presence_of :country, :if => lambda { |o| o.current_step == "shipping" }  
-    
-    
+    validates_presence_of :first_name, :last_name, :street, :zipcode, :city, :country, :if => :shipping?
+    validates_presence_of :card_number, :card_verification, :card_expires_on, :if => :billing?    
     
     
 #    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
@@ -84,6 +82,19 @@ class Order < ActiveRecord::Base
     def first_step?  
       current_step == steps.first  
     end
+    
+    # returns true if current step is shipping
+    def shipping?  
+      current_step == "shipping"  
+    end  
+    # returns true if current step is billing
+    def billing?  
+      current_step == "billing"  
+    end
+    # returns true if current step is billing
+    def confirmation?  
+      current_step == "confirmation"  
+    end    
     
     # goes through all steps and validates them
     def all_valid?  

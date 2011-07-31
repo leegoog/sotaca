@@ -40,7 +40,7 @@
 	  				
 	  		</div>
 	  		<div id="cart_menu">
-			 <span id="cart_image"><%= image_tag("cart.jpg")%></span>
+			 <span id="cart_image" <%= "style='right:60px'" if params[:locale] == "cn" %>><%= image_tag("cart.jpg")%></span>
 	  			<ul>
 					<li>
 					<%= link_to "#{current_cart.number_of_items}", current_cart_url %>
