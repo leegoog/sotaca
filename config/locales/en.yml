@@ -39,6 +39,7 @@ en:
     translations: 'Translations'
     admin: 'Admin'
     sets: 'Sets'
+    orders: 'Orders'
   
   products:
     related: 'Other products you may like'

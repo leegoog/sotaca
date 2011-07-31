@@ -3,6 +3,6 @@ class Comment < ActiveRecord::Base
     
     validates_presence_of :body
     
-    belongs_to :user 
-    belongs_to :article_set
+    belongs_to :user
+    belongs_to :article_set, :counter_cache => true 
 end
