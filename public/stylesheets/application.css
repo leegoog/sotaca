@@ -717,7 +717,8 @@ table.translations {
 	text-align: center;
 	width: 120px;
 	float:left;
-	height: 25px;
+	height: 22px;
+	padding-top: 3px;
 	margin: 10px 20px 10px 10px;
 	border: 2px solid #ccc;
 	background-color: #fff;
@@ -763,6 +764,6 @@ table.translations {
 	font-size: 11px !important;
 	text-align: right !important;
 }
-#order_frame #line_items .quantity .remove_item{
+#order_frame #line_items .remove_item{
 	display: none;
 }
