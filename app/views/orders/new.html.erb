@@ -1,16 +1,48 @@
 <% title "New Order" %>
 
+<div id="order_frame">
 
+<%= render "stepper", :order => @order %>  
+
+<br/>
+
+<h2>Order summary</h2>
+<%# render "summary", :cart => current_cart %>  
+<table id="line_items">
+	<tr>
+		<th>Thumbnail</th>
+		<th>Info</th>
+		<th class="price">Qantity</th>
+		<th class="price">Price</th>
+	</tr>
+<%= render :partial => "carts/articles_in_cart", :locals => {:cart => current_cart} %>  
+</table>
+<br/>
+<h2>
+	<%= t"orders.steps.#{@order.current_step}" %> 
+	
+</h2>
 <%= simple_form_for @order do |f| %>  
   <%= f.error_messages %>  
   <%= render "#{@order.current_step}_step", :f => f, :order => @order %>  
   <%= f.hidden_field :express_token, :value => @order.express_token if @order.express_token? %>
-  <p><%= f.submit "Continue" %></p>  
-  <p><%= f.submit "Back", :name => "back_button" unless @order.first_step? %></p>
+  <p>
+	  <%= f.submit "Back", :name => "back_button" unless @order.first_step? %>
+      <%= f.submit "Continue" %>
+  </p>
 <% end %>
+
+
+
+</div>
+
+
 
 <%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), 
 express_checkout_url %>
+
+
+
 
 <%= debug @order %>
 

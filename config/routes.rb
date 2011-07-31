@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
   
+  resources :shipping_methods
+
   resources :article_set_likes
 
 
