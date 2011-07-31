@@ -392,11 +392,10 @@ margin: -10px 0 20px -35px;
 	width: auto;
 }
 #content #left ul{
-	margin:0;
+	margin:50px 0 0 -20px;
 	padding: 0;
 	list-style-type: none;
 	width: 100px;
-	margin-left: -20px;
 	float: left;
 	position: relative;
 }
@@ -422,7 +421,7 @@ margin: -10px 0 20px -35px;
 	position: relative;
 }
 
-#content .cart_view h2, #content .faq h2{
+#content .cart_view h2, #content .faq h2, #order_frame h2{
 	width: 100%;
 	background-color: #93006b;
 	color: #fff;
@@ -698,13 +697,72 @@ table.translations {
 	position: relative;
 }
 
-#line_items .quantity .amount{
+
+
+#line_items .remove_item {
+	position: absolute;
+	bottom: -43px;
+	right: 0px;
+	font-size: 10px;
+}
+#stepper {
+	width: 700px;
+	height: 50px;
+	background: url(/images/stepper_bg.jpg) repeat-x;
 	position: relative;
-	left: 20px;
 }
 
-#line_items .quantity .remove_item {
+
+#stepper .step a{
+	text-align: center;
+	width: 120px;
+	float:left;
+	height: 25px;
+	margin: 10px 20px 10px 10px;
+	border: 2px solid #ccc;
+	background-color: #fff;
+	color: #000;
+}
+
+#stepper #heart {
 	position: absolute;
-	bottom: -20px;
-	left: 7px;
+	top: 10px;
+	right: 17px;
+	height: 25px;
+	width: 25px;
+}
+
+#stepper .step a:hover, #stepper .active a {
+	background-color: #95006A !important;
+	color: #fff;
+	text-decoration: none;
+}
+
+#order_frame {
+	width: 700px;
+	border: 1px solid #ccc;
+	font-size: 11px;
+	color: #1d1d1d;
+}
+
+#order_frame #stepper {
+	font-size: 12px !important;
+}
+
+#order_frame #line_items {
+	border-top: 1px solid #95006A;
+}
+#order_frame #line_items th {
+	font-size: 11px;
+}
+
+#order_frame #line_items .details {
+	font-size: 10px !important;
+}
+#order_frame #line_items .price, #order_frame #line_items .quantity {
+	font-size: 11px !important;
+	text-align: right !important;
+}
+#order_frame #line_items .quantity .remove_item{
+	display: none;
 }

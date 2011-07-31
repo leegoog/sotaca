@@ -20,13 +20,21 @@
 	      <td>
 			<div class="quantity">
 			<span class="amount"><b><%= line_item.quantity %></b></span><br/>
+			</div>
+		  </td>
+	      <td class="price">
+			<div style="position: relative; width: inherit; height: inherit;">
+			<b><%= number_to_currency(line_item.full_price.exchange_to(session[:currency])) %></b>
 			<span class="remove_item">
-				<%= link_to "x", line_item, :confirm => 'Remove from cart?', :method => :delete %>
-				<%= link_to "+" %>
-				<%= link_to "-" %>
+				<%= link_to "remove", line_item, :confirm => 'Remove from cart?', :method => :delete %>
 			</span>
 			</div>
 		  </td>
-	      <td class="price"><b><%= number_to_currency(line_item.full_price.exchange_to(session[:currency])) %></b></td>
 	    </tr>
 	  <% end %>
+	
+	<!--
+		<span class="remove_item">
+			<% link_to "remove", line_item, :confirm => 'Remove from cart?', :method => :delete %>
+		</span>
+	-->
