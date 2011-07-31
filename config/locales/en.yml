@@ -40,6 +40,12 @@ en:
     admin: 'Admin'
     sets: 'Sets'
     orders: 'Orders'
+    
+  orders:
+    steps:
+      billing: 'Payment Details'
+      shipping: 'Shipping Details'
+      confirmation: 'Confirm your order'
   
   products:
     related: 'Other products you may like'

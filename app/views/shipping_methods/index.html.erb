@@ -1,0 +1,19 @@
+<% title "Shipping Methods" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <% for shipping_method in @shipping_methods %>
+    <tr>
+      <td><%= shipping_method.name %></td>
+      <td><%= shipping_method.price %></td>
+      <td><%= link_to "Show", shipping_method %></td>
+      <td><%= link_to "Edit", edit_shipping_method_path(shipping_method) %></td>
+      <td><%= link_to "Destroy", shipping_method, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Shipping Method", new_shipping_method_path(shipping_method) %></p>

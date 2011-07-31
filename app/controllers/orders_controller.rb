@@ -28,10 +28,16 @@ class OrdersController < ApplicationController
   
   # renders the new order template => credit card processing
   def new
-    session[:order_params] ||= {}  
-    @order = Order.new(session[:order_params])
-    @order.express_token = params[:token]
-    @order.current_step = session[:order_step]
+    # check if anything is in cart, if not redirect
+    if current_cart.empty?
+      flash[:notice] = "Nothing to checkout!"
+      redirect_to products_url
+    else
+      session[:order_params] ||= {}  
+      @order = Order.new(session[:order_params])
+      @order.express_token = params[:token]
+      @order.current_step = params[:order_step] || session[:order_step]
+    end
   end
   
   def show
@@ -54,7 +60,7 @@ class OrdersController < ApplicationController
       @order.next_step  
     end  
     session[:order_step] = @order.current_step  
-      
+    
     if @order.new_record?  
       render 'new'  
     else  

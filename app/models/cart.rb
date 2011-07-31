@@ -13,6 +13,11 @@ class Cart < ActiveRecord::Base
       line_items.to_a.sum { |item| item.full_price }
     end
     
+    # returns true if cart is empty
+    def empty?
+      line_items.count < 1
+    end
+    
     # generates an url with article names and prices as parameters to checkout with paypal
     def paypal_encrypted(return_url, notify_url, currency)
         values = {

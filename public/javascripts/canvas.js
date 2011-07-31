@@ -8,8 +8,8 @@ var articles_in_set = [];
 var preventPrompt = false;
 
 // checks if the user should be prompted to leave the page or not (he will lose any progress)
-function closeIt() {
-  if(!preventPrompt) {
+closeIt = function() {
+  if(true) {
         return "Are you sure that you want to leave this page?";
   }
   preventPrompt = false;
@@ -54,7 +54,10 @@ $(function () {
 		article_set_submit = true;
 	})
 	
-	window.onbeforeunload = closeIt();
+	window.onbeforeunload = function() { 
+			//return "you sure??";
+				return "Are you sure that you want to leave this page?";
+		}
 	
 
 })	
