@@ -16,6 +16,6 @@
 	<div class="input string optional">
 	  <label for="order_card_type" class="select"> Country</label>
       <% countries_array = Country.all.map { |country| [country.name, country.iso] } %>
-	  <%= f.select :country, options_for_select(countries_array)  %>
+	  <%= f.select :country, options_for_select(countries_array), :selected => 'UK'  %>
 	</div>
 </p>

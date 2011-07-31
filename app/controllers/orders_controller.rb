@@ -45,6 +45,7 @@ class OrdersController < ApplicationController
     session[:order_params].deep_merge!(params[:order]) if params[:order]  
     @order = Order.new(session[:order_params])  
     @order.current_step = session[:order_step]  
+    @order.ip_address = request.remote_ip
     if params[:back_button]  
       @order.previous_step  
     elsif @order.last_step?  

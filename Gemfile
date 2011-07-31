@@ -54,6 +54,9 @@ gem 'redis'
 gem 'money'
 gem 'google_currency'
 
+# console stuff
+gem 'hirb'
+
 
 # payment, credit card processing
 gem 'activemerchant'
