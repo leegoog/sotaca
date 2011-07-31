@@ -5,7 +5,7 @@ class ArticleSetLike < ActiveRecord::Base
      validates_presence_of :article_set_id
 
      belongs_to :user
-     belongs_to :article_set
+     belongs_to :article_set, :counter_cache => :likes_count 
      
      validates_uniqueness_of :user_id, :scope => :article_set_id
     

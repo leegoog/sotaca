@@ -48,6 +48,11 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+    resend:
+      confirmation: 'Resend confirmation instructions'
+    reset:
+        password: 'Send me reset password instructions'
+    forgot_password: 'Forgot your password?'
 
 # down here need to be translated additionally
 
@@ -56,8 +61,8 @@ en:
       login: 'Log in' 
       logout: 'Log out'
       forgot_password: 'Forgot your password?'
-      no_confirmation: 'Didn not receive confirmation instructions?'   
-      no_unlock: 'Didn not receive unlock instructions?'
+      no_confirmation: 'Did not receive confirmation instructions?'   
+      no_unlock: 'Did not receive unlock instructions?'
       sign_in_with: 'Sign in with '
       username: 'Username'
       email: 'EMail'
@@ -66,3 +71,10 @@ en:
       username: 'Username'
       password_confirmation: 'Password Confirmation'
       language: 'Language'
+    
+    # these go up to devise
+        
+    resend:
+      confirmation: 'Resend confirmation instructions'
+    reset:
+      password: 'Send me reset password instructions'

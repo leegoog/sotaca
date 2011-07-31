@@ -14,8 +14,17 @@ class Order < ActiveRecord::Base
     # before create check if cc seems valid
     validate :validate_card, :on => :create
     
-    # validates_presence_of :shipping_name, :if => lambda { |o| o.current_step == "shipping" }  
-    # validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
+    validates_presence_of :first_name, :if => lambda { |o| o.current_step == "shipping" }  
+    validates_presence_of :last_name, :if => lambda { |o| o.current_step == "shipping" }  
+    validates_presence_of :street, :if => lambda { |o| o.current_step == "shipping" }  
+    validates_presence_of :zipcode, :if => lambda { |o| o.current_step == "shipping" }      
+    validates_presence_of :city, :if => lambda { |o| o.current_step == "shipping" }  
+    validates_presence_of :country, :if => lambda { |o| o.current_step == "shipping" }  
+    
+    
+    
+    
+#    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
 
     # the actual transaction after all had been validated
     def purchase

@@ -6,7 +6,7 @@
   <p><%= f.label :login %><br />
   <%= f.email_field :login %></p>
 
-  <p><%= f.submit "Resend confirmation instructions" %></p>
+  <p><%= f.submit t "devise.resend.confirmation" %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
