@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :username, :allow_blank => false, :message => "Username already taken!"
+  
+  validates_length_of :username, :minimum => 3, :maximum => 16, :allow_blank => true
+  
   validates_uniqueness_of :email, :allow_blank => false, :message => "E-Mail already taken!"
   validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i

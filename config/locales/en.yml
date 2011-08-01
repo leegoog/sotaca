@@ -6,6 +6,15 @@ en:
   english: 'English'
   chinese: "没有锁定"
   needs_login: "You need to log in before."
+  back: "Back"
+  
+  profile:
+    edit: "Edit Profile"
+    change_password: "Change Password"
+    sets: "My Sets"
+    orders: "My Orders"
+    feedback: "Send us your feedback!"
+    wishlist: "My Wishlist"
   
   store:
     checkout: 'Checkout'
@@ -43,9 +52,12 @@ en:
     
   orders:
     steps:
+      cart: 'Cart'
       billing: 'Payment Details'
       shipping: 'Shipping Details'
       confirmation: 'Confirm your order'
+    shipping_costs: "Shipping Costs"
+    summary: "Order summary"
   
   products:
     related: 'Other products you may like'

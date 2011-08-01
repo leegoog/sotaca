@@ -1,3 +1,7 @@
-<% title "Edit Profile" %>
+<% title t("profile.edit") %>
+
+<% content_for(:left) do %>
+	<%= render :partial => 'profile_links', :user => @user%>
+<% end %>
 
 <%= render 'form' %>

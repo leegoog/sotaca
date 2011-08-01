@@ -16,7 +16,7 @@
 		Payment Method: TODO
 	</p>
 	<p>
-		Total GBP: <%= number_to_currency (@order.cart.total_price) %>
+		Total: <%= number_to_currency (@order.total_price.to_money.exchange_to(session[:currency])) %>
 	</p>
 		
 	<p>
