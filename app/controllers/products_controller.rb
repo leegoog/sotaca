@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id], :include => :sets)
+    @product = Product.find(params[:id], :include => :article_sets)
   end
 
   def new

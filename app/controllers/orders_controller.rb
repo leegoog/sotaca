@@ -66,10 +66,6 @@ class OrdersController < ApplicationController
       render 'new'  
     else  
       # order is saved and valid
-      
-      # generate unique identifier
-      @order.order_nr = @order.order_number
-      @order.save
       # try to transfer the money
       if @order.purchase
         # send confirmation email
