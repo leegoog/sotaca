@@ -1,15 +1,16 @@
 class Order < ActiveRecord::Base
-    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :card_type, :card_expires_on, :card_number, :card_verification, :express_token 
+    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country
+    attr_accessible :shipping_method_id, :user_id, :card_type, :card_expires_on, :card_number, :card_verification
     
-    attr_accessor :card_number, :card_verification, :order_number
+    attr_accessor :card_number, :card_verification, :order_number, :express_token
     
-    attr_writer :current_step  
+    attr_writer :current_step, :order_nr
     
     belongs_to :cart
     belongs_to :user
     
     # shipping method
-    has_one :shipping_method
+    belongs_to :shipping_method
     
     
     # transactions will be saved to store errors or details from paypal transactions
@@ -19,7 +20,9 @@ class Order < ActiveRecord::Base
     validate :validate_card, :on => :create
     
     validates_presence_of :first_name, :last_name, :street, :zipcode, :city, :country, :if => :shipping?
-    validates_presence_of :card_number, :card_verification, :card_expires_on, :if => :billing?    
+    
+    # validate CC data only if there is no paypal token - no need to enter when paying with paypal, right
+    validates_presence_of :card_number, :card_verification, :card_expires_on, :if => :billing? 
     
     
 #    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
@@ -30,11 +33,17 @@ class Order < ActiveRecord::Base
       transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
       if response.success?
         cart.update_attribute(:purchased_at, Time.now) 
+        self.order_nr = self.order_number
+        self.save
         Rails.logger.debug "Order nr. generated: #{self.order_number}"
       else # response failed
         Rails.logger.debug "response_params: #{response.params.to_yaml}"
       end
       response.success?
+    end
+
+    def express_token
+      self[:express_token]
     end
 
     def express_token=(token)
@@ -48,9 +57,9 @@ class Order < ActiveRecord::Base
     end
     
 
-    # price has to be in cents (integer) when communicating with the gateway
+    # returns the price of all cart items and shipping costs for this order in cents (integer) for communicating with the gateway
     def price_in_cents
-      cart.total_price.to_money.cents.to_i
+      cart.total_price.to_money.cents.to_i + shipping_method.price.to_money.cents.to_i
     end
     
     # returns an array of our checkout form steps
@@ -89,7 +98,7 @@ class Order < ActiveRecord::Base
     end  
     # returns true if current step is billing
     def billing?  
-      current_step == "billing"  
+      current_step == "billing" && express_token.blank?
     end
     # returns true if current step is billing
     def confirmation?  
@@ -108,6 +117,13 @@ class Order < ActiveRecord::Base
     def order_number
       "#{self.id}-#{Time.now.to_i.to_s[-4..-1]}-#{rand(1_000)}"
     end
+    
+    
+    # calculates the total price of the order from all items and shipping
+    def total_price
+      self.cart.total_price + self.shipping_method.price
+    end
+    
 
     private
     

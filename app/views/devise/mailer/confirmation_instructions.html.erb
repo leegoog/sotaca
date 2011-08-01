@@ -1,5 +1,11 @@
-<p>Welcome <%= @resource.email %>!</p>
+<p>Welcome <%= @resource.username %>!</p>
 
-<p>You can confirm your account through the link below:</p>
+<p>Thank you for registering to our Sotaca 1898. To complete the process please click on the link below to activate your
+account.</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>If you cannot click the link, please copy the link URL into your web browser address bar.<br/>
+Kind Regards</p>
+<br/><br/>
+<b>SOTACA1898</b>

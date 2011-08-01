@@ -5,10 +5,9 @@ class OrdersController < ApplicationController
   #ssl_required :new, :create, :express
   
   # lists all orders of a client (if customer) or all orders (if admin)
-  
   def index 
     if !current_user.admin?
-      @orders = Order.cart.user.orders    
+      @orders = current_user.orders    
     else
       @orders = Order.all 
     end
@@ -55,6 +54,7 @@ class OrdersController < ApplicationController
     if params[:back_button]  
       @order.previous_step  
     elsif @order.last_step?  
+      @order.order_nr = @order.order_number
       @order.save if @order.all_valid? 
     else  
       @order.next_step  
@@ -66,6 +66,8 @@ class OrdersController < ApplicationController
     else  
       # order is saved and valid
       if @order.purchase
+        # send confirmation email
+        OrderMailer.order_confirmation(@order).deliver 
         # reset session information about order
         session[:order_step] = session[:order_params] = nil
         # order went through gateway successfully

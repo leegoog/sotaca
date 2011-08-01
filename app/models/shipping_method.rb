@@ -3,7 +3,7 @@ class ShippingMethod < ActiveRecord::Base
     
     attr_accessor :name_and_price 
     
-    belongs_to :order
+    has_many :orders
     
     composed_of :price,
                   :class_name => 'Money',
