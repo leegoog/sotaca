@@ -1,10 +1,10 @@
 class Order < ActiveRecord::Base
-    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country
+    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :order_nr
     attr_accessible :shipping_method_id, :user_id, :card_type, :card_expires_on, :card_number, :card_verification, :express_token
     
     attr_accessor :card_number, :card_verification, :order_number
     
-    attr_writer :current_step, :order_nr
+    attr_writer :current_step
     
     belongs_to :cart
     belongs_to :user
@@ -33,8 +33,7 @@ class Order < ActiveRecord::Base
       transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
       if response.success?
         cart.update_attribute(:purchased_at, Time.now) 
-        self.order_nr = self.order_number
-        self.save
+        self.update_attributes(:order_nr => self.order_number)
         Rails.logger.debug "Order nr. generated: #{self.order_number}"
       else # response failed
         Rails.logger.debug "response_params: #{response.params.to_yaml}"
@@ -55,6 +54,7 @@ class Order < ActiveRecord::Base
         self.last_name = details.params["last_name"]
       end
     end
+  
     
 
     # returns the price of all cart items and shipping costs for this order in cents (integer) for communicating with the gateway
@@ -127,10 +127,10 @@ class Order < ActiveRecord::Base
     def total_price
       self.cart.total_price + self.shipping_method.price
     end
-    
 
     private
-    
+
+      
 
     # collect order information to send to gateway for payment processing
     def standard_purchase_options

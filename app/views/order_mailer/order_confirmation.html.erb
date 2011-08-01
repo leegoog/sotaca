@@ -9,23 +9,32 @@
 </p>
 
 
-<table>
-	<%= render :partial => "carts/articles_in_cart", :cart => @order.cart %>
+<table cellspacing="10" cellpadding="5">
+	<tr>
+		<th>Item</th>
+		<th>Unit Price</th>
+		<th class="price">Qantity</th>
+		<th class="price">Price</th>
+	</tr>
+	<% for item in @order.cart.line_items %>
+	<tr>
+		<td><%= item.product.title %></td>
+		<td><%= number_to_currency(item.unit_price) %></td>
+		<td><%= item.quantity %></td>
+		<td><%= number_to_currency(item.full_price) %></td>
+	</tr>
+	<% end %>
 	<tr class="shipping_line">
 		<td><%= t"orders.shipping_costs" %></td>
-		<td colspan="2"><%= shipping_method.name %></td>
-		<td colspan="2" class="price"><b><%= number_to_currency(@order.shipping_method.price.exchange_to("GBP"))%> </b></td>
+		<td colspan="2"><%= @order.shipping_method.name %></td>
+		<td class="price"><b><%= number_to_currency(@order.shipping_method.price.exchange_to("GBP"))%> </b></td>
 	</tr>
-	<tr class="total">
+	<tr class="total" style="border-top: 1px">
 		<td><b>TOTAL</b></td>
 		<% total = (@order.cart.total_price + @order.shipping_method.price).to_money.exchange_to("GBP") %>
+		<td colspan="2"><i>(V.A.T. incl.: <%= number_to_currency(total*0.16)%>)</i></td>
 		<td colspan="3" class="price">
-			<div style="position: relative">
 			<b><%= number_to_currency(total) %></b>
-			<span class="tax price" style="font-size: 10px !important">
-				<i>(V.A.T. incl.: <%= number_to_currency(total*0.16)%>)</p>
-			</span>
-			</div>
 		</td>
 	</tr>
 </table>
