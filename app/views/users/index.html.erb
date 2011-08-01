@@ -4,13 +4,11 @@
   <tr>
     <th>Username</th>
 	<th>Country</th>
-	<th>E-Mail</th>
   </tr>
   <% for user in @users %>
     <tr class="<%= cycle('white','grey')-%>">
       <td><%= user.username %></td>
       <td><%= user.locale %></td>
-      <td><%= user.email %></td>
       <td><%= link_to "Show", user %></td>
 	  <% if current_user.admin? || current_user == @user %>
       <td><%= link_to "Edit", edit_user_path(user) %></td> 

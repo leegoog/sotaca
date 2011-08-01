@@ -6,7 +6,7 @@
 
 <br/>
 
-<h2>Order summary</h2>
+<h2><%= t"orders.summary"%> </h2>
 <%# render "summary", :cart => current_cart %>  
 <table id="line_items">
 	<tr>
@@ -15,7 +15,27 @@
 		<th class="price">Qantity</th>
 		<th class="price">Price</th>
 	</tr>
-<%= render :partial => "carts/articles_in_cart", :locals => {:cart => current_cart} %>  
+<%= render :partial => "carts/articles_in_cart", :locals => {:cart => current_cart} %> 
+<% shipping_method = session[:order_params]["shipping_method_id"] ?  ShippingMethod.find(session[:order_params]["shipping_method_id"].to_i) : ShippingMethod.first %>
+<% if shipping_method %>
+	<tr class="shipping_line">
+		<td><%= t"orders.shipping_costs" %></td>
+		<td colspan="2"><%= shipping_method.name %></td>
+		<td colspan="2" class="price"><b><%= number_to_currency(shipping_method.price.exchange_to(session[:currency])) %></b></td>
+	</tr>
+<% end %>
+<tr class="total">
+	<td><b>TOTAL</b></td>
+	<% total = (current_cart.total_price + shipping_method.price).to_money.exchange_to(session[:currency]) %>
+	<td colspan="3" class="price">
+		<div style="position: relative">
+		<b><%= number_to_currency(total) %></b>
+		<span class="tax price" style="font-size: 10px !important">
+			<i>(V.A.T. incl.: <%= number_to_currency(total*0.16)%>)</p>
+		</span>
+		</div>
+	</td>
+</tr>
 </table>
 <br/>
 <h2>
@@ -26,26 +46,15 @@
   <%= f.error_messages %>  
   <%= render "#{@order.current_step}_step", :f => f, :order => @order %>  
   <%= f.hidden_field :express_token, :value => @order.express_token if @order.express_token? %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <p>
 	  <%= f.submit "Back", :name => "back_button" unless @order.first_step? %>
       <%= f.submit "Continue" %>
   </p>
 <% end %>
 
-
-
+  <div id="paypal_express">
+  	<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), 
+  	express_checkout_url %>
+  </div>
 </div>
-
-
-
-<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), 
-express_checkout_url %>
-
-
-
-
-<%= debug @order %>
-
-----
-
-<%= "Paypal Express Token: #{raw debug @order.express_token}" %>
