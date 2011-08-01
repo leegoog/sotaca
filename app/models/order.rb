@@ -1,8 +1,8 @@
 class Order < ActiveRecord::Base
     attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country
-    attr_accessible :shipping_method_id, :user_id, :card_type, :card_expires_on, :card_number, :card_verification
+    attr_accessible :shipping_method_id, :user_id, :card_type, :card_expires_on, :card_number, :card_verification, :express_token
     
-    attr_accessor :card_number, :card_verification, :order_number, :express_token
+    attr_accessor :card_number, :card_verification, :order_number
     
     attr_writer :current_step, :order_nr
     
@@ -58,8 +58,12 @@ class Order < ActiveRecord::Base
     
 
     # returns the price of all cart items and shipping costs for this order in cents (integer) for communicating with the gateway
-    def price_in_cents
-      cart.total_price.to_money.cents.to_i + shipping_method.price.to_money.cents.to_i
+    def price_in_cents(money=nil)
+      if money
+        money.to_money.cents.to_i
+      else
+        cart.total_price.to_money.cents.to_i + shipping_method.price.to_money.cents.to_i
+      end
     end
     
     # returns an array of our checkout form steps
