@@ -9,11 +9,11 @@
 #
 
 ActionMailer::Base.smtp_settings = {  
-  :address              => "smtp.gmail.com",  
-  :port                 => 587,  
-  :domain               => "gmail.com",  
-  :user_name            => "tmaximini@gmail.com",  
-  :password             => "sum3mer05",  
+  :address              => "smtpout.europe.secureserver.net",  
+  :port                 => 80,  
+  :domain               => "www.sotaca1898.com",  
+  :user_name            => "info@sotaca1898.com",  
+  :password             => "redarmy111",  
   :authentication       => "plain",  
   :enable_starttls_auto => true  
 }

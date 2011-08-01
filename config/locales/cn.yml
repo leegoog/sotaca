@@ -2,7 +2,6 @@
 # by tsechingho (http://github.com/tsechingho)
 
 cn:
-  welcome: "hung tschaou"
   chinese: "没有锁定"
   
   store:
@@ -34,6 +33,15 @@ cn:
     shop: '在线购物'
     terms: '条款和协议'
     whole_sale: '合作关系'
+
+  orders:
+    steps:
+      cart: '购物篮'
+      billing: '付款详情'
+      shipping: '快递详情'
+      confirmation: '确认订单'
+    shipping_costs: "快递费"
+    summary: "订单详情"
   
   
   date:

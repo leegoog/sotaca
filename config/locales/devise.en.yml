@@ -71,6 +71,7 @@ en:
       username: 'Username'
       password_confirmation: 'Password Confirmation'
       language: 'Language'
+      current_password: 'Enter your current password'
     
     # these go up to devise
         
