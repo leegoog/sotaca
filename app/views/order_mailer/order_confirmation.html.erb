@@ -1,0 +1,38 @@
+<p>Welcome <%= @order.user.username %>!</p>
+
+<p>Thank you for shopping at <a href="http://www.sotaca1898.com">SOTACA1898.com</a>. We confirm you that we received your order. Please find your purchase information below:</p>
+
+<p>
+	Order Number: <%= @order.order_nr %><br/>
+	Order Date: <%= @order.created_at.to_formatted_s %><br/>
+	Order Number: <%= @order.order_nr %><br/>	
+</p>
+
+
+<table>
+	<%= render :partial => "carts/articles_in_cart", :cart => @order.cart %>
+	<tr class="shipping_line">
+		<td><%= t"orders.shipping_costs" %></td>
+		<td colspan="2"><%= shipping_method.name %></td>
+		<td colspan="2" class="price"><b><%= number_to_currency(@order.shipping_method.price.exchange_to("GBP"))%> </b></td>
+	</tr>
+	<tr class="total">
+		<td><b>TOTAL</b></td>
+		<% total = (@order.cart.total_price + @order.shipping_method.price).to_money.exchange_to("GBP") %>
+		<td colspan="3" class="price">
+			<div style="position: relative">
+			<b><%= number_to_currency(total) %></b>
+			<span class="tax price" style="font-size: 10px !important">
+				<i>(V.A.T. incl.: <%= number_to_currency(total*0.16)%>)</p>
+			</span>
+			</div>
+		</td>
+	</tr>
+</table>
+
+
+<p>In case of further inqueries, please contact our Customer Service<br/>
+Contact E-mail: <a href="mailto:info@sotaca1898.com">info@sotaca1898.com</a>
+
+<br/><br/>
+<b>SOTACA1898</b>

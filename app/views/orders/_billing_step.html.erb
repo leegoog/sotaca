@@ -26,3 +26,8 @@
 	<%= f.hidden_field :cart_id, :value => current_cart.id %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 </p>
+
+<div id="paypal_express">
+	<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), 
+	express_checkout_url %>
+</div>
