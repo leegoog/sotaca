@@ -15,9 +15,11 @@ class OrdersController < ApplicationController
   
   # handles paypal xpress checkout
   def express
-    response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents,
+    price = current_cart.total_price + ShippingMethod.find(session[:order_params]['shipping_method_id']).price
+    Rails.logger.debug "price: #{price}"
+    response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents(price),
       :ip => request.remote_ip,
-      :return_url => new_order_url(:order_step => "billing"),
+      :return_url => new_order_url(:order_step => "confirmation"),
       :cancel_return_url => products_url,
       :currency => "GBP"
     )
@@ -54,7 +56,6 @@ class OrdersController < ApplicationController
     if params[:back_button]  
       @order.previous_step  
     elsif @order.last_step?  
-      @order.order_nr = @order.order_number
       @order.save if @order.all_valid? 
     else  
       @order.next_step  
@@ -65,6 +66,11 @@ class OrdersController < ApplicationController
       render 'new'  
     else  
       # order is saved and valid
+      
+      # generate unique identifier
+      @order.order_nr = @order.order_number
+      @order.save
+      # try to transfer the money
       if @order.purchase
         # send confirmation email
         OrderMailer.order_confirmation(@order).deliver 
