@@ -47,8 +47,10 @@ class OrdersController < ApplicationController
   
   # creates a new order from the current_cart
   def create
+    
     # create order through cart 
     @order = current_cart.build_order(params[:order])
+    
     session[:order_params].deep_merge!(params[:order]) if params[:order]  
     @order = Order.new(session[:order_params])  
     @order.current_step = session[:order_step]  
