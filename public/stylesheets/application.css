@@ -370,7 +370,6 @@ margin: -10px 0 20px -35px;
 	border: 1px solid;
 	width: 154px;
 	padding: 10px 0;
-	height: 130px;
 	text-align: center;
 }
 
@@ -584,14 +583,19 @@ table.translations {
 #articles .set_article {
 	border: 1px dashed #ccc;
 	margin: 10px;
+	height: 60px;
+    padding:5px;
 }
 #articles .set_article p{
 	padding: 1px 5px;
-	margin: 5px;
+	margin: 0px;
 	text-align: right;
+	font-size: 12px;
 }
-#articles .set_article .image{
-
+#articles .set_article .article_price{
+	font-size: 11px;
+	color: #666;
+	text-align: right;
 }
 
 .set_table {
