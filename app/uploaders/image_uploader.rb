@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  
+  # use fog for amazon s3 cloud
   storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -49,14 +49,16 @@ class ImageUploader < CarrierWave::Uploader::Base
      %w(jpg jpeg gif png)
    end
    
+   # makes the white background of an image transparent (for the sets)
    def make_transparent 
      manipulate! do |img|
-       img.fuzz = '5%'
+       img.fuzz = '15%'
        image = Magick::Image.read(img.filename).first
        image.transparent("#ffffff", Magick::TransparentOpacity)
      end 
    end 
    
+   # creates a drop shadow around and image
    def shadow
      manipulate! do |img|
        layers = Magick::ImageList.new
@@ -69,7 +71,7 @@ class ImageUploader < CarrierWave::Uploader::Base
      end
    end
    
-   
+   # overwrite filename with png extension anfter conversion
    def filename
      super.chomp(File.extname(super)) + '.png'
    end
