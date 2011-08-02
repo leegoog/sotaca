@@ -3,7 +3,7 @@ class ArticleSetsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   
   def index
-    @article_sets = ArticleSet.order(:created_at).page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
+    @article_sets = ArticleSet.order('created_at desc').page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
   end
 
   def show
