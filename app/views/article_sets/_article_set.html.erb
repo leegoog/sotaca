@@ -30,9 +30,12 @@
 							<p><%= link_to article.product.title, article.product, :title => t('products.details') %></p>
 							<p><%= article.product.subtitle %></p>
 							<p>
+								
+								<span class="cart"><%= link_to image_tag('cart.gif'), line_items_path(:product_id => article.product), :method => :post, :title => t("products.add_to_cart") %></span>
 								<span class="article_price">
 									<%= number_to_currency(article.product.price.exchange_to(session[:currency])) %>
 								</span>
+								
 							</p>
 							</div>
 							<div class="clear"></div>
