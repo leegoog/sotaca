@@ -303,10 +303,6 @@ margin: -10px 0 20px -35px;
 }
 
 
-#content .product_detail .column .img_item img {
-	width: 165px;
-}
-
 #content .product_detail .infos{
 	font-size: 12px;
 	margin-top: -20px;
@@ -372,8 +368,8 @@ margin: -10px 0 20px -35px;
 }
 #content .product_detail .img_item{
 	border: 1px solid;
-	width: 130px;
-	padding: 5px 0;
+	width: 154px;
+	padding: 10px 0;
 	height: 130px;
 	text-align: center;
 }
