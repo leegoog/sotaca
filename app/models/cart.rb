@@ -13,6 +13,15 @@ class Cart < ActiveRecord::Base
       line_items.to_a.sum { |item| item.full_price }
     end
     
+    # returns total amount of items in cart
+    def total_items
+      total = 0
+      line_items.each do |li|
+        total += li.quantity
+      end
+      total
+    end
+    
     # returns true if cart is empty
     def empty?
       line_items.count < 1

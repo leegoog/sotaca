@@ -40,32 +40,19 @@
 		<div class="size_selectors">
 			//todo: size selectors
 		</div>
-		
-		<div class="subheadline">
-			<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :title => t('products.add_to_cart') %>
 			
-		</div>		
 		<div class="subheadline">
 			<%= t 'products.add_to_wishlist' %>
 		</div>		
 		<div class="subheadline">
 			<%= t 'products.tell_a_friend' %>
 		</div>
-		<br/><br/>
+		<br/>
 		<div class="subheadline">
-			<%= t 'products.categories' %>
+			<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true, :title => t('products.add_to_cart') %>
+			
 		</div>
-		<div class="categories">
-			<% if !@product.categories.blank? %>
-			  <% for cat in @product.categories %>
-			   <span class="category_link">
-			    <%= link_to cat.name, :action => 'index', :category => cat.id %>
-				</span>
-			  <% end %>
-			<% else %>
-     			<%= t 'products.uncategorized' %>
-			<% end %>
-		</div>
+
 		</div>
 	</div>
 	<div class="column" style="width:auto">

@@ -1,0 +1,8 @@
+$('#cart_count a').html('<%= current_cart.total_items %>');  
+$('#added_to_cart').fadeIn(1000);
+setTimeout(
+	function () {
+			$('#added_to_cart').fadeOut(1200);
+	},
+
+	3000);

@@ -40,9 +40,11 @@
 	  				
 	  		</div>
 	  		<div id="cart_menu">
-			 <span id="cart_image" <%= "style='right:60px'" if params[:locale] == "cn" %>><%= link_to image_tag("cart.jpg"), current_cart_url, :title => t('orders.steps.cart')%></span>
+			 <div id="cart_image" <%= "style='right:67px'" if params[:locale] == "cn" %>>
+			<span id="added_to_cart"><%= t("added_to_cart") %></span>
+			<%= link_to image_tag("cart.jpg"), current_cart_url, :title => t('orders.steps.cart')%></div>
 	  			<ul>
-					<li>
+					<li id="cart_count">
 					<%= link_to "#{current_cart.number_of_items}", current_cart_url %>
 					
 					</li>
