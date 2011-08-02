@@ -52,8 +52,8 @@ class ImageUploader < CarrierWave::Uploader::Base
    # makes the white background of an image transparent (for the sets)
    def make_transparent 
      manipulate! do |img|
-       img.fuzz = '15%'
        image = Magick::Image.read(img.filename).first
+       image.fuzz = '15%'
        image.transparent("#ffffff", Magick::TransparentOpacity)
      end 
    end 
