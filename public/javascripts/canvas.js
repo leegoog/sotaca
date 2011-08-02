@@ -99,14 +99,7 @@ addToCanvas = function (url, title, id, left, top) {
 
 																	}
 				  							});
-				$( "#set_item_" + id + " img").resizable({ 
-				  				handles: 'sw, se, ne, nw',
-				  				stop: function(event, ui) { 
 
-								updateAttributes(id); 
-										}
-
-						});
 
 		   		  $( "#canvas .canvas_item" ).live("click", function () {
 		   		  	$( ".canvas_item" ).removeClass("active_element");
@@ -124,6 +117,18 @@ addToCanvas = function (url, title, id, left, top) {
 				// add article to array
 				articles_in_set.push(id);
 			  }, 200);
+			setTimeout(
+				function ()
+				{
+				$( "#set_item_" + id + " img").resizable({ 
+				  				handles: 'sw, se, ne, nw',
+				  				stop: function(event, ui) { 
+
+								updateAttributes(id); 
+										}
+
+						});
+			}, 200);
 	
 	}
 }
