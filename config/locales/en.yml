@@ -7,6 +7,8 @@ en:
   chinese: "没有锁定"
   needs_login: "You need to log in before."
   back: "Back"
+  like_save: "You like this product! Thank you."
+  added_to_cart: "Product added."
   
   profile:
     edit: "Edit Profile"

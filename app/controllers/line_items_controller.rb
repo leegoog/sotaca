@@ -3,8 +3,14 @@ class LineItemsController < ApplicationController
      @product = Product.find(params[:product_id])
      @cart = current_cart
      @cart.add_item(@product.id, @product.price)
-     flash[:notice] = "Added #{@product.title} to cart."
-     redirect_to current_cart_url
+     
+     respond_to do |format|
+       format.html { 
+         flash[:notice] = "Added #{@product.title} to cart."
+         redirect_to product_path(@product)
+         }
+       format.js
+     end
    end
    
    def destroy
