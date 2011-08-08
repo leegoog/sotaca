@@ -41,6 +41,15 @@ Feature: Manage Users
   
   
   Scenario: Raise exception when accessing the edit url directly
+    Given the following user records
+      | username | password | admin |
+      | bob      | secret   | false |
+      | admin    | secret   | true  |
+      And I am logged in as "bob" with password "secret"
+      When I visit the edit profile path of admin
+      Then I should see "Not authorized"
+      And I should not see "Edit Profile"
+    
   
   
   

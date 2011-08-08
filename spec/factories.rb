@@ -36,7 +36,7 @@
     f.sequence(:name) { |n| "set#{n}" }
     f.sequence(:blog_image) { |n| "image#{n}.png" }
     f.association :user
-    f.association :set_item
+    f.association :set_items
   end
   
 

@@ -51,13 +51,14 @@ class User < ActiveRecord::Base
     return user if user && user.matching_password?(pass)
   end
 
+  # check if the saved hash equals the newly encrypted (password matches)
   def matching_password?(pass)
     self.password_hash == encrypt_password(pass)
   end
   
   protected
 
- 
+ # looks for either username or email to authenticate
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)
@@ -99,12 +100,12 @@ class User < ActiveRecord::Base
      end  
      record
    end
-
+   # needed for devise
    def self.find_record(login)
      where(["username = :value OR email = :value", { :value => login }]).first
    end
 
-
+   # needed for devise
    def role?(role)
        return !!self.roles.find_by_name(role.to_s.camelize)
    end

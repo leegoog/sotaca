@@ -181,6 +181,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -218,6 +220,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -273,63 +281,66 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+creates an png image collage from all the associated set items of this
+article set
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="create-collage-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/article_set.rb, line 29</span>
-29:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_collage</span>
-30:       <span class="ruby-comment cmt"># load the template</span>
-31:       
-32:       
-33:       <span class="ruby-identifier">img_path</span> = <span class="ruby-node">&quot;#{::Rails.root.to_s}/tmp/sets/&quot;</span>
-34:       <span class="ruby-identifier">img_name</span> = <span class="ruby-node">&quot;set_#{self.id}_#{Time.now.to_i}&quot;</span>
-35:       
-36:       <span class="ruby-comment cmt">#template </span>
-37:       <span class="ruby-comment cmt"># template = Magick::Image.read(&quot;#{RAILS_ROOT}/public/images/set_template.png&quot;).first</span>
-38:       <span class="ruby-comment cmt"># or blank white image</span>
-39:       <span class="ruby-identifier">template</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">600</span>, <span class="ruby-value">480</span>){
-40:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">background_color</span> = <span class="ruby-value str">'#ffffff'</span>
-41:        }
-42:       
-43:       <span class="ruby-identifier">template</span>.<span class="ruby-identifier">format</span> = <span class="ruby-value str">'png'</span>
-44:       <span class="ruby-comment cmt"># template.filename = img_name</span>
-45:       
-46:       <span class="ruby-comment cmt"># go through all set items by z_index and add lay it over the template</span>
-47:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">item</span> <span class="ruby-keyword kw">in</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_items</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value str">&quot;z_index asc&quot;</span>)
-48:         <span class="ruby-identifier">photo</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">assets</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">image</span>.<span class="ruby-identifier">url</span>(<span class="ruby-value">:thumb</span>).<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">first</span>
-49:         <span class="ruby-identifier">photo</span> = <span class="ruby-identifier">photo</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">height</span>)
-50:         <span class="ruby-identifier">photo</span> = <span class="ruby-identifier">photo</span>.<span class="ruby-identifier">rotate</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">rotation</span>)
-51:         <span class="ruby-comment cmt"># composite item over template offsetting pos_x and pos_y for the template border</span>
-52:         <span class="ruby-identifier">template</span>.<span class="ruby-identifier">composite!</span>(<span class="ruby-identifier">photo</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">pos_y</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">OverCompositeOp</span>)
-53:       <span class="ruby-keyword kw">end</span>
-54: 
-55:       <span class="ruby-comment cmt"># create temp file </span>
-56:       
-57:       <span class="ruby-identifier">tmp_image</span> = <span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">img_name</span>, <span class="ruby-value str">'.png'</span>])
+    <span class="ruby-comment cmt"># File app/models/article_set.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_collage</span>
+32:       <span class="ruby-comment cmt"># load the template</span>
+33:       
+34:       
+35:       <span class="ruby-identifier">img_path</span> = <span class="ruby-node">&quot;#{::Rails.root.to_s}/tmp/sets/&quot;</span>
+36:       <span class="ruby-identifier">img_name</span> = <span class="ruby-node">&quot;set_#{self.id}_#{Time.now.to_i}&quot;</span>
+37:       
+38:       <span class="ruby-comment cmt">#template </span>
+39:       <span class="ruby-comment cmt"># template = Magick::Image.read(&quot;#{RAILS_ROOT}/public/images/set_template.png&quot;).first</span>
+40:       <span class="ruby-comment cmt"># or blank white image</span>
+41:       <span class="ruby-identifier">template</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">600</span>, <span class="ruby-value">480</span>){
+42:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">background_color</span> = <span class="ruby-value str">'#ffffff'</span>
+43:        }
+44:       
+45:       <span class="ruby-identifier">template</span>.<span class="ruby-identifier">format</span> = <span class="ruby-value str">'png'</span>
+46:       <span class="ruby-comment cmt"># template.filename = img_name</span>
+47:       
+48:       <span class="ruby-comment cmt"># go through all set items by z_index and add lay it over the template</span>
+49:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">item</span> <span class="ruby-keyword kw">in</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_items</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value str">&quot;z_index asc&quot;</span>)
+50:         <span class="ruby-identifier">photo</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">assets</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">image</span>.<span class="ruby-identifier">url</span>(<span class="ruby-value">:thumb</span>).<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">first</span>
+51:         <span class="ruby-identifier">photo</span> = <span class="ruby-identifier">photo</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">height</span>)
+52:         <span class="ruby-identifier">photo</span> = <span class="ruby-identifier">photo</span>.<span class="ruby-identifier">rotate</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">rotation</span>)
+53:         <span class="ruby-comment cmt"># composite item over template offsetting pos_x and pos_y for the template border</span>
+54:         <span class="ruby-identifier">template</span>.<span class="ruby-identifier">composite!</span>(<span class="ruby-identifier">photo</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">pos_y</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">OverCompositeOp</span>)
+55:       <span class="ruby-keyword kw">end</span>
+56: 
+57:       <span class="ruby-comment cmt"># create temp file </span>
 58:       
-59:       <span class="ruby-comment cmt"># write rmagick image in tempfile</span>
+59:       <span class="ruby-identifier">tmp_image</span> = <span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">img_name</span>, <span class="ruby-value str">'.png'</span>])
 60:       
-61:       <span class="ruby-identifier">template</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">tmp_image</span>.<span class="ruby-identifier">path</span>)
+61:       <span class="ruby-comment cmt"># write rmagick image in tempfile</span>
 62:       
-63:       <span class="ruby-comment cmt"># save &amp; upload with carrierwave</span>
-64:   
-65:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">blog_image</span> = <span class="ruby-identifier">tmp_image</span>
-66:       
-67:       <span class="ruby-comment cmt"># self.blog_image.store!(template)</span>
-68:         
-69:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write_blog_image_identifier</span>
-70:       
-71:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">save!</span>
+63:       <span class="ruby-identifier">template</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">tmp_image</span>.<span class="ruby-identifier">path</span>)
+64:       
+65:       <span class="ruby-comment cmt"># save &amp; upload with carrierwave</span>
+66:   
+67:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">blog_image</span> = <span class="ruby-identifier">tmp_image</span>
+68:       
+69:       <span class="ruby-comment cmt"># self.blog_image.store!(template)</span>
+70:         
+71:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write_blog_image_identifier</span>
 72:       
-73:       <span class="ruby-comment cmt">#File.delete(img_path + img_name)</span>
+73:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">save!</span>
 74:       
-75:       <span class="ruby-identifier">tmp_image</span>.<span class="ruby-identifier">delete</span>
+75:       <span class="ruby-comment cmt">#File.delete(img_path + img_name)</span>
 76:       
-77:     <span class="ruby-keyword kw">end</span></pre>
+77:       <span class="ruby-identifier">tmp_image</span>.<span class="ruby-identifier">delete</span>
+78:       
+79:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

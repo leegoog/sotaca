@@ -41,6 +41,7 @@ class Order < ActiveRecord::Base
       response.success?
     end
 
+    # returns paypal express token
     def express_token
       self[:express_token]
     end
