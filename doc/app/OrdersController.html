@@ -189,6 +189,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -226,6 +228,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -290,42 +298,48 @@ creates a new order from the current_cart
 					<div class="method-source-code"
 						id="create-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 42</span>
-42:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-43:     <span class="ruby-comment cmt"># create order through cart </span>
-44:     <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">build_order</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>])
-45:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>].<span class="ruby-identifier">deep_merge!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>]  
-46:     <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>])  
-47:     <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>]  
-48:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:back_button</span>]  
-49:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">previous_step</span>  
-50:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last_step?</span>  
-51:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">save</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">all_valid?</span> 
-52:     <span class="ruby-keyword kw">else</span>  
-53:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">next_step</span>  
-54:     <span class="ruby-keyword kw">end</span>  
-55:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>] = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">current_step</span>  
-56:       
-57:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">new_record?</span>  
-58:       <span class="ruby-identifier">render</span> <span class="ruby-value str">'new'</span>  
-59:     <span class="ruby-keyword kw">else</span>  
-60:       <span class="ruby-comment cmt"># order is saved and valid</span>
-61:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">purchase</span>
-62:         <span class="ruby-comment cmt"># reset session information about order</span>
-63:         <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>] = <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>] = <span class="ruby-keyword kw">nil</span>
-64:         <span class="ruby-comment cmt"># order went through gateway successfully</span>
-65:         <span class="ruby-comment cmt"># render :action =&gt; &quot;success&quot;</span>
-66:         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Order saved.&quot;</span>  
-67:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@order</span>  
-68:       <span class="ruby-keyword kw">else</span>
-69:          <span class="ruby-comment cmt"># gateway didn't authorize or error</span>
-70:          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-value str">&quot;There was a problem with the transaction.&quot;</span>  
-71:          <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;failure&quot;</span>
-72:          <span class="ruby-comment cmt"># delete??</span>
-73:          <span class="ruby-comment cmt"># @order.destroy</span>
-74:       <span class="ruby-keyword kw">end</span>
-75:     <span class="ruby-keyword kw">end</span>
-76:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 49</span>
+49:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+50:     
+51:     <span class="ruby-comment cmt"># create order through cart </span>
+52:     <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">build_order</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>])
+53:     
+54:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>].<span class="ruby-identifier">deep_merge!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>]  
+55:     <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>])  
+56:     <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>]  
+57:     <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ip_address</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>
+58:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:back_button</span>]  
+59:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">previous_step</span>  
+60:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">last_step?</span>  
+61:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">save</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">all_valid?</span> 
+62:     <span class="ruby-keyword kw">else</span>  
+63:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">next_step</span>  
+64:     <span class="ruby-keyword kw">end</span>  
+65:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>] = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">current_step</span>  
+66:     
+67:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">new_record?</span>  
+68:       <span class="ruby-identifier">render</span> <span class="ruby-value str">'new'</span>  
+69:     <span class="ruby-keyword kw">else</span>  
+70:       <span class="ruby-comment cmt"># order is saved and valid</span>
+71:       <span class="ruby-comment cmt"># try to transfer the money</span>
+72:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">purchase</span>
+73:         <span class="ruby-comment cmt"># send confirmation email</span>
+74:         <span class="ruby-constant">OrderMailer</span>.<span class="ruby-identifier">order_confirmation</span>(<span class="ruby-ivar">@order</span>).<span class="ruby-identifier">deliver</span> 
+75:         <span class="ruby-comment cmt"># reset session information about order</span>
+76:         <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>] = <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>] = <span class="ruby-keyword kw">nil</span>
+77:         <span class="ruby-comment cmt"># order went through gateway successfully</span>
+78:         <span class="ruby-comment cmt"># render :action =&gt; &quot;success&quot;</span>
+79:         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Order saved.&quot;</span>  
+80:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@order</span>  
+81:       <span class="ruby-keyword kw">else</span>
+82:          <span class="ruby-comment cmt"># gateway didn't authorize or error</span>
+83:          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-value str">&quot;There was a problem with the transaction.&quot;</span>  
+84:          <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;failure&quot;</span>
+85:          <span class="ruby-comment cmt"># delete??</span>
+86:          <span class="ruby-comment cmt"># @order.destroy</span>
+87:       <span class="ruby-keyword kw">end</span>
+88:     <span class="ruby-keyword kw">end</span>
+89:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -358,17 +372,19 @@ handles paypal xpress checkout
 					<div class="method-source-code"
 						id="express-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 18</span>
-18:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express</span>
-19:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">setup_purchase</span>(<span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">build_order</span>.<span class="ruby-identifier">price_in_cents</span>,
-20:       <span class="ruby-value">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>,
-21:       <span class="ruby-value">:return_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">new_order_url</span>(<span class="ruby-value">:order_step</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;billing&quot;</span>),
-22:       <span class="ruby-value">:cancel_return_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">products_url</span>,
-23:       <span class="ruby-value">:currency</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>
-24:     )
-25:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">redirect_url_for</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">token</span>)
-26:     <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">to_yaml</span>
-27:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 17</span>
+17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express</span>
+18:     <span class="ruby-identifier">price</span> = <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">total_price</span> <span class="ruby-operator">+</span> <span class="ruby-constant">ShippingMethod</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>][<span class="ruby-value str">'shipping_method_id'</span>]).<span class="ruby-identifier">price</span>
+19:     <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;price: #{price}&quot;</span>
+20:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">setup_purchase</span>(<span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">build_order</span>.<span class="ruby-identifier">price_in_cents</span>(<span class="ruby-identifier">price</span>),
+21:       <span class="ruby-value">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>,
+22:       <span class="ruby-value">:return_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">new_order_url</span>(<span class="ruby-value">:order_step</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;confirmation&quot;</span>),
+23:       <span class="ruby-value">:cancel_return_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">products_url</span>,
+24:       <span class="ruby-value">:currency</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>
+25:     )
+26:     <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">redirect_url_for</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">token</span>)
+27:     <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">to_yaml</span>
+28:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -401,14 +417,14 @@ lists all orders of a client (if customer) or all orders (if admin)
 					<div class="method-source-code"
 						id="index-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 9</span>
- 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span> 
-10:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin?</span>
-11:       <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">cart</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">orders</span>    
-12:     <span class="ruby-keyword kw">else</span>
-13:       <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">all</span> 
-14:     <span class="ruby-keyword kw">end</span>
-15:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 8</span>
+ 8:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span> 
+ 9:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin?</span>
+10:       <span class="ruby-ivar">@orders</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">orders</span>    
+11:     <span class="ruby-keyword kw">else</span>
+12:       <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">all</span> 
+13:     <span class="ruby-keyword kw">end</span>
+14:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -441,13 +457,19 @@ renders the new order template => credit card processing
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 30</span>
-30:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
-31:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>] <span class="ruby-operator">||=</span> {}  
-32:     <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>])
-33:     <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">express_token</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>]
-34:     <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>]
-35:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 31</span>
+31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+32:     <span class="ruby-comment cmt"># check if anything is in cart, if not redirect</span>
+33:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">empty?</span>
+34:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Nothing to checkout!&quot;</span>
+35:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">products_url</span>
+36:     <span class="ruby-keyword kw">else</span>
+37:       <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>] <span class="ruby-operator">||=</span> {}  
+38:       <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:order_params</span>])
+39:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">express_token</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>]
+40:       <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:order_step</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:order_step</span>]
+41:     <span class="ruby-keyword kw">end</span>
+42:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -478,10 +500,10 @@ renders the new order template => credit card processing
 					<div class="method-source-code"
 						id="show-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 37</span>
-37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-38:     <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-39:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/orders_controller.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
+45:     <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+46:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -11,6 +11,7 @@ class ShippingMethod < ActiveRecord::Base
                   :converter => Proc.new { |value| value.respond_to?(:to_money) ? value.to_money : Money.empty }
                   
     
+    # returns a combined string of the name and the price of this shipping method
     def name_and_price
       "#{self.name} (#{self.price.format(:symbol => true)})"
     end

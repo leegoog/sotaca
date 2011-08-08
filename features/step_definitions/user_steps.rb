@@ -16,3 +16,8 @@ Given /^I visit profile for "([^"]*)"$/ do |name|
  user = User.find_by_username!(name)
  visit user_url(user)
 end
+
+Given /^I visit the edit profile path of (.+)$/ do |name|
+  user = User.find_by_username(name)
+  visit edit_user_path(user)
+end

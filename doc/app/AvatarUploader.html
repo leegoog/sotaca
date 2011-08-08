@@ -69,6 +69,8 @@
 				<h3 class="section-header">Methods</h3>
 				<ul class="link-list">
 					
+					<li><a href="#method-i-extension_white_list">#extension_white_list</a></li>
+					
 					<li><a href="#method-i-store_dir">#store_dir</a></li>
 					
 				</ul>
@@ -181,6 +183,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -218,6 +222,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -261,6 +271,43 @@ encoding: utf-8
 		
 		<div id="public-instance-method-details" class="method-section section">
 			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="extension-white-list-method" class="method-detail ">
+				<a name="method-i-extension_white_list"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">extension_white_list</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Add a white list of extensions which are allowed to be uploaded. For images
+you might use something like this:
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="extension-white-list-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/uploaders/avatar_uploader.rb, line 38</span>
+38:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension_white_list</span>
+39:      <span class="ruby-node">%(jpg jpeg gif png)</span>
+40:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
 
 		
 			<div id="store-dir-method" class="method-detail ">

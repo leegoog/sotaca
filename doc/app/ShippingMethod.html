@@ -5,7 +5,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Class: SetItemsController</title>
+	<title>Class: ShippingMethod</title>
 
 	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -38,8 +38,8 @@
 				<div class="section-body">
 					<ul>
 					
-						<li><a href="./app/controllers/set_items_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="app/controllers/set_items_controller.rb">app/controllers/set_items_controller.rb</a></li>
+						<li><a href="./app/models/shipping_method_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/models/shipping_method.rb">app/models/shipping_method.rb</a></li>
 					
 					</ul>
 				</div>
@@ -55,7 +55,7 @@
 			<div id="parent-class-section" class="section">
 				<h3 class="section-header">Parent</h3>
 				
-				<p class="link"><a href="ApplicationController.html">ApplicationController</a></p>
+				<p class="link">ActiveRecord::Base</p>
 				
 			</div>
 			
@@ -69,7 +69,7 @@
 				<h3 class="section-header">Methods</h3>
 				<ul class="link-list">
 					
-					<li><a href="#method-i-create">#create</a></li>
+					<li><a href="#method-i-name_and_price">#name_and_price</a></li>
 					
 				</ul>
 			</div>
@@ -250,7 +250,7 @@
 	</div>
 
 	<div id="documentation">
-		<h1 class="class">SetItemsController</h1>
+		<h1 class="class">ShippingMethod</h1>
 
 		<div id="description">
 			
@@ -261,6 +261,29 @@
 
 		<!-- Attributes -->
 		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="name-and-price-attribute-method" class="method-detail">
+				<a name="name_and_price"></a>
+				
+				<a name="name_and_price="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">name_and_price</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
 
 		<!-- Methods -->
 		
@@ -268,12 +291,12 @@
 			<h3 class="section-header">Public Instance Methods</h3>
 
 		
-			<div id="create-method" class="method-detail ">
-				<a name="method-i-create"></a>
+			<div id="name-and-price-method" class="method-detail ">
+				<a name="method-i-name_and_price"></a>
 
 				<div class="method-heading">
 				
-					<span class="method-name">create</span><span
+					<span class="method-name">name_and_price</span><span
 						class="method-args">()</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
@@ -281,17 +304,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+returns a combined string of the name and the price of this shipping method
+</p>
 					
 
 					
 					<div class="method-source-code"
-						id="create-source">
+						id="name-and-price-source">
 <pre>
-   <span class="ruby-comment cmt"># File app/controllers/set_items_controller.rb, line 2</span>
-2:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-3:     <span class="ruby-ivar">@set_item</span> = <span class="ruby-constant">SetItem</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:set_item</span>]) 
-4:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/shipping_method.rb, line 15</span>
+15:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name_and_price</span>
+16:       <span class="ruby-node">&quot;#{self.name} (#{self.price.format(:symbol =&gt; true)})&quot;</span>
+17:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -71,11 +71,17 @@
 					
 					<li><a href="#method-i-all_valid%3F">#all_valid?</a></li>
 					
+					<li><a href="#method-i-billing%3F">#billing?</a></li>
+					
+					<li><a href="#method-i-confirmation%3F">#confirmation?</a></li>
+					
 					<li><a href="#method-i-credit_card">#credit_card</a></li>
 					
 					<li><a href="#method-i-current_step">#current_step</a></li>
 					
 					<li><a href="#method-i-express_purchase_options">#express_purchase_options</a></li>
+					
+					<li><a href="#method-i-express_token">#express_token</a></li>
 					
 					<li><a href="#method-i-express_token%3D">#express_token=</a></li>
 					
@@ -95,9 +101,13 @@
 					
 					<li><a href="#method-i-purchase">#purchase</a></li>
 					
+					<li><a href="#method-i-shipping%3F">#shipping?</a></li>
+					
 					<li><a href="#method-i-standard_purchase_options">#standard_purchase_options</a></li>
 					
 					<li><a href="#method-i-steps">#steps</a></li>
+					
+					<li><a href="#method-i-total_price">#total_price</a></li>
 					
 					<li><a href="#method-i-validate_card">#validate_card</a></li>
 					
@@ -211,6 +221,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -248,6 +260,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -386,13 +404,85 @@ goes through all steps and validates them
 					<div class="method-source-code"
 						id="all-valid--source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 80</span>
-80:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all_valid?</span>  
-81:       <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">all?</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">step</span><span class="ruby-operator">|</span>  
-82:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">step</span>  
-83:         <span class="ruby-identifier">valid?</span>  
-84:       <span class="ruby-keyword kw">end</span>  
-85:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 114</span>
+114:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all_valid?</span>  
+115:       <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">all?</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">step</span><span class="ruby-operator">|</span>  
+116:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">step</span>  
+117:         <span class="ruby-identifier">valid?</span>  
+118:       <span class="ruby-keyword kw">end</span>  
+119:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="billing--method" class="method-detail ">
+				<a name="method-i-billing%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">billing?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns true if current step is billing
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="billing--source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 105</span>
+105:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">billing?</span>  
+106:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;billing&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span>
+107:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="confirmation--method" class="method-detail ">
+				<a name="method-i-confirmation%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">confirmation?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns true if current step is billing
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="confirmation--source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 109</span>
+109:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">confirmation?</span>  
+110:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;confirmation&quot;</span>  
+111:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -425,10 +515,46 @@ returns the current step
 					<div class="method-source-code"
 						id="current-step-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 55</span>
-55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_step</span>  
-56:       <span class="ruby-ivar">@current_step</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">first</span>  
-57:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 76</span>
+76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_step</span>  
+77:       <span class="ruby-ivar">@current_step</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">first</span>  
+78:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="express-token-method" class="method-detail ">
+				<a name="method-i-express_token"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">express_token</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns paypal express token
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="express-token-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 45</span>
+45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express_token</span>
+46:       <span class="ruby-keyword kw">self</span>[<span class="ruby-value">:express_token</span>]
+47:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -459,16 +585,16 @@ returns the current step
 					<div class="method-source-code"
 						id="express-token--source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 33</span>
-33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express_token=</span>(<span class="ruby-identifier">token</span>)
-34:       <span class="ruby-keyword kw">self</span>[<span class="ruby-value">:express_token</span>] = <span class="ruby-identifier">token</span>
-35:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new_record?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">token</span>.<span class="ruby-identifier">blank?</span>
-36:         <span class="ruby-identifier">details</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">details_for</span>(<span class="ruby-identifier">token</span>)
-37:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">express_payer_id</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">payer_id</span>
-38:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">first_name</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;first_name&quot;</span>]
-39:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">last_name</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;last_name&quot;</span>]
-40:       <span class="ruby-keyword kw">end</span>
-41:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 49</span>
+49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express_token=</span>(<span class="ruby-identifier">token</span>)
+50:       <span class="ruby-keyword kw">self</span>[<span class="ruby-value">:express_token</span>] = <span class="ruby-identifier">token</span>
+51:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new_record?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">token</span>.<span class="ruby-identifier">blank?</span>
+52:         <span class="ruby-identifier">details</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">details_for</span>(<span class="ruby-identifier">token</span>)
+53:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">express_payer_id</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">payer_id</span>
+54:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">first_name</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;first_name&quot;</span>]
+55:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">last_name</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">params</span>[<span class="ruby-value str">&quot;last_name&quot;</span>]
+56:       <span class="ruby-keyword kw">end</span>
+57:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -501,10 +627,10 @@ checks if we are on the first step
 					<div class="method-source-code"
 						id="first-step--source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 75</span>
-75:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first_step?</span>  
-76:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">first</span>  
-77:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 96</span>
+96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first_step?</span>  
+97:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">first</span>  
+98:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -537,10 +663,10 @@ checks if we are on the last step
 					<div class="method-source-code"
 						id="last-step--source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 70</span>
-70:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_step?</span>  
-71:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>  
-72:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 91</span>
+91:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_step?</span>  
+92:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>  
+93:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -573,10 +699,10 @@ returns the next element from steps array
 					<div class="method-source-code"
 						id="next-step-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 60</span>
-60:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_step</span>  
-61:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">steps</span>[<span class="ruby-identifier">steps</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">current_step</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>]  
-62:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 81</span>
+81:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_step</span>  
+82:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">steps</span>[<span class="ruby-identifier">steps</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">current_step</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>]  
+83:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -610,10 +736,10 @@ href="Order.html#method-i-order_number">order_number</a>&#8216;
 					<div class="method-source-code"
 						id="order-number-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 88</span>
-88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order_number</span>
-89:       <span class="ruby-node">&quot;#{self.id}-#{Time.now.to_i.to_s[-4..-1]}-#{rand(1_000)}&quot;</span>
-90:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 122</span>
+122:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order_number</span>
+123:       <span class="ruby-node">&quot;#{self.id}-#{Time.now.to_i.to_s[-4..-1]}-#{rand(1_000)}&quot;</span>
+124:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -646,10 +772,10 @@ returns previous element from steps array
 					<div class="method-source-code"
 						id="previous-step-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 65</span>
-65:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">previous_step</span>  
-66:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">steps</span>[<span class="ruby-identifier">steps</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">current_step</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>]  
-67:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 86</span>
+86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">previous_step</span>  
+87:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_step</span> = <span class="ruby-identifier">steps</span>[<span class="ruby-identifier">steps</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">current_step</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>]  
+88:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -666,7 +792,7 @@ returns previous element from steps array
 				<div class="method-heading">
 				
 					<span class="method-name">price_in_cents</span><span
-						class="method-args">()</span>
+						class="method-args">(money=nil)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -674,7 +800,8 @@ returns previous element from steps array
 				<div class="method-description">
 					
 					<p>
-price has to be in cents (integer) when communicating with the gateway
+returns the price of all cart items and shipping costs for this order in
+cents (integer) for communicating with the gateway
 </p>
 					
 
@@ -682,10 +809,14 @@ price has to be in cents (integer) when communicating with the gateway
 					<div class="method-source-code"
 						id="price-in-cents-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 45</span>
-45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">price_in_cents</span>
-46:       <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">total_price</span>.<span class="ruby-identifier">to_money</span>.<span class="ruby-identifier">cents</span>.<span class="ruby-identifier">to_i</span>
-47:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">price_in_cents</span>(<span class="ruby-identifier">money</span>=<span class="ruby-keyword kw">nil</span>)
+63:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">money</span>
+64:         <span class="ruby-identifier">money</span>.<span class="ruby-identifier">to_money</span>.<span class="ruby-identifier">cents</span>.<span class="ruby-identifier">to_i</span>
+65:       <span class="ruby-keyword kw">else</span>
+66:         <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">total_price</span>.<span class="ruby-identifier">to_money</span>.<span class="ruby-identifier">cents</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">shipping_method</span>.<span class="ruby-identifier">price</span>.<span class="ruby-identifier">to_money</span>.<span class="ruby-identifier">cents</span>.<span class="ruby-identifier">to_i</span>
+67:       <span class="ruby-keyword kw">end</span>
+68:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -718,18 +849,55 @@ the actual transaction after all had been validated
 					<div class="method-source-code"
 						id="purchase-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 21</span>
-21:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">purchase</span>
-22:       <span class="ruby-identifier">response</span> = <span class="ruby-identifier">process_purchase</span>
-23:       <span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;purchase&quot;</span>, <span class="ruby-value">:amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">price_in_cents</span>, <span class="ruby-value">:response</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>)
-24:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
-25:         <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:purchased_at</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>) 
-26:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;Order nr. generated: #{self.order_number}&quot;</span>
-27:       <span class="ruby-keyword kw">else</span> <span class="ruby-comment cmt"># response failed</span>
-28:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;response_params: #{response.params.to_yaml}&quot;</span>
-29:       <span class="ruby-keyword kw">end</span>
-30:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
-31:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">purchase</span>
+32:       <span class="ruby-identifier">response</span> = <span class="ruby-identifier">process_purchase</span>
+33:       <span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;purchase&quot;</span>, <span class="ruby-value">:amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">price_in_cents</span>, <span class="ruby-value">:response</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>)
+34:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
+35:         <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:purchased_at</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>) 
+36:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:order_nr</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">order_number</span>)
+37:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;Order nr. generated: #{self.order_number}&quot;</span>
+38:       <span class="ruby-keyword kw">else</span> <span class="ruby-comment cmt"># response failed</span>
+39:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;response_params: #{response.params.to_yaml}&quot;</span>
+40:       <span class="ruby-keyword kw">end</span>
+41:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
+42:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shipping--method" class="method-detail ">
+				<a name="method-i-shipping%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shipping?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns true if current step is shipping
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="shipping--source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 101</span>
+101:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shipping?</span>  
+102:       <span class="ruby-identifier">current_step</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;shipping&quot;</span>  
+103:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -762,10 +930,46 @@ returns an array of our checkout form steps
 					<div class="method-source-code"
 						id="steps-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/order.rb, line 50</span>
-50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">steps</span>  
-51:       <span class="ruby-node">]shipping billing confirmation]</span>  
-52:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/order.rb, line 71</span>
+71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">steps</span>  
+72:       <span class="ruby-node">]shipping billing confirmation]</span>  
+73:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="total-price-method" class="method-detail ">
+				<a name="method-i-total_price"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">total_price</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+calculates the total price of the order from all items and shipping
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="total-price-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 128</span>
+128:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total_price</span>
+129:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cart</span>.<span class="ruby-identifier">total_price</span> <span class="ruby-operator">+</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">shipping_method</span>.<span class="ruby-identifier">price</span>
+130:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -804,18 +1008,18 @@ credit card getter / setter
 					<div class="method-source-code"
 						id="credit-card-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/models/order.rb, line 159</span>
-159:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">credit_card</span>
-160:       <span class="ruby-ivar">@credit_card</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ActiveMerchant</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span><span class="ruby-operator">::</span><span class="ruby-constant">CreditCard</span>.<span class="ruby-identifier">new</span>(
-161:         <span class="ruby-value">:type</span>               =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_type</span>,
-162:         <span class="ruby-value">:number</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_number</span>,
-163:         <span class="ruby-value">:verification_value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_verification</span>,
-164:         <span class="ruby-value">:month</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_expires_on</span>.<span class="ruby-identifier">month</span>,
-165:         <span class="ruby-value">:year</span>               =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_expires_on</span>.<span class="ruby-identifier">year</span>,
-166:         <span class="ruby-value">:first_name</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">first_name</span>,
-167:         <span class="ruby-value">:last_name</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">last_name</span>
-168:       )
-169:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 200</span>
+200:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">credit_card</span>
+201:       <span class="ruby-ivar">@credit_card</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ActiveMerchant</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span><span class="ruby-operator">::</span><span class="ruby-constant">CreditCard</span>.<span class="ruby-identifier">new</span>(
+202:         <span class="ruby-value">:type</span>               =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_type</span>,
+203:         <span class="ruby-value">:number</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_number</span>,
+204:         <span class="ruby-value">:verification_value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_verification</span>,
+205:         <span class="ruby-value">:month</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_expires_on</span>.<span class="ruby-identifier">month</span>,
+206:         <span class="ruby-value">:year</span>               =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">card_expires_on</span>.<span class="ruby-identifier">year</span>,
+207:         <span class="ruby-value">:first_name</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">first_name</span>,
+208:         <span class="ruby-value">:last_name</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">last_name</span>
+209:       )
+210:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -848,17 +1052,17 @@ gather information fpr express purchase
 					<div class="method-source-code"
 						id="express-purchase-options-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/models/order.rb, line 122</span>
-122:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express_purchase_options</span>
-123:       {
-124:         <span class="ruby-value">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ip_address</span>,
-125:         <span class="ruby-value">:token</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">express_token</span>,
-126:         <span class="ruby-value">:payer_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">express_payer_id</span>,
-127:         <span class="ruby-value">:cart_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
-128:         <span class="ruby-value">:currency</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>,
-129:         <span class="ruby-value">:currency_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>
-130:       }
-131:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 163</span>
+163:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">express_purchase_options</span>
+164:       {
+165:         <span class="ruby-value">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ip_address</span>,
+166:         <span class="ruby-value">:token</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">express_token</span>,
+167:         <span class="ruby-value">:payer_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">express_payer_id</span>,
+168:         <span class="ruby-value">:cart_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
+169:         <span class="ruby-value">:currency</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>,
+170:         <span class="ruby-value">:currency_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>
+171:       }
+172:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -891,19 +1095,19 @@ process purchase through different gateway depending on payment method
 					<div class="method-source-code"
 						id="process-purchase-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/models/order.rb, line 134</span>
-134:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_purchase</span>
-135:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span>
-136:         <span class="ruby-comment cmt">#STANDARD_GATEWAY.wiredump_device = STDOUT</span>
-137:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;contacting credit card gateway...&quot;</span>
-138:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;price in cents: #{price_in_cents}, options:\n #{standard_purchase_options.to_yaml}&quot;</span>
-139:         <span class="ruby-constant">STANDARD_GATEWAY</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">standard_purchase_options</span>)
-140:       <span class="ruby-keyword kw">else</span>
-141:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;contacting paypal express gateway...&quot;</span>
-142:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;price in cents: #{price_in_cents}, options:\n #{express_purchase_options.to_yaml}&quot;</span>
-143:         <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">express_purchase_options</span>)
-144:       <span class="ruby-keyword kw">end</span>
-145:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 175</span>
+175:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_purchase</span>
+176:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span>
+177:         <span class="ruby-comment cmt">#STANDARD_GATEWAY.wiredump_device = STDOUT</span>
+178:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;contacting credit card gateway...&quot;</span>
+179:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;price in cents: #{price_in_cents}, options:\n #{standard_purchase_options.to_yaml}&quot;</span>
+180:         <span class="ruby-constant">STANDARD_GATEWAY</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">standard_purchase_options</span>)
+181:       <span class="ruby-keyword kw">else</span>
+182:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-value str">&quot;contacting paypal express gateway...&quot;</span>
+183:         <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;price in cents: #{price_in_cents}, options:\n #{express_purchase_options.to_yaml}&quot;</span>
+184:         <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">express_purchase_options</span>)
+185:       <span class="ruby-keyword kw">end</span>
+186:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -936,31 +1140,31 @@ collect order information to send to gateway for payment processing
 					<div class="method-source-code"
 						id="standard-purchase-options-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/models/order.rb, line 96</span>
- 96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">standard_purchase_options</span>
- 97:       <span class="ruby-identifier">values</span> =  {
- 98:         <span class="ruby-value">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;216.113.168.139&quot;</span>, <span class="ruby-comment cmt"># test</span>
- 99:         <span class="ruby-value">:currency</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>,
-100:         <span class="ruby-value">:invoice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order_number</span>,
-101:         <span class="ruby-value">:billing_address</span> =<span class="ruby-operator">&gt;</span> {
-102:           <span class="ruby-value">:name</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{first_name} #{last_name}&quot;</span>,
-103:           <span class="ruby-value">:address1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{street} #{house_nr}&quot;</span>,
-104:           <span class="ruby-value">:city</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">city</span>,
-105:           <span class="ruby-value">:country</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">country</span>,
-106:           <span class="ruby-value">:zip</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zipcode</span>
-107:         }
-108:       }
-109:       <span class="ruby-comment cmt"># merge all line items from cart into values</span>
-110:        <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
-111:          <span class="ruby-identifier">values</span>.<span class="ruby-identifier">merge!</span>({
-112:            <span class="ruby-node">&quot;amount_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">unit_price</span>.<span class="ruby-identifier">cents</span>,
-113:            <span class="ruby-node">&quot;item_name_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">title</span>,
-114:            <span class="ruby-node">&quot;item_number_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>,
-115:            <span class="ruby-node">&quot;quantity_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>
-116:          })
-117:       <span class="ruby-keyword kw">end</span>
-118:       <span class="ruby-identifier">values</span>  <span class="ruby-comment cmt"># return values</span>
-119:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 137</span>
+137:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">standard_purchase_options</span>
+138:       <span class="ruby-identifier">values</span> =  {
+139:         <span class="ruby-value">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;216.113.168.139&quot;</span>, <span class="ruby-comment cmt"># test</span>
+140:         <span class="ruby-value">:currency</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;GBP&quot;</span>,
+141:         <span class="ruby-value">:invoice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order_number</span>,
+142:         <span class="ruby-value">:billing_address</span> =<span class="ruby-operator">&gt;</span> {
+143:           <span class="ruby-value">:name</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{first_name} #{last_name}&quot;</span>,
+144:           <span class="ruby-value">:address1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{street} #{house_nr}&quot;</span>,
+145:           <span class="ruby-value">:city</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">city</span>,
+146:           <span class="ruby-value">:country</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">country</span>,
+147:           <span class="ruby-value">:zip</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zipcode</span>
+148:         }
+149:       }
+150:       <span class="ruby-comment cmt"># merge all line items from cart into values</span>
+151:        <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+152:          <span class="ruby-identifier">values</span>.<span class="ruby-identifier">merge!</span>({
+153:            <span class="ruby-node">&quot;amount_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">unit_price</span>.<span class="ruby-identifier">cents</span>,
+154:            <span class="ruby-node">&quot;item_name_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">title</span>,
+155:            <span class="ruby-node">&quot;item_number_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>,
+156:            <span class="ruby-node">&quot;quantity_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>
+157:          })
+158:       <span class="ruby-keyword kw">end</span>
+159:       <span class="ruby-identifier">values</span>  <span class="ruby-comment cmt"># return values</span>
+160:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -994,15 +1198,15 @@ activemerchant&#8217;s built in validation mechanism
 					<div class="method-source-code"
 						id="validate-card-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/models/order.rb, line 149</span>
-149:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_card</span>
-150:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">valid?</span>
-151:         <span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
-152:           <span class="ruby-comment cmt"># adding each error message from active merchant to our error messages of the order model</span>
-153:           <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-identifier">message</span>
-154:         <span class="ruby-keyword kw">end</span>
-155:       <span class="ruby-keyword kw">end</span>
-156:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File app/models/order.rb, line 190</span>
+190:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_card</span>
+191:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">valid?</span>
+192:         <span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
+193:           <span class="ruby-comment cmt"># adding each error message from active merchant to our error messages of the order model</span>
+194:           <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-identifier">message</span>
+195:         <span class="ruby-keyword kw">end</span>
+196:       <span class="ruby-keyword kw">end</span>
+197:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

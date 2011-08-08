@@ -5,7 +5,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Class: SetItemsController</title>
+	<title>Class: OrderMailer</title>
 
 	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -38,8 +38,8 @@
 				<div class="section-body">
 					<ul>
 					
-						<li><a href="./app/controllers/set_items_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="app/controllers/set_items_controller.rb">app/controllers/set_items_controller.rb</a></li>
+						<li><a href="./app/mailers/order_mailer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/mailers/order_mailer.rb">app/mailers/order_mailer.rb</a></li>
 					
 					</ul>
 				</div>
@@ -55,7 +55,7 @@
 			<div id="parent-class-section" class="section">
 				<h3 class="section-header">Parent</h3>
 				
-				<p class="link"><a href="ApplicationController.html">ApplicationController</a></p>
+				<p class="link">ActionMailer::Base</p>
 				
 			</div>
 			
@@ -69,7 +69,7 @@
 				<h3 class="section-header">Methods</h3>
 				<ul class="link-list">
 					
-					<li><a href="#method-i-create">#create</a></li>
+					<li><a href="#method-i-order_confirmation">#order_confirmation</a></li>
 					
 				</ul>
 			</div>
@@ -250,7 +250,7 @@
 	</div>
 
 	<div id="documentation">
-		<h1 class="class">SetItemsController</h1>
+		<h1 class="class">OrderMailer</h1>
 
 		<div id="description">
 			
@@ -268,13 +268,13 @@
 			<h3 class="section-header">Public Instance Methods</h3>
 
 		
-			<div id="create-method" class="method-detail ">
-				<a name="method-i-create"></a>
+			<div id="order-confirmation-method" class="method-detail ">
+				<a name="method-i-order_confirmation"></a>
 
 				<div class="method-heading">
 				
-					<span class="method-name">create</span><span
-						class="method-args">()</span>
+					<span class="method-name">order_confirmation</span><span
+						class="method-args">(order)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -286,12 +286,13 @@
 
 					
 					<div class="method-source-code"
-						id="create-source">
+						id="order-confirmation-source">
 <pre>
-   <span class="ruby-comment cmt"># File app/controllers/set_items_controller.rb, line 2</span>
-2:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-3:     <span class="ruby-ivar">@set_item</span> = <span class="ruby-constant">SetItem</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:set_item</span>]) 
-4:   <span class="ruby-keyword kw">end</span></pre>
+   <span class="ruby-comment cmt"># File app/mailers/order_mailer.rb, line 4</span>
+4:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order_confirmation</span>(<span class="ruby-identifier">order</span>)  
+5:       <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">order</span>
+6:       <span class="ruby-identifier">mail</span>(<span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Order Confirmation - #{order.order_nr}&quot;</span>)  
+7:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

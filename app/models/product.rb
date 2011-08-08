@@ -45,6 +45,7 @@ class Product < ActiveRecord::Base
       @category_names || categories.map(&:name).join(' ')
     end
     
+    # overriding rails' to_param method to get a speaking, seo friendlier URI
     def to_param
       "#{id}-#{title.parameterize}"
     end
