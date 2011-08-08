@@ -5,7 +5,7 @@ class OrderTransaction < ActiveRecord::Base
   # params is a hash object that needs to be serialized before storing it to the db
   serialize :params
   
-  # response setter
+  # response setter. copies all relevant information from the transaction  into the class' fields
   def response=(response)
     self.success       = response.success?
     self.authorization = response.authorization

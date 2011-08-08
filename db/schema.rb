@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801165928) do
+ActiveRecord::Schema.define(:version => 20110802132553) do
 
   create_table "article_set_likes", :force => true do |t|
     t.integer  "user_id"
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20110801165928) do
     t.string   "title"
     t.string   "subtitle"
     t.string   "currency",    :default => "GBP"
+    t.boolean  "legacy"
   end
 
   create_table "roles", :force => true do |t|

@@ -6,6 +6,7 @@ class Asset < ActiveRecord::Base
     # validates_presence_of :product_id
     # validates_numericality_of :product_id
 
+    # overrides the image method for nested forms
     def image=(val)
       if !val.is_a?(String) && valid?
         image_will_change!

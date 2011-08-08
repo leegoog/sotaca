@@ -19,13 +19,15 @@ class ArticleSet < ActiveRecord::Base
     has_many :likes, :class_name => 'ArticleSetLike', :dependent => :destroy
     
     # comments
-    has_many :comments, :dependent => :destroy
+    has_many :comments, :dependent => :destroy, :order => "created_at DESC"  
     
     accepts_nested_attributes_for :set_items, :allow_destroy => true  
     
     after_create :create_collage
 
     
+    
+    # creates an png image collage from all the associated set items of this article set
     def create_collage
       # load the template
       
