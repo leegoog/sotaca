@@ -3,7 +3,10 @@
 
 cn:
   chinese: "没有锁定"
-  
+  like_save: "你的心动商品，谢谢"
+  added_to_cart: "产品添加成功"
+  needs_login: "You need to log in before." 
+    
   store:
     checkout: '结帐'
     shipping_costs: '邮递费'
@@ -42,7 +45,13 @@ cn:
       confirmation: '确认订单'
     shipping_costs: "快递费"
     summary: "订单详情"
-  
+
+  sets:
+    rotate_left: "向左旋转"
+    rotate_right: "向右旋转"
+    move_back: "图片至后"
+    move_forward: "图片至前"
+    discard: "清除Set"  
   
   date:
     formats:

@@ -193,6 +193,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -230,6 +232,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -409,7 +417,7 @@
 <pre>
    <span class="ruby-comment cmt"># File app/controllers/article_sets_controller.rb, line 5</span>
 5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
-6:     <span class="ruby-ivar">@article_sets</span> = <span class="ruby-constant">ArticleSet</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:created_at</span>).<span class="ruby-identifier">page</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>]).<span class="ruby-identifier">per</span>( <span class="ruby-identifier">params</span>[<span class="ruby-value">:per_page</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:per_page</span>] <span class="ruby-operator">:</span> <span class="ruby-value">5</span>)
+6:     <span class="ruby-ivar">@article_sets</span> = <span class="ruby-constant">ArticleSet</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value str">'created_at desc'</span>).<span class="ruby-identifier">page</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>]).<span class="ruby-identifier">per</span>( <span class="ruby-identifier">params</span>[<span class="ruby-value">:per_page</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:per_page</span>] <span class="ruby-operator">:</span> <span class="ruby-value">5</span>)
 7:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					

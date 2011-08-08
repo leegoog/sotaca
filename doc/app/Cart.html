@@ -71,11 +71,15 @@
 					
 					<li><a href="#method-i-add_item">#add_item</a></li>
 					
+					<li><a href="#method-i-empty%3F">#empty?</a></li>
+					
 					<li><a href="#method-i-encrypt_for_paypal">#encrypt_for_paypal</a></li>
 					
 					<li><a href="#method-i-number_of_items">#number_of_items</a></li>
 					
 					<li><a href="#method-i-paypal_encrypted">#paypal_encrypted</a></li>
+					
+					<li><a href="#method-i-total_items">#total_items</a></li>
 					
 					<li><a href="#method-i-total_price">#total_price</a></li>
 					
@@ -189,6 +193,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -226,6 +232,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -352,16 +364,52 @@ adds an item to the cart
 					<div class="method-source-code"
 						id="add-item-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/cart.rb, line 41</span>
-41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_item</span>(<span class="ruby-identifier">product</span>, <span class="ruby-identifier">price</span>)
-42:       <span class="ruby-identifier">current_item</span> = <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:product_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product</span>).<span class="ruby-identifier">first</span>
-43:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_item</span>
-44:         <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-45:         <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">save</span>
-46:       <span class="ruby-keyword kw">else</span>
-47:         <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-value">:product_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product</span>, <span class="ruby-value">:quantity</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-value">:unit_price</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">price</span>)
-48:       <span class="ruby-keyword kw">end</span>
-49:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/cart.rb, line 55</span>
+55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_item</span>(<span class="ruby-identifier">product</span>, <span class="ruby-identifier">price</span>)
+56:       <span class="ruby-identifier">current_item</span> = <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:product_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product</span>).<span class="ruby-identifier">first</span>
+57:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_item</span>
+58:         <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+59:         <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">save</span>
+60:       <span class="ruby-keyword kw">else</span>
+61:         <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-value">:product_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product</span>, <span class="ruby-value">:quantity</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-value">:unit_price</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">price</span>)
+62:       <span class="ruby-keyword kw">end</span>
+63:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="empty--method" class="method-detail ">
+				<a name="method-i-empty%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">empty?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns true if cart is empty
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="empty--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/cart.rb, line 26</span>
+26:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
+27:       <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+28:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -395,16 +443,16 @@ using paypal&#8217;s public certificate and our public and private key
 					<div class="method-source-code"
 						id="encrypt-for-paypal-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/cart.rb, line 65</span>
-65:      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_for_paypal</span>(<span class="ruby-identifier">values</span>)  
-66:          <span class="ruby-identifier">signed</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-identifier">sign</span>(<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">APP_CERT_PEM</span>),
-67:          <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">APP_KEY_PEM</span>, <span class="ruby-value str">''</span>),
-68:          <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}=#{v}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>), [], <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span>)  
-69:          
-70:          <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-identifier">encrypt</span>([<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">PAYPAL_CERT_PEM</span>)],
-71:          <span class="ruby-identifier">signed</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Cipher</span><span class="ruby-operator">::</span><span class="ruby-constant">Cipher</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;DES3&quot;</span>),
-72:          <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span>).<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;\n&quot;</span>, <span class="ruby-value str">&quot;&quot;</span>)  
-73:      <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/cart.rb, line 79</span>
+79:      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_for_paypal</span>(<span class="ruby-identifier">values</span>)  
+80:          <span class="ruby-identifier">signed</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-identifier">sign</span>(<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">APP_CERT_PEM</span>),
+81:          <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">APP_KEY_PEM</span>, <span class="ruby-value str">''</span>),
+82:          <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}=#{v}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>), [], <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span>)  
+83:          
+84:          <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-identifier">encrypt</span>([<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">PAYPAL_CERT_PEM</span>)],
+85:          <span class="ruby-identifier">signed</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Cipher</span><span class="ruby-operator">::</span><span class="ruby-constant">Cipher</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;DES3&quot;</span>),
+86:          <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKCS7</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span>).<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;\n&quot;</span>, <span class="ruby-value str">&quot;&quot;</span>)  
+87:      <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -437,14 +485,14 @@ returns the number of total items of the cart
 					<div class="method-source-code"
 						id="number-of-items-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/cart.rb, line 52</span>
-52:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">number_of_items</span>
-53:       <span class="ruby-identifier">number_of_items</span> = <span class="ruby-value">0</span>
-54:       <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">li</span><span class="ruby-operator">|</span>
-55:         <span class="ruby-identifier">number_of_items</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">li</span>.<span class="ruby-identifier">quantity</span>
-56:       <span class="ruby-keyword kw">end</span>
-57:       <span class="ruby-identifier">number_of_items</span>  
-58:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/cart.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">number_of_items</span>
+67:       <span class="ruby-identifier">number_of_items</span> = <span class="ruby-value">0</span>
+68:       <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">li</span><span class="ruby-operator">|</span>
+69:         <span class="ruby-identifier">number_of_items</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">li</span>.<span class="ruby-identifier">quantity</span>
+70:       <span class="ruby-keyword kw">end</span>
+71:       <span class="ruby-identifier">number_of_items</span>  
+72:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -478,28 +526,68 @@ with paypal
 					<div class="method-source-code"
 						id="paypal-encrypted-source">
 <pre>
+    <span class="ruby-comment cmt"># File app/models/cart.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">paypal_encrypted</span>(<span class="ruby-identifier">return_url</span>, <span class="ruby-identifier">notify_url</span>, <span class="ruby-identifier">currency</span>)
+32:         <span class="ruby-identifier">values</span> = {
+33:           <span class="ruby-value">:business</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">APP_CONFIG</span>[<span class="ruby-value">:paypal_email</span>],
+34:           <span class="ruby-value">:cmd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'_cart'</span>,
+35:           <span class="ruby-value">:upload</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,
+36:           <span class="ruby-value">:return</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">return_url</span>,
+37:           <span class="ruby-value">:invoice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>,
+38:           <span class="ruby-value">:notify_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">notify_url</span>,
+39:           <span class="ruby-value">:currency_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">currency</span>,
+40:           <span class="ruby-value">:cert_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">APP_CONFIG</span>[<span class="ruby-value">:paypal_cert_id</span>]
+41:         }
+42:         <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+43:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">merge!</span>({
+44:             <span class="ruby-node">&quot;amount_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">unit_price</span>,
+45:             <span class="ruby-node">&quot;item_name_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">title</span>,
+46:             <span class="ruby-node">&quot;item_number_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>,
+47:             <span class="ruby-node">&quot;quantity_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>
+48:           })
+49:        <span class="ruby-keyword kw">end</span>
+50:      <span class="ruby-identifier">encrypt_for_paypal</span>(<span class="ruby-identifier">values</span>)
+51:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="total-items-method" class="method-detail ">
+				<a name="method-i-total_items"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">total_items</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+returns total amount of items in cart
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="total-items-source">
+<pre>
     <span class="ruby-comment cmt"># File app/models/cart.rb, line 17</span>
-17:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">paypal_encrypted</span>(<span class="ruby-identifier">return_url</span>, <span class="ruby-identifier">notify_url</span>, <span class="ruby-identifier">currency</span>)
-18:         <span class="ruby-identifier">values</span> = {
-19:           <span class="ruby-value">:business</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">APP_CONFIG</span>[<span class="ruby-value">:paypal_email</span>],
-20:           <span class="ruby-value">:cmd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'_cart'</span>,
-21:           <span class="ruby-value">:upload</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,
-22:           <span class="ruby-value">:return</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">return_url</span>,
-23:           <span class="ruby-value">:invoice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>,
-24:           <span class="ruby-value">:notify_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">notify_url</span>,
-25:           <span class="ruby-value">:currency_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">currency</span>,
-26:           <span class="ruby-value">:cert_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">APP_CONFIG</span>[<span class="ruby-value">:paypal_cert_id</span>]
-27:         }
-28:         <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
-29:           <span class="ruby-identifier">values</span>.<span class="ruby-identifier">merge!</span>({
-30:             <span class="ruby-node">&quot;amount_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">unit_price</span>,
-31:             <span class="ruby-node">&quot;item_name_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">title</span>,
-32:             <span class="ruby-node">&quot;item_number_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>,
-33:             <span class="ruby-node">&quot;quantity_#{index+1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>
-34:           })
-35:        <span class="ruby-keyword kw">end</span>
-36:      <span class="ruby-identifier">encrypt_for_paypal</span>(<span class="ruby-identifier">values</span>)
-37:     <span class="ruby-keyword kw">end</span></pre>
+17:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total_items</span>
+18:       <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
+19:       <span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">li</span><span class="ruby-operator">|</span>
+20:         <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">li</span>.<span class="ruby-identifier">quantity</span>
+21:       <span class="ruby-keyword kw">end</span>
+22:       <span class="ruby-identifier">total</span>
+23:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

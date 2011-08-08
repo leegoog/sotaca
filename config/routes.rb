@@ -37,8 +37,9 @@ Sotaca::Application.routes.draw do
 
   devise_for :users, :path_names => { :sign_up => "register"}
 
-
-  
+  get '/mu-0ee6831b-17e743aa-f068c19f-5f4dad72' do
+    '42'
+  end
   
   resources :users
   

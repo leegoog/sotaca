@@ -183,6 +183,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -220,6 +222,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -282,14 +290,20 @@
 					<div class="method-source-code"
 						id="create-source">
 <pre>
-   <span class="ruby-comment cmt"># File app/controllers/line_items_controller.rb, line 2</span>
-2:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-3:      <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
-4:      <span class="ruby-ivar">@cart</span> = <span class="ruby-identifier">current_cart</span>
-5:      <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">add_item</span>(<span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">price</span>)
-6:      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-node">&quot;Added #{@product.title} to cart.&quot;</span>
-7:      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">current_cart_url</span>
-8:    <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/line_items_controller.rb, line 2</span>
+ 2:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+ 3:      <span class="ruby-ivar">@product</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:product_id</span>])
+ 4:      <span class="ruby-ivar">@cart</span> = <span class="ruby-identifier">current_cart</span>
+ 5:      <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">add_item</span>(<span class="ruby-ivar">@product</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@product</span>.<span class="ruby-identifier">price</span>)
+ 6:      
+ 7:      <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+ 8:        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { 
+ 9:          <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-node">&quot;Added #{@product.title} to cart.&quot;</span>
+10:          <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">product_path</span>(<span class="ruby-ivar">@product</span>)
+11:          }
+12:        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
+13:      <span class="ruby-keyword kw">end</span>
+14:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -320,14 +334,14 @@
 					<div class="method-source-code"
 						id="destroy-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/line_items_controller.rb, line 10</span>
-10:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-11:      <span class="ruby-ivar">@line_item</span> = <span class="ruby-constant">LineItem</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-12:      <span class="ruby-ivar">@cart</span> = <span class="ruby-ivar">@line_item</span>.<span class="ruby-identifier">cart</span>
-13:      <span class="ruby-ivar">@line_item</span>.<span class="ruby-identifier">destroy</span>
-14:      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Removed from cart.&quot;</span>
-15:      <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@cart</span>
-16:    <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/controllers/line_items_controller.rb, line 16</span>
+16:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+17:      <span class="ruby-ivar">@line_item</span> = <span class="ruby-constant">LineItem</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+18:      <span class="ruby-ivar">@cart</span> = <span class="ruby-ivar">@line_item</span>.<span class="ruby-identifier">cart</span>
+19:      <span class="ruby-ivar">@line_item</span>.<span class="ruby-identifier">destroy</span>
+20:      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-value str">&quot;Removed from cart.&quot;</span>
+21:      <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@cart</span>
+22:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

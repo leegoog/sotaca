@@ -200,6 +200,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -237,6 +239,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -332,17 +340,19 @@ you might use something like this:
 
 				<div class="method-description">
 					
-					
+					<p>
+overwrite filename with png extension anfter conversion
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="filename-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 73</span>
-73:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filename</span>
-74:      <span class="ruby-keyword kw">super</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-keyword kw">super</span>)) <span class="ruby-operator">+</span> <span class="ruby-value str">'.png'</span>
-75:    <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 75</span>
+75:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filename</span>
+76:      <span class="ruby-keyword kw">super</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-keyword kw">super</span>)) <span class="ruby-operator">+</span> <span class="ruby-value str">'.png'</span>
+77:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -366,21 +376,23 @@ you might use something like this:
 
 				<div class="method-description">
 					
-					
+					<p>
+makes the white background of an image transparent (for the sets)
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="make-transparent-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 52</span>
-52:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_transparent</span> 
-53:      <span class="ruby-identifier">manipulate!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
-54:        <span class="ruby-identifier">img</span>.<span class="ruby-identifier">fuzz</span> = <span class="ruby-value str">'5%'</span>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 53</span>
+53:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_transparent</span> 
+54:      <span class="ruby-identifier">manipulate!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
 55:        <span class="ruby-identifier">image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">img</span>.<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">first</span>
-56:        <span class="ruby-identifier">image</span>.<span class="ruby-identifier">transparent</span>(<span class="ruby-node">&quot;#ffffff&quot;</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">TransparentOpacity</span>)
-57:      <span class="ruby-keyword kw">end</span> 
-58:    <span class="ruby-keyword kw">end</span></pre>
+56:        <span class="ruby-identifier">image</span>.<span class="ruby-identifier">fuzz</span> = <span class="ruby-value str">'15%'</span>
+57:        <span class="ruby-identifier">image</span>.<span class="ruby-identifier">transparent</span>(<span class="ruby-node">&quot;#ffffff&quot;</span>, <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">TransparentOpacity</span>)
+58:      <span class="ruby-keyword kw">end</span> 
+59:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -404,25 +416,27 @@ you might use something like this:
 
 				<div class="method-description">
 					
-					
+					<p>
+creates a drop shadow around and image
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="shadow-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 60</span>
-60:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shadow</span>
-61:      <span class="ruby-identifier">manipulate!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
-62:        <span class="ruby-identifier">layers</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">ImageList</span>.<span class="ruby-identifier">new</span>
-63:        <span class="ruby-identifier">image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">img</span>.<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">first</span>
-64:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">image</span>.<span class="ruby-identifier">clone</span>
-65:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">shadow</span>.<span class="ruby-identifier">shadow</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">4.0</span>, <span class="ruby-value">0.5</span>)
-66:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">shadow</span>.<span class="ruby-identifier">colorize</span>(<span class="ruby-value">1.0</span>, <span class="ruby-value">1.0</span>, <span class="ruby-value">1.0</span>, <span class="ruby-value str">'gray25'</span>)
-67:        <span class="ruby-identifier">layers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">shadow</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">image</span>
-68:        <span class="ruby-identifier">result</span> = <span class="ruby-identifier">layers</span>.<span class="ruby-identifier">optimize_layers</span>(<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">MergeLayer</span>)
-69:      <span class="ruby-keyword kw">end</span>
-70:    <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/uploaders/image_uploader.rb, line 62</span>
+62:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shadow</span>
+63:      <span class="ruby-identifier">manipulate!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
+64:        <span class="ruby-identifier">layers</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">ImageList</span>.<span class="ruby-identifier">new</span>
+65:        <span class="ruby-identifier">image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">img</span>.<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">first</span>
+66:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">image</span>.<span class="ruby-identifier">clone</span>
+67:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">shadow</span>.<span class="ruby-identifier">shadow</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">4.0</span>, <span class="ruby-value">0.5</span>)
+68:        <span class="ruby-identifier">shadow</span> = <span class="ruby-identifier">shadow</span>.<span class="ruby-identifier">colorize</span>(<span class="ruby-value">1.0</span>, <span class="ruby-value">1.0</span>, <span class="ruby-value">1.0</span>, <span class="ruby-value str">'gray25'</span>)
+69:        <span class="ruby-identifier">layers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">shadow</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">image</span>
+70:        <span class="ruby-identifier">result</span> = <span class="ruby-identifier">layers</span>.<span class="ruby-identifier">optimize_layers</span>(<span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">MergeLayer</span>)
+71:      <span class="ruby-keyword kw">end</span>
+72:    <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

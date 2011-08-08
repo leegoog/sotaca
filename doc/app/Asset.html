@@ -181,6 +181,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -218,6 +220,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -274,7 +282,7 @@
 				<div class="method-description">
 					
 					<p>
-validates_presence_of :product_id validates_numericality_of :product_id
+overrides the image method for nested forms
 </p>
 					
 
@@ -282,13 +290,13 @@ validates_presence_of :product_id validates_numericality_of :product_id
 					<div class="method-source-code"
 						id="image--source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/asset.rb, line 9</span>
- 9:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image=</span>(<span class="ruby-identifier">val</span>)
-10:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">valid?</span>
-11:         <span class="ruby-identifier">image_will_change!</span>
-12:         <span class="ruby-keyword kw">super</span>
-13:       <span class="ruby-keyword kw">end</span>
-14:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/asset.rb, line 10</span>
+10:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image=</span>(<span class="ruby-identifier">val</span>)
+11:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">valid?</span>
+12:         <span class="ruby-identifier">image_will_change!</span>
+13:         <span class="ruby-keyword kw">super</span>
+14:       <span class="ruby-keyword kw">end</span>
+15:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

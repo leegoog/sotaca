@@ -185,6 +185,8 @@
 				
 					<li><a href="./Order.html">Order</a></li>
 				
+					<li><a href="./OrderMailer.html">OrderMailer</a></li>
+				
 					<li><a href="./OrderTransaction.html">OrderTransaction</a></li>
 				
 					<li><a href="./OrdersController.html">OrdersController</a></li>
@@ -222,6 +224,12 @@
 					<li><a href="./SetItemsController.html">SetItemsController</a></li>
 				
 					<li><a href="./SetItemsHelper.html">SetItemsHelper</a></li>
+				
+					<li><a href="./ShippingMethod.html">ShippingMethod</a></li>
+				
+					<li><a href="./ShippingMethodsController.html">ShippingMethodsController</a></li>
+				
+					<li><a href="./ShippingMethodsHelper.html">ShippingMethodsHelper</a></li>
 				
 					<li><a href="./TranslationsController.html">TranslationsController</a></li>
 				
@@ -313,10 +321,10 @@ prepopulate the text_field in the view
 					<div class="method-source-code"
 						id="category-names-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 43</span>
-43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">category_names</span>
-44:       <span class="ruby-ivar">@category_names</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
-45:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">category_names</span>
+45:       <span class="ruby-ivar">@category_names</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">categories</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
+46:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -340,17 +348,21 @@ prepopulate the text_field in the view
 
 				<div class="method-description">
 					
-					
+					<p>
+overriding rails&#8217; <a
+href="Product.html#method-i-to_param">to_param</a> method to get a
+speaking, seo friendlier URI
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="to-param-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 47</span>
-47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_param</span>
-48:       <span class="ruby-node">&quot;#{id}-#{title.parameterize}&quot;</span>
-49:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 49</span>
+49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_param</span>
+50:       <span class="ruby-node">&quot;#{id}-#{title.parameterize}&quot;</span>
+51:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -390,14 +402,14 @@ exist, this method will create that record &#8220;on the fly&#8220;
 					<div class="method-source-code"
 						id="assign-categories-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 54</span>
-54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assign_categories</span> 
-55:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@category_names</span> 
-56:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">categories</span> = <span class="ruby-ivar">@category_names</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s+/</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-57:           <span class="ruby-constant">Category</span>.<span class="ruby-identifier">find_or_create_by_name</span>(<span class="ruby-identifier">name</span>)
-58:         <span class="ruby-keyword kw">end</span>
-59:       <span class="ruby-keyword kw">end</span>
-60:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 56</span>
+56:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assign_categories</span> 
+57:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@category_names</span> 
+58:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">categories</span> = <span class="ruby-ivar">@category_names</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s+/</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+59:           <span class="ruby-constant">Category</span>.<span class="ruby-identifier">find_or_create_by_name</span>(<span class="ruby-identifier">name</span>)
+60:         <span class="ruby-keyword kw">end</span>
+61:       <span class="ruby-keyword kw">end</span>
+62:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
