@@ -16,7 +16,7 @@
 	<div class="input string optional">
 	  <label for="order_card_type" class="select"> Country</label>
       <% countries_array = Country.all.map { |country| [country.name, country.id] } %>
-	  <%= f.select :country, options_from_collection_for_select(Country.all, 'iso', 'name', session[:order_params]["country"] ? session[:order_params]["country"] : "UK") %>
+	  <%= f.select :country, options_from_collection_for_select(Country.all, 'iso', 'name', session[:order_params]["country"] ? session[:order_params]["country"] : "United Kingdom") %>
 	</div>
 	
 	
