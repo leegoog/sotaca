@@ -63,6 +63,7 @@ en:
   
   products:
     related: 'Other products you may like'
+    in_sets: 'Sets with this article'
     categories: 'Categories'
     details: 'Details'
     size_fit: 'Size & Fit'

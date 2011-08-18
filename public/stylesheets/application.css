@@ -817,3 +817,9 @@ table.translations {
 	bottom: -24px;
 	right: 0px; 
 }
+
+#related_products .related_set {
+	border: 1px solid #ccc;
+	float: left;
+	margin: 5px;
+}
