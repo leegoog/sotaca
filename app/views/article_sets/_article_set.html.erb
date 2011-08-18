@@ -47,7 +47,7 @@
 		<tr>
 			<td>
 				<div class="comments">
-				  <h2 id="comments_count"><%= pluralize(@article_set.comments.count, "comment") %><span class="showhide"><a id="showhide" href="#">hide</a></h2>
+				  <h2 id="comments_count"><%= pluralize(@article_set.comments.count, "comment") %></h2>
 				  <div id="comments">
 					<%= render @comments %>
 				  </div>
