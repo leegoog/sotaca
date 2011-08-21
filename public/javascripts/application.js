@@ -3,9 +3,9 @@
 
 
 $(function (){
-	$('#admin_button').click(function () {
-		$('#admin_pane').slideToggle();
-	});
+	var h = 0;
+	h = $('#content').height();
+	$('#left').height(h);
 });
 
 function remove_fields(link) {

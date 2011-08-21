@@ -12,6 +12,7 @@
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
 		$('.related_set a').tipTip();
+		$('a[rel*=facebox]').facebox() 
 	});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
@@ -82,7 +83,8 @@
 	<div class="column"  style="width: 125px">
 		<% for asset in @product.assets do %>
 		<div class="img_item">
-		  <a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')">
+		 <!--  <a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')"> -->
+		 <a href="<%= asset.image_url(:big).to_s %>" rel="facebox">
 		  <%= image_tag asset.image_url(:thumb).to_s %>
 		  </a>
 		</div>
