@@ -3,9 +3,11 @@
 
 
 $(function (){
-	var h = 0;
-	h = $('#content').height();
-	$('#left').height(h);
+	if( !$.trim( $('#left').html() ).length == 0 ) {
+		var h = 0;
+		h = $('#content').height();
+		$('#left').height(h);
+	}
 });
 
 function remove_fields(link) {
