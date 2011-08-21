@@ -96,7 +96,8 @@ text-decoration: none;
 }
 
 #main_navi ul {
-	margin-left: 130px;
+	margin-left: 20px;
+	width: 97%;
 }
 
 #main_navi ul li{
@@ -133,11 +134,11 @@ text-decoration: none;
 
 
 #content{
-    border: 2px solid black;
-    margin-top: 20px;
-    min-height: 200px;
-    padding: 20px;
-    position: relative;
+  margin-top: 20px;
+  border: solid 2px black;
+  padding: 20px;
+  position: relative;
+  min-height: 200px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -392,19 +393,16 @@ margin: -10px 0 20px -35px;
 
 
 #content #left {
-    display: block;
-    float: left;
-    height: auto;
-    margin-left: -20px;
-    width: 140px;
+	height: 100%;
+	width: auto;
 }
 #content #left ul{
-    float: left;
-    list-style-type: none;
-    margin: 20px 30px 0 0;
-    padding: 0;
-    position: relative;
-    width: 120px;
+	margin:20px 30px 0 -20px;
+	padding: 0;
+	list-style-type: none;
+	width: 100px;
+	float: left;
+	position: relative;
 }
 
 #content #left ul li{
@@ -422,54 +420,22 @@ margin: -10px 0 20px -35px;
 #content .product_overview {
 	margin-left: 100px;
 }
-#content .cart_view, #content .faq, #content .profile {
-    border-right: 1px solid #000000;
-    padding: 20px 0;
-    position: relative;
-    width: 80%;
-	margin-top: -20px;
-	margin-bottom: -20px;
+#content .cart_view, #content .faq {
+	width: 80%;
+	border: 1px solid #000;
+	position: relative;
 }
 
-#content .cart_view h2, #content .faq h2, #order_frame h2, #content .profile h2{
-    background-color: #93006B;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: normal;
-    margin-left: -20px;
-    margin-top: 20px;
-    padding: 2.5px 0 2.5px 20px;
-    width: 100%;
-}
-
-
-.profile ul {
-	list-style: none;
-	margin:0;
-	padding: 0;
-}
-
-.profile ul li{
-	display: block;
-	width: 120px;
-	height: 120px;
-	padding: 10px;
-	float: left;
-	margin-right: 10px;
-	background-color: #93006B;
-	font-size: 12px;
-}
-.profile ul li a{
+#content .cart_view h2, #content .faq h2, #order_frame h2{
+	width: 100%;
+	background-color: #93006b;
 	color: #fff;
-}
-
-.profile .headline {
 	font-size: 15px;
+	font-weight: normal;
+	padding: 2.5px 0;
+	text-indent: 10px;
 }
 
-.profile ul {
-	list-style: none;
-}
 #content .faq h2{ 
 	text-transform: uppercase;
 }
@@ -769,8 +735,7 @@ table.translations {
 	font-size: 10px;
 }
 #stepper {
-	width: 750px;
-	margin-left: -20px;
+	width: 700px;
 	height: 50px;
 	background: url(/images/stepper_bg.jpg) repeat-x;
 	position: relative;
@@ -783,8 +748,8 @@ table.translations {
 	float:left;
 	height: 22px;
 	padding-top: 3px;
-	margin: 12.5px 20px 10px 25px;
-	border: 1px solid #95006A;
+	margin: 10px 20px 10px 10px;
+	border: 2px solid #ccc;
 	background-color: #fff;
 	color: #000;
 }
@@ -804,11 +769,11 @@ table.translations {
 }
 
 #order_frame {
-    border-right: 1px solid;
-    color: #1D1D1D;
-    font-size: 11px;
-    position: relative;
-    width: 750px;
+	width: 700px;
+	border: 1px solid #ccc;
+	font-size: 11px;
+	color: #1d1d1d;
+	position: relative;
 }
 
 #order_frame #paypal_express {
@@ -857,17 +822,4 @@ table.translations {
 	border: 1px solid #ccc;
 	float: left;
 	margin: 5px;
-}
-
-
-.simple_form input.string {
-	border: 1px solid #95006A;
-	background-color: #efedee;
-	color: #000;
-}
-
-#left h3 {
-	font-size: 14px;
-	padding: 0;
-	margin: 0 0 0 -10px;
 }

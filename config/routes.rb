@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
   
+  get "profile/show"
+
   resources :shipping_methods
 
   resources :article_set_likes
@@ -81,6 +83,8 @@ Sotaca::Application.routes.draw do
   match 'whole_sale' => "pages#whole_sale"
 
   match 'blog' => "pages#blog"
+  
+  match 'profile' => "profile#show"
   
   
 
