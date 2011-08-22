@@ -52,7 +52,7 @@
 			<%= t 'products.tell_a_friend' %>
 		</div>
 		<br/>
-		<div class="subheadline">
+		<div class="subheadline" onclick="jQuery.facebox({ div: '#just_added' });">
 			<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true, :title => t('products.add_to_cart') %>
 			
 		</div>
@@ -91,6 +91,13 @@
 		<% end %>
 	</div>
 	<div class="clear"></div>
+	<div id="just_added" style="display:none;">
+		<p><%= image_tag @product.assets.first.image_url(:thumb) %></p>
+		<p>You just added <%= @product.title %> to the cart</p>
+		<p> <%= current_cart.number_of_items + 1 %> items in cart (<%= number_to_currency(current_cart.total_price + @product.price) %>)</p>
+		<%= link_to "continue shopping", products_path %><br/>
+		<%= link_to "to the cart", current_cart_url %><br/>
+	</div>
 </div>
 <% if @product.article_sets.count > 0 %>
 <div id="related_products">
@@ -107,6 +114,8 @@
 	</div>		
 </div>
 <div class="clear"></div>
+
+
 <% end %>
 <% if can? :update, Product %>
 <p>

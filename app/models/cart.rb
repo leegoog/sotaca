@@ -10,7 +10,12 @@ class Cart < ActiveRecord::Base
     
     # returns the cart's total price
     def total_price
-      line_items.to_a.sum { |item| item.full_price }
+      if line_items.count > 0
+        amt = line_items.to_a.sum { |item| item.full_price }
+      else
+        amt = 0.to_money(:GBP)
+      end
+      amt
     end
     
     # returns total amount of items in cart

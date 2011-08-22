@@ -141,8 +141,8 @@ text-decoration: none;
 }
 
 #flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
+  padding: 5px 10px;
+  margin: 20px 0 0 0;
 }
 
 #flash_notice {
