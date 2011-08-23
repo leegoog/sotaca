@@ -36,6 +36,16 @@ en:
     discard: "Discard Set"
 
   
+  contact:
+    name: 'Enter name'
+    email: 'Enter email'
+    subject: 'Subject'
+    type: 'Message type'
+    order_nr: 'Order number'
+    item_id: 'Item ID'
+    message: 'Message'
+    validation_error: 'Please fill out all obligatory (*) fields.'
+  
   pages:
     blog: 'Blog'
     contact: 'Contact'

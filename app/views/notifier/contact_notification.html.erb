@@ -1,0 +1,16 @@
+You received a new message (type: <%= @sender.support_type %>) from Sotaca1898! <br/>
+<br/>
+<br/>
+name: <%= @sender.sender_name %>
+<br/><br/>
+email: <%= @sender.email %>
+<br/><br/>
+type: <%= @sender.support_type %>
+<br/><br/>
+order number: <%= @sender.order_nr ||= "---" %>
+<br/><br/>
+item id: <%= @sender.item_id ||= "---" %>
+<br/><br/>
+message: <%= @sender.content %>
+
+<br/><br/>

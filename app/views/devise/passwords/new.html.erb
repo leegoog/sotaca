@@ -1,12 +1,23 @@
+<div class="registration">
+
 <h2><%= t "devise.links.forgot_password" %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :login %><br />
-  <%= f.text_field :login %></p>
+<table id="register" border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td class="label"><%= f.label t("devise.links.username_or_email") %>*</td>
+		<td class="input"><%= f.text_field :login %></td>
+	</tr>
+	<tr>
+		<td class="label"></td>
+		<td class="input small"><%= f.submit t"devise.reset.password" %></td>
+	</tr>
+</table>
 
-  <p><%= f.submit t"devise.reset.password" %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+
+</div>

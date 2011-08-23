@@ -12,7 +12,7 @@
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
 		$('.related_set a').tipTip();
-		$('a[rel*=facebox]').facebox() 
+		//$('a[rel*=facebox]').facebox() 
 	});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
@@ -81,20 +81,22 @@
 		</div>
 	</div>
 	<div class="column"  style="width: 125px">
-		<% for asset in @product.assets do %>
-		<div class="img_item">
-		 <!--  <a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')"> -->
-		 <a href="<%= asset.image_url(:big).to_s %>" rel="facebox">
-		  <%= image_tag asset.image_url(:thumb).to_s %>
-		  </a>
+		<div class="image_wrapper">
+	      <% for asset in @product.assets do %>
+	      <div class="img_item">
+	       <a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')"> 
+	     <!--  <a href="<%= asset.image_url(:big).to_s %>" rel="facebox"> -->
+	        <%= image_tag asset.image_url(:thumb).to_s %>
+	        </a>
+	      </div>
+	      <% end %>
 		</div>
-		<% end %>
 	</div>
 	<div class="clear"></div>
 	<div id="just_added" style="display:none;">
 		<p><%= image_tag @product.assets.first.image_url(:thumb) %></p>
 		<p>You just added <%= @product.title %> to the cart</p>
-		<p> <%= current_cart.number_of_items + 1 %> items in cart (<%= number_to_currency(current_cart.total_price + @product.price) %>)</p>
+		<p> <%= current_cart.number_of_items + 1 %> items in cart (<%= number_to_currency((current_cart.total_price + @product.price).exchange_to(session[:currency])) %>)</p>
 		<%= link_to "continue shopping", products_path %><br/>
 		<%= link_to "to the cart", current_cart_url %><br/>
 	</div>
