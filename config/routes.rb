@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
   
+  resources :supports, :only => [:new, :create]
+
   get "profile/show"
 
   resources :shipping_methods
