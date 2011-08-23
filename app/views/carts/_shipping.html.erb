@@ -6,9 +6,6 @@
 	
 	<tr>
 		<td colspan="4">
-			<input class="ship_radio" type="radio" name="shipping" value="UK" selected="selected"/> UK Delivery GBP 3.95
-			<input class="ship_radio" type="radio" name="shipping" value="EU" /> EU Delivery GBP 5.95
-			<input class="ship_radio" type="radio" name="shipping" value="INT" /> Intern. Delivery GBP 8.95
-			<input id="shipping_costs" type="hidden" value=""/>
+		<%= radio_button_tag :shipping_method_id, :collection => ShippingMethod.all, :label_method => :name_and_price %> 
 		</td>
 	</tr>

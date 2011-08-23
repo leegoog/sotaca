@@ -66,6 +66,7 @@ en:
       sign_in_with: 'Sign in with '
       username: 'Username'
       email: 'EMail'
+      password_register: 'Password (Min. 6 Characters)'
       password: 'Password'
       username_or_email: 'Username or EMail'
       username: 'Username'

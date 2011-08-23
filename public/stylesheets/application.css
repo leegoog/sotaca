@@ -422,16 +422,16 @@ margin: -10px 0 20px -35px;
 #content .product_overview {
 	margin-left: 100px;
 }
-#content .cart_view, #content .faq, #content .profile {
+#content .cart_view, #content .faq, #content .profile, #content .registration {
     border-right: 1px solid #000000;
     padding: 20px 0;
     position: relative;
-    width: 80%;
+    width: 792px;
 	margin-top: -20px;
 	margin-bottom: -20px;
 }
 
-#content .cart_view h2, #content .faq h2, #order_frame h2, #content .profile h2{
+#content .cart_view h2, #content .faq h2, #order_frame h2, #content .profile h2, #content .registration h2{
     background-color: #93006B;
     color: #FFFFFF;
     font-size: 15px;
@@ -859,11 +859,58 @@ table.translations {
 	margin: 5px;
 }
 
+#register, #login, #contact {
+	margin: 20px 0 20px -10px;
+}
 
-.simple_form input.string {
+.simple_form input.string, #register input, #register select, #login input, #contact input, #contact textarea, #contact select {
 	border: 1px solid #95006A;
 	background-color: #efedee;
 	color: #000;
+	width:	246px;
+}
+
+
+.registration .seventy {
+	width: 420px;
+	overflow: hidden;
+	margin-left: -20px;
+	padding-left: 20px;
+	float:left;
+	border-right: 2px solid #fff;
+}
+
+.registration .thirty {
+	width: 370px;
+	overflow: hidden;
+	float:left;
+}
+.registration .thirty h2{
+	margin:0;
+	padding: 0;
+	text-indent: 20px;
+}
+.registration .thirty p{
+	padding: 20px;
+}
+
+#register .small input, #login .small input, #contact .small input {
+	width: auto !important;
+	cursor: pointer;
+}
+
+#contact textarea {
+	height: 130px;
+}
+
+#error_explanation h2 {
+	background-color: #fff !important;
+	color: #000 !important;
+	font-size: 14px !important;
+	font-weight: bold !important;
+	padding: 10px !important;
+	margin: 0 0 0 10px !important;
+	width: auto !important;
 }
 
 #left h3 {
