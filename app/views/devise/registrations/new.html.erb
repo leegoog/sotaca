@@ -1,28 +1,42 @@
+<div class="registration">
+
 <h2><%= t('devise.links.register') %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label t 'devise.links.username' %><br />
-  <%= f.text_field :username %></p>
-
-  <p><%= f.label t 'devise.links.email' %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label t 'devise.links.password' %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label t 'devise.links.password_confirmation' %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :admin %><br />
-  <%= f.check_box :admin %></p>
-
-  <p><%= f.label t 'devise.links.language' %><br />
-  <%= f.select :locale, [["English", "en"], ["#{t'chinese'}", "cn"]] %></p>
 
 
-  <p><%= f.submit t "devise.links.register" %></p>
+
+<table id="register" border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td class="label"><%= f.label t 'devise.links.username' %></td>
+		<td class="input"> <%= f.text_field :username %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t 'devise.links.email' %></td>
+		<td class="input">  <%= f.email_field :email %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t 'devise.links.password_register' %></td>
+		<td class="input">  <%= f.password_field :password %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t 'devise.links.password_confirmation' %></td>
+		<td class="input">   <%= f.password_field :password_confirmation %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t 'devise.links.language' %></td>
+		<td class="input"> <%= f.select :locale, [["English", "en"], ["#{t'chinese'}", "cn"]] %></td>
+	</tr>
+	<tr>
+		<td class="label"></td>
+		<td class="input small"><%= f.submit t "devise.links.register" %></td>
+	</tr>
+</table>
+
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+
+</div>

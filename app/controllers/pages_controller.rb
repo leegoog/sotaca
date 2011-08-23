@@ -20,6 +20,8 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @support = Support.new(:id => 1)
+    render :action => "supports/new"
   end
 
   def terms
