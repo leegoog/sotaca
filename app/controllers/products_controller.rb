@@ -3,8 +3,10 @@ class ProductsController < ApplicationController
   
   def index
     if params[:category]
+      @category = Category.find(params[:category])
       @products = Category.find(params[:category]).products
     else
+      @category = false
       @products = Product.scoped
     end
     @products = @products.where("title like ?", "%" + params[:title] + "%") if params[:title]
