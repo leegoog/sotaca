@@ -7,11 +7,11 @@
 		$('div[id^="photo"] img').load(function(){
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
-		$('.lvl1_cat').each(function () {
-			$(this).click(function () {
-				$(this).find('ul.level2').slideToggle();
-			})
-		})
+		//$('.lvl1_cat').each(function () {
+		//	$(this).click(function () {
+		//		$(this).find('ul.level2').slideToggle();
+		//	})
+		//})
 	});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
@@ -22,11 +22,14 @@
 	<div id="category_navigation">
 	<% for category in Category.roots %>
 		<ul class="level1">
-			<li class="lvl1_cat <%= "active" if (params[:category].to_i == category.id.to_i) %>"><%= link_to category.name, :controller => 'products', :action => "index" , :category => category.id %>
+			<li class="lvl1_cat <%= "active" if (@category == category ||  category.children.include?(@category)) %>">
+			
+			
+			<%= link_to category.name, :controller => 'products', :action => "index" , :category => category.id %>
 				<% if category.children.size > 0 %>
-					<ul class="level2">
+					<ul class="level2 <%= "open" if (@category == category ||  category.children.include?(@category)) %>">
 					<% for child in category.children %>
-						<li><%= link_to child.name, :controller => 'products', :action => "index" , :category => category.id %></li>
+						<li class="<%= "active" if (child == @category) %>"><%= link_to child.name, :controller => 'products', :action => "index" , :category => child.id %></li>
 					<% end %>
 					</ul>
 				<% end %>
