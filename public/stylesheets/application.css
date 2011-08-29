@@ -411,7 +411,7 @@ margin: -10px 0 20px -35px;
     margin: 0 30px 0 0;
     padding: 0;
     position: relative;
-    width: 120px;
+    width: 118px;
 }
 
 #content #left ul li {
@@ -435,11 +435,13 @@ margin: -10px 0 20px -35px;
 	background-color: #fff;
 	color: #000;
 	border: 1px solid #000;
-	border-left: 0 !important;
+
 }
 
 #content #left ul.level2 {
 	display:none;
+    margin: 5px 0 0 -5px;
+    overflow: hidden;
 }
 
 #content #left ul.open {
@@ -453,6 +455,7 @@ margin: -10px 0 20px -35px;
 	border: 1px solid #93006b !important;
 	padding: 1px 5px !important;
 	margin: 2.5px 0;
+	width: 105px;
 }
 #content #left ul li a{
 	text-decoration: none;

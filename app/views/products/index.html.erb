@@ -7,11 +7,11 @@
 		$('div[id^="photo"] img').load(function(){
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
-		//$('.lvl1_cat').each(function () {
-		//	$(this).click(function () {
-		//		$(this).find('ul.level2').slideToggle();
-		//	})
-		//})
+		$('.lvl1_cat a').each(function () {
+			$(this).click(function () {
+				$(this).parent().find('ul.level2').slideToggle();
+			})
+		})
 	});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
@@ -25,9 +25,10 @@
 			<li class="lvl1_cat <%= "active" if (@category == category ||  category.children.include?(@category)) %>">
 			
 			
-			<%= link_to category.name, :controller => 'products', :action => "index" , :category => category.id %>
+			<%= link_to category.name, '#' %>
 				<% if category.children.size > 0 %>
 					<ul class="level2 <%= "open" if (@category == category ||  category.children.include?(@category)) %>">
+						<li class="<%= "active" if (@category == category) %>"><%= link_to "all", :controller => 'products', :action => "index" , :category => category.id %></li>
 					<% for child in category.children %>
 						<li class="<%= "active" if (child == @category) %>"><%= link_to child.name, :controller => 'products', :action => "index" , :category => child.id %></li>
 					<% end %>
