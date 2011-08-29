@@ -31,7 +31,7 @@
 	  	<div class="middle">
 	  		<div id="login_menu">
 	  			<% if user_signed_in? %>  
-		        <%= link_to current_user.username, edit_user_url(current_user) %> |  
+		        <%= link_to current_user.username, profile_url %> |  
 		        <%= link_to t("devise.links.logout"), destroy_user_session_url %>  
 		      <% else %>  
 				<%= link_to t("devise.links.login"), new_user_session_url %> |  
@@ -54,12 +54,12 @@
 	  	</div>
 	  	<div id="main_navi">
 	  		<ul>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/?locale=<%= I18n.locale %>"><%= t 'home' %></a></li>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "just_in") %>"><a href="/just_in/?locale=<%= I18n.locale %>"><%= t 'pages.just_in' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/?locale=<%= I18n.locale %>"><%= t 'home' %></a></li>	
 	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/?locale=<%= I18n.locale %>"><%= t 'pages.shop' %></a></li>
 		  			<li class="<%= "active" if params[:controller] == "article_sets"%>"><a href="/sets/?locale=<%= I18n.locale %>"><%= t 'pages.sets' %></a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/?locale=<%= I18n.locale %>"><%= t 'pages.info' %></a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/?locale=<%= I18n.locale %>"><%= t 'pages.our_story' %></a></li>
+		  		<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "blog") %>"><a href="/blog/?locale=<%= I18n.locale %>"><%= t 'pages.blog' %></a></li>
 	<% if can? :update, [Product] %>
 		<li class="<%= "active" if (params[:controller] == "admin" && params[:action] == "index") %>"><a href="/admin/"><%= t 'pages.admin' %></a></li>	
 	<% end %>
@@ -95,7 +95,7 @@
 			<li><a href="/terms/?locale=<%= I18n.locale %>"><%= t 'pages.terms' %></a></li>
 			<li><a href="/press/?locale=<%= I18n.locale %>"><%= t 'pages.press' %></a></li>
 			<li><a href="/whole_sale/?locale=<%= I18n.locale %>"><%= t 'pages.whole_sale' %></a></li>
-			<li><a href="/blog/?locale=<%= I18n.locale %>"><%= t 'pages.blog' %></a></li>						
+					
 	</div>
 	<br/><br/>
   </body>
