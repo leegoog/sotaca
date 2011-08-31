@@ -50,6 +50,7 @@ class Product < ActiveRecord::Base
       "#{id}-#{title.parameterize}"
     end
     
+    
     private
     
     # assigns categories to the product, if the entered category doesn't exist, this method will create that record "on the fly"

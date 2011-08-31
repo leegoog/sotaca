@@ -428,10 +428,10 @@ margin: -10px 0 20px -35px;
 	background-color: #000;
 	color: #fff;
 	padding: 5px;
-	border: 1px solid #fff;
+	margin-bottom: 2px;
 }
 
-#content #left ul.level1 li:hover, #content #left ul.level1 li.active {
+#content #left ul.level1 li.active {
 	background-color: #fff;
 	color: #000;
 	border: 1px solid #000;
@@ -466,7 +466,7 @@ margin: -10px 0 20px -35px;
 	background-color: #fff !important;
 }
 
-#content #left ul.level1 li:hover a, #content #left ul.level1 li.active a{
+#content #left ul.level1 li.active a{
 	color: #000 !important;
 }
 #content #left ul.level1 ul.level2 li a{
