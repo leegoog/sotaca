@@ -4,13 +4,15 @@ class ProductsController < ApplicationController
   def index
     if params[:category]
       @category = Category.find(params[:category])
-      @products = Category.find(params[:category]).products
+      #@products = Product.find_all_by_id(@category.descendant_ids)
+      #@products = @category.product_list
+      @products = @category.products
     else
       @category = false
       @products = Product.scoped
     end
     @products = @products.where("title like ?", "%" + params[:title] + "%") if params[:title]
-    @products = @products.order('created_at').page(params[:page]).per( params[:per_page] ? params[:per_page] : 25)
+    @products = @products.page(params[:page]).per( params[:per_page] ? params[:per_page] : 25)
     @categories = Category.all
   end
 
