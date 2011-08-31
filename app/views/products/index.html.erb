@@ -11,7 +11,8 @@
 			$(this).click(function () {
 				$(this).parent().find('ul.level2').slideToggle();
 			})
-		})
+		});
+		$('ul.level1 li.active a').unbind("click");
 	});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
