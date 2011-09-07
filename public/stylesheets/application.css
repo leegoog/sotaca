@@ -307,9 +307,11 @@ margin: -10px 0 20px -35px;
 	margin-top: -20px;
 }
 #content .product_detail .fixed_h{
-	height: 103px;
+	height: 160px;
 }
-
+#content .product_detail .fixed_h{
+	height: 70px;
+}
 
 #content .product_detail .infos .product_price {
 	font-size: 14px;
