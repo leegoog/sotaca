@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
       @products = Product.scoped
     end
     @products = @products.where("title like ?", "%" + params[:title] + "%") if params[:title]
-    @products = @products.order("created_at").page(params[:page]).per( params[:per_page] ? params[:per_page] : 25)
+    @products = @products.order("created_at").page(params[:page]).per( params[:per_page] ? params[:per_page] : 12)
     @categories = Category.all
   end
 
