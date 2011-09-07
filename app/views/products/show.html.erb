@@ -7,7 +7,7 @@
  <script type="text/javascript" charset="utf-8">
 var scroll = 0;
 	changeImage = function (url) {
-		$('#main_image img').attr("src", url);
+		$('#main_image img:first').attr("src", url);
 	}
  	$(function(){
 		$('.main_image img').load(function(){
