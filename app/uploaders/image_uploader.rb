@@ -30,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process :resize_to_fit => [135, 135]
+     process :resize_to_fit => [120, 120]
      process :convert => 'png'
      process :make_transparent
    end
