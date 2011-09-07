@@ -1,9 +1,11 @@
 <% title @product.title %>
 
 <% content_for (:head) do %>
+<%= javascript_include_tag 'scrollto.js' %>
 <%= javascript_include_tag 'tiptip.js' %>
 <%= stylesheet_link_tag 'tiptip' %>
  <script type="text/javascript" charset="utf-8">
+var scroll = 0;
 	changeImage = function (url) {
 		$('#main_image img').attr("src", url);
 	}
@@ -12,7 +14,19 @@
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
 		$('.related_set a').tipTip();
-		//$('a[rel*=facebox]').facebox() 
+		$('#arrow_down').click(function () {
+			var h = $('#scrolldiv').height();
+			if (scroll < h) {
+				scroll += 100;
+			}
+			$('#scrolldiv').scrollTo(scroll);
+		});
+		$('#arrow_up').click(function () {
+			if (scroll > 0) {
+				scroll -= 100;
+			}
+			$('#scrolldiv').scrollTo(scroll);
+		});
 	});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
@@ -32,15 +46,19 @@
 		<div class="subheadline">
 			<%= t'products.details' %>
 		</div>
-		<p class="red_text">
-			<%= markdown(@product.description) %>
-		</p>
+		<div class="fixed_h">
+			<p class="red_text">
+				<%= markdown(@product.description) %>
+			</p>
+		</div>
 		<div class="subheadline">
 			<%= t 'products.size_fit' %>
 		</div>
-		<p class="red_text">
-			Size: between sizes S, M. Length -95 cm
-		</p>		
+		<div class="fixed_h">
+	   	 	<p class="red_text">
+	   	 		Size: between sizes S, M. Length -95 cm
+	   	 	</p>
+		</div>
 		<div class="size_selectors">
 			//todo: size selectors
 		</div>
@@ -51,7 +69,6 @@
 		<div class="subheadline">
 			<%= t 'products.tell_a_friend' %>
 		</div>
-		<br/>
 		<div class="subheadline" onclick="jQuery.facebox({ div: '#just_added' });">
 			<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true, :title => t('products.add_to_cart') %>
 			
@@ -81,16 +98,26 @@
 		</div>
 	</div>
 	<div class="column"  style="width: 125px">
-		<div class="image_wrapper">
+		<div id="arrow_up"><%= image_tag "arrow_up.jpg" %></div>
+		<div class="image_wrapper" id="scrolldiv">
+		  <% img_counter = 0 %>
 	      <% for asset in @product.assets do %>
-	      <div class="img_item">
-	       <a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')"> 
+		 	<% if (img_counter == 0) || (img_counter % 3 == 0)  %>
+				<div class="wrapper_img_item" id='<%= "wrapper_#{img_counter}" %>'>
+		 	<% end %>
+	      	<div class="img_item">
+	       		<a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')"> 
 	     <!--  <a href="<%= asset.image_url(:big).to_s %>" rel="facebox"> -->
-	        <%= image_tag asset.image_url(:thumb).to_s %>
-	        </a>
-	      </div>
-	      <% end %>
+	        		<%= image_tag asset.image_url(:thumb).to_s %>
+	        	</a>
+	      	</div>
+		  	<% if (img_counter == 0) || (img_counter % 3 == 0) %>
+				</div>
+		  	<% end %>
+		  	<% img_counter += 1%>
+	      	<% end %>
 		</div>
+		<div id="arrow_down"><%= image_tag "arrow_down.jpg" %></div>
 	</div>
 	<div class="clear"></div>
 	<div id="just_added" style="display:none;">
