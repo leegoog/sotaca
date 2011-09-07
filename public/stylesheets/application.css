@@ -306,11 +306,11 @@ margin: -10px 0 20px -35px;
 	font-size: 12px;
 	margin-top: -20px;
 }
-#content .product_detail .fixed_h{
-	height: 160px;
+#content .product_detail .fixed_h1{
+	height: 191px;
 }
-#content .product_detail .fixed_h{
-	height: 70px;
+#content .product_detail .fixed_h2{
+	height: 90px;
 }
 
 #content .product_detail .infos .product_price {
@@ -338,7 +338,15 @@ margin: -10px 0 20px -35px;
 #content .product_detail #main_image {
 	border: 1px solid;
 	width: 550px;
+	height: 545px;
 	text-align: center;
+	position: relative;
+}
+
+#content .product_detail #main_image .add_to_cart_btn {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
 }
 
 #content .product_detail img {
@@ -348,7 +356,7 @@ margin: -10px 0 20px -35px;
 
 #content .column .image_wrapper {
 	overflow:hidden;
-	height: 450px;
+	height: 520px;
 	width: 130px;
 }
 
