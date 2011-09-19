@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :order_nr
+    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :order_nr, :order_status_id
     attr_accessible :shipping_method_id, :user_id, :card_type, :card_expires_on, :card_number, :card_verification, :express_token
     
     attr_accessor :card_number, :card_verification, :order_number
@@ -11,6 +11,9 @@ class Order < ActiveRecord::Base
     
     # shipping method
     belongs_to :shipping_method
+    
+    #status
+    belongs_to :order_status
     
     
     # transactions will be saved to store errors or details from paypal transactions

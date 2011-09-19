@@ -1,0 +1,11 @@
+one:
+  product_id: 1
+  color: MyString
+  size: MyString
+  amount: 1
+
+two:
+  product_id: 1
+  color: MyString
+  size: MyString
+  amount: 1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802132553) do
+ActiveRecord::Schema.define(:version => 20110919130705) do
 
   create_table "article_set_likes", :force => true do |t|
     t.integer  "user_id"
@@ -102,6 +102,12 @@ ActiveRecord::Schema.define(:version => 20110802132553) do
     t.datetime "updated_at"
   end
 
+  create_table "order_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_transactions", :force => true do |t|
     t.integer  "order_id"
     t.string   "action"
@@ -133,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20110802132553) do
     t.integer  "shipping_method_id"
     t.integer  "user_id"
     t.string   "order_nr"
+    t.integer  "order_status_id",    :default => 1
   end
 
   create_table "payment_notifications", :force => true do |t|
@@ -165,13 +172,14 @@ ActiveRecord::Schema.define(:version => 20110802132553) do
 
   create_table "products", :force => true do |t|
     t.text     "description"
-    t.integer  "price",       :default => 0,     :null => false
+    t.integer  "price",        :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.string   "subtitle"
-    t.string   "currency",    :default => "GBP"
+    t.string   "currency",     :default => "GBP"
     t.boolean  "legacy"
+    t.string   "product_code"
   end
 
   create_table "roles", :force => true do |t|
@@ -196,6 +204,15 @@ ActiveRecord::Schema.define(:version => 20110802132553) do
   create_table "shipping_methods", :force => true do |t|
     t.string   "name"
     t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stock_items", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "color"
+    t.string   "size"
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
