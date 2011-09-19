@@ -8,9 +8,14 @@ class Category < ActiveRecord::Base
     
     attr_accessor :product_list
     
-    def product_list
-      self_and_ancestors.to_a.collect! { |x| x.products }
+    def branch_ids
+      self_and_descendants.map(&:id).uniq 
     end
-      
+    
+
+    def all_products
+       Category.find(branch_ids, :include => :products).map(&:products).flatten!.uniq
+    end
+    
     
 end

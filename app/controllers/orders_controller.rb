@@ -42,7 +42,11 @@ class OrdersController < ApplicationController
   end
   
   def show
-    @order = Order.find(params[:id])
+    if !current_user.admin?
+      @order = current_user.orders.find(params[:id])
+    else
+      @order = Order.find(params[:id])
+    end
   end
   
   # creates a new order from the current_cart

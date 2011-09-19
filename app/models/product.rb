@@ -23,6 +23,9 @@ class Product < ActiveRecord::Base
    # for cart
     has_many :line_items, :dependent => :destroy
     
+  # for stock management
+    has_many :stock_items
+    
    # virtual attributes
     attr_writer :category_names
     
@@ -50,6 +53,15 @@ class Product < ActiveRecord::Base
       "#{id}-#{title.parameterize}"
     end
     
+    
+    def self.tree(category=nil) 
+      return scoped unless category
+      scoped.select("distinct(products.id), products.*").joins(:categorizations => :category).where(["categories.lft BETWEEN ? AND ?", category.lft, category.rgt])
+    end
+    
+    def title_code
+      "#{self.product_code} - #{self.title}"
+    end
     
     private
     

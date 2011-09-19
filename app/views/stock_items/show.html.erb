@@ -1,0 +1,24 @@
+<% title "Stock Item" %>
+
+<p>
+  <strong>Product:</strong>
+  <%= @stock_item.product_id %>
+</p>
+<p>
+  <strong>Color:</strong>
+  <%= @stock_item.color %>
+</p>
+<p>
+  <strong>Size:</strong>
+  <%= @stock_item.size %>
+</p>
+<p>
+  <strong>Amount:</strong>
+  <%= @stock_item.amount %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_stock_item_path(@stock_item) %> |
+  <%= link_to "Destroy", @stock_item, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", stock_items_path %>
+</p>
