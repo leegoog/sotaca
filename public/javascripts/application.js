@@ -31,7 +31,7 @@ function scrollDiv(direction) {
   }
   	
   	
-  if (scroll > $('#scrolldiv').height();) {
+  if (scroll > $('#scrolldiv').height()) {
   	scroll = $('#scrolldiv').height();
   }
 			

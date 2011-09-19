@@ -1,6 +1,7 @@
 Sotaca::Application.routes.draw do
 
-  
+  resources :order_statuses
+
   resources :supports, :only => [:new, :create]
 
   get "profile/show"
@@ -8,7 +9,10 @@ Sotaca::Application.routes.draw do
   resources :shipping_methods
 
   resources :article_set_likes
-
+  
+  resources :stock_items do
+     get :autocomplete_product_title, :on => :collection
+  end
 
   get "set_items/create"
 

@@ -249,7 +249,7 @@ margin: -10px 0 20px -35px;
 
 #content .product_overview .product .title_link {
 	position: absolute;
-	top: 170px;
+	top: 185px;
 	left: 10px;
 	color: #95006A;
 	text-decoration: none;
@@ -265,7 +265,7 @@ margin: -10px 0 20px -35px;
 #content .product_overview .product .product_price {
 	position: absolute;
 	bottom: 3px;
-	right: 5px;
+	left: 10px;
 	color: #95006A;
 }
 #content .product_overview .product .cart {
@@ -281,7 +281,7 @@ margin: -10px 0 20px -35px;
 #content .product_overview .product .image {
 	text-align: center;
 	position: relative;
-	width: 180px;
+	width: 182px;
 }
 #content .product_overview .product .image a {
 	margin-left: auto;
@@ -455,18 +455,11 @@ margin: -10px 0 20px -35px;
 }
 
 #content #left ul.level1 li {
-	background-color: #000;
 	color: #fff;
 	padding: 5px;
 	margin-bottom: 2px;
 }
 
-#content #left ul.level1 li.active {
-	background-color: #fff;
-	color: #000;
-	border: 1px solid #000;
-
-}
 
 #content #left ul.level2 {
 	display:none;
@@ -487,10 +480,15 @@ margin: -10px 0 20px -35px;
 	margin: 2.5px 0;
 	width: 126px;
 }
+#content #left ul.level2 li a{
+	font-weight: normal;
+	font-size: 12px;
+}
 #content #left ul li a{
 	text-decoration: none;
-	color: #fff;
-	font-size: 11px;
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
 }
 #content #left ul.level2 li:hover, #content #left ul.level2 li.active {
 	background-color: #fff !important;
@@ -953,13 +951,20 @@ table.translations {
 	margin: 20px 0 20px -10px;
 }
 
-.simple_form input.string, #register input, #register select, #login input, #contact input, #contact textarea, #contact select {
+.simple_form input.string, #register input, #register select, #login input, #contact input, #contact textarea, #contact select, #fake_product,
+#stock_item_amount {
 	border: 1px solid #95006A;
 	background-color: #efedee;
 	color: #000;
 	width:	246px;
 }
 
+#new_stock_item div.input {
+	
+	height: auto !important;
+}
+
+#stock_item_amount { width: 80px !important;}
 
 .registration .seventy {
 	width: 420px;
