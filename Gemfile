@@ -42,6 +42,7 @@ gem 'jquery-rails'
 gem 'nested_form'
 gem 'simple_form'
 gem 'client_side_validations'
+gem 'rails3-jquery-autocomplete'
 gem 'awesome_nested_set'
 gem 'simple_form'
 gem 'redcarpet'  # markdown interpreter

@@ -6,6 +6,7 @@
 			<li><%= link_to "add product", new_product_path %></li>
 			<li><%= link_to "categories", categories_url %> </li>
 			<li><%= link_to "translations", translations_url %></li>
+			<li><%= link_to "manage stock", stock_items_url %></li>
 		</ul>
 	</div>
 	<div class="admin_group">
@@ -20,7 +21,7 @@
 		<h3>Orders</h3>
 		<ul>
 			<li><%= link_to "shipping methods / costs", shipping_methods_path %></li>
-			<li>link2</li>
+			<li><%= link_to "define order statuses", order_statuses_path %></li>
 			<li>link3</li>
 		</ul>
 	</div>

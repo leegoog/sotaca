@@ -1,0 +1,33 @@
+<% content_for(:head) do %>
+<%= stylesheet_link_tag 'jquery-ui', :cache => true %>
+<%= javascript_include_tag 'jquery-ui.min' %>
+ <%= javascript_include_tag 'autocomplete-rails' %>
+<% end %>
+
+	
+<%= simple_form_for @stock_item do |f| %>
+  <%= f.error_messages %>
+ 
+    
+
+    <%= f.label "* Product Name" %>
+    <%= f.hidden_field :product_id, :id => "real_product_id" %>
+
+   <% if @stock_item.new_record? %>
+	 <div class="input text required">
+      <%= autocomplete_field_tag 'fake_product', '',
+      autocomplete_product_title_stock_items_path, :update_elements => {:id => '#real_product_id'}, :class => "required" %>
+	  <span class="hint">* Field will autocomplete, type product_code or name and choose</span>
+
+	 </div>
+   <% else %>
+		<%= link_to "#{@stock_item.product.product_code} - #{@stock_item.product.title}", @stock_item.product %><br/>
+		<span class="hint">Project is locked in edit mode</span>
+   <% end %>
+
+
+    <%= f.input :color %>
+    <%= f.input :size %>
+    <%= f.input :amount, :hint => "Amount of this article / color / size combination in stock" %>
+    <%= f.submit %>
+<% end %>
