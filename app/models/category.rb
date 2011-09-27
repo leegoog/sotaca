@@ -6,8 +6,6 @@ class Category < ActiveRecord::Base
    # has_many :categorizations
     has_many :products #, :through => :categorizations
     
-    attr_accessor :product_list
-    
     def branch_ids
       self_and_descendants.map(&:id).uniq 
     end
