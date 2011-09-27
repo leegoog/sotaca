@@ -58,7 +58,7 @@ class Product < ActiveRecord::Base
     
     def self.tree(category=nil) 
       return scoped unless category
-      scoped.select("distinct(products.id), products.*").joins(:categorizations => :category).where(["categories.lft BETWEEN ? AND ?", category.lft, category.rgt])
+      scoped.select("distinct(products.id), products.*").joins(:category).where(["categories.lft BETWEEN ? AND ?", category.lft, category.rgt])
     end
     
     def title_code

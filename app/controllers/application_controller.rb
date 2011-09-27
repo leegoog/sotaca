@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
+
+  
   def authenticate_superuser
     current_user.admin?
   end
