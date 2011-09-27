@@ -1,8 +1,12 @@
 ActiveAdmin.register Order do
+  
+  scope :new_orders
+  
   index do
     column :id
     column :order_nr
     column "Order Date", :created_at
+    column :order_status
     column :last_name
     column :first_name
     column :street
@@ -16,7 +20,8 @@ ActiveAdmin.register Order do
     column :ip_address
     default_actions
   end
-  
+
+  filter :order_status  
   filter :order_nr
   filter :created_at, :label => "Order Date"
   filter :zipcode

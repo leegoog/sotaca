@@ -10,16 +10,9 @@
 		</ul>
 	</div>
 	<div class="admin_group">
-		<h3>Clients</h3>
-		<ul>
-			<li>link1</li>
-			<li>link2</li>
-			<li>link3</li>
-		</ul>
-	</div>
-	<div class="admin_group">
 		<h3>Orders</h3>
 		<ul>
+			<li><a href="/admin/?locale=<%= I18n.locale %>">Order Admin</a></li>
 			<li><%= link_to "shipping methods / costs", shipping_methods_path %></li>
 			<li><%= link_to "define order statuses", order_statuses_path %></li>
 			<li>link3</li>
