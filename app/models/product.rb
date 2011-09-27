@@ -65,6 +65,10 @@ class Product < ActiveRecord::Base
       "#{self.product_code} - #{self.title}"
     end
     
+    def total_stock
+      self.stock_items.to_a.sum(&:amount)
+    end
+    
     private
     
     # assigns categories to the product, if the entered category doesn't exist, this method will create that record "on the fly"
