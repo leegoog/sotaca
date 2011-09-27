@@ -56,11 +56,17 @@ var scroll = 0;
 		</div>
 		<div class="fixed_h2">
 	   	 	<p class="red_text">
-	   	 		Size: between sizes S, M. Length -95 cm
+				<% if @product.stock_items.count > 0 %>
+					<%= pluralize(@product.total_stock, "item") %> in stock
+				<% else %>
+				    out of stock
+				<% end %>
+				
 	   	 	</p>
 		</div>
 		<div class="size_selectors">
-			//todo: size selectors
+			<%= select_tag "color", options_for_select(@product.stock_items.collect{ |s| [s.color, s.color ] }) %>
+			<%= select_tag "size", options_for_select(@product.stock_items.collect{ |s| [s.size, s.size ] }) %>
 		</div>
 			
 		<div class="subheadline">
