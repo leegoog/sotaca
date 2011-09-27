@@ -27,6 +27,7 @@ class Order < ActiveRecord::Base
     # validate CC data only if there is no paypal token - no need to enter when paying with paypal, right
     validates_presence_of :card_number, :card_verification, :card_expires_on, :if => :billing? 
     
+    scope :new_orders, where(:order_status_id => 1)
     
 #    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
 

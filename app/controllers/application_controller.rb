@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   helper :all # include all helpers, all the time
   
-  helper_method :current_cart, :authenticate_superuser
+  helper_method :current_cart, :authenticate_superuser!
   
   # before doing anything else in my app, set the locale
   before_filter :set_locale
@@ -29,8 +29,12 @@ class ApplicationController < ActionController::Base
   
 
   
-  def authenticate_superuser
-    current_user.admin?
+  def authenticate_superuser!
+    authenticate_user!
+    unless current_user.admin?
+      redirect_to root_url, :alert => "Permission denied"
+    end
+    # todo: check for admin flag
   end
   
   # overwrite default url builder to include the locale param
