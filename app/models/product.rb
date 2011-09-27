@@ -3,13 +3,15 @@ class Product < ActiveRecord::Base
    
    accepts_nested_attributes_for :translations # allows multiple translations in the same request
    
-   # validations
+    # validations
     validates_presence_of :title, :price
     validates :price, :numericality => { :greater_than => 0 }
   
-   # associations  
-    has_many :categorizations, :dependent => :destroy
-    has_many :categories, :through => :categorizations
+    # associations  
+    # has_many :categorizations, :dependent => :destroy
+    # has_many :categories, :through => :categorizations
+  
+    belongs_to :category
  
     has_many :users, :through => :likes
     has_many :likes, :class_name => 'ProductLike', :dependent => :destroy

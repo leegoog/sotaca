@@ -1,5 +1,7 @@
 Sotaca::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   resources :order_statuses
 
   resources :supports, :only => [:new, :create]
@@ -66,7 +68,7 @@ Sotaca::Application.routes.draw do
 
   match 'shop' => "products#index"
   
-  match 'admin' => "admin#index"
+  match 'shopadmin' => "my_admin#index"
   
   match 'cart/empty' => "carts#empty"
 

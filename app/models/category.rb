@@ -3,8 +3,8 @@ class Category < ActiveRecord::Base
   
     attr_accessible :name, :description, :lft, :rgt, :parent_id   
     
-    has_many :categorizations
-    has_many :products, :through => :categorizations
+   # has_many :categorizations
+    has_many :products #, :through => :categorizations
     
     attr_accessor :product_list
     
