@@ -59,8 +59,8 @@
     <%= f.text_field :product_code %>
   </div>
   <div class="field">
-    <%= f.label :category_names %><br />
-    <%= f.text_field :category_names %>
+    <%= f.label :category_id, "Category" %><br />
+   <%= f.select :category_id, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" }, :prompt => "Choose Category" %>
   </div>	
 <br/>
 <h2>Images</h2>

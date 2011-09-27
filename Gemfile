@@ -37,6 +37,8 @@ gem 'fog' # -> s3 cloud
 gem 'carrierwave'
 gem 'rmagick', :require => false
 
+gem 'activeadmin'
+
 # layout stuff
 gem 'jquery-rails'
 gem 'nested_form'
