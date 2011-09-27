@@ -7,7 +7,7 @@ en:
   chinese: "中国人"
   needs_login: "You need to log in before."
   back: "Back"
-  like_save: "You like this product! Thank you."
+  like_saved: "You like this. Thank you."
   added_to_cart: "Product added."
   
   profile:
