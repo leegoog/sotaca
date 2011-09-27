@@ -1,5 +1,37 @@
 ActiveAdmin::Dashboards.build do
 
+
+  section "Recent Orders" do  
+    table_for Order.order("created_at desc").limit(10) do  
+      column :order_nr do |order|  
+        link_to order.order_nr, admin_order_path(order)  
+      end  
+      column :created_at 
+      column :order_status 
+      column "Articles" do |order|
+        div :class => "cart" do
+          link_to pluralize(order.cart.total_items, "item"), order
+        end  
+      end
+      column "Price" do |order|
+        div :class => "price" do
+          number_to_currency(order.cart.total_price)
+        end  
+      end
+    end  
+    strong { link_to "View All Orders", admin_orders_path }  
+  end
+  
+  section "Newest Registrations" do  
+    table_for User.order("created_at desc").limit(5) do  
+      column :id  
+      column :created_at  
+      column :username
+      column :email
+    end  
+    strong { link_to "View All Users", admin_users_path }  
+  end
+  
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
