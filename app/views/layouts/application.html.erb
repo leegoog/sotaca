@@ -60,8 +60,8 @@
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/?locale=<%= I18n.locale %>"><%= t 'pages.info' %></a></li>
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/?locale=<%= I18n.locale %>"><%= t 'pages.our_story' %></a></li>
 		  		<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "blog") %>"><a href="/blog/?locale=<%= I18n.locale %>"><%= t 'pages.blog' %></a></li>
-	<% if can? :update, [Product] %>
-		<li class="<%= "active" if (params[:controller] == "admin" && params[:action] == "index") %>"><a href="/admin/"><%= t 'pages.admin' %></a></li>	
+	<% if current_user.admin? %>
+		<li class="<%= "active" if (params[:controller] == "admin" && params[:action] == "index") %>"><a href="/shopadmin/"><%= t 'pages.admin' %></a></li>	
 	<% end %>
 	
 				<li id="search_field">
