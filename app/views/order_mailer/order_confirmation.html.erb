@@ -4,8 +4,7 @@
 
 <p>
 	Order Number: <%= @order.order_nr %><br/>
-	Order Date: <%= @order.created_at.to_formatted_s %><br/>
-	Order Number: <%= @order.order_nr %><br/>	
+	Order Date: <%= @order.created_at.strftime("%B %d, %Y, %H:%M") %><br/>
 </p>
 
 

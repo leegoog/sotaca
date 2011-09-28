@@ -17,6 +17,9 @@
 		$("#order_key").change ( function () {
 		  window.location.replace('/products?&order='+$(this).val());
 		});
+		<% if params[:order] %>
+			$("#order_key").val('<%= params[:order] %>');
+		<% end %>
 		
 	});
 	$(window).load(function() {
