@@ -39,6 +39,8 @@ class Product < ActiveRecord::Base
     
    # scopes
     scope :by_category, lambda{|cat| where(:category => cat) } 
+    scope :active, where(:legacy => false)
+    scope :legacy, where(:legacy => true)
     
     composed_of :price,
                   :class_name => 'Money',

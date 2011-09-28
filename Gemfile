@@ -37,7 +37,11 @@ gem 'fog' # -> s3 cloud
 gem 'carrierwave'
 gem 'rmagick', :require => false
 
+# neat admin interface
 gem 'activeadmin'
+
+# background job processing
+gem 'resque', :require => "resque/server"
 
 # layout stuff
 gem 'jquery-rails'
