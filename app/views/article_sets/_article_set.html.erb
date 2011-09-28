@@ -21,7 +21,7 @@
             <td width="40%">
                 <div id="articles">
 					<h3>Articles in this Set: </h3>
-					<% for article in  @article_set.set_items %>
+					<% for article in  @set_items %>
 						<div class="set_article">
 							<span class="image">
 								<%= link_to image_tag(article.product.assets.first.image.url(:mini).to_s), article.product, :title => article.product.title, :class => 'img_thumb' %>
