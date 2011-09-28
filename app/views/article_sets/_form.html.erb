@@ -6,6 +6,9 @@
 	<%= stylesheet_link_tag 'canvas' %>
 <% end %>
 
+<div id="asset_paginator">
+	<%= paginate @assets, :remote => true %>
+</div>
 <table cellspacing="8" cellpadding="0" style="height: 480px;" id="app" class="wide">
 	<tbody>
 
@@ -14,11 +17,6 @@
 		<tr valign="top" height="460px">
         	<td width="600px" id="canvas_container">
             	<div style="height: 460px;" class="unlocked" classname="unlocked" id="canvas">
-					<% unless @article_set.new_record? %>
-						<% for item in @article_set.items %>
-							buh
-						<% end %>
-					<% end %>
 					
 						<div id="drag_here">Drag Articles here!</div>
                 </div>
@@ -26,15 +24,13 @@
             <td width="40%">
                 <div id="panel">
 					
-					<div class="articles">
-						<% for product in @products %>
-						<% product.assets.first(1).each do |asset| %>
-						  <a class="inventory_item" title="<%= product.title %>" id="<%= product.id %>" rel="<%= asset.image.url(:thumb).to_s %>" href="javascript:addToCanvas('<%= asset.image.url(:thumb).to_s %>' , '<%= product.title %>', '<%= product.id %>')" >
-							<%= image_tag asset.image.url(:mini).to_s, :title => product.title %>
-						  </a>
-						<% end %>
+					<div class="articles" id="item_chooser">
+						
+						
+						  <%= render @assets %>
 
-						<% end %>
+
+
 					  </div>
 					<br class="clear">
     			</div>
