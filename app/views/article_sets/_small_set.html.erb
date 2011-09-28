@@ -24,7 +24,7 @@
 					<br/>
 					<p> <b> Articles in this set </b> </p>
 					<div class="set_articles_small">
-						<% for item in article_set.set_items %>
+						<% for item in article_set.set_items.select("DISTINCT product_id") %>
 							<%= link_to image_tag(item.product.assets.first.image.url(:mini).to_s), item.product, :title => item.product.title, :class => 'mini_thumb' %>
 						<% end %>
 					</div>
