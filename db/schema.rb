@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927122024) do
+ActiveRecord::Schema.define(:version => 20110928192238) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(:version => 20110927122024) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rotation"
+    t.string   "url"
   end
 
   create_table "shipping_methods", :force => true do |t|
