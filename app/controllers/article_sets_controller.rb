@@ -21,7 +21,7 @@ class ArticleSetsController < ApplicationController
     @article_set = ArticleSet.new
     @article_set_id = ArticleSet.count+1
     @products = Product.all
-    @assets = Asset.order("product_id asc").page(params[:page]).per(30)
+    @assets = Asset.order("product_id desc").page(params[:page]).per(30)
   end
 
   def create
