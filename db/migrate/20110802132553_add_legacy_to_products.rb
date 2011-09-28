@@ -1,6 +1,6 @@
 class AddLegacyToProducts < ActiveRecord::Migration
   def self.up
-    add_column :products, :legacy, :boolean
+    add_column :products, :legacy, :boolean, :default => false
   end
 
   def self.down

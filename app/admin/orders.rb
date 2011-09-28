@@ -17,6 +17,11 @@ ActiveAdmin.register Order do
         link_to pluralize(order.cart.total_items, "item"), order
       end  
     end
+    column "Price" do |order|
+      div :class => "price" do
+        number_to_currency(order.total_price.to_money.exchange_to("GBP"))
+      end  
+    end
     column :ip_address
     default_actions
   end
@@ -28,4 +33,14 @@ ActiveAdmin.register Order do
   filter :city
   filter :last_name
   filter :ip_address
+  
+  
+  show do
+    h3 order.order_nr
+    pluralize(order.cart.total_items, "item")
+    div do
+      "todo: detailed order information"
+    end
+  end
+  
 end
