@@ -91,8 +91,8 @@ var scroll = 0;
 			  <% end %>
 			<div class="loading">
 			</div>
-			<div class="add_to_cart_btn">
-				<%= image_tag "add_to_cart_grey.png" %>
+			<div class="add_to_cart_btn" onclick="jQuery.facebox({ div: '#just_added' });">
+				<%= link_to image_tag("add_to_cart_grey.png"), line_items_path(:product_id => @product), :method => :post, :remote => true, :title => t('products.add_to_cart') %>
 			</div>
 		</div>
 		<div id="likes">
