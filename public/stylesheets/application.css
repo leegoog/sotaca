@@ -31,6 +31,10 @@ a:hover {
   position: relative;
 }
 
+#content .product_overview .product .photo img {
+    height: 140px;
+}
+
 .header ul {
 	list-style: none;
 	list-style-type: none;
