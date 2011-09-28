@@ -4,7 +4,6 @@ class CollageCreator
     set = ArticleSet.find(article_set_id)  
     #set.create_collage
     
-    
      # load the template
       
       
@@ -14,9 +13,7 @@ class CollageCreator
       #template 
       # template = Magick::Image.read("#{RAILS_ROOT}/public/images/set_template.png").first
       # or blank white image
-      template = Magick::Image.new(600, 480){
-        set.background_color = '#ffffff'
-       }
+      template = Magick::Image.new(600, 480)
       
       template.format = 'png'
       # template.filename = img_name
