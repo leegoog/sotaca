@@ -61,6 +61,10 @@
   <div class="field">
     <%= f.label :category_id, "Category" %><br />
    <%= f.select :category_id, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" }, :prompt => "Choose Category" %>
+  </div>
+  <div class="field">
+    <%= f.label :legacy, "Category" %><br />
+   <%= f.checkbox :legacy %>
   </div>	
 <br/>
 <h2>Images</h2>
