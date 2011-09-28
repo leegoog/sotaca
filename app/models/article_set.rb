@@ -23,8 +23,11 @@ class ArticleSet < ActiveRecord::Base
     
     accepts_nested_attributes_for :set_items, :allow_destroy => true  
     
-    after_create :create_collage
+    #after_create :create_collage
 
+    scope :by_user, lambda {|user_id| 
+      where(:user_id => user_id)
+    }
     
     
     # creates an png image collage from all the associated set items of this article set

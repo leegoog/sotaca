@@ -147,7 +147,9 @@ Sotaca::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => "pages#home"
 
-
+  authenticate :user do
+    mount Resque::Server, :at => "/resque"
+  end
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

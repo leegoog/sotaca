@@ -3,7 +3,12 @@ class ArticleSetsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   
   def index
-    @article_sets = ArticleSet.order('created_at desc').page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
+    if params[:user]
+       @article_sets = ArticleSet.by_user(Integer(params[:user])).order('created_at desc').page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
+       @user = User.find(params[:user])
+    else
+      @article_sets = ArticleSet.order('created_at desc').page(params[:page]).per( params[:per_page] ? params[:per_page] : 5)
+    end
   end
 
   def show
@@ -20,6 +25,7 @@ class ArticleSetsController < ApplicationController
   def create
     @article_set = ArticleSet.new(params[:article_set])
     if @article_set.save
+      Resque.enqueue(CollageCreator, @article_set.id) 
       flash[:notice] = "Successfully created article set."
       redirect_to @article_set
     else
