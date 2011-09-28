@@ -6,6 +6,7 @@ var drag_w = 0;
 var drag_h = 0;
 var articles_in_set = [];
 var preventPrompt = false;
+var zaehler = 0;
 
 // checks if the user should be prompted to leave the page or not (he will lose any progress)
 closeIt = function() {
@@ -64,11 +65,7 @@ $(function () {
 	
 addToCanvas = function (url, title, id, left, top) {
 	
-	// check if this article is already in the set
-	if($.inArray(id, articles_in_set) >= 0) {
-		alert("This article is already in your set");
-	}
-	else {
+
 		// article not yet inside, so do all the stuff 
 
 		left = left || $('#canvas').width() / 2 ;
@@ -85,17 +82,17 @@ addToCanvas = function (url, title, id, left, top) {
 			  function() 
 			  {
 				  $('#canvas').append( 
-					"<div data-article='" + id + "' id='set_item_" + id + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + id +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
+					"<div data-article='" + zaehler + "' id='set_item_" + zaehler + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + zaehler +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
 
 
 
 				  // make new set item draggable and resizable after short timeout
 				  // setTimeout(makeDraggableAndResizable(id), 200);
 
-				$( "#set_item_" + id).draggable({
+				$( "#set_item_" + zaehler).draggable({
 				  	 							containment: '#canvas',
 				  								stop: function(event, ui) { 
-																	updateAttributes(id); 
+																	updateAttributes(zaehler); 
 
 																	}
 				  							});
@@ -110,27 +107,26 @@ addToCanvas = function (url, title, id, left, top) {
 
 		   		  zi++;
 		   		  $( ".canvas_item .ui-wrapper" ).css("overflow", "");
-		   		  addSetItem(id);
+		   		  addSetItem(zaehler, id);
 				});
 				$('#drag_here').hide();
 
-				// add article to array
-				articles_in_set.push(id);
+
 			  }, 200);
 			setTimeout(
 				function ()
 				{
-				$( "#set_item_" + id + " img").resizable({ 
+				$( "#set_item_" + zaehler + " img").resizable({ 
 				  				handles: 'sw, se, ne, nw',
 				  				stop: function(event, ui) { 
 
-								updateAttributes(id); 
+								updateAttributes(zaehler); 
 										}
 
 						});
 			}, 200);
+	zaehler++;
 	
-	}
 }
 
 rotateItem = function (degree) {
@@ -151,24 +147,24 @@ moveItem = function (amount) {
 	$('#item_' + id +'_z_index').val(z);
 }
 
-addSetItem = function(id) {
+addSetItem = function(z, id) {
 	
 	// identify the div & the resizable image inside
-	var item = $("#set_item_"+id);
-	var image = $("#set_item_"+id+" img");
+	var item = $("#set_item_"+z);
+	var image = $("#set_item_"+z+" img");
 	
 	// generate the additional fields for this set item
 	var str = "";
 	
 	str += "<input type='hidden' name='article_set[set_items_attributes][" + set_item_counter + "][product_id]' value='" + id + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_width' name='article_set[set_items_attributes][" + set_item_counter + "][width]' value='" + image.width() + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_height' name='article_set[set_items_attributes][" + set_item_counter + "][height]' value='" + image.height() + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_z_index' name='article_set[set_items_attributes][" + set_item_counter + "][z_index]' value='" + item.css("z-index") + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_pos_x' name='article_set[set_items_attributes][" + set_item_counter + "][pos_x]' value='" + item.css("left") + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_pos_y' name='article_set[set_items_attributes][" + set_item_counter + "][pos_y]' value='" + item.css("top") + "'/>";
-	str += "<input type='hidden' id='item_" + id + "_rotation' name='article_set[set_items_attributes][" + set_item_counter + "][rotation]' value='" + item.attr("data-rotate") + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_width' name='article_set[set_items_attributes][" + set_item_counter + "][width]' value='" + image.width() + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_height' name='article_set[set_items_attributes][" + set_item_counter + "][height]' value='" + image.height() + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_z_index' name='article_set[set_items_attributes][" + set_item_counter + "][z_index]' value='" + item.css("z-index") + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_pos_x' name='article_set[set_items_attributes][" + set_item_counter + "][pos_x]' value='" + item.css("left") + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_pos_y' name='article_set[set_items_attributes][" + set_item_counter + "][pos_y]' value='" + item.css("top") + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_rotation' name='article_set[set_items_attributes][" + set_item_counter + "][rotation]' value='" + item.attr("data-rotate") + "'/>";
 	
-	var str2 = "<div id='fields_for_" + id +"'>" + str + "</div>";
+	var str2 = "<div id='fields_for_" + z +"'>" + str + "</div>";
 	// append string to the form fields
 	$('#set_items').append(str2);
 	// counter increase

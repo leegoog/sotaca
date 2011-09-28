@@ -1,0 +1,3 @@
+<a class="inventory_item" title="<%= asset.product.title %>"  href="javascript:addToCanvas('<%= asset.image.url(:thumb).to_s %>' , '<%= asset.product.title %>', '<%= asset.product.id %>')" >
+							<%= image_tag asset.image.url(:thumb).to_s, :title => asset.product.title, :height => 60 %>
+</a>

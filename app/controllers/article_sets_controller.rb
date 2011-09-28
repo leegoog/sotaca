@@ -13,6 +13,7 @@ class ArticleSetsController < ApplicationController
 
   def show
     @article_set = ArticleSet.find(params[:id])
+    @set_items = @article_set.set_items.select('DISTINCT product_id')
     @comments = @article_set.comments.order("created_at desc")
   end
 
@@ -20,6 +21,7 @@ class ArticleSetsController < ApplicationController
     @article_set = ArticleSet.new
     @article_set_id = ArticleSet.count+1
     @products = Product.all
+    @assets = Asset.order("product_id asc").page(params[:page]).per(35)
   end
 
   def create

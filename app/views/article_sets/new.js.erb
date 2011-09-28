@@ -1,0 +1,2 @@
+$('#item_chooser').html('<%= escape_javascript render(@assets) %>');
+$('#asset_paginator').html('<%= escape_javascript(paginate(@assets, :remote => true).to_s) %>');
