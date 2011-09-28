@@ -10,7 +10,7 @@
 					<% for item in @article_set.set_items %>
 						<div id="set_item_<%= item.id %>" title="<%= item.product.title %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= item.pos_y %>px;left:<%= item.pos_x %>px;">
 							
-							<%= image_tag item.product.assets.first.image.url(:thumb).to_s, :width => item.width, :height => item.height %>
+							<%= image_tag item.url, :width => item.width, :height => item.height %>
 						</div>
 						<script type="text/javascript" charset="utf-8">
 							$('#set_item_<%= item.id %>').rotate(<%= item.rotation %>)

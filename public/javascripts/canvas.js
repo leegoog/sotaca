@@ -82,7 +82,7 @@ addToCanvas = function (url, title, id, left, top) {
 			  function() 
 			  {
 				  $('#canvas').append( 
-					"<div data-article='" + zaehler + "' id='set_item_" + zaehler + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + zaehler +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
+					"<div data-article='" + zaehler + "' data-url='" + url + "' id='set_item_" + zaehler + "' style='z-index: " + zi +"; position:absolute; left: " + left + "px; top: " + top + "px;' data-rotate='0' class='canvas_item .active-element' ><div class='delete_link'><a href='#' onclick='deleteItem(" + zaehler +");' title='remove item' >X</a></div><img src='" + url +"' title='" + title +"' /></div");
 
 
 
@@ -147,7 +147,7 @@ moveItem = function (amount) {
 	$('#item_' + id +'_z_index').val(z);
 }
 
-addSetItem = function(z, id) {
+addSetItem = function(z, id, url) {
 	
 	// identify the div & the resizable image inside
 	var item = $("#set_item_"+z);
@@ -163,6 +163,7 @@ addSetItem = function(z, id) {
 	str += "<input type='hidden' id='item_" + z + "_pos_x' name='article_set[set_items_attributes][" + set_item_counter + "][pos_x]' value='" + item.css("left") + "'/>";
 	str += "<input type='hidden' id='item_" + z + "_pos_y' name='article_set[set_items_attributes][" + set_item_counter + "][pos_y]' value='" + item.css("top") + "'/>";
 	str += "<input type='hidden' id='item_" + z + "_rotation' name='article_set[set_items_attributes][" + set_item_counter + "][rotation]' value='" + item.attr("data-rotate") + "'/>";
+	str += "<input type='hidden' id='item_" + z + "_url' name='article_set[set_items_attributes][" + set_item_counter + "][url]' value='" + item.attr("data-url") + "'/>";
 	
 	var str2 = "<div id='fields_for_" + z +"'>" + str + "</div>";
 	// append string to the form fields

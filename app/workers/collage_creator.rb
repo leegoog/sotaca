@@ -20,7 +20,7 @@ class CollageCreator
       
       # go through all set items by z_index and add lay it over the template
       for item in set.set_items.order("z_index asc")
-        photo = Magick::Image.read(item.product.assets.first.image.url(:thumb).to_s).first
+        photo = Magick::Image.read(item.url).first
         photo = photo.scale(item.width, item.height)
         photo = photo.rotate(item.rotation)
         # composite item over template offsetting pos_x and pos_y for the template border
