@@ -3,4 +3,8 @@ class StockItem < ActiveRecord::Base
     
     belongs_to :product
     
+    validates_presence_of :product_id, :amount
+    
+    validates_numericality_of :amount
+    
 end
