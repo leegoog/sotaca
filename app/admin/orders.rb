@@ -38,9 +38,7 @@ ActiveAdmin.register Order do
   show do
     h3 order.order_nr
     pluralize(order.cart.total_items, "item")
-    div do
-      "todo: detailed order information"
-    end
+    render "cart", :locals => {:order => order}
   end
   
 end
