@@ -13,7 +13,9 @@ class CollageCreator
       #template 
       # template = Magick::Image.read("#{RAILS_ROOT}/public/images/set_template.png").first
       # or blank white image
-      template = Magick::Image.new(600, 480)
+      template = Magick::Image.new(600, 480) {
+        self.background_color = '#ffffff'
+       }
       
       template.format = 'png'
       # template.filename = img_name
