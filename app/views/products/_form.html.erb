@@ -1,0 +1,88 @@
+<%= nested_form_for @product, :html => {:multipart => true} do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="language">
+    <h2>English</h2>
+ <%= f.globalize_fields_for(:en) do |g| %>
+  <div class="field">
+    <%= g.label :title %><br />
+    <%= g.text_field :title %>
+  </div>
+  <div class="field">
+    <%= g.label :subtitle %><br />
+    <%= g.text_field :subtitle %>
+  </div>
+  <div class="field">
+    <%= g.label :description %><br />
+    <%= g.text_area :description, :cols => 30, :rows => 10  %>
+  </div>
+  <% end %>
+</div>
+<div class="language">
+    <h2>Chinese</h2>
+    <%= f.globalize_fields_for(:cn) do |g| %>
+      <div class="field">
+        <%= g.label :title %><br />
+        <%= g.text_field :title %>
+      </div>
+      <div class="field">
+        <%= g.label :subtitle %><br />
+        <%= g.text_field :subtitle %>
+      </div>
+      <div class="field">
+        <%= g.label :description %><br />
+        <%= g.text_area :description, :cols => 50, :rows => 10 %>
+      </div>
+    <% end %>
+</div>
+
+<br class="clear">
+  <div class="field">
+	<%= f.label :price, "Price (GBP)" %><br />
+	<% if @product.new_record? %>
+		 <%= f.text_field :price %>
+	<% else %>
+		<%= f.text_field :price, :value => @product.price.exchange_to('GBP') %>
+	<% end %>
+  </div>
+  <div class="field">
+    <%= f.label :product_code %><br />
+    <%= f.text_field :product_code %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id, "Category" %><br />
+   <%= f.select :category_id, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" }, :prompt => "Choose Category" %>
+  </div>
+  <div class="field">
+    <%= f.label :legacy, "Legacy (invisible)" %><br />
+   <%= f.check_box :legacy %>
+  </div>	
+<br/>
+<h2>Images</h2>
+	<%= f.fields_for :assets do |asset| %>	
+		<% if asset.object.new_record? %>
+			<%= asset.file_field(:image) %>
+	
+		<% else %> 
+			<%= image_tag(asset.object.image.url(:thumb)) %>
+			<%= asset.hidden_field :_destroy %>
+			<%= asset.link_to_remove "X"%>
+		<% end %>
+	
+	<% end %>
+	
+	<p><%= f.link_to_add "Add image", :assets %></p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

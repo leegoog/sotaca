@@ -1,0 +1,16 @@
+<% title "Product Likes" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @product_likes.user_id %>
+</p>
+<p>
+  <strong>Product:</strong>
+  <%= @product_likes.product_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_product_likes_path(@product_likes) %> |
+  <%= link_to "Destroy", @product_likes, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", product_likes_path %>
+</p>

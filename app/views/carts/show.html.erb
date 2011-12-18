@@ -1,0 +1,17 @@
+<% title "Shopping Cart" %>
+
+<div class="cart_view">
+
+<h2>Shopping Bag</h2>
+	
+	<% if @cart.line_items.count > 0 %>
+	
+		<%= render :partial => 'overview', :locals => { :cart => @cart } %>
+	    	
+<% else %>
+
+		<%= render :partial => 'empty' %>
+
+<% end %>
+
+</div>

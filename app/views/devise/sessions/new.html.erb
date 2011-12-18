@@ -1,0 +1,52 @@
+
+<div class="registration">
+
+
+<div class="seventy">
+
+<h2><%= t("devise.links.login") %></h2>
+
+
+<div id="login">
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td class="label"><%= f.label t("devise.links.username_or_email") %>*</td>
+		<td class="input"><%= f.text_field :login %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t("devise.links.password") %>*</td>
+		<td class="input"><%= f.password_field :password %></td>
+	</tr>
+	<% if devise_mapping.rememberable? -%>
+	<tr>
+		<td class="label"><%= f.label :remember_me %> </td>
+		<td class="small"><%= f.check_box :remember_me %> </td>
+	</tr>
+	<% end -%>
+	<tr>
+		<td class="label"></td>
+		<td class="input small"><%= f.submit t("devise.links.login") %></td>
+	</tr>
+</table>
+	
+<% end %>
+
+</div>
+<div class="forgot">
+<h2>Having problems?</h2>
+
+<%= render :partial => "devise/shared/links" %>
+
+</div>
+</div>
+<div class="thirty">
+	<h2>New Customer</h2>
+	<p>By creating an account at SOTACA1898.com you will be able to shop faster, keep track of the status of your orders and take part in SOTACA life.
+<br/><br/>
+<%= link_to t("devise.links.register"), new_registration_path(resource_name) %>
+</div>
+<div class="clear"></div>
+</div>

@@ -1,0 +1,158 @@
+<% title t('pages.info'), false %>
+
+<% content_for(:head) do %>
+ <script type="text/javascript" charset="utf-8">
+ 	$(function () {
+		$('a.question').each(function () {
+			$(this).click(function () {
+				$(this).next().next().slideToggle();
+				//alert('muh');
+			})
+		})
+	});
+ </script>
+<% end %>
+
+<div class="faq">
+<h2><%= t 'faq.general' %></h2>
+
+<a class="question"><%= t'faq.questions.1' %></a><br/>
+<div class="answer">
+<%= markdown(t'faq.answer.1') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.2' %></a><br/>
+<div class="answer">
+<%= markdown(t'faq.answer.2') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.3' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.3') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.4' %></a><br/>
+<div class="answer">
+<%= markdown(t'faq.answer.4') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.5' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.5') %>
+</div>
+<br/>
+<h2><%= t 'faq.payment' %></h2>
+
+<a class="question"><%= t'faq.questions.6' %></a><br/>
+<div class="answer"> 
+<%= markdown(t'faq.answer.6') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.7' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.7') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.8' %></a><br/>
+<div class="answer">
+<%= markdown(t'faq.answer.8') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.9' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.9') %>
+</div>
+<br/>
+<h2><%= t 'faq.delivery' %></h2>
+
+<a class="question"><%= t'faq.questions.10' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.10') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.11' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.11') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.12' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.12') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.13' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.13') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.14' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.14') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.15' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.15') %>
+</div>
+<br/>
+<h2><%= t 'faq.product_information' %></h2>
+
+<a class="question"><%= t'faq.questions.16' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.16') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.17' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.17') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.18' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.18') %>
+</div>
+<br/>
+<h2><%= t'faq.refund' %></h2>
+
+<a class="question"><%= t'faq.questions.19' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.19') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.20' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.20') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.21' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.21') %>
+</div>
+<br/>
+<h2><%= t 'faq.affiliation' %></h2>
+
+<a class="question"><%= t'faq.questions.22' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.22') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.23' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.23') %>
+</div>
+<br/>
+
+<h2><%= t 'faq.press' %></h2>
+
+<a class="question"><%= t'faq.questions.24' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.24') %>
+</div>
+<br/>
+<a class="question"><%= t'faq.questions.25' %></a><br/> 
+<div class="answer">
+<%= markdown(t'faq.answer.25') %>
+</div>
+<br/>
+<br/>
+</div>

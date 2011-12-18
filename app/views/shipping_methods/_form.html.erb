@@ -1,0 +1,16 @@
+<%= form_for @shipping_method do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+	<% if @shipping_method.new_record? %>
+		 <%= f.text_field :price %>
+	<% else %>
+		<%= f.text_field :price, :value => @shipping_method.price.exchange_to('GBP') %>
+	<% end %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

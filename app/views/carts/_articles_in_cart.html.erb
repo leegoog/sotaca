@@ -1,0 +1,40 @@
+<% for line_item in cart.line_items %>
+	  
+	    <tr class="border <%= cycle :odd, :even %>">
+	      <td>
+	      	<div class="image">	
+					<% line_item.product.assets.first(1).each do |asset| %>
+						<%= link_to(image_tag(asset.image.url(:mini).to_s), line_item.product, :title => line_item.product.title )%>
+					<% end %>
+		    </div>
+	      </td>
+	      <td>
+			<div class="details">
+				<b><%= link_to line_item.product.title, line_item.product, :title => t('products.details') %></b><br/>
+				   <%= line_item.product.subtitle %><br/>
+				   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(session[:currency])) %><br/><br/>
+				   Size: L <br/>
+				   Color: black<br/>
+			</div>
+		  </td>
+	      <td>
+			<div class="quantity">
+			<span class="amount"><b><%= line_item.quantity %></b></span><br/>
+			</div>
+		  </td>
+	      <td class="price">
+			<div style="position: relative; width: inherit; height: inherit;">
+			<b><%= number_to_currency(line_item.full_price.exchange_to(session[:currency])) %></b>
+			<span class="remove_item">
+				<%= link_to "remove", line_item, :confirm => 'Remove from cart?', :method => :delete %>
+			</span>
+			</div>
+		  </td>
+	    </tr>
+	  <% end %>
+	
+	<!--
+		<span class="remove_item">
+			<% link_to "remove", line_item, :confirm => 'Remove from cart?', :method => :delete %>
+		</span>
+	-->

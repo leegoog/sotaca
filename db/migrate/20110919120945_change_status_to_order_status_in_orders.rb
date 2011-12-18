@@ -1,0 +1,9 @@
+class ChangeStatusToOrderStatusInOrders < ActiveRecord::Migration
+  def self.up
+    rename_column :orders, :status, :order_status_id
+  end
+
+  def self.down
+    rename_column :orders, :order_status_id, :status
+  end
+end

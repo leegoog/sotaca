@@ -1,0 +1,14 @@
+<% title @user.username  %>
+
+
+<p> User has no bio. </p>
+
+<p> Avatar </p>
+
+<% if current_user %>
+	<% if (current_user== @user || current_user.admin?)%>
+	<p>
+		<%= link_to "Edit Profile" %>	
+	</p>
+	<% end %>
+<% end %>

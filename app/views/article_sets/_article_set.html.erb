@@ -1,0 +1,69 @@
+<% title "Set: #{@article_set.name}"%>
+
+
+<h2><%= @article_set.name %></h2>
+<table cellspacing="8" cellpadding="0" style="height: 480px;" id="app" class="wide">
+	<tbody>
+		<tr valign="top" height="460px">
+        	<td width="600px" id="canvas_container">
+            	<div style="height: 460px; border: 1px solid #ccc; position: relative; overflow: hidden;" class="locked" classname="locked" id="canvas">
+					<% for item in @article_set.set_items %>
+						<div id="set_item_<%= item.id %>" title="<%= item.product.title %>" class="set_item" style="position:absolute; z-index:<%= item.z_index %>; top:<%= item.pos_y %>px;left:<%= item.pos_x %>px;">
+							
+							<%= image_tag item.url, :width => item.width, :height => item.height %>
+						</div>
+						<script type="text/javascript" charset="utf-8">
+							$('#set_item_<%= item.id %>').rotate(<%= item.rotation %>)
+						</script>
+					<% end %>
+                </div>
+            </td>
+            <td width="40%">
+                <div id="articles">
+					<h3>Articles in this Set: </h3>
+					<% for article in  @set_items %>
+						<div class="set_article">
+							<span class="image">
+								<%= link_to image_tag(article.product.assets.first.image.url(:mini).to_s), article.product, :title => article.product.title, :class => 'img_thumb' %>
+							</span>
+							<div style="float:right">
+							<p><%= link_to article.product.title, article.product, :title => t('products.details') %></p>
+							<p><%= article.product.subtitle %></p>
+							<p>
+								
+								<span class="cart"><%= link_to image_tag('cart.gif'), line_items_path(:product_id => article.product), :method => :post, :remote => true, :title => t("products.add_to_cart") %></span>
+								<span class="article_price">
+									<%= number_to_currency(article.product.price.exchange_to(session[:currency])) %>
+								</span>
+								
+							</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					<% end %>
+    			</div>
+            </td>
+        </tr>
+		<tr>
+			<td>
+				<div class="comments">
+				  <h2 id="comments_count"><%= pluralize(@article_set.comments.count, "comment") %></h2>
+				  <div id="comments">
+					<%= render @comments %>
+				  </div>
+				<%= form_for [@article_set, Comment.new], :remote => true do |f| %>
+				 <%= render 'comment_fields', :f => f %>
+				<% end %>
+				</div>
+			</td>
+			<td>
+				This set was liked by:
+				<ul>
+					<% for user in @article_set.users %>
+					<li><%= link_to user.username, user %></li>
+					<% end %>
+			</td>
+		</tr>	
+		
+   </tbody>
+</table>

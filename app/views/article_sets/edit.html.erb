@@ -1,0 +1,13 @@
+<% title "Edit Article Set" %>
+
+<script type="text/javascript" charset="utf-8">
+	var _set_id = <%= @article_set.id %>;
+</script>
+
+
+<%= render 'form' %>
+
+<p>
+  <%= link_to "Show", @article_set %> |
+  <%= link_to "View All", article_sets_path %>
+</p>

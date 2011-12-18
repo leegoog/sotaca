@@ -1,0 +1,11 @@
+<tr>
+		<td colspan="4">
+			<h2>Shipping country</h2>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="4">
+		<%= radio_button_tag :shipping_method_id, :collection => ShippingMethod.all, :label_method => :name_and_price %> 
+		</td>
+	</tr>

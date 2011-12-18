@@ -1,0 +1,28 @@
+<h1><%= t 'pages.orders' %></h1>
+
+<table>
+  <tr>
+	<th>Order #</th>
+    <th>Order from</th>
+    <th>Articles</th>
+    <th>Total</th>
+	<th>Status</th>
+	<th>Details</th>
+  </tr>
+
+<% if !@orders.blank? %>
+  <% for order in @orders %>
+    <tr>
+	  <td><%= order.order_nr %></td>
+      <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <td><%= pluralize(order.cart.total_items, "item") %></td>
+      <td><%= number_to_currency (order.total_price.to_money.exchange_to(session[:currency])) %></td>
+	  <td><%= order.order_status.name %></td>
+	  <td><%= link_to "view", order %></td>
+    </tr>
+  <% end %>
+<% else %>
+  No orders yet.
+<% end %>
+
+</table>

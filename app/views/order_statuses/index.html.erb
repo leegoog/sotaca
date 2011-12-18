@@ -1,0 +1,17 @@
+<% title "Order Statuses" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for order_status in @order_statuses %>
+    <tr>
+      <td><%= order_status.name %></td>
+      <td><%= link_to "Show", order_status %></td>
+      <td><%= link_to "Edit", edit_order_status_path(order_status) %></td>
+      <td><%= link_to "Destroy", order_status, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Order Status", new_order_status_path(order_status) %></p>
