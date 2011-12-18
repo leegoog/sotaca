@@ -1,0 +1,66 @@
+<% title "Products" %>
+
+<% content_for (:head) do %>
+ <script type="text/javascript" charset="utf-8">
+
+ 	$(function(){
+		$('div[id^="photo"] img').load(function(){
+				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
+		});
+		$('.lvl1_cat a').each(function () {
+			$(this).click(function () {
+				$(this).parent().find('ul.level2').slideToggle();
+			})
+		});
+		$('ul.level1 li.active a').unbind("click");
+		
+		$("#order_key").change ( function () {
+		  window.location.replace('/products?&order='+$(this).val());
+		});
+		<% if params[:order] %>
+			$("#order_key").val('<%= params[:order] %>');
+		<% end %>
+		
+	});
+	$(window).load(function() {
+		$('.loading').fadeOut('slow');
+	});
+ </script>
+<% end %>
+<% content_for(:left) do %>
+	<div id="category_navigation">
+	<% for category in Category.roots %>
+		<ul class="level1">
+			<li class="lvl1_cat <%= "active" if (@category == category ||  category.children.include?(@category)) %>">
+			
+			
+			<%= link_to category.name, '#' %>
+				<% if category.children.size > 0 %>
+					<ul class="level2 <%= "open" if (@category == category ||  category.children.include?(@category)) %>">
+						<li class="<%= "active" if (@category == category) %>"><%= link_to "all", :controller => 'products', :action => "index" , :category => category.id %></li>
+					<% for child in category.children %>
+						<li class="<%= "active" if (child == @category) %>"><%= link_to child.name, :controller => 'products', :action => "index" , :category => child.id %></li>
+					<% end %>
+					</ul>
+				<% end %>
+			</li>
+		</ul>
+	<% end %>
+	</div>
+<% end %>
+
+<div class="product_overview">
+	<%= render @products%>
+	<div class="clear"></div>
+</div>
+<div class="admin_panel">
+<% if can? :create, Product %>
+<p><%= link_to "New Product", new_product_path(@products.size) %></p>
+<% end %>
+</div>
+<div id="paginator">
+ Sort by: <%= select_tag(:order_key, options_for_select([['Newest items', 'created_at'], ['Alphabetical', 'title'], ['Prices', 'price']])) %>
+<br/>
+<% # link_to "View all pages", {:controller => "products", :action => "index", :per_page => 1000 } %>
+<%= paginate @products %>
+</div>

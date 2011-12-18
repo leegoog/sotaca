@@ -1,0 +1,27 @@
+<% title "Stock Items" %>
+
+<table>
+  <tr>
+    <th>Product ID</th>
+    <th>Product Code</th>
+    <th>Product Title</th>
+    <th>Color</th>
+    <th>Size</th>
+    <th>Amount</th>
+  </tr>
+  <% for stock_item in @stock_items %>
+    <tr>
+      <td><%= stock_item.product_id %></td>
+      <td><%= stock_item.product.product_code %></td>
+      <td><%= stock_item.product.title %></td>
+      <td><%= stock_item.color %></td>
+      <td><%= stock_item.size %></td>
+      <td><%= stock_item.amount %></td>
+      <td><%= link_to "Show", stock_item %></td>
+      <td><%= link_to "Edit", edit_stock_item_path(stock_item) %></td>
+      <td><%= link_to "Destroy", stock_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Stock Item", new_stock_item_path(stock_item) %></p>

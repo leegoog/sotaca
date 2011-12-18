@@ -1,0 +1,57 @@
+<% content_for (:head) do%>
+	<%= javascript_include_tag 'jquery-ui.min.js' %>
+	<%= javascript_include_tag 'rotate.2.1.js'%>
+	<%= javascript_include_tag 'canvas.js' %>
+	<%= stylesheet_link_tag 'jquery-ui'%>
+	<%= stylesheet_link_tag 'canvas' %>
+<% end %>
+
+<div id="asset_paginator">
+	<%= paginate @assets, :remote => true %>
+</div>
+<table cellspacing="8" cellpadding="0" style="height: 480px;" id="app" class="wide">
+	<tbody>
+
+		<%= render :partial => 'toolbar' %>
+
+		<tr valign="top" height="460px">
+        	<td width="600px" id="canvas_container">
+            	<div style="height: 460px;" class="unlocked" classname="unlocked" id="canvas">
+					
+						<div id="drag_here">Drag Articles here!</div>
+                </div>
+            </td>
+            <td width="40%">
+                <div id="panel">
+					
+					<div class="articles" id="item_chooser">
+						
+						
+						  <%= render @assets %>
+
+
+
+					  </div>
+					<br class="clear">
+    			</div>
+            </td>
+        </tr>
+   </tbody>
+</table>
+
+
+
+
+
+
+<%= nested_form_for @article_set do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </p>
+	<p id="set_items">
+	</p>
+  <p onlcick="window.onbeforeunload=null"><%= f.submit %></p>
+<% end %>

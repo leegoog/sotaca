@@ -1,0 +1,46 @@
+<p>Welcome <%= @order.user.username %>!</p>
+
+<p>Thank you for shopping at <a href="http://www.sotaca1898.com">SOTACA1898.com</a>. We confirm you that we received your order. Please find your purchase information below:</p>
+
+<p>
+	Order Number: <%= @order.order_nr %><br/>
+	Order Date: <%= @order.created_at.strftime("%B %d, %Y, %H:%M") %><br/>
+</p>
+
+
+<table cellspacing="10" cellpadding="5">
+	<tr>
+		<th>Item</th>
+		<th>Unit Price</th>
+		<th class="price">Qantity</th>
+		<th class="price">Price</th>
+	</tr>
+	<% for item in @order.cart.line_items %>
+	<tr>
+		<td><%= item.product.title %></td>
+		<td><%= number_to_currency(item.unit_price) %></td>
+		<td><%= item.quantity %></td>
+		<td><%= number_to_currency(item.full_price) %></td>
+	</tr>
+	<% end %>
+	<tr class="shipping_line">
+		<td><%= t"orders.shipping_costs" %></td>
+		<td colspan="2"><%= @order.shipping_method.name %></td>
+		<td class="price"><b><%= number_to_currency(@order.shipping_method.price.exchange_to("GBP"))%> </b></td>
+	</tr>
+	<tr class="total" style="border-top: 1px">
+		<td><b>TOTAL</b></td>
+		<% total = (@order.cart.total_price + @order.shipping_method.price).to_money.exchange_to("GBP") %>
+		<td colspan="2"><i>(V.A.T. incl.: <%= number_to_currency(total*0.16)%>)</i></td>
+		<td colspan="3" class="price">
+			<b><%= number_to_currency(total) %></b>
+		</td>
+	</tr>
+</table>
+
+
+<p>In case of further inqueries, please contact our Customer Service<br/>
+Contact E-mail: <a href="mailto:info@sotaca1898.com">info@sotaca1898.com</a>
+
+<br/><br/>
+<b>SOTACA1898</b>

@@ -1,0 +1,14 @@
+<div class="product">
+	<div class="image" id="<%= 'photo'+product.id.to_s+'_loading' %>">	
+		<span class="loading"></span>
+		<span class="photo">
+		<% if product.assets.first %>
+			<%= link_to(image_tag(product.assets.first.image.url(:thumb).to_s), product, :title => product.title )%>
+		<% else %>
+			<%= link_to(image_tag('dummy.jpg', :width => '140'), product, :title => product.title )%>
+		<% end %>
+		</span>
+    </div> 
+  <%= link_to product.title,  product, :class => "title_link", :title => product.title %>
+  <span class="product_price"><%= number_to_currency(product.price.exchange_to(session[:currency])) %></span>
+</div>

@@ -1,0 +1,67 @@
+<table id="line_items">
+	  <tr class="border">
+	    <th><%= t("cart.product") %></th>
+	    <th><%= t("cart.details") %></th>
+	    <th><%= t("cart.quantity") %></th>
+	    <th><%= t("cart.price") %></th>
+	  </tr>
+
+	
+	  <%= render :partial => 'articles_in_cart', :locals => { :cart => cart } %>
+
+	  <tr class="promo">
+	    <td>
+	      Got a promo code?
+	    </td>
+	    <td>
+			<input id="promocode" size="21"></input>
+	    </td>
+		<td colspan="2">
+			<%= image_tag "update.jpg" %>
+	  </tr>
+	  <tr>
+	    <td>
+	    </td>
+		<td>
+			  <%= link_to (image_tag "continue_shopping.jpg"), products_path, :title => "continue shopping" %>
+		</td>
+	    <td>
+			<b>Sub Total <i>(incl. VAT)</i></b>
+	    </td>
+	    <td>
+	 		<b><%= number_to_currency (cart.total_price.exchange_to(session[:currency])) %></b>
+	    </td>
+	  </tr>
+	
+	<tr>
+			<td colspan="4">
+				<h2>Shipping country</h2>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="4">
+				<% ShippingMethod.all.each do |sm| %>
+				  <%= radio_button_tag :shipping_method, sm.id %>
+				  <%= label_tag :shipping_method, sm.name_and_price %>
+				<% end %>
+
+			</td>
+		</tr>
+	
+
+	<tr>
+		<td colspan="2">
+		</td>
+		<td colspan="2">
+			<%# form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
+		      <%# hidden_field_tag :cmd, "_s-xclick" %>  
+		      <%# hidden_field_tag :encrypted, cart.paypal_encrypted(products_url, payment_notifications_url, cart.line_items.first.unit_price.currency_as_string ) %>  
+		        <p><%= link_to image_tag('checkout.jpg'), new_order_url %></p>  
+		    <%# end %>
+		</td>	
+	</tr>
+	</table>
+	<p>
+	  <%= link_to "Emtpy Cart", cart, :confirm => 'Empty the cart?', :method => :delete %>
+	</p>

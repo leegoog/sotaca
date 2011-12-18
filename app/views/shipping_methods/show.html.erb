@@ -1,0 +1,16 @@
+<% title "Shipping Method" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shipping_method.name %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @shipping_method.price %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_shipping_method_path(@shipping_method) %> |
+  <%= link_to "Destroy", @shipping_method, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", shipping_methods_path %>
+</p>

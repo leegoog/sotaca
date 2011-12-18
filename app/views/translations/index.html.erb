@@ -1,0 +1,31 @@
+<h1>Translations</h1>  
+  
+<table class="translations">  
+	<tr>
+		<th>Key</th>
+		<th>Value</th>
+	</tr>
+  <% @translations.keys.each do |key| %>  
+	<tr>
+    <td><%= key %> </td>
+    <td> <%= @translations[key] %></td>  
+	</tr>
+  <% end %>  
+</table>
+  
+<h2>Add Translation</h2>  
+<%= form_tag "/translations/" do %>  
+ <p>  
+   <%= label_tag :locale %><br />  
+   <%= select_tag :locale, options_for_select([["English", "en"], ["Chinese", "cn"]]) %>  
+  </p>  
+  <p>  
+    <%= label_tag :key %><br />  
+    <%= text_field_tag :key %>  
+  </p>  
+  <p>  
+    <%= label_tag :value %><br />  
+    <%= text_area_tag :value %>  
+  </p>  
+  <p><%= submit_tag "Submit" %></p>  
+<% end %>

@@ -1,0 +1,14 @@
+<% if current_user %>
+	<p id="new_comment" class="add_comment">
+	  <%= f.hidden_field :user_id, :value => current_user.id %>
+	  <%= f.hidden_field :article_set_id, :value => @article_set.id %>
+	  <%= f.label :body, "leave a comment" %><br />
+	  <%= f.text_area :body, :rows => 5, :cols => 25 %>
+	</p>
+	
+	<p>
+	  <%= f.submit "Add Comment" %>
+	</p>
+<% else %>
+	<p> Please <%= link_to t("devise.links.login"), new_session_path(User.new) %> to leave a comment on this Set.<br />
+<% end %>

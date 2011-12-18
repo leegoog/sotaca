@@ -1,0 +1,12 @@
+<% title "Order Status" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order_status.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_order_status_path(@order_status) %> |
+  <%= link_to "Destroy", @order_status, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", order_statuses_path %>
+</p>

@@ -1,0 +1,163 @@
+<% title @product.title %>
+
+<% content_for (:head) do %>
+<%= javascript_include_tag 'scrollto.js' %>
+<%= javascript_include_tag 'tiptip.js' %>
+<%= stylesheet_link_tag 'tiptip' %>
+ <script type="text/javascript" charset="utf-8">
+var scroll = 0;
+	changeImage = function (url) {
+		$('#main_image img:first').attr("src", url);
+	}
+ 	$(function(){
+		$('.main_image img').load(function(){
+				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
+		});
+		$('.related_set a').tipTip();
+		$('#arrow_down').click(function () {
+			var h = $('#scrolldiv').height();
+			if (scroll < h) {
+				scroll += 100;
+			}
+			$('#scrolldiv').scrollTo(scroll);
+		});
+		$('#arrow_up').click(function () {
+			if (scroll > 0) {
+				scroll -= 100;
+			}
+			$('#scrolldiv').scrollTo(scroll);
+		});
+	});
+	$(window).load(function() {
+		$('.loading').fadeOut('slow');
+	});	
+ </script>
+<% end %>
+
+<div class="product_detail">
+	<div class="column">
+		<div class="infos">
+			<h1><%= @product.title %></h1>
+			<p class="subtitle">
+			  <%= @product.subtitle %>
+			</p>		
+		  <span class="product_price"><%= number_to_currency(@product.price.exchange_to(session[:currency])) %></span>
+		<br/>
+		<div class="subheadline">
+			<%= t'products.details' %>
+		</div>
+		<div class="fixed_h1" >
+			<p class="red_text">
+				<%= markdown(@product.description) %>
+			</p>
+		</div>
+		<div class="subheadline">
+			<%= t 'products.size_fit' %>
+		</div>
+		<div class="fixed_h2">
+	   	 	<p class="red_text">
+				<% if @product.stock_items.count > 0 %>
+					<%= pluralize(@product.total_stock, "item") %> in stock
+				<% else %>
+				    out of stock
+				<% end %>
+				
+	   	 	</p>
+		</div>
+		<div class="size_selectors">
+			<%= select_tag "color", options_for_select(@product.stock_items.collect{ |s| [s.color, s.color ] }) %>
+			<%= select_tag "size", options_for_select(@product.stock_items.collect{ |s| [s.size, s.size ] }) %>
+		</div>
+			
+		<div class="subheadline">
+			<%= t 'products.add_to_wishlist' %>
+		</div>		
+		<div class="subheadline">
+			<%= t 'products.tell_a_friend' %>
+		</div>
+		<div class="subheadline" onclick="jQuery.facebox({ div: '#just_added' });">
+			<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true, :title => t('products.add_to_cart') %>
+			
+		</div>
+
+		</div>
+	</div>
+	<div class="column" style="width:auto">
+		<div id="main_image">
+			  <% if @product.assets.first %>	
+			  	<%= image_tag @product.assets.first.image_url(:big).to_s %>
+			  <% else %>
+				<%= image_tag "dummy.jpg" %>
+			  <% end %>
+			<div class="loading">
+			</div>
+			<div class="add_to_cart_btn" onclick="jQuery.facebox({ div: '#just_added' });">
+				<%= link_to image_tag("add_to_cart_grey.png"), line_items_path(:product_id => @product), :method => :post, :remote => true, :title => t('products.add_to_cart') %>
+			</div>
+		</div>
+		<div id="likes">
+			<span class="image">
+				<% form_for ProductLike.new do |f| %>
+				  <%= f.hidden_field :user_id, :value => (current_user ? current_user.id : nil) %>
+  				  <%= f.hidden_field :product_id, :value => @product.id %>
+				  <%= image_submit_tag "like.jpg", :title => "i like it", :class => "heart" %>
+				<% end %>
+			</span>
+			<span id="count"><%= @product.users.count %></span>
+		</div>
+	</div>
+	<div class="column"  style="width: 125px">
+		<div id="arrow_up"><%= image_tag "arrow_up.jpg" %></div>
+		<div class="image_wrapper" id="scrolldiv">
+		  <% img_counter = 0 %>
+	      <% for asset in @product.assets do %>
+		 	<% if (img_counter == 0) || (img_counter % 3 == 0)  %>
+				<div class="wrapper_img_item" id='<%= "wrapper_#{img_counter}" %>'>
+		 	<% end %>
+	      	<div class="img_item">
+	       		<a href="javascript: changeImage('<%= asset.image_url(:big).to_s %>')"> 
+	     <!--  <a href="<%= asset.image_url(:big).to_s %>" rel="facebox"> -->
+	        		<%= image_tag asset.image_url(:thumb).to_s %>
+	        	</a>
+	      	</div>
+		  	<% if (img_counter == 0) || (img_counter % 3 == 0) %>
+				</div>
+		  	<% end %>
+		  	<% img_counter += 1%>
+	      	<% end %>
+		</div>
+		<div id="arrow_down"><%= image_tag "arrow_down.jpg" %></div>
+	</div>
+	<div class="clear"></div>
+	<div id="just_added" style="display:none;">
+		<p><%= image_tag @product.assets.first.image_url(:thumb) %></p>
+		<p>You just added <%= @product.title %> to the cart</p>
+		<p> <span id="nr_added"><%= current_cart.number_of_items + 1 %></span> items in cart (<%= number_to_currency((current_cart.total_price + @product.price).exchange_to(session[:currency])) %>)</p>
+		<%= link_to "continue shopping", products_path %><br/>
+		<%= link_to "to the cart", current_cart_url %><br/>
+	</div>
+</div>
+<% if @product.article_sets.count > 0 %>
+<div id="related_products">
+	<h3><%= t 'products.in_sets' %></h3>
+	
+	<div class="set_list">
+		<% for set in @product.article_sets.limit(6) %>
+			<% unless set.blog_image.nil? %>
+				<div class="related_set">
+					<%= link_to image_tag(set.blog_image.to_s, :width => 150), set, :title => "#{set.name} by #{set.user.username}" %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>		
+</div>
+<div class="clear"></div>
+
+<% end %>
+<% if can? :update, Product %>
+<p>
+  <%= link_to "Edit", edit_product_path(@product) %> |
+  <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", products_path %>
+</p>
+<% end %>

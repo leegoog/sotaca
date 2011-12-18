@@ -1,0 +1,60 @@
+<% title "your order" %>
+
+
+<div class="order_detail">
+	<p>
+		<b>Order#:</b> <%= @order.order_nr %>
+	</p>
+	<p>
+		<b>Order Date:</b> <%= @order.created_at.strftime("%B %d, %Y, %H:%M") %>
+	</p>
+	<p>
+		<b>Name:</b> <%= "#{@order.first_name} #{@order.last_name}" %>
+	</p>
+	<p>
+		<b>Shipping Adress:</b> <%= "#{@order.street} #{@order.house_nr}, #{@order.zipcode} #{@order.city}, #{@order.country}" %>
+	</p>
+	<p>
+		<b>Payment Method:</b> <%= @order.express_payer_id? ? "Paypal" : "Credit Card" %>
+	</p>
+
+	<p>
+		<b>Articles:</b> <%= "#{pluralize(@order.cart.total_items, 'Article')} (#{number_to_currency (@order.cart.total_price.to_money.exchange_to("GBP"))})" %>
+	</p>
+	<p>
+		<table class="pretty" cellpadding="5" cellspacing="3" border="1">
+			<tr>
+				<th>image</th>
+				<th>title</th>
+				<th>reference</th>
+				<th>quantity</th>
+				<th>price</th>
+			</tr>
+		<% @order.cart.line_items.each do |li| %>
+		<tr>
+			<td><% li.product.assets.first(1).each do |asset| %>
+				<%= link_to(image_tag(asset.image.url(:mini).to_s, :width => 50), li.product, :title => li.product.title )%>
+				<% end %> 
+			</td>
+			<td><%= li.product.title %>	</td>
+			<td><%= li.product.product_code %></td>
+			<td><%= li.quantity %></td>
+			<td><%= number_to_currency(li.full_price.to_money.exchange_to("GBP")) %></td>
+		</tr>
+		<% end %>
+		</table>
+	</p>
+	<p>
+		<b>Shipping Method:</b> <%= "#{@order.shipping_method.name} (#{number_to_currency (@order.shipping_method.price.to_money.exchange_to("GBP"))})" %>
+	</p>
+	<p>
+		<b>Total:</b> <%= number_to_currency (@order.total_price.to_money.exchange_to("GBP")) %>
+	</p>
+	<p>
+		<b>Order status:</b> <%= @order.order_status.name %>
+	</p>		
+	<br/>
+	<p>
+		<%= link_to "<< All orders", orders_path %>
+	</p>
+</div>

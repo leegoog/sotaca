@@ -1,0 +1,22 @@
+<% title "Article Set" %>
+
+<% content_for (:head) do%>
+	<%= javascript_include_tag 'rotate.2.1.js' %>
+	<%= javascript_include_tag 'tiptip.js' %>
+	<%= stylesheet_link_tag 'tiptip' %>
+	<script type="text/javascript" charset="utf-8">
+		$(function () {
+			$('.img_thumb').tipTip();
+			$('.set_item').tipTip();
+		})
+	</script>
+<% end %>
+
+<p>
+	<%= render @article_set %>
+</p>	
+<p>
+  <%= link_to "Edit", edit_article_set_path(@article_set) %> |
+  <%= link_to "Destroy", @article_set, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", article_sets_path %>
+</p>

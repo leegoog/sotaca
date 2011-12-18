@@ -1,0 +1,33 @@
+<p>
+<% if order.express_token.blank? %>
+	
+	  <%= f.input :first_name %>
+	
+	  <%= f.input :last_name %>
+	<div class="input string optional">
+	  <label for="order_card_type" class="select"> Card Type</label>
+	  <%= f.select :card_type, [["Visa", "visa"], ["Mastercard", "master"], ["American Express", "american_express"]], :class => "select" %>
+	</div>
+	
+	  <%= f.input :card_number %>
+	
+	  <%= f.input :card_verification %>
+	
+	
+	<div class="input string optional">
+	  <label for="order_expires_on" class="select"> Card expires on</label>
+	  <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true,  :order => [:month, :year, :day] %>
+	</div>
+<% else %>
+	<%= f.hidden_field :express_token %>
+	<%= f.hidden_field :ip_address, :value => request.remote_ip %>
+	TODO: express checkout confirmation
+<% end %>
+	<%= f.hidden_field :cart_id, :value => current_cart.id %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+</p>
+
+<div id="paypal_express">
+	<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), 
+	express_checkout_url %>
+</div>

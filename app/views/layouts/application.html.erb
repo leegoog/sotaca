@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? "Sotaca 1898 - #{yield(:title)}" : "Sotaca 1898" %></title>
+    <%= stylesheet_link_tag "application", "facebox" %>
+    <%= javascript_include_tag 'jquery', 'rails', 'application', "nested_form", "facebox"  %>
+	<%= favicon_link_tag %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+	<div id="container">
+	  <div class="header">
+	  	<div class="top">
+	  	
+	  		<div id="logo">		
+	  			<%= link_to image_tag('logo.jpg'), home_url %>
+	  		</div>
+			<br/>
+	  		<div id="languages">
+	  			<ul>
+	  				<% if params[:locale] == "cn"%>
+	  				  <li><a href="#"><%= link_to t('english'), url_for( :locale => 'en' ) %></a></li>
+					<% else %>
+					  <li><a href="#"><%= link_to t('chinese'), url_for( :locale => 'cn' ) %></a></li>
+					<% end %>
+	  			</ul>
+	  		</div>
+	  	
+	  	</div>
+	  	<div class="middle">
+	  		<div id="login_menu">
+	  			<% if user_signed_in? %>  
+		        <%= link_to current_user.username, profile_url %> |  
+		        <%= link_to t("devise.links.logout"), destroy_user_session_url %>  
+		      <% else %>  
+				<%= link_to t("devise.links.login"), new_user_session_url %> |  
+		        <%= link_to t("devise.links.register"), new_user_registration_url %>  
+		      <% end %>
+	  				
+	  		</div>
+	  		<div id="cart_menu">
+			 <div id="cart_image" <%= "style='right:67px'" if params[:locale] == "cn" %>>
+			<span id="added_to_cart"><%= t("added_to_cart") %></span>
+			<%= link_to image_tag("cart.jpg"), current_cart_url, :title => t('orders.steps.cart')%></div>
+	  			<ul>
+					<li id="cart_count">
+					<%= link_to "#{current_cart.number_of_items}", current_cart_url %>
+					
+					</li>
+	  				<li><a href="/orders/new/?locale=<%= I18n.locale %>"><%= t 'checkout' %></a></li>
+	  			</ul>
+	  		</div>
+	  	</div>
+	  	<div id="main_navi">
+	  		<ul>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/?locale=<%= I18n.locale %>"><%= t 'home' %></a></li>	
+	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/?locale=<%= I18n.locale %>"><%= t 'pages.shop' %></a></li>
+		  			<li class="<%= "active" if params[:controller] == "article_sets"%>"><a href="/sets/?locale=<%= I18n.locale %>"><%= t 'pages.sets' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/?locale=<%= I18n.locale %>"><%= t 'pages.info' %></a></li>
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "our_story") %>"><a href="/our_story/?locale=<%= I18n.locale %>"><%= t 'pages.our_story' %></a></li>
+		  		<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "blog") %>"><a href="/blog/?locale=<%= I18n.locale %>"><%= t 'pages.blog' %></a></li>
+	<% unless !current_user || !current_user.admin? %>
+		<li class="<%= "active" if (params[:controller] == "admin" && params[:action] == "index") %>"><a href="/shopadmin/"><%= t 'pages.admin' %></a></li>	
+	<% end %>
+	
+				<li id="search_field">
+					
+		
+				<%= form_tag products_path, :action => "index", :method => "GET" do %>
+				  <%= text_field_tag :title, '', :size => "22" %>
+				  <%=  image_submit_tag("search.png", :id => "search", :name => "search", :class => "search-button", :disabled => false) %>
+				<%  end %>
+
+					
+	  		</ul>
+	  	</div>
+	  	
+	  </div>
+	  
+	    <% flash.each do |name, msg| %>
+	      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	    <% end %>
+	
+	  <div id="content">
+		<div id="left">
+			<%= yield(:left) %>
+		</div>
+
+	    <%= yield %>
+	  </div>
+	  <div class="footer">
+		<ul>
+			<li><a href="/contact/?locale=<%= I18n.locale %>"><%= t 'pages.contact' %></a></li>
+			<li><a href="/terms/?locale=<%= I18n.locale %>"><%= t 'pages.terms' %></a></li>
+			<li><a href="/press/?locale=<%= I18n.locale %>"><%= t 'pages.press' %></a></li>
+			<li><a href="/whole_sale/?locale=<%= I18n.locale %>"><%= t 'pages.whole_sale' %></a></li>
+					
+	</div>
+	<br/><br/>
+  </body>
+</html>

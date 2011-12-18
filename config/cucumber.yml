@@ -1,0 +1,4 @@
+
+default: --format pretty --color
+wip: --tags @wip:3 --wip features
+
