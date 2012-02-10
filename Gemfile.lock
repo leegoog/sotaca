@@ -151,7 +151,7 @@ GEM
     money (3.7.1)
       i18n (~> 0.4)
     multi_json (1.0.3)
-    mysql (2.8.1)
+    mysql2 (0.2.8)
     nested_form (0.0.0)
     net-ssh (2.1.4)
     nifty-generators (0.4.4)
@@ -261,7 +261,7 @@ DEPENDENCIES
   kaminari
   mocha
   money
-  mysql
+  mysql2 (= 0.2.8)
   nested_form
   nifty-generators
   rack-ssl
