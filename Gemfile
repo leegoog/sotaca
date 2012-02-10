@@ -27,7 +27,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'cancan'  
 
 # database
-gem 'mysql'
+gem 'mysql2', '0.2.8'
 
 # pagination
 gem 'kaminari'
