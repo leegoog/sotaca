@@ -1,5 +1,8 @@
 <% title "your order" %>
 
+<% content_for(:left) do %>
+	<%= render :partial => 'users/profile_links', :user => @user %>
+<% end %>
 
 <div class="order_detail">
 	<p>
@@ -12,7 +15,7 @@
 		<b>Name:</b> <%= "#{@order.first_name} #{@order.last_name}" %>
 	</p>
 	<p>
-		<b>Shipping Adress:</b> <%= "#{@order.street} #{@order.house_nr}, #{@order.zipcode} #{@order.city}, #{@order.country}" %>
+		<b>Shipping Adress:</b> <%= "#{@order.adress1} #{@order.adress2}, #{@order.zipcode} #{@order.city}, #{@order.country}" %>
 	</p>
 	<p>
 		<b>Payment Method:</b> <%= @order.express_payer_id? ? "Paypal" : "Credit Card" %>

@@ -1,0 +1,47 @@
+<% content_for(:left) do %>
+	<%= render :partial => 'users/profile_links', :user => current_user %>
+<% end %>
+<% sa = current_user.adresses.shipping.first %>
+<% ba = current_user.adresses.billing.first %>
+<div id="user_adresses">
+<h2>Shipping Adress</h2>
+<% if sa %>
+	<div class="adress_overview">
+		<%= "#{sa.first_name} #{sa.last_name}" %> <br/>
+		<%= "#{sa.adress1}" %> <br/>
+		<%= "#{sa.adress2}" %> <br/>
+		<%= "#{sa.zip} #{sa.city}" %> <br/>
+		<%= "#{sa.country}" %> <br/>
+		<%= "Phone Number: #{sa.phone1}" %> <br/>
+		<%= "E-Mail: #{sa.user.email}" %> <br/>
+		<%= button_to "Edit", edit_adress_path(sa), :class => "edit_adress funkybutton", :method => :get  %>
+	</div>
+<% else %>
+	<div class="no_adress_yet">
+		You currently do not have an shipping adress associated to you account. <%= link_to 'Add One', new_adress_path(:type => 1 ) %>
+	</div>
+<% end %>
+
+<h2>Billing Adress</h2>
+<% if ba %>
+	<div class="adress_overview">
+		<%= "#{ba.first_name} #{ba.last_name}" %> <br/>
+		<%= "#{ba.adress1}" %> <br/>
+		<%= "#{ba.adress2}" %> <br/>
+		<%= "#{ba.zip} #{ba.city}" %> <br/>
+		<%= "#{ba.country}" %> <br/>
+		<%= "Phone Number: #{ba.phone1}" %> <br/>
+		<%= "E-Mail: #{ba.user.email}" %> <br/>
+		<%= button_to "Edit", edit_adress_path(ba), :class => "edit_adress funkybutton", :method => :get %>
+	</div>
+<% else %>
+	<div class="no_adress_yet">
+		You currently do not have an billing adress associated to you account. <%= link_to 'Add One', new_adress_path(:type => 2)  %>
+	</div>
+<% end %>
+	
+</div>	
+
+
+
+

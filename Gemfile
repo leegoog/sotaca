@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '~> 3.0.15'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -27,7 +27,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'cancan'  
 
 # database
-gem 'mysql2', '0.2.8'
+gem "mysql2", "~> 0.2.7"
 
 # pagination
 gem 'kaminari'
@@ -47,7 +47,7 @@ gem 'resque', :require => "resque/server"
 gem 'jquery-rails'
 gem 'nested_form'
 gem 'simple_form'
-gem 'client_side_validations'
+#gem 'client_side_validations'
 gem 'rails3-jquery-autocomplete'
 gem 'awesome_nested_set'
 gem 'simple_form'
@@ -55,14 +55,13 @@ gem 'redcarpet'  # markdown interpreter
 
 ### internationalization
 # key-value store
-gem 'i18n', :git => "git://github.com/svenfuchs/i18n.git", :ref => "8ad0f4b65406e380becbf4c553f1919f15029ddd"
+gem 'i18n', "~> 0.5.0"
 gem 'globalize3'
-gem 'redis'
+# gem 'redis'
 gem 'money'
 gem 'google_currency'
 
-# console stuff
-gem 'hirb'
+
 
 
 # payment, credit card processing
@@ -82,17 +81,10 @@ gem 'rack-ssl'
 group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '2.6.1'
-  gem 'autotest-rails'
+  gem 'heroku'
+  # console stuff
 end
 
 group :test do    
-  gem 'rspec-rails', '2.6.1'
-  gem 'cucumber-rails'
-  gem 'database_cleaner'
-  gem 'capybara'   
-  gem 'factory_girl_rails'
-  gem 'autotest-rails'
-  gem 'ZenTest'
-  gem 'spork', '~> 0.9.0.rc8'
-  gem "mocha"
+
 end

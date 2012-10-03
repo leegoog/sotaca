@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "info@sotaca1898.com"  
+  default :from => "no-reply@sotaca1898.com"  
   
   def contact_notification(sender)
      @sender = sender

@@ -16,7 +16,6 @@ function remove_fields(link) {
 }
 
 function scrollDiv(direction) {
-  alert("buh");
   if (direction.toString() == "up") {
   	scroll = scroll  - 100;
   }

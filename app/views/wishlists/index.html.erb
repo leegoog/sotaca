@@ -1,0 +1,19 @@
+<% title "Wishlists" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Product Ids</th>
+  </tr>
+  <% for wishlist in @wishlists %>
+    <tr>
+      <td><%= wishlist.user_id %></td>
+      <td><%= wishlist.product_ids %></td>
+      <td><%= link_to "Show", wishlist %></td>
+      <td><%= link_to "Edit", edit_wishlist_path(wishlist) %></td>
+      <td><%= link_to "Destroy", wishlist, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Wishlist", new_wishlist_path(wishlist) %></p>

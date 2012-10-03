@@ -1,0 +1,7 @@
+one:
+  user_id: 1
+  product_ids: MyString
+
+two:
+  user_id: 1
+  product_ids: MyString

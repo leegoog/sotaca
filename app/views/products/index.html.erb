@@ -7,12 +7,14 @@
 		$('div[id^="photo"] img').load(function(){
 				$(this).closest('div').find('.loading').delay(100).fadeOut('slow');
 		});
+		
 		$('.lvl1_cat a').each(function () {
 			$(this).click(function () {
+				$('ul.level2').each( function () { $(this).slideUp(); });
 				$(this).parent().find('ul.level2').slideToggle();
 			})
 		});
-		$('ul.level1 li.active a').unbind("click");
+		$('.level2 a').unbind("click");
 		
 		$("#order_key").change ( function () {
 		  window.location.replace('/products?&order='+$(this).val());

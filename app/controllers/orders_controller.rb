@@ -34,6 +34,9 @@ class OrdersController < ApplicationController
       flash[:notice] = "Nothing to checkout!"
       redirect_to products_url
     else
+      
+      @customer_adress = current_user.adresses.shipping.first
+      
       session[:order_params] ||= {}  
       @order = Order.new(session[:order_params])
       @order.express_token = params[:token]
@@ -42,7 +45,7 @@ class OrdersController < ApplicationController
   end
   
   def show
-    if !current_user.admin?
+    if !current_user.admin? # only admin can see all orders
       @order = current_user.orders.find(params[:id])
     else
       @order = Order.find(params[:id])
@@ -51,7 +54,7 @@ class OrdersController < ApplicationController
   
   # creates a new order from the current_cart
   def create
-    
+    @customer_adress = current_user.adresses.shipping.first
     # create order through cart 
     @order = current_cart.build_order(params[:order])
     
@@ -75,6 +78,9 @@ class OrdersController < ApplicationController
       # try to transfer the money
       if @order.purchase
         # send confirmation email
+        
+        # TODO - put emails into background job
+        @order.save_adress  
         OrderMailer.order_confirmation(@order).deliver 
         # reset session information about order
         session[:order_step] = session[:order_params] = nil

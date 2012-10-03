@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  
+  before_filter :authenticate_superuser!
+  
   def index
     @categories = Category.all
   end

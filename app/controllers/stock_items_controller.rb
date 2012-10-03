@@ -1,10 +1,14 @@
 class StockItemsController < ApplicationController
   
+  before_filter :authenticate_superuser!
+  
   autocomplete :product, :title, :display_value => :title_code
   
   def get_autocomplete_items(parameters)
-    items = Product.select("DISTINCT CONCAT_WS(' ', product_code, title, id) AS full_name, product_code, title, id").where(["CONCAT_WS(' ', product_code, title) LIKE ?", "%#{parameters[:term]}%"])
+    #items = Product.select("DISTINCT CONCAT_WS(' ', product_code, title, id) AS full_name, product_code, title, id").where(["CONCAT_WS(' ', product_code, title) LIKE ?", "%#{parameters[:term]}%"])
+    items = Product.where('LOWER(product_code) LIKE ? OR LOWER(title) LIKE ?', "%#{parameters[:term].downcase}%", "%#{parameters[:term].downcase}%")
   end
+  
   
   def index
     @stock_items = StockItem.all

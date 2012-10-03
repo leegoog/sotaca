@@ -2,7 +2,8 @@ class LineItemsController < ApplicationController
    def create
      @product = Product.find(params[:product_id])
      @cart = current_cart
-     @cart.add_item(@product.id, @product.price)
+     @stock_item = StockItem.find(params[:stock_item_id])
+     @cart.add_item(@product.id, @product.price, @stock_item.id)
      
      respond_to do |format|
        format.html { 

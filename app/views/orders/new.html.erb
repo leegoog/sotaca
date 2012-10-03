@@ -44,7 +44,7 @@
 </h2>
 <%= simple_form_for @order do |f| %>  
   <%= f.error_messages %>  
-  <%= render "#{@order.current_step}_step", :f => f, :order => @order %>  
+  <%= render "#{@order.current_step}_step", :f => f, :order => @order, :adress => @customer_adress %>  
   <%= f.hidden_field :express_token, :value => @order.express_token if @order.express_token? %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p>

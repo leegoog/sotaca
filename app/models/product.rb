@@ -31,6 +31,8 @@ class Product < ActiveRecord::Base
    # virtual attributes
     attr_writer :category_names
     
+    attr_accessor :title_code
+    
    # callback for create categories through product
     after_save :assign_categories
     
@@ -57,6 +59,9 @@ class Product < ActiveRecord::Base
       "#{id}-#{title.parameterize}"
     end
     
+    def full_name
+        [product_code, title, id].reject(&:blank?).join(' ')
+    end
     
     def self.tree(category=nil) 
       return scoped unless category

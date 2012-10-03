@@ -1,24 +1,30 @@
-<h1><%= t 'pages.orders' %></h1>
+<% title t'pages.orders' %>
 
-<table>
+<% content_for(:left) do %>
+	<%= render :partial => 'users/profile_links', :user => @user %>
+<% end %>
+
+<div id="user_adresses">
+<h2><%= t 'orders.my_orders' %></h2>
+
+<table class="order_overview">
   <tr>
-	<th>Order #</th>
-    <th>Order from</th>
-    <th>Articles</th>
-    <th>Total</th>
+	<th>Order number</th>
+  <th>Date</th>
 	<th>Status</th>
-	<th>Details</th>
-  </tr>
+	<th>Order value</th>
+	<th>Order Details</th>
+ </tr>
 
 <% if !@orders.blank? %>
   <% for order in @orders %>
     <tr>
-	  <td><%= order.order_nr %></td>
-      <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-      <td><%= pluralize(order.cart.total_items, "item") %></td>
+	  <td><%= link_to order.order_nr, order %></td>
+      <td><%= order.created_at.strftime("%d. %b %Y") %></td>
+ 			<td><%= order.order_status.name %></td> 
       <td><%= number_to_currency (order.total_price.to_money.exchange_to(session[:currency])) %></td>
-	  <td><%= order.order_status.name %></td>
-	  <td><%= link_to "view", order %></td>
+	 
+	  <td><%= link_to "Check now", order %></td>
     </tr>
   <% end %>
 <% else %>
@@ -26,3 +32,4 @@
 <% end %>
 
 </table>
+</div>

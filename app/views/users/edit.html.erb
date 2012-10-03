@@ -1,7 +1,16 @@
 <% title t("profile.edit") %>
 
 <% content_for(:left) do %>
-	<%= render :partial => 'profile_links', :user => @user%>
+	<%= render :partial => 'profile_links', :user => @user %>
 <% end %>
 
+
+<div id="user_adresses">
+
+<h2><%= t("profile.change_email") %> </h2>
+
+
 <%= render 'form' %>
+
+
+</div>

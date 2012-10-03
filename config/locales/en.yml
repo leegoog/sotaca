@@ -2,17 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  welcome: "Will kommen"
+  welcome: "Welcome"
+  home: "Home"
+  checkout: "Checkout"
+  adress_book: "Adress Book"
   english: 'English'
-  chinese: "中国人"
+  chinese: "中文"
   needs_login: "You need to log in before."
   back: "Back"
   like_saved: "You like this. Thank you."
   added_to_cart: "Product added."
+  creating_account: "By creating an account at SOTACA1898.com you will be able to shop faster, keep track of the status of your orders and take part in SOTACA1898 life."
+  account_page: "This is your account home page. You can use this area to manage and edit your personal details, check on orders and tell us what you think of SOTACA1898."
+  tell_us_what_you_think: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
   
   profile:
     edit: "Edit Profile"
     change_password: "Change Password"
+    change_email: "Change E-Mail"
     sets: "My Sets"
     show: "My Profile"
     orders: "My Orders"
@@ -48,16 +55,20 @@ en:
   
   pages:
     blog: 'Blog'
-    contact: 'Contact'
+    contact: 'Contact Us'
     home: 'Home'
     index: 'Index'
-    our_story: 'Our Story'
+    our_story:
+      title: 'Our Story'
+      text1: 'It has always been our passion to share the things that interest inspire us with people who appreciate them and we are convinced that good things always come back to you when you help other people.'
+      text2: 'We have created SOTACA1898 to be more than just another online retailer. We want to be known as an inspiring location for creative exchanges on fashion and design issues. Our goal is to provide interesting and high quality fashion and design products, and we believe that every product has a story behind it. We love to share their stories with you and we hope that our products give you as much pleasure as they do us. '
+      text3: 'We also strongly support independent creative designer products and you are welcome to contact us if you have innovative ideas.'
     info: 'Info'
     just_in: 'Just in'
     press: 'Press'
     shop: 'Shop'
     terms: 'Terms'
-    whole_sale: 'Whole Sale'
+    whole_sale: 'Affiliation/Whole sale'
     translations: 'Translations'
     admin: 'Admin'
     sets: 'Sets'
@@ -71,6 +82,7 @@ en:
       confirmation: 'Confirm your order'
     shipping_costs: "Shipping Costs"
     summary: "Order summary"
+    my_orders: "My Orders"
   
   products:
     related: 'Other products you may like'
@@ -82,6 +94,7 @@ en:
     add_to_wishlist: 'Add to wishlist'
     tell_a_friend: 'Tell a friend'
     uncategorized: "not yet categorized"
+    out_of_stock: "Out of Stock"
 
   cart:
     product: 'Article'

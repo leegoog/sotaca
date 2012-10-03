@@ -32,24 +32,6 @@
 	 		<b><%= number_to_currency (cart.total_price.exchange_to(session[:currency])) %></b>
 	    </td>
 	  </tr>
-	
-	<tr>
-			<td colspan="4">
-				<h2>Shipping country</h2>
-			</td>
-		</tr>
-
-		<tr>
-			<td colspan="4">
-				<% ShippingMethod.all.each do |sm| %>
-				  <%= radio_button_tag :shipping_method, sm.id %>
-				  <%= label_tag :shipping_method, sm.name_and_price %>
-				<% end %>
-
-			</td>
-		</tr>
-	
-
 	<tr>
 		<td colspan="2">
 		</td>

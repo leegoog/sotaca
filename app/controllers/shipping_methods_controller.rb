@@ -1,4 +1,7 @@
 class ShippingMethodsController < ApplicationController
+  
+  before_filter :authenticate_superuser!
+  
   def index
     @shipping_methods = ShippingMethod.all
   end

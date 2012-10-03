@@ -1,4 +1,6 @@
 class TranslationsController < ApplicationController
+  before_filter :authenticate_superuser!
+  
   def index
      @translations = TRANSLATION_STORE  
   end
