@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110928192238) do
+ActiveRecord::Schema.define(:version => 20120415233328) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -27,6 +27,25 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
+  create_table "adresses", :force => true do |t|
+    t.string   "title"
+    t.string   "last_name"
+    t.string   "country"
+    t.string   "adress1"
+    t.string   "adress2"
+    t.string   "city"
+    t.string   "county"
+    t.integer  "zip"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "adress_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "active",      :default => false
+    t.string   "first_name"
+  end
+
   create_table "article_set_likes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "article_set_id"
@@ -36,14 +55,13 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
 
   create_table "article_sets", :force => true do |t|
     t.string   "name"
-    t.string   "blog_image"
-    t.string   "background_color"
-    t.integer  "user_id",                         :null => false
+    t.integer  "user_id",                       :null => false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",   :default => 0
-    t.integer  "likes_count",      :default => 0
+    t.string   "blog_image"
+    t.integer  "comments_count", :default => 0
+    t.integer  "likes_count",    :default => 0
   end
 
   create_table "assets", :force => true do |t|
@@ -84,6 +102,14 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
     t.datetime "updated_at"
   end
 
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "article_set_id"
@@ -109,12 +135,13 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
   end
 
   create_table "line_items", :force => true do |t|
-    t.integer  "unit_price", :default => 0, :null => false
+    t.integer  "unit_price",    :default => 0, :null => false
     t.integer  "product_id"
     t.integer  "cart_id"
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "stock_item_id"
   end
 
   create_table "order_statuses", :force => true do |t|
@@ -140,8 +167,8 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
     t.string   "ip_address"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "street"
-    t.string   "house_nr"
+    t.string   "adress1"
+    t.string   "adress2"
     t.string   "zipcode"
     t.string   "city"
     t.string   "country"
@@ -155,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
     t.integer  "user_id"
     t.string   "order_nr"
     t.integer  "order_status_id",    :default => 1
+    t.string   "phone"
   end
 
   create_table "payment_notifications", :force => true do |t|
@@ -196,6 +224,11 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
     t.boolean  "legacy"
     t.string   "product_code"
     t.integer  "category_id"
+  end
+
+  create_table "products_wishlists", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "wishlist_id"
   end
 
   create_table "roles", :force => true do |t|
@@ -258,8 +291,15 @@ ActiveRecord::Schema.define(:version => 20110928192238) do
     t.string   "locale",                                :default => "en"
   end
 
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token"
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
+
+  create_table "wishlists", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "product_ids"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -31,6 +31,7 @@ class PagesController < ApplicationController
   end
 
   def whole_sale
+    @support = Support.new(:id => 2)
   end
 
   def blog

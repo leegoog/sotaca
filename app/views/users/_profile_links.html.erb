@@ -1,7 +1,8 @@
-<h3>My Profile</h3>
-<ul class="profile_links">
-   <li><%= link_to t('profile.edit'), edit_user_path(@user), :title => t('profile.edit')%></li>		
-   <li><%= link_to t('profile.sets'), sets_url, :title => t('pages.sets')%></li>
-   <li><%= link_to t('profile.orders'), orders_url, :title => t('pages.orders')%></li>
-   <li><%= link_to t('profile.change_password'), orders_url, :title => t('profile.change_password')%></li>
+<div class="my_account">My account</div>
+<ul class="level2 visible profile_links">
+   <li class="<%= "active" if (params[:controller] == "adresses" && params[:action] == "index") %>"><%= link_to "Adress Book", adresses_path, :title => t('adress_book')%></li>		
+   <li class="<%= "active" if (params[:controller] == "orders" && (params[:action] == "index" || params[:action] == "show")) %>"><%= link_to t('profile.orders'), orders_url, :title => t('pages.orders')%></li>
+	 <li class="<%= "active" if params[:controller] == "wishlists" %>"><%= link_to t('profile.wishlist'), wishlists_url, :title => t('profile.wishlist')%></li>
+   <li class="<%= "active" if  (params[:controller] == "users" && params[:action] == "edit")  %>"><%= link_to t('profile.change_email'), edit_user_path(current_user), :title => t('profile.change_email')%></li>
+   <li class="<%= "active" if (params[:controller] == "users" && params[:action] == "change_password") %>"><%= link_to t('profile.change_password'), change_password_path, :title => t('profile.change_password') %></li>
 </ul>

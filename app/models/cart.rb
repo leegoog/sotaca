@@ -32,6 +32,11 @@ class Cart < ActiveRecord::Base
       line_items.count < 1
     end
     
+    # returns html for cart preview
+    def preview
+      # TODO
+    end
+    
     # generates an url with article names and prices as parameters to checkout with paypal
     def paypal_encrypted(return_url, notify_url, currency)
         values = {
@@ -57,13 +62,13 @@ class Cart < ActiveRecord::Base
     
     
     # adds an item to the cart
-    def add_item(product, price)
+    def add_item(product, price, stock)
       current_item = line_items.where(:product_id => product).first
       if current_item
         current_item.quantity += 1
         current_item.save
       else
-        line_items.create!(:product_id => product, :quantity => 1, :unit_price => price)
+        line_items.create!(:product_id => product, :quantity => 1, :unit_price => price, :stock_item_id => stock)
       end
     end
     

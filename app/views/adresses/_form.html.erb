@@ -1,0 +1,34 @@
+
+
+<%= simple_form_for(@adress) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+	  <% if @adress.new_record? %>
+	  	<%= f.hidden_field :adress_type, :value => @type, :label => "Adress type" %>
+	  <% end %>
+    <%= f.input :title, :collection => ["Ms.", "Mr."], :include_blank => false %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :adress1, :label => "Adress 1" %>
+    <%= f.input :adress2, :label => "Adress 2", :hint => "Additional information, which floor / apartment etc." %>
+    <%= f.input :zip %>
+    <%= f.input :city %>
+    <%= f.input :county %>
+		<% if @adress.new_record? %>
+    	<%= f.input :country, :as => :select, :collection => Country.order(:name), :value_method => :name, :selected => "UNITED KINGDOM"  %>
+		<% else %>
+			<%= f.input :country, :as => :select, :collection => Country.order(:name), :value_method => :name %>
+		<% end %>
+    <%= f.input :phone1, :label => "Phone 1"  %>
+    <%= f.input :phone2, :label => "Phone 2"  %>
+		<% if @adress.new_record? %>
+    	<%= f.hidden_field :user_id, :value => current_user.id %>
+		<% end %>
+  </div>
+<div>* Required fields</div>
+
+  <div class="actions">
+    <%= f.button :submit, :class => 'funkybutton' %>
+  </div>
+<% end %>

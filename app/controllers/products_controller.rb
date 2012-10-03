@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_superuser!, :except => [:index, :show]
   
   def index
     if params[:category]
@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id], :include => :article_sets)
+    @article_sets = @product.article_sets.limit(6)
   end
 
   def new

@@ -13,9 +13,10 @@ module I18n
 end
 
 # use redis translation store, more info on redis.io
-uri = URI.parse(ENV["REDISTOGO_URL"])
-TRANSLATION_STORE = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)  
-I18n.backend = I18n::Backend::Chain.new(I18n::Backend::KeyValue.new(TRANSLATION_STORE), I18n.backend)
+# uri = URI.parse(ENV["REDISTOGO_URL"])
+# TRANSLATION_STORE = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)  
+# I18n.backend = I18n::Backend::Chain.new(I18n::Backend::KeyValue.new(TRANSLATION_STORE), I18n.backend) # heroku
+ I18n.backend = I18n::Backend::Chain.new(I18n.backend) # local
 
 # fallback to english if chínese translation is missing
 I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)

@@ -1,11 +1,12 @@
 class LineItem < ActiveRecord::Base
   
-  attr_accessible :product_id, :cart_id, :quantity, :unit_price
+  attr_accessible :stock_item_id, :product_id, :cart_id, :quantity, :unit_price
   
   attr_accessor :full_price, :increase
   
   belongs_to :cart
   belongs_to :product
+  belongs_to :stock_item, :dependent => :destroy
   
   
   # returns the total price of this line item (quantity * price)

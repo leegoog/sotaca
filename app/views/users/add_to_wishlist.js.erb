@@ -1,0 +1,6 @@
+$('#wishlist_link').parent().html('In my Wishlist').addClass('in_wishlist');
+
+if ($('#flash_notice').text().length > 0) {
+	$(".header:first").after('<div id="flash_notice"><%=escape_javascript( flash[:notice] ) %></div>').fadeOut('slow');
+}
+

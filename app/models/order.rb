@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :street, :house_nr, :zipcode, :city, :country, :order_nr, :order_status_id
+    attr_accessible :cart_id, :ip_address, :first_name, :last_name, :adress1, :adress2, :zipcode, :city, :country, :order_nr, :order_status_id
     attr_accessible :shipping_method_id, :user_id, :card_type, :card_expires_on, :card_number, :card_verification, :express_token
     
     attr_accessor :card_number, :card_verification, :order_number
@@ -22,10 +22,10 @@ class Order < ActiveRecord::Base
     # before create check if cc seems valid
     validate :validate_card, :on => :create
     
-    validates_presence_of :first_name, :last_name, :street, :zipcode, :city, :country, :if => :shipping?
+    validates_presence_of :first_name, :last_name, :adress1, :zipcode, :city, :country # :if => :shipping?
     
     # validate CC data only if there is no paypal token - no need to enter when paying with paypal, right
-    validates_presence_of :card_number, :card_verification, :card_expires_on, :if => :billing? 
+    #validates_presence_of :card_number, :card_verification, :card_expires_on, :if => :confirmation?
     
     scope :new_orders, where(:order_status_id => 1)
     
@@ -124,7 +124,7 @@ class Order < ActiveRecord::Base
 
     # create an unique identifier 'order_number'
     def order_number
-      "#{self.id}-#{Time.now.to_i.to_s[-4..-1]}-#{rand(1_000)}"
+      "66-#{Time.now.strftime('%m%d')}-#{self.id}"
     end
     
     
@@ -132,6 +132,21 @@ class Order < ActiveRecord::Base
     def total_price
       self.cart.total_price + self.shipping_method.price
     end
+
+    
+    def save_adress
+      # check if user had already an adress
+      if self.user.adresses.shipping.count == 0
+        self.user.build_adress(:first_name => self.first_name,
+                               :last_name => self.last_name,
+                               :adress1 => self.adress1,
+                               :adress2 => self.adress2,
+                               :city => self.city,
+                               :country => self.country,
+                               :zip => self.zip)
+      end
+    end
+
 
     private
 
@@ -145,7 +160,7 @@ class Order < ActiveRecord::Base
         :invoice => order_number,
         :billing_address => {
           :name     => "#{first_name} #{last_name}",
-          :address1 => "#{street} #{house_nr}",
+          :address1 => "#{adress1}",
           :city     => city,
           :country  => country,
           :zip      => zipcode
@@ -192,11 +207,17 @@ class Order < ActiveRecord::Base
     
     # validate credit_card using activemerchant's built in validation mechanism
     def validate_card
-      if express_token.blank? && !credit_card.valid?
+      if express_token.blank? && !credit_card.valid? 
         credit_card.errors.full_messages.each do |message|
           # adding each error message from active merchant to our error messages of the order model
           errors.add_to_base message
         end
+      end
+      if express_token.blank? && card_number.blank? 
+        errors.add_to_base "Please enter a valid Credit Card Number"
+      end
+      if express_token.blank? && card_verification.blank? 
+        errors.add_to_base "Please enter a your Card Verification Value (CVV)"
       end
     end
 

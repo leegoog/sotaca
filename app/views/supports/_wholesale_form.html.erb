@@ -1,0 +1,28 @@
+<% form_for @support, :url => { :controller => "supports", :action => "create" }, :html => { :method => :post } do |f| %>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td class="label"><%= f.label t"contact.name" %>*</td>
+		<td class="input"><%= f.text_field :sender_name, :value => current_user ? current_user.username : nil %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t"contact.email" %>*</td>
+		<td class="input">
+			<%= f.text_field :email, :value => current_user ? current_user.email : nil  %>
+		</td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t"contact.type" %></td>
+		<td class="input"><%= f.select :support_type, options_for_select([ "Whole Sale"]) %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.label t"contact.message" %>*</td>
+		<td class="input"><%= f.text_area :content %></td>
+	</tr>
+	<tr>
+		<td class="label"></td>
+		<td class="input small"><%= f.submit "Submit" %></td>
+	</tr>
+</table>
+
+<% end %>

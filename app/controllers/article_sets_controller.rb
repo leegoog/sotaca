@@ -1,4 +1,4 @@
-class ArticleSetsController < ApplicationController
+  class ArticleSetsController < ApplicationController
   
   before_filter :authenticate_user!, :except => [:index, :show]
   

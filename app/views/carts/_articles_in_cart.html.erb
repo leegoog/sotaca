@@ -13,8 +13,8 @@
 				<b><%= link_to line_item.product.title, line_item.product, :title => t('products.details') %></b><br/>
 				   <%= line_item.product.subtitle %><br/>
 				   Unit Price: <%= number_to_currency(line_item.unit_price.exchange_to(session[:currency])) %><br/><br/>
-				   Size: L <br/>
-				   Color: black<br/>
+				   Size:  <%= line_item.stock_item.size %><br/>
+				   Color: <%= line_item.stock_item.color %><br/>
 			</div>
 		  </td>
 	      <td>

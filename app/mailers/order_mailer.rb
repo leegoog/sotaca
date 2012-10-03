@@ -3,6 +3,7 @@ class OrderMailer < ActionMailer::Base
 
     def order_confirmation(order)  
       @order = order
+      attachments.inline['logo.png'] = File.read('public/images/logo.png')
       mail(:to => order.user.email, :subject => "Order Confirmation - #{order.order_nr}")  
     end
 end

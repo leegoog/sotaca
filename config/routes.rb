@@ -1,6 +1,8 @@
 Sotaca::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
+  resources :wishlists
+
+  resources :adresses
 
   resources :order_statuses
 
@@ -40,13 +42,19 @@ Sotaca::Application.routes.draw do
 
   resources :orders, :new => { :express => :get }
 
+  resources :adresses
+
   resources :line_items
 
   resources :carts
   
   devise_for :users, :path_names => { :sign_up => "register"}
   
-  resources :users
+  resources :users do
+    resources :adresses
+    resources :orders
+    resources :article_sets
+  end
   
   resources :orders
   
@@ -62,6 +70,8 @@ Sotaca::Application.routes.draw do
   
   match 'log_in' => "users#sign_in"
   
+  match 'change_password' => 'users#change_password', :as => 'change_password'
+  
   match 'sets' => "article_sets#index"
   
   match 'express_checkout' => "orders#express"
@@ -73,6 +83,10 @@ Sotaca::Application.routes.draw do
   match 'cart/empty' => "carts#empty"
 
   match 'index' => "pages#index"
+  
+  match 'wishlist' => "wishlists#show", :as => 'wishlist'
+  
+  match 'add_to_wishlist' => "users#add_to_wishlist", :as => 'add_to_wishlist'
 
   match 'home' => "pages#home"
 

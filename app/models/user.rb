@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   # Setup accessible (or protected) attributes for your model
-   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
+   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login, :wishlist_attributes 
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   
-
+  after_create :create_wishlist
 
   
   has_many :carts
@@ -30,6 +30,12 @@ class User < ActiveRecord::Base
   
   # can order
   has_many :orders
+  
+  # wishlist
+  has_one :wishlist
+  
+  # order / shipping adresses, avoid re-typing
+  has_many :adresses
   
   has_and_belongs_to_many :roles
 
@@ -55,9 +61,22 @@ class User < ActiveRecord::Base
   def matching_password?(pass)
     self.password_hash == encrypt_password(pass)
   end
+
+  # creates the users wishlist after registration 
+  def create_wishlist
+    self.build_wishlist(:user_id => self.id)
+  end
+  
+  # adds an item to the user's wishlist (takes product ID)
+  def add_to_wishlist(product)
+    wishlist.products << product unless wishlist.products.include?(product)
+    wishlist.save
+  end
+  
   
   protected
 
+ 
  # looks for either username or email to authenticate
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

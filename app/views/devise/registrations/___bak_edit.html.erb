@@ -1,0 +1,40 @@
+<h2> <%= t 'profile.edit' %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+
+
+  <p><%= f.label t 'devise.links.username' %><br />
+  <%= f.text_field :username %></p>
+
+  <p><%= f.label t 'devise.links.email' %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label t 'devise.links.password' %> <i>(New Passwor)</i><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label t 'devise.links.password_confirmation' %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label t 'devise.links.current_password' %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></p>
+
+  <% if current_user.admin? %>
+  
+  	<p><%= f.label :admin %><br />
+  	<%= f.check_box :admin %></p>
+  	
+  	<p><%= f.label :confirmed_at %><br />
+  	<%= f.datetime_select :confirmed_at %></p>
+  
+  <% end %>
+
+  <p><%= f.label t 'devise.links.language' %><br />
+  <%= f.select :locale, [["English", "en"], ["#{t'chinese'}", "cn"]] %></p>
+
+
+
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+
+<%= link_to (t 'back'), :back %>

@@ -1,7 +1,7 @@
 body {
   background-color: #fff;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 a img {
@@ -125,6 +125,8 @@ text-decoration: none;
 #main_navi ul li a{
 	padding-top: 5px;
 	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
 }
 #main_navi ul li:hover,#main_navi ul li.active {
 	background-color: #fff;
@@ -213,14 +215,17 @@ text-decoration: none;
 	color: #95006A;	
 }
 
+#cart_menu a, #login_menu a {
+	font-size: 12px;
+}
+
 .footer ul {
 	list-style: none;
 margin: -10px 0 20px -35px;
 }
 .footer ul li{
 	float: left;
-	font-size: 11px;
-	font-weight: bold;
+	font-size: 12px;
 	padding: 0px 20px 0 0;
 }
 .footer ul li a{
@@ -228,6 +233,10 @@ margin: -10px 0 20px -35px;
 	text-decoration: none;
 }
 
+.footer ul li.active a, .footer ul li a:hover {
+	color: #95006A;
+	text-decoration: none;
+}
 
 /*_______________________________________ PAGINATION __________*/
 
@@ -300,6 +309,7 @@ margin: -10px 0 20px -35px;
 	text-align: center;
 	position: relative;
 	width: 182px;
+	overflow: hidden;
 }
 #content .product_overview .product .image a {
 	margin-left: auto;
@@ -329,7 +339,8 @@ margin: -10px 0 20px -35px;
 	height: 191px;
 }
 #content .product_detail .fixed_h2{
-	height: 90px;
+	height: 105px;
+	position: relative;
 }
 
 #content .product_detail .infos .product_price {
@@ -512,6 +523,10 @@ margin: -10px 0 20px -35px;
 	background-color: #fff !important;
 }
 
+#content #left ul.profile_links li.active a {
+color: #000 !important;
+}
+
 #content #left ul.level1 li.active a{
 	color: #000 !important;
 }
@@ -527,10 +542,12 @@ margin: -10px 0 20px -35px;
 
 #content .product_overview {
 	margin-left: 140px;
+	padding-bottom: 35px;
+	min-height: 500px;
 }
 #content .cart_view, #content .faq, #content .profile, #content .registration {
     border-right: 1px solid #000000;
-    padding: 20px 0;
+    padding: 10px 0 10px 0;
     position: relative;
     width: 792px;
 	margin-top: -20px;
@@ -555,6 +572,10 @@ margin: -10px 0 20px -35px;
 	padding: 0;
 }
 
+.profile p {
+	max-width: 780px;
+}
+
 .profile ul li{
 	display: block;
 	width: 120px;
@@ -562,6 +583,7 @@ margin: -10px 0 20px -35px;
 	padding: 10px;
 	float: left;
 	margin-right: 10px;
+	margin-top: 30px;
 	background-color: #93006B;
 	font-size: 12px;
 }
@@ -945,6 +967,24 @@ table.translations {
 	display: none;
 }
 
+.visible {
+	display:inline !important;
+}
+
+
+.profile_links {
+	float: none !important;
+}
+
+.profile_links a{
+	color: #fff !important;
+}
+
+.profile_links li:hover a{
+	color: #000 !important;
+}
+
+
 #order_frame #line_items .total{
 	font-size: 12px !important;
 	border-top: 1px solid #95006A;
@@ -969,12 +1009,35 @@ table.translations {
 	margin: 20px 0 20px -10px;
 }
 
+.size_selectors .selector {
+	width: 150px;
+	position: relative;
+	margin-bottom: 5px;
+}
+
+#user_adresses .prooduct_overview {
+	margin-left: 0 !important;
+}
+
+
+.size_selectors .selector select {
+    left: 45px;
+    position: absolute;
+}
+
+.button_to {
+	margin-bottom: 5px;
+}
+
 .simple_form input.string, #register input, #register select, #login input, #contact input, #contact textarea, #contact select, #fake_product,
-#stock_item_amount {
+#stock_item_amount, .simple_form input.numeric, input.funkybutton, .funkybutton {
 	border: 1px solid #95006A;
 	background-color: #efedee;
 	color: #000;
 	width:	246px;
+	-moz-box-shadow: 1px 1px 3px #888;
+	-webkit-box-shadow: 1px 1px 3px #888;
+	box-shadow: 1px 1px 3px #888;
 }
 
 #new_stock_item div.input {
@@ -985,7 +1048,7 @@ table.translations {
 #stock_item_amount { width: 80px !important;}
 
 .registration .seventy {
-	width: 420px;
+	width: 395px;
 	overflow: hidden;
 	margin-left: -20px;
 	padding-left: 20px;
@@ -994,7 +1057,7 @@ table.translations {
 }
 
 .registration .thirty {
-	width: 370px;
+	width: 395px;
 	overflow: hidden;
 	float:left;
 }
@@ -1007,10 +1070,21 @@ table.translations {
 	padding: 20px;
 }
 
-#register .small input, #login .small input, #contact .small input {
+#content img {
+	max-width: 980px;
+}
+
+#register .small input, #login .small input, #contact .small input, input.funkybutton {
 	width: auto !important;
 	cursor: pointer;
 }
+
+input.funkybutton {
+	font-weight: bold;
+	text-shadow: 1px #fff;
+}
+
+
 
 #contact textarea {
 	height: 130px;
@@ -1030,4 +1104,54 @@ table.translations {
 	font-size: 14px;
 	padding: 0;
 	margin: 0 0 0 -10px;
+}
+
+#user_adresses {
+	margin-left: 180px;
+	margin-bottom: 30px;
+}
+
+.adress_overview {
+    background-color: #EFEDEE;
+    border: 1px solid #CF8DB8;
+    height: 180px;
+    line-height: 20px;
+    padding: 10px;
+    width: 500px;
+  	margin-bottom: 20px;
+		position: relative;
+}
+
+input.edit_adress {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+
+.register_now {
+	margin-left: 20px;
+}
+
+.order_overview th {
+	text-align: left;
+	width: 120px;
+}
+.order_overview td {
+	padding: 5px 0;
+}
+
+.order_detail {
+  margin-left: 150px;
+  margin-top: 16px;
+  position: relative;
+}
+
+.my_account {
+  font-size: 14px;
+  font-weight: bold;
+  height: 10px;
+  margin-top: -8px;
+  padding-left: 7px;
+	margin-bottom: 15px;
 }
