@@ -62,6 +62,9 @@ gem 'money'
 gem 'google_currency'
 
 
+gem "escape_utils"
+gem 'pg'
+
 
 
 # payment, credit card processing

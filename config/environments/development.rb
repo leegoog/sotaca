@@ -21,6 +21,8 @@ Sotaca::Application.configure do
   config.action_mailer.delivery_method       = :smtp
   config.action_mailer.perform_deliveries    = true
   
+  config.log_level = :debug
+  
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

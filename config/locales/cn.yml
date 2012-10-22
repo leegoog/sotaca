@@ -10,6 +10,17 @@ cn:
   account_page: "欢迎进入你的个人账户。"
   tell_us_what_you_think: "我们希望的是听到你的声音，因为所有会员的意见或者建议对我们来说都很重要. 我们很感谢可以通过你们的留言让我们做得更好。 请将你的意见或建议填写在以下空白处并选择相关的种类"
   welcome: "Hi"
+  by_creating: "为了更方便客户购物和查询你的订单详情，我们建议你注册加入SOTACA189， 成为会员的同时也方便你随时参加SOTACA1898定期的在线活动。"
+  
+  actions:
+    checkout: "结帐"
+    remember: "记住登陆信息"
+    submit: "发送"
+    register_now: "注册"
+    
+  headlines:
+    problem: "出现问题啦？"
+    new_customer: "新顾客"
     
   store:
     checkout: '结帐'
