@@ -48,13 +48,13 @@
 					<%= link_to "#{current_cart.number_of_items}", current_cart_url %>
 					
 					</li>
-	  				<li><a href="/orders/new/?locale=<%= I18n.locale %>"><%= t 'checkout' %></a></li>
+	  				<li><a href="/orders/new/?locale=<%= I18n.locale %>"><%= t 'actions.checkout' %></a></li>
 	  			</ul>
 	  		</div>
 	  	</div>
 	  	<div id="main_navi">
 	  		<ul>
-	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/?locale=<%= I18n.locale %>"><%= t 'home' %></a></li>	
+	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "home") %>"><a href="/home/?locale=<%= I18n.locale %>"><%= t 'pages.home' %></a></li>	
 	  			<li class="<%= "active" if params[:controller] == "products"%>"><a href="/products/?locale=<%= I18n.locale %>"><%= t 'pages.shop' %></a></li>
 		  		<!-- 	<li class="<%= "active" if params[:controller] == "article_sets"%>"><a href="/sets/?locale=<%= I18n.locale %>"><%= t 'pages.sets' %></a></li> -->
 	  			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "info") %>"><a href="/info/?locale=<%= I18n.locale %>"><%= t 'pages.info' %></a></li>

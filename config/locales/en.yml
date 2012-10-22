@@ -12,9 +12,19 @@ en:
   back: "Back"
   like_saved: "You like this. Thank you."
   added_to_cart: "Product added."
-  creating_account: "By creating an account at SOTACA1898.com you will be able to shop faster, keep track of the status of your orders and take part in SOTACA1898 life."
+  by_creating: "By creating an account at SOTACA1898.com you will be able to shop faster, keep track of the status of your orders and take part in SOTACA1898 life."
   account_page: "This is your account home page. You can use this area to manage and edit your personal details, check on orders and tell us what you think of SOTACA1898."
   tell_us_what_you_think: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
+  
+  actions:
+    checkout: "Checkout"
+    remember: "Remember me"
+    submit: "submit"
+    register_now: "Register now"
+    
+  headlines:
+    problem: "Having Problems?"
+    new_customer: "New Customer"
   
   profile:
     edit: "Edit Profile"
