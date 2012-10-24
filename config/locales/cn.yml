@@ -38,7 +38,6 @@ cn:
     add_to_cart: '添加至购物袋'
     add_to_wishlist: '加入心愿单'
     tell_a_friend: '分享给好友'
-
   
   pages:
     blog: '博客'
@@ -71,7 +70,44 @@ cn:
     move_back: "图片至后"
     move_forward: "图片至前"
     discard: "清除Set"  
-  
+    
+    
+  faq:
+    general: "常规问题"
+    payment: "付款信息"
+    delivery: "邮递方式"
+    product_information: "关于产品"
+    refund: "Refund"
+    affiliation: "商业合作"
+    press: "Press"
+    answers:
+      1: ""
+      2: ""
+      3: ""
+      4: ""
+      5: ""
+      6: ""
+      7: ""
+      8: ""
+      9: ""
+      10: ""
+      11: ""
+      12: ""
+      13: ""
+      14: ""
+      15: ""
+      16: ""
+      17: ""
+      18: ""
+      19: ""
+      20: ""
+      21: ""
+      22: ""
+      23: ""
+      24: ""
+      25: ""
+        
+         
   date:
     formats:
       default: "%Y-%m-%d"
