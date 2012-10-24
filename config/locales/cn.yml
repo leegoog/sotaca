@@ -80,6 +80,7 @@ cn:
     refund: "Refund"
     affiliation: "商业合作"
     press: "媒体"
+    questions:
       q1: "你们有24/7客服吗？"
       q2: "Do I need to set up an account to place an order?"
       q3: "Environment policy?"
