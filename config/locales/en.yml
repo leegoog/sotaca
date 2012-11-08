@@ -16,6 +16,18 @@ en:
   account_page: "This is your account home page. You can use this area to manage and edit your personal details, check on orders and tell us what you think of SOTACA1898."
   tell_us_what_you_think: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
   
+    
+  cart:
+    shopping_bag: "Shopping Bag"
+    is_empty: "Your cart is empty."
+    empty: "Empty cart"
+  
+  ordering:
+    sort_by: "sort by"
+    newest: "newest items"
+    price_inc: "price incr."
+    price_dec: "price decr."
+  
   actions:
     checkout: "Checkout"
     remember: "Remember me"
@@ -64,9 +76,9 @@ en:
       q17: "Which size should I choose?"
       q18: "Washing advice?"
       q19: "Can I change/cancel my order?"
-      q20: "Retunes policy?"
+      q20: "Return policy?"
       q21: "How do I return items?"
-      q22: "ow to join affiliation program or open a whole sale account?"
+      q22: "How to join affiliation program or open a whole sale account?"
       q23: "Collaboration?"
       q24: "Can I use your product/picture on my website/blog?"
       q25: "Press information"
