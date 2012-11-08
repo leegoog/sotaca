@@ -73,6 +73,7 @@ en:
       password_confirmation: 'Password Confirmation'
       language: 'Language'
       current_password: 'Enter your current password'
+      register_now: "Register now"
     
     # these go up to devise
         

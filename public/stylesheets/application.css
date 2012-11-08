@@ -552,6 +552,7 @@ color: #000 !important;
     width: 792px;
 	margin-top: -20px;
 	margin-bottom: -20px;
+	min-height: 300px;
 }
 
 #content .cart_view h2, #content .faq h2, #order_frame h2, #content .profile h2, #content .registration h2{

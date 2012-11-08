@@ -61,7 +61,7 @@
 <% end %>
 </div>
 <div id="paginator">
- Sort by: <%= select_tag(:order_key, options_for_select([['Newest items', 'created_at'], ['Alphabetical', 'title'], ['Prices', 'price']])) %>
+ <%= t('ordering.sort_by') %>: <%= select_tag(:order_key, options_for_select([[ t('ordering.newest'), 'created_at'], [t('ordering.price_dec'), 'price desc'], [t('ordering.price_inc'), 'price inc']])) %>
 <br/>
 <% # link_to "View all pages", {:controller => "products", :action => "index", :per_page => 1000 } %>
 <%= paginate @products %>
