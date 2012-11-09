@@ -94,7 +94,7 @@ show_empty = function () {
 					<%= pluralize(@product.total_stock, "item")%> in stock 
 					<% end %>
 				<% else %>
-				    out of stock
+				    <%= t "products.out_of_stock" %>
 				<% end %>
 				
 	   	 	</p>
@@ -113,7 +113,7 @@ show_empty = function () {
 		</div>
 		<div class="subheadline">
 			<% if current_user && current_user.wishlist.products.include?(@product) %>
-				<%= "In my Wishlist" %>
+				<%= t "products.in_wishlist" %>
 			<% else %>
 				<%= link_to t('products.add_to_wishlist'), add_to_wishlist_url(:product_id => @product.id), :method => :post, :remote => true, :id => 'wishlist_link' %>
 			<% end %>

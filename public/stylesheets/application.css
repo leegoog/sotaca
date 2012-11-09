@@ -145,6 +145,11 @@ text-decoration: none;
 #main_navi ul li#search_field img.search_button {
 	padding: 1px;
 }
+
+#search {
+  margin: 2px 3px 0 0 ;
+}
+
 #main_navi ul li#search_field input {
   position: absolute;
   right: 30px;

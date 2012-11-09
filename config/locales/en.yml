@@ -47,6 +47,16 @@ en:
     orders: "My Orders"
     feedback: "Send us your feedback!"
     wishlist: "My Wishlist"
+    in_wishlist: "See which articles are in your wishlist"
+    manage: "Manage billing<br/>and shipping adresses"
+    adress_book: "Adress Book"
+    password: "My Password"
+    information: "View or change your information"
+    track: "Track, exchange or return orders and view your order history"
+    email: "My E-Mail"
+    email_settings: "Review and update your email settings"
+    tell_us: "Tell us what you think. We value your feedback!"
+    
   
   faq:
     general: "General"
@@ -178,6 +188,8 @@ en:
     tell_a_friend: 'Tell a friend'
     uncategorized: "not yet categorized"
     out_of_stock: "Out of Stock"
+    in_wishlist: "In my Wishlist"
+    out_of_stock: "out of stock"
 
   cart:
     product: 'Article'

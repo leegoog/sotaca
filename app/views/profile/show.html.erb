@@ -9,10 +9,9 @@
 		<li class="squared">
 			<a href="<%= adresses_path %>">
 				<div>
-					<span class="headline">Adress Book</span>
+					<span class="headline"><%= t "profile.adress_book" %></span>
 					<p>
-					Manage billing<br/>
-					and shipping adresses
+					<%= t "profile.manage" %>
 					</p>
 				</div>
 			</a>
@@ -21,9 +20,9 @@
 		<li class="squared">
 			<a href="/orders?locale=<%= I18n.locale %>">
 				<div>
-					<span class="headline">My Orders</span>
+					<span class="headline"><%= t "profile.orders" %></span>
 					<p>
-					Track, exchange or return orders and view your order history
+					<%= t "profile.track" %>
 					</p>
 				</div>
 			</a>
@@ -32,9 +31,9 @@
 		<li class="squared">
 			<a href="<%= change_password_path %>">
 				<div>
-					<span class="headline">My Password</span>
+					<span class="headline"><%= t "profile.password" %></span>
 					<p>
-					View or change your information
+					<%= t "profile.information" %>
 					</p>
 				</div>
 			</a>
@@ -43,9 +42,9 @@
 		<li class="squared">
 			<a href="<%= edit_user_path(current_user) %>">
 				<div>
-					<span class="headline">My E-Mail</span>
+					<span class="headline"><%= t "profile.email" %></span>
 					<p>
-					Review and update your email settings
+					<%= t "profile.email_settings" %>
 					</p>
 				</div>
 			</a>
@@ -54,9 +53,9 @@
 		<li class="squared">
 			<a href="<%= wishlist_path%>">
 				<div>
-					<span class="headline">My Wishlist</span>
+					<span class="headline"><%= t "profile.wishlist" %></span>
 					<p>
-					See which articles are in your wishlist
+					<%= t "profile.in_wishlist" %>
 					</p>
 				</div>
 			</a>
@@ -72,7 +71,7 @@
 	<br/>
 	<br/>
 	
-	<p><%= image_tag("like.jpg", :width => 40, :title => "Tell us what you think") %> <%= link_to "Tell us what you think. We value your feedback!", contact_url %></p>
+	<p><%= image_tag("like.jpg", :width => 40, :title => t("profile.tell_us") ) %> <%= link_to t("profile.tell_us"), contact_url %></p>
 	
 </div>
 
