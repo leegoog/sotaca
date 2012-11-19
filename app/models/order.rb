@@ -29,6 +29,8 @@ class Order < ActiveRecord::Base
     
     scope :new_orders, where(:order_status_id => 1)
     
+    scope :with_cart, where("cart_id <> ''")
+    
 #    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
 
     # the actual transaction after all had been validated
@@ -130,20 +132,30 @@ class Order < ActiveRecord::Base
     
     # calculates the total price of the order from all items and shipping
     def total_price
-      self.cart.total_price + self.shipping_method.price
+      100 #self.cart.total_price + self.shipping_method.price
     end
 
     
     def save_adress
       # check if user had already an adress
-      if self.user.adresses.shipping.count == 0
-        self.user.build_adress(:first_name => self.first_name,
+      if user.adresses.shipping.count == 0
+        user.adresses.build(:first_name => self.first_name,
                                :last_name => self.last_name,
                                :adress1 => self.adress1,
                                :adress2 => self.adress2,
                                :city => self.city,
                                :country => self.country,
-                               :zip => self.zip)
+                               :zip => self.zipcode,
+                               :adress_type => 1)
+        user.adresses.build(:first_name => self.first_name,
+                               :last_name => self.last_name,
+                               :adress1 => self.adress1,
+                               :adress2 => self.adress2,
+                               :city => self.city,
+                               :country => self.country,
+                               :zip => self.zipcode,
+                               :adress_type => 2)
+        user.save
       end
     end
 

@@ -7,9 +7,9 @@ class OrdersController < ApplicationController
   # lists all orders of a client (if customer) or all orders (if admin)
   def index 
     if !current_user.admin?
-      @orders = current_user.orders    
+      @orders = current_user.orders.with_cart    
     else
-      @orders = Order.all 
+      @orders =Order.with_cart 
     end
   end
   

@@ -1,7 +1,7 @@
 development:  
-    paypal_email: seller_1309100742_biz@trianglecollective.com
-    paypal_secret: foobar  
-    paypal_cert_id: EAPUJZHTJJF2L  
+    paypal_email: thomas_1353333791_biz@gmail.com
+    paypal_secret: renderrender  
+    paypal_cert_id: C9WRU8VCJ95SQ  
     paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
     carrierwave_store: ':file'
   
@@ -13,9 +13,9 @@ test:
     carrierwave_store: ':file'
  
 production:  
-    paypal_email: seller_1309100742_biz@trianglecollective.com
-    paypal_secret: foobar  
-    paypal_cert_id: EAPUJZHTJJF2L  
+    paypal_email: thomas_1353333791_biz@gmail.com
+    paypal_secret: renderrender  
+    paypal_cert_id: C9WRU8VCJ95SQ  
     paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
     carrierwave_store: ':file' 
 #production:  
