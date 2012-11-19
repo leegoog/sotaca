@@ -29,7 +29,7 @@ class Order < ActiveRecord::Base
     
     scope :new_orders, where(:order_status_id => 1)
     
-    scope :with_cart, where("cart_id <> ''")
+    scope :with_cart, where("cart_id IS NOT NULL")
     
 #    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
 
