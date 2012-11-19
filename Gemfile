@@ -38,7 +38,7 @@ gem 'carrierwave'
 gem 'rmagick', :require => false
 
 # neat admin interface
-gem 'activeadmin'
+gem 'activeadmin', "0.3.2"
 
 # background job processing
 gem 'resque', :require => "resque/server"
@@ -51,7 +51,7 @@ gem 'simple_form'
 gem 'rails3-jquery-autocomplete'
 gem 'awesome_nested_set'
 gem 'simple_form'
-gem 'redcarpet'  # markdown interpreter
+gem 'redcarpet'
 
 ### internationalization
 # key-value store
