@@ -68,7 +68,7 @@ gem 'pg'
 
 
 # payment, credit card processing
-gem 'activemerchant'
+gem 'activemerchant', "~>1.28.0"  # 1.15.0
 
 # add foreign keys to sql databases
 gem 'foreigner'
