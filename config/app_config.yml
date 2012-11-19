@@ -17,7 +17,8 @@ production:
     paypal_secret: renderrender  
     paypal_cert_id: C9WRU8VCJ95SQ  
     paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
-    carrierwave_store: ':file' 
+    carrierwave_store: ':s3'
+     
 #production:  
 #    paypal_email: seller_1309468633_biz@sotaca1898.com  
 #    paypal_secret: reallysecretpassword  
