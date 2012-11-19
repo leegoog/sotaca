@@ -11,11 +11,17 @@ test:
     paypal_cert_id: X123456789  
     paypal_url: testpaypalurl  
     carrierwave_store: ':file'
-  
+ 
 production:  
-    paypal_email: seller_1309468633_biz@sotaca1898.com  
-    paypal_secret: reallysecretpassword  
-    paypal_cert_id: 7LV6KE7ADUUEN  
-    paypal_url: https://www.paypal.com/cgi-bin/webscr  
-    carrierwave_store: ':s3'
+    paypal_email: seller_1309100742_biz@trianglecollective.com
+    paypal_secret: foobar  
+    paypal_cert_id: EAPUJZHTJJF2L  
+    paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
+    carrierwave_store: ':file' 
+#production:  
+#    paypal_email: seller_1309468633_biz@sotaca1898.com  
+#    paypal_secret: reallysecretpassword  
+#    paypal_cert_id: 7LV6KE7ADUUEN  
+#    paypal_url: https://www.paypal.com/cgi-bin/webscr  
+#    carrierwave_store: ':s3'
 
