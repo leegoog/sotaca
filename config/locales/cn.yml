@@ -50,7 +50,28 @@ cn:
     add_to_cart: '添加至购物袋'
     add_to_wishlist: '加入心愿单'
     tell_a_friend: '分享给好友'
-  
+    in_wishlist: "已加入心愿单"
+    out_of_stock: "售光啦！"
+
+  profile:
+    edit: "Edit Profile"
+    change_password: "新密码"
+    change_email: "Change E-Mail"
+    sets: "My Sets"
+    show: "My Profile"
+    orders: "我的订购单"
+    feedback: "Send us your feedback!"
+    wishlist: "我的心愿单"
+    in_wishlist: "察看或者更新我的愿望簿"
+    manage: "管理账单及商品的邮寄地址"
+    adress_book: "我的地址簿"
+    password: "我的密码"
+    information: "察看或者更新登陆密码"
+    track: "跟踪，更换或者申请退货；察看历史订购单"
+    email: "我的邮箱"
+    email_settings: "察看或者更新登陆信息"
+    tell_us: "我们希望听到你的声音，所有会员的意见或者建议对我们来说都很重要."
+ 
   pages:
     blog: '博客'
     contact: '联系我们'
