@@ -132,7 +132,7 @@ class Order < ActiveRecord::Base
     
     # calculates the total price of the order from all items and shipping
     def total_price
-      100 #self.cart.total_price + self.shipping_method.price
+      self.cart.total_price + self.shipping_method.price
     end
 
     
