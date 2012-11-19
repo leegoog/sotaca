@@ -11,7 +11,7 @@ module ApplicationHelper
     
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
         :hard_wrap => true, :filter_html => true, :autolink => true, :no_intraemphasis => true)
-    markdown.render(text).html_safe  
+    text.nil? ? "" : markdown.render(text).html_safe  
   end
 
 
