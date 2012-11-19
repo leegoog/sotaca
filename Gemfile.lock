@@ -174,7 +174,7 @@ GEM
     rake (10.0.1)
     rdoc (3.12)
       json (~> 1.4)
-    redcarpet (2.2.2)
+    redcarpet (1.17.2)
     redis (3.0.2)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
@@ -248,7 +248,7 @@ DEPENDENCIES
   rack-ssl
   rails (~> 3.0.15)
   rails3-jquery-autocomplete
-  redcarpet
+  redcarpet (= 1.17.2)
   resque
   rmagick
   rspec-rails (= 2.6.1)

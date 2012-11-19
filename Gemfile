@@ -51,7 +51,7 @@ gem 'simple_form'
 gem 'rails3-jquery-autocomplete'
 gem 'awesome_nested_set'
 gem 'simple_form'
-gem 'redcarpet'  # markdown interpreter
+gem 'redcarpet', "1.17.2"  # markdown interpreter
 
 ### internationalization
 # key-value store
