@@ -12,7 +12,7 @@
   <p><%= f.label t 'devise.links.password_confirmation' %><br />
   <%= f.password_field :password_confirmation, :class => 'funkybutton'  %></p>
 
-  <p><%= f.label t 'devise.links.current_password' %> <i>(we need your current password to confirm your changes)</i><br />
+  <p><%= f.label t 'devise.links.current_password' %> <i><%= t "devise.links.cpw" %></i><br />
   <%= f.password_field :current_password, :class => 'funkybutton'  %></p>
 
 
