@@ -1,3 +1,5 @@
+require 'redcarpet/compat'
+
 module ApplicationHelper
 
   def get_cart
