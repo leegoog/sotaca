@@ -376,6 +376,7 @@ margin: -10px 0 20px -35px;
 	height: 545px;
 	text-align: center;
 	position: relative;
+	padding-top: 15px;
 }
 
 #content .product_detail #main_image .add_to_cart_btn {

@@ -17,6 +17,12 @@ cn:
     shopping_bag: "购物袋"
     is_empty: "你的购物袋是空的"
     empty: ""
+    to_the_cart: "加入购物袋"
+    continue_shopping: "继续购物"
+    items_in_cart: " 件商品已添加至购物袋"
+    just_added: "你已将 "
+    show_info: "show_cart_info_cn();"
+
     
   ordering:
     sort_by: "排列方式"
@@ -73,6 +79,7 @@ cn:
     tell_a_friend: '分享给好友'
     in_wishlist: "已加入心愿单"
     out_of_stock: "售光啦！"
+    show_info: "show_cart_info_cn();"
 
   profile:
     edit: "Edit Profile"

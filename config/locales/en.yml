@@ -22,6 +22,11 @@ en:
     shopping_bag: "Shopping Bag"
     is_empty: "Your cart is empty."
     empty: "Empty cart"
+    to_the_cart: "to the cart"
+    continue_shopping: "Continue Shopping"
+    items_in_cart: " item(s) in cart"
+    just_added: "You just added "
+    show_info: "show_cart_info();"
   
   ordering:
     sort_by: "sort by"
@@ -207,7 +212,7 @@ en:
     categories: 'Categories'
     details: 'Details'
     size_fit: 'Size & Fit'
-    add_to_cart: 'Add to shopping cart'
+    add_to_cart: 'Add to cart'
     add_to_wishlist: 'Add to wishlist'
     tell_a_friend: 'Tell a friend'
     uncategorized: "not yet categorized"
