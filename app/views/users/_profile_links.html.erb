@@ -1,6 +1,6 @@
-<div class="my_account">My account</div>
+<div class="my_account"><%= t"profile.my_account" %></div>
 <ul class="level2 visible profile_links">
-   <li class="<%= "active" if (params[:controller] == "adresses" && params[:action] == "index") %>"><%= link_to "Adress Book", adresses_path, :title => t('adress_book')%></li>		
+   <li class="<%= "active" if (params[:controller] == "adresses" && params[:action] == "index") %>"><%= link_to t("profile.adress_book"), adresses_path, :title => t('profile.adress_book')%></li>		
    <li class="<%= "active" if (params[:controller] == "orders" && (params[:action] == "index" || params[:action] == "show")) %>"><%= link_to t('profile.orders'), orders_url, :title => t('pages.orders')%></li>
 	 <li class="<%= "active" if params[:controller] == "wishlists" %>"><%= link_to t('profile.wishlist'), wishlists_url, :title => t('profile.wishlist')%></li>
    <li class="<%= "active" if  (params[:controller] == "users" && params[:action] == "edit")  %>"><%= link_to t('profile.change_email'), edit_user_path(current_user), :title => t('profile.change_email')%></li>

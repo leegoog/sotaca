@@ -15,6 +15,7 @@ en:
   by_creating: "By creating an account at SOTACA1898.com you will be able to shop faster, keep track of the status of your orders and take part in SOTACA1898 life."
   account_page: "This is your account home page. You can use this area to manage and edit your personal details, check on orders and tell us what you think of SOTACA1898."
   tell_us_what_you_think: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
+  required_fields: "* Required Fields"
   
     
   cart:
@@ -33,6 +34,27 @@ en:
     remember: "Remember me"
     submit: "submit"
     register_now: "Register now"
+    edit: "Edit"
+    
+  adress:
+    type: "Adress Type"
+    a1: "Adress 1"
+    a2: "Adress 2"
+    a3: "Additional information like floor, apartment etc."
+    shipping: "Shipping Adress"
+    billing: "Billing Adress"
+    first_name: "First Name"
+    last_name: "Last Name"
+    zip: "Zipcode"
+    city: "City"
+    country: "Country"
+    phone1: "Phone"
+    phone2: "Phone 2"
+    edit: "Edit Adress"
+    not_have_s: "You currently do not have an shipping adress associated to you account."
+    not_have_b: "You currently do not have an billing adress associated to you account."
+    add_one: "Add one."
+    
     
   headlines:
     problem: "Having Problems?"
@@ -56,6 +78,8 @@ en:
     email: "My E-Mail"
     email_settings: "Review and update your email settings"
     tell_us: "Tell us what you think. We value your feedback!"
+    my_account: "My account"
+    
     
   
   faq:

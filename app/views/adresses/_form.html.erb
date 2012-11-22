@@ -5,30 +5,28 @@
 
   <div class="inputs">
 	  <% if @adress.new_record? %>
-	  	<%= f.hidden_field :adress_type, :value => @type, :label => "Adress type" %>
+	  	<%= f.hidden_field :adress_type, :value => @type, :label => t("adress.type") %>
 	  <% end %>
     <%= f.input :title, :collection => ["Ms.", "Mr."], :include_blank => false %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :adress1, :label => "Adress 1" %>
-    <%= f.input :adress2, :label => "Adress 2", :hint => "Additional information, which floor / apartment etc." %>
-    <%= f.input :zip %>
-    <%= f.input :city %>
-    <%= f.input :county %>
+    <%= f.input :first_name, :label =>t("adress.first_name") %>
+    <%= f.input :last_name, :label =>t("adress.last_name") %>
+    <%= f.input :adress1, :label => t("adress.a1") %>
+    <%= f.input :adress2, :label => t("adress.a1"), :hint => t("adress.additional") %>
+    <%= f.input :zip, :label =>t("adress.zip") %>
+    <%= f.input :city, :label =>t("adress.city") %>
+    <%= f.input :county, :label =>t("adress.country") %>
 		<% if @adress.new_record? %>
     	<%= f.input :country, :as => :select, :collection => Country.order(:name), :value_method => :name, :selected => "UNITED KINGDOM"  %>
 		<% else %>
 			<%= f.input :country, :as => :select, :collection => Country.order(:name), :value_method => :name %>
 		<% end %>
-    <%= f.input :phone1, :label => "Phone 1"  %>
-    <%= f.input :phone2, :label => "Phone 2"  %>
-		<% if @adress.new_record? %>
-    	<%= f.hidden_field :user_id, :value => current_user.id %>
-		<% end %>
+    <%= f.input :phone1, :label =>t("adress.phone1") %>
+    <%= f.input :phone2, :label =>t("adress.phone2") %>
+
   </div>
-<div>* Required fields</div>
+<div><%= t("required_fields")%></div>
 
   <div class="actions">
-    <%= f.button :submit, :class => 'funkybutton' %>
+    <%= f.submit t("actions.edit"), :class => 'funkybutton' %>
   </div>
 <% end %>

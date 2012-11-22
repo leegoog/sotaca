@@ -11,7 +11,7 @@ cn:
   tell_us_what_you_think: "我们希望的是听到你的声音，因为所有会员的意见或者建议对我们来说都很重要. 我们很感谢可以通过你们的留言让我们做得更好。 请将你的意见或建议填写在以下空白处并选择相关的种类"
   welcome: "Hi"
   by_creating: "为了更方便客户购物和查询你的订单详情，我们建议你注册加入SOTACA189， 成为会员的同时也方便你随时参加SOTACA1898定期的在线活动。"
-  
+  required_fields: "* 必填信息"
   
   cart:
     shopping_bag: "购物袋"
@@ -29,6 +29,27 @@ cn:
     remember: "记住登陆信息"
     submit: "发送"
     register_now: "注册"
+    edit: "编辑"
+    
+  adress:
+    type: "Adress Type"
+    a1: "地址1"
+    a2: "地址2"
+    a3: "Additional information like floor, apartment etc."
+    shipping: "邮寄地址"
+    billing: "账单地址"
+    first_name: "名"
+    last_name: "姓"
+    zip: "邮政编码"
+    city: "城市"
+    country: "国家"
+    phone1: "国家"
+    phone2: "国家2"
+    title: ""
+    edit: "Edit Adress"
+    not_have_s: "你目前还没有任何邮寄地址"
+    not_have_b: "你目前还没有任何账单地址"
+    add_one: "添加"
     
   headlines:
     problem: "出现问题啦？"
@@ -56,7 +77,7 @@ cn:
   profile:
     edit: "Edit Profile"
     change_password: "新密码"
-    change_email: "Change E-Mail"
+    change_email: "更新邮箱地址"
     sets: "My Sets"
     show: "My Profile"
     orders: "我的订购单"
@@ -71,6 +92,7 @@ cn:
     email: "我的邮箱"
     email_settings: "察看或者更新登陆信息"
     tell_us: "我们希望听到你的声音，所有会员的意见或者建议对我们来说都很重要."
+    my_account: "我的帐户"
  
   pages:
     blog: '博客'
