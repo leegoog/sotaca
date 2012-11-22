@@ -57,8 +57,8 @@ Sotaca::Application.configure do
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
       :login => "thomas_1353333791_biz@gmail.com",
-      :password => "renderrender",
-      :signature => "WTJUEPB3JLJZ6"
+      :password => "1353333812",
+      :signature => "AjzTfGZ3vEQHL03rnWtIJqdSiSy6AKdRaYGTI-MoMoT.BR5jIFhQz-Ir"
     }
     ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
     # standard gateway

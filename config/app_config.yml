@@ -1,7 +1,7 @@
 development:  
-    paypal_email: thomas_1353333791_biz@gmail.com
-    paypal_secret: renderrender  
-    paypal_cert_id: C9WRU8VCJ95SQ  
+    paypal_email: tmaxim_1353583741_biz@gmail.com
+    paypal_secret: paypaypay  
+    paypal_cert_id: WHTHD9NMQC2XE  
     paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
     carrierwave_store: ':file'
   
@@ -13,9 +13,9 @@ test:
     carrierwave_store: ':file'
  
 production:  
-    paypal_email: thomas_1353333791_biz@gmail.com
-    paypal_secret: renderrender  
-    paypal_cert_id: C9WRU8VCJ95SQ  
+    paypal_email: tmaxim_1353583741_biz@gmail.com
+    paypal_secret: paypaypay  
+    paypal_cert_id: WHTHD9NMQC2XE  
     paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
     carrierwave_store: ':s3'
      
