@@ -20,7 +20,7 @@ class AdressesController < ApplicationController
   end
 
   def create
-    @adress = Adress.new(params[:adress])
+    @adress = current_user.adresses.build(params[:adress])
     if @adress.save
       flash[:notice] = "Successfully created adress."
       redirect_to adresses_path

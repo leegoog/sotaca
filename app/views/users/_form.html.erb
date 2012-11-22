@@ -1,5 +1,5 @@
 <br/><br/>
 <%= simple_form_for @user do |f| %>
-	<%= f.input :email, :label => "Change E-Mail" %>
-    <%= f.submit "Update E-Mail", :class => 'funkybutton'  %>
+	<%= f.input :email, :label => t("profile.change_email") %>
+    <%= f.submit t("profile.change_email"), :class => 'funkybutton'  %>
 <% end %>

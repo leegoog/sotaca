@@ -1161,3 +1161,33 @@ input.edit_adress {
   padding-left: 7px;
 	margin-bottom: 15px;
 }
+
+#add_to_cart_button {
+  width: 85px;
+  display: block;
+  background-color: #f7f7f7;
+  -webkit-transition: background-color 500ms linear;
+  -moz-transition: background-color 500ms linear;
+  -o-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;  color: #a7a7a7;
+  height: 85px;
+  font-size: 13px;
+  text-decoration: none;
+  position: relative;
+  text-align: center;
+  line-height: 85px;
+  text-shadow: 0px 1px #fff;
+  border-radius: 50%;
+  box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+}
+#add_to_cart_button:hover {
+  
+  background-color: #95006A;
+  -webkit-transition: background-color 500ms linear;
+  -moz-transition: background-color 500ms linear;
+  -o-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear;
+  
+}
