@@ -21,7 +21,6 @@ cn:
     continue_shopping: "继续购物"
     items_in_cart: " 件商品已添加至购物袋"
     just_added: "你已将 "
-    show_info: "show_cart_info_cn();"
 
     
   ordering:
