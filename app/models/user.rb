@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
    # with an email not found error.
    def self.send_reset_password_instructions(attributes={})
      recoverable = find_recoverable_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
-     recoverable.send_reset_password_instructions if recoverable.persisted?
+     recoverable.send_reset_password_instructions 
      recoverable
    end 
 
