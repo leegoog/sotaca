@@ -34,6 +34,10 @@ show_cart_info = function () {
   $("#just_added").html(prepare_cart_preview("<%= @product.assets.first.image_url(:thumb).to_s %>", "<%= @product.title %>" ));
 	jQuery.facebox({ div: '#just_added' });
 }
+show_cart_info_cn = function () {
+  $("#just_added").html(prepare_cart_preview_cn("<%= @product.assets.first.image_url(:thumb).to_s %>", "<%= @product.title %>" ));
+	jQuery.facebox({ div: '#just_added' });
+}
 show_empty = function () {
 	jQuery.facebox({ div: '#just_added' });
 	return false;
@@ -143,7 +147,7 @@ show_empty = function () {
 			<div class="add_to_cart_btn">
 				<% if available %>
 					<%= link_to t("products.add_to_cart"), line_items_path(:product_id => @product), :id => "add_to_cart_button", :method => :post, :remote => true, 
-					:title => t('products.add_to_cart'), :onclick => "show_cart_info();" %>
+					:title => t('products.add_to_cart'), :onclick => t("cart.show_info") %>
 				<% else %>
 				  <%= link_to t("products.add_to_cart"), nil, :id => "add_to_cart_button", :remote => true, :onclick => "show_empty();" %>
 				<% end %>
