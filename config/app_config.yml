@@ -26,3 +26,10 @@ production:
 #    paypal_url: https://www.paypal.com/cgi-bin/webscr  
 #    carrierwave_store: ':s3'
 
+
+###  -- sotaca real
+### Credential	API Signature
+### 
+### API Username	leegoo_api1.sotaca1898.com
+### API Password	6P7WFUWNSJQQ7GFT
+### Signature     AFcWxV21C7fd0v3bYYYRCpSSRl31A3KQFwVSX7hA6hEVfEMndqCa9AYk
