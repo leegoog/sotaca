@@ -26,7 +26,7 @@ class Product < ActiveRecord::Base
     has_many :line_items, :dependent => :destroy
     
   # for stock management
-    has_many :stock_items
+    has_many :stock_items, :dependent => :destroy
     
    # virtual attributes
     attr_writer :category_names
