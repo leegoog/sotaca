@@ -24,8 +24,8 @@ Sotaca::Application.configure do
   config.log_level = :debug
 
   config.action_mailer.default_url_options = { :host => 'sotaca.heroku.com' }
-  config.action_mailer.delivery_method = :smtp || :sendmail #:smtp
-  config.action_mailer.perform_deliveries    = true
+  config.action_mailer.delivery_method = :smtp #|| :sendmail #:smtp
+  config.action_mailer.perform_deliveries = true
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
