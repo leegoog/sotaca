@@ -31,6 +31,8 @@ class Order < ActiveRecord::Base
     
     scope :with_cart, where("cart_id IS NOT NULL")
     
+    after_create :reduce_stock_items
+    
 #    validates_presence_of :billing_name, :if => lambda { |o| o.current_step == "billing" }
 
     # the actual transaction after all had been validated
@@ -50,6 +52,13 @@ class Order < ActiveRecord::Base
     # returns paypal express token
     def express_token
       self[:express_token]
+    end
+
+
+    def reduce_stock_items
+      for item in cart.line_items
+        item.stock_item.reduce_quantity
+      end
     end
 
     def express_token=(token)

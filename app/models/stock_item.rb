@@ -9,4 +9,10 @@ class StockItem < ActiveRecord::Base
     
     has_many :line_items
     
+    
+    def reduce_quantity
+      self.amount -= 1
+      self.save!
+    end
+    
 end
