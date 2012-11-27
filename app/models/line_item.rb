@@ -6,7 +6,7 @@ class LineItem < ActiveRecord::Base
   
   belongs_to :cart
   belongs_to :product
-  belongs_to :stock_item, :dependent => :destroy
+  belongs_to :stock_item
   
   
   # returns the total price of this line item (quantity * price)
