@@ -75,6 +75,7 @@ en:
       current_password: 'Enter your current password'
       cpw: "(we need your current password to confirm your changes)"
       register_now: "Register now"
+      change_password: "Change Password"
     
     # these go up to devise
         

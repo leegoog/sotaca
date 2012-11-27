@@ -64,4 +64,5 @@ cn:
       register_now: "注册"
       current_password: "输入当前密码"
       cpw: "我们需要你的当前密码来确定你的资料更新"
+      change_password: ""
       
