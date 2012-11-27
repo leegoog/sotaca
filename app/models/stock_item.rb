@@ -1,7 +1,7 @@
 class StockItem < ActiveRecord::Base
     attr_accessible :product_id, :color, :size, :amount
     
-    belongs_to :product, :dependent => :destroy
+    belongs_to :product
     
     validates_presence_of :product_id, :amount
     
