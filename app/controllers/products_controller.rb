@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
       @category = false
       @products = Product.scoped
     end
-    @products = @products.where("title like ?", "%" + params[:title] + "%") if params[:title]
+    @products = @products.active.where("title like ?", "%" + params[:title] + "%") if params[:title]
     sort = ["created_at", "price", "title"].include?(params[:order]) ? params[:order] : "created_at desc" 
-    @products = @products.active.order(sort).page(params[:page]).per( params[:per_page] ? params[:per_page] : 12)
+    @products = @products.order(sort).page(params[:page]).per( params[:per_page] ? params[:per_page] : 12)
     @categories = Category.all
   end
 
