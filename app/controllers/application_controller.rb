@@ -39,7 +39,6 @@ class ApplicationController < ActionController::Base
   
   # overwrite default url builder to include the locale param
   def default_url_options(options={})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
   end
   

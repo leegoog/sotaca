@@ -66,7 +66,6 @@ gem "escape_utils"
 gem 'pg'
 
 
-
 # payment, credit card processing
 gem 'activemerchant', "~>1.28.0"  # 1.15.0
 

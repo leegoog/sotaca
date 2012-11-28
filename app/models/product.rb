@@ -1,10 +1,7 @@
 class Product < ActiveRecord::Base
-    
-  #acts_as_paranoid  # does not actually delete the product, insteas adds 'deleted_at' timestamp
   
   translates :title, :subtitle, :description, :fallbacks_for_empty_translations => true
    
-  accepts_nested_attributes_for :translations # allows multiple translations in the same request
    
   # validations
   validates_presence_of :title, :price
@@ -38,9 +35,9 @@ class Product < ActiveRecord::Base
     
   # callback for create categories through product
   after_save :assign_categories
-    
-  # allow creation & deletion of assets through product
+
   accepts_nested_attributes_for :assets, :allow_destroy => true
+  accepts_nested_attributes_for :translations # allows multiple translations in the same request
     
   # scopes
   scope :by_category, lambda{|cat| where(:category => cat) } 
