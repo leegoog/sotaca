@@ -12,19 +12,19 @@ test:
     paypal_url: testpaypalurl  
     carrierwave_store: ':file'
  
-production:  
-    paypal_email: tmaxim_1353583741_biz@gmail.com
-    paypal_secret: paypaypay  
-    paypal_cert_id: WHTHD9NMQC2XE  
-    paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
-    carrierwave_store: ':s3'
-     
 #production:  
-#    paypal_email: seller_1309468633_biz@sotaca1898.com  
-#    paypal_secret: reallysecretpassword  
-#    paypal_cert_id: 7LV6KE7ADUUEN  
-#    paypal_url: https://www.paypal.com/cgi-bin/webscr  
+#    paypal_email: tmaxim_1353583741_biz@gmail.com
+#    paypal_secret: paypaypay  
+#    paypal_cert_id: WHTHD9NMQC2XE  
+#    paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr  
 #    carrierwave_store: ':s3'
+     
+production:  
+    paypal_email: leegoo_api1.sotaca1898.com
+    paypal_secret: 6P7WFUWNSJQQ7GFT  
+    paypal_cert_id: DG7G252GTGQ3Y  
+    paypal_url: https://www.paypal.com/cgi-bin/webscr  
+    carrierwave_store: ':s3'
 
 
 ###  -- sotaca real
