@@ -54,11 +54,11 @@ Sotaca::Application.configure do
   config.active_support.deprecation = :notify
   
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     paypal_options = {
-      :login => "tmaxim_1353583741_biz_api1.gmail.com",
-      :password => "1353583810",
-      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AuFHlWIFdTBe5D.OUM41TxF5wLLb"
+      :login => "leegoo_api1.sotaca1898.com",
+      :password => "6P7WFUWNSJQQ7GFT",
+      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A3KQFwVSX7hA6hEVfEMndqCa9AYk"
     }
     ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
     # standard gateway
