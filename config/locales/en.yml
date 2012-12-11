@@ -189,6 +189,7 @@ en:
     press: 'Press'
     shop: 'Shop'
     terms: 'Terms'
+    terms_text: ''
     whole_sale: 'Affiliation/Whole sale'
     translations: 'Translations'
     admin: 'Admin'
