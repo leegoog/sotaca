@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
   def index
     if params[:category]
       @category = Category.find(params[:category])
-      @products = Product.tree(@category)  # <-- get all products
+      @products = Product.tree(@category, :include => [:assets, :translations])  # <-- get all products
     else
       @category = false
-      @products = Product.scoped
+      @products = Product.scoped(:include => [:assets, :translations])
     end
     @products = @products.active.where("title like ?", "%" + params[:title] + "%") if params[:title]
     sort = ["created_at", "price", "title"].include?(params[:order]) ? params[:order] : "created_at desc" 
@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id], :include => :article_sets)
+    @product = Product.find(params[:id], :include => [:assets, :translations, :stock_items])
     @article_sets = @product.article_sets.limit(6)
   end
 
