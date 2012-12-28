@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def index
     if params[:category]
       @category = Category.find(params[:category])
-      @products = Product.tree(@category, :include => [:assets, :translations])  # <-- get all products
+      @products = Product.tree(@category)  # <-- get all products
     else
       @category = false
       @products = Product.scoped(:include => [:assets, :translations])
