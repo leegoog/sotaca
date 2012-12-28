@@ -124,7 +124,9 @@ show_empty = function () {
 		</div>		
 		<div class="subheadline">
 			<%= t 'products.tell_a_friend' %>
-			<%= social_share_button_tag(@product.title) %>
+		</div>
+		<div>
+			<%= social_share_button_tag("Sotaca 1898 - #{@product.title}") %>
 		</div>
 		<div class="subheadline">
 			<% if available %>
