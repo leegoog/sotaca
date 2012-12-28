@@ -60,7 +60,7 @@ gem 'globalize3'
 # gem 'redis'
 gem 'money'
 gem 'google_currency'
-
+gem 'social-share-button'
 
 gem "escape_utils"
 gem 'pg'
@@ -84,7 +84,7 @@ group :development do
   gem 'nifty-generators'
   gem 'rspec-rails', '2.6.1'
   gem 'heroku'
-  # console stuff
+  gem 'bullet'
 end
 
 group :test do    

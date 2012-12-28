@@ -49,6 +49,19 @@ Sotaca::Application.configure do
     # gateway for paypal express checkout
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
     
+    
+    ### BULLET ###
+    
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.growl = false
+    Bullet.rails_logger = true
+    Bullet.airbrake = false
+    Bullet.disable_browser_cache = true
+    
+    
   end
   
 end
