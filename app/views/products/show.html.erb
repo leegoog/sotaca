@@ -114,6 +114,13 @@ show_empty = function () {
 					</div>
 				</div>
 				<% end %>
+		</div>		
+		<div class="subheadline">
+			<% if available %>
+				<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true,  :id => 'add_product_link', :title => t('products.add_to_cart'), :onclick => "show_cart_info();" %>
+			<% else %>
+			  <%= link_to t('products.add_to_shopping_cart'), nil, :remote => true, :onclick => "show_empty();"  %>
+			<% end %>
 		</div>
 		<div class="subheadline">
 			<% if current_user && current_user.wishlist.products.include?(@product) %>
@@ -121,19 +128,9 @@ show_empty = function () {
 			<% else %>
 				<%= link_to t('products.add_to_wishlist'), add_to_wishlist_url(:product_id => @product.id), :method => :post, :remote => true, :id => 'wishlist_link' %>
 			<% end %>
-		</div>		
-		<div class="subheadline">
-			<%= t 'products.tell_a_friend' %>
 		</div>
 		<div>
 			<%= social_share_button_tag("Sotaca 1898 - #{@product.title}") %>
-		</div>
-		<div class="subheadline">
-			<% if available %>
-				<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true,  :id => 'add_product_link', :title => t('products.add_to_cart'), :onclick => "show_cart_info();" %>
-			<% else %>
-			  <%= link_to t('products.add_to_shopping_cart'), nil, :remote => true, :onclick => "show_empty();"  %>
-			<% end %>
 		</div>
 
 		</div>
