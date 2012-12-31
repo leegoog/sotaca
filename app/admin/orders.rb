@@ -9,7 +9,6 @@ ActiveAdmin.register Order do
     column :order_status
     column :last_name
     column :first_name
-
     column :zipcode
     column :city
     column "Articles" do |order|
@@ -22,7 +21,6 @@ ActiveAdmin.register Order do
         number_to_currency(order.total_price.to_money.exchange_to("GBP"))
       end  
     end
-    column :ip_address
     default_actions
   end
 
@@ -40,11 +38,7 @@ ActiveAdmin.register Order do
     div :class => "status" do
       "Order status: #{order.order_status.name}"
     end
-    div :class => "articles" do
-      order.cart.line_items.each do |li|
-        li.product.name_number
-      end
-    end
+
   end
   
 end
