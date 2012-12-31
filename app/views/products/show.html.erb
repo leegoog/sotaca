@@ -1,6 +1,16 @@
 <% title @product.title %>
 <% available =  @product.stock_items.to_a.sum(&:amount) > 0 ? true : false %>
 <% content_for (:head) do %>
+
+
+<meta property="og:title" content="Sotaca 1898 - <%= @product.title %>"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="<%= post_url(@post) %>"/>
+<meta property="og:image" content="<%= @product.assets.first.image_url(:medium).to_s %>"/>
+<meta property="og:site_name" content="Sotaca 1898"/>
+<meta property="og:description"
+      content="Sotaca 1898 - Description goes here."/>
+
  <script type="text/javascript" charset="utf-8">
 var product_available = <%= available %>;
 var total_amount = <%= current_cart.total_items %>;
