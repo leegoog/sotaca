@@ -4,8 +4,8 @@ class LineItem < ActiveRecord::Base
   
   attr_accessor :full_price, :increase
   
-  belongs_to :cart
   belongs_to :product
+  belongs_to :cart
   belongs_to :stock_item
   
   
