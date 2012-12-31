@@ -20,7 +20,7 @@ Sotaca::Application.routes.draw do
 
   get "set_items/create"
 
-  get "admin/index"
+  ActiveAdmin.routes(self)
 
   resources :article_sets do
     resources :comments

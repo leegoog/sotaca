@@ -1,6 +1,5 @@
 ActiveAdmin::Dashboards.build do
 
-
   section "Recent Orders" do  
     table_for Order.order("created_at desc").limit(10) do  
       column :order_nr do |order|  
