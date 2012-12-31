@@ -2,8 +2,8 @@ ActiveAdmin::Dashboards.build do
 
   section "Recent Orders" do  
     table_for Order.order("created_at desc").limit(10) do  
-      column :order_nr do |order|  
-        link_to order.order_nr, admin_order_path(order)  
+      column :order_nr do |_order|  
+        link_to order.order_nr, admin_order_path(_order)  
       end  
       column :created_at 
       column :order_status 
