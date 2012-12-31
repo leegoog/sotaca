@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       @category = false
       @products = Product.scoped(:include => [:assets, :translations])
     end
-    @products = Product.active.where("title ilike ?", "%" + params[:title] + "%") if params[:title]
+    @products = Product.active.where("title ilike ? or subtitle ilike ?", "%" + params[:title] + "%", "%" + params[:title] + "%") if params[:title]
     sort = ["created_at", "price", "title"].include?(params[:order]) ? params[:order] : "created_at desc" 
     @products = @products.order(sort).page(params[:page]).per( params[:per_page] ? params[:per_page] : 12)
     @categories = Category.all
