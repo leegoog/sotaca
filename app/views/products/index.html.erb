@@ -32,6 +32,7 @@
 <% content_for(:left) do %>
 	<div id="category_navigation">
 	<% for category in Category.roots %>
+		<% if category.products.count > 0 %>
 		<ul class="level1">
 			<li class="lvl1_cat <%= "active" if (@category == category ||  category.children.include?(@category)) %>">
 			
@@ -40,12 +41,15 @@
 				<% if category.children.size > 0 %>
 					<ul class="level2 <%= "open" if (@category == category ||  category.children.include?(@category)) %>">
 					<% for child in category.children %>
+					<% if child.products.count > 0 %>
 						<li class="<%= "active" if (child == @category) %>"><%= link_to child.name, :controller => 'products', :action => "index" , :category => child.id %></li>
+					<% end %>
 					<% end %>
 					</ul>
 				<% end %>
 			</li>
 		</ul>
+	<% end %>
 	<% end %>
 	</div>
 <% end %>
