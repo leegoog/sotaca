@@ -57,6 +57,7 @@ gem 'redcarpet'
 # key-value store
 gem 'i18n', "~> 0.5.0"
 gem 'globalize3'
+gem 'country-select'
 # gem 'redis'
 gem 'money'
 gem 'google_currency'
