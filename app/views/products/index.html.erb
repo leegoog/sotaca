@@ -36,10 +36,9 @@
 			<li class="lvl1_cat <%= "active" if (@category == category ||  category.children.include?(@category)) %>">
 			
 			
-			<%= link_to category.name, '#' %>
+			<%= link_to category.name, :controller => 'products', :action => "index" , :category => category.id %>
 				<% if category.children.size > 0 %>
 					<ul class="level2 <%= "open" if (@category == category ||  category.children.include?(@category)) %>">
-						<li class="<%= "active" if (@category == category) %>"><%= link_to "all", :controller => 'products', :action => "index" , :category => category.id %></li>
 					<% for child in category.children %>
 						<li class="<%= "active" if (child == @category) %>"><%= link_to child.name, :controller => 'products', :action => "index" , :category => child.id %></li>
 					<% end %>
