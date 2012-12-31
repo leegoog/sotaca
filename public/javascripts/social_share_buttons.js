@@ -48,6 +48,10 @@ window.SocialShareButton = {
         break;
       case "delicious":
         SocialShareButton.openUrl("http://www.delicious.com/save?url=" + url + "&title=" + title + "&jump=yes&pic=" + img);
+        break;
+      case "email":
+        jQuery.facebox({ div: '#tell_a_friend_mail' });
+        return false;
     }
     return false;
   }

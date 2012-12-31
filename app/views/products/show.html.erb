@@ -1,5 +1,5 @@
 <% title @product.title %>
-<% available =  @product.stock_items.count > 0 ? true : false %>
+<% available =  @product.stock_items.to_a.sum(&:amount) > 0 ? true : false %>
 <% content_for (:head) do %>
  <script type="text/javascript" charset="utf-8">
 var product_available = <%= available %>;
@@ -132,7 +132,7 @@ show_empty = function () {
 			<% if available %>
 				<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true,  :id => 'add_product_link', :title => t('products.add_to_cart'), :onclick => "show_cart_info();" %>
 			<% else %>
-			  <%= link_to t('products.add_to_cart'), nil, :remote => true, :onclick => "show_empty();"  %>
+			  <%= link_to t('products.add_to_shopping_cart'), nil, :remote => true, :onclick => "show_empty();"  %>
 			<% end %>
 		</div>
 
@@ -193,6 +193,9 @@ show_empty = function () {
 	<div id="just_added" style="display:none;">
 		<!-- content will be dynamically added -->
 		
+	</div>
+	<div id="tell_a_friend_mail" style="display:none;">
+		<%= render 'social_share_form' %>
 	</div>
 </div>
 

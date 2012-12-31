@@ -37,6 +37,8 @@ Sotaca::Application.routes.draw do
   get "user/index"
 
   get "user/show"
+  
+  post "products/share_by_mail"
 
   resources :payment_notifications
 
