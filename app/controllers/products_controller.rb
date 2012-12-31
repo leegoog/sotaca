@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id], :include => [:assets, :translations, :stock_items])
-    @article_sets = @product.article_sets.limit(6)
+    @social_share = SocialShare.new
   end
 
   def new
@@ -56,4 +56,15 @@ class ProductsController < ApplicationController
     flash[:notice] = "Successfully destroyed product."
     redirect_to products_url
   end
+  
+  def share_by_mail
+    @social_share = SocialShare.new(params[:social_share])
+    if @social_share.save
+      redirect_to('/', :notice => "Your message was successfully sent.")
+    else
+      flash[:alert] = t('contact.validation_error')
+    end
+  end
+  
+  
 end
