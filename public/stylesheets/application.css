@@ -373,7 +373,7 @@ margin: -10px 0 20px -35px;
 #content .product_detail #main_image {
 	border: 1px solid;
 	width: 550px;
-	height: 525px;
+	height: 520px;
 	text-align: center;
 	position: relative;
 	padding-top: 15px;
@@ -558,7 +558,7 @@ color: #000 !important;
     width: 792px;
 	margin-top: -20px;
 	margin-bottom: -20px;
-	min-height: 300px;
+	min-height: 400px;
 }
 
 #content .cart_view h2, #content .faq h2, #order_frame h2, #content .profile h2, #content .registration h2{
