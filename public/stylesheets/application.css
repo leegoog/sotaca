@@ -1058,6 +1058,7 @@ table.translations {
 	width: 395px;
 	overflow: hidden;
 	margin-left: -20px;
+	margin-top: -10px;
 	padding-left: 20px;
 	float:left;
 	border-right: 2px solid #fff;
@@ -1065,6 +1066,7 @@ table.translations {
 
 .registration .thirty {
 	width: 395px;
+	margin-top: -10px;
 	overflow: hidden;
 	float:left;
 }
