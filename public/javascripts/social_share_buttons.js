@@ -49,9 +49,15 @@ window.SocialShareButton = {
       case "delicious":
         SocialShareButton.openUrl("http://www.delicious.com/save?url=" + url + "&title=" + title + "&jump=yes&pic=" + img);
         break;
+      case "pinterest":
+        SocialShareButton.openUrl('http://pinterest.com/pin/create/button/?url=' + url + '&media=' + img + '&description=' + title );
+        break;
+      case "tumblr":
+        SocialShareButton.openUrl("http://www.tumblr.com/share/link?url=" + url + "&name=" + title + "&description=" + img) ;   
+        break;        
       case "email":
-        jQuery.facebox({ div: '#tell_a_friend_mail' });
-        return false;
+       jQuery.facebox({ div: '#tell_a_friend_mail' });
+       return false;
     }
     return false;
   }
