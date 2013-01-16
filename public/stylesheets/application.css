@@ -1194,3 +1194,11 @@ input.edit_adress {
   transition: background-color 500ms linear;
   
 }
+
+.shipping_options > div {
+  float: left;
+}
+
+.shipping_options > div > label {
+  width: auto;
+}

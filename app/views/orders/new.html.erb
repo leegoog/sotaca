@@ -17,7 +17,7 @@
 	</tr>
 <%= render :partial => "carts/articles_in_cart", :locals => {:cart => current_cart} %> 
 <% shipping_method = session[:order_params]["shipping_method_id"] ?  ShippingMethod.find(session[:order_params]["shipping_method_id"].to_i) : ShippingMethod.first %>
-<% if shipping_method %>
+<% if shipping_method and @order.current_step == 'billing' %>
 	<tr class="shipping_line">
 		<td><%= t"orders.shipping_costs" %></td>
 		<td colspan="2"><%= shipping_method.name %></td>
