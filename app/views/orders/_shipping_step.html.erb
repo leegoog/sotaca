@@ -21,6 +21,5 @@
 	  <%= f.select :country, options_from_collection_for_select(Country.all, 'iso', 'name', session[:order_params]["country"] ? session[:order_params]["country"] : "GB") %>
 	</div>
 	
-	
-  <%= f.input :shipping_method_id, :collection => ShippingMethod.all, :as => :radio, :label_method => :name_and_price, :checked => session[:order_params]["shipping_method_id"] ? session[:order_params]["shipping_method_id"].to_i : 1%>  
+<%= f.input :shipping_method_id, :collection => ShippingMethod.all, :as => :radio, :label_method => :name_and_price, :checked => session[:order_params]["shipping_method_id"] ? session[:order_params]["shipping_method_id"].to_i : 1, :wrapper_html => { :class => 'shipping_options' }, :item_wrapper_tag => :div %>
 </p>
