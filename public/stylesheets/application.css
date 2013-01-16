@@ -1197,6 +1197,12 @@ input.edit_adress {
 
 .shipping_options > div {
   float: left;
+  border-right: 1px solid #ccc;
+  padding-left: 7px;
+}
+
+.shipping_options > div:last-child {
+  border-right:none;
 }
 
 .shipping_options > div > label {
