@@ -1201,4 +1201,8 @@ input.edit_adress {
 
 .shipping_options > div > label {
   width: auto;
+  float: right;
+}
+.shipping_options > div > input {
+  float: left;
 }
