@@ -1212,3 +1212,19 @@ input.edit_adress {
 .shipping_options > div > input {
   float: left;
 }
+
+.wishlist_overview {
+  margin-left: 0 !important;
+}
+
+a.remove_from_wishlist_link {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+a.remove_from_wishlist_link:hover {
+ text-decoration: none;
+ font-weight: bold;
+ color: black;
+}
