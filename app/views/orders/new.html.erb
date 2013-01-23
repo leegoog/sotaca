@@ -17,7 +17,7 @@
 	</tr>
 <%= render :partial => "carts/articles_in_cart", :locals => {:cart => current_cart} %> 
 <% shipping_method = session[:order_params]["shipping_method_id"] ?  ShippingMethod.find(session[:order_params]["shipping_method_id"].to_i) : ShippingMethod.first %>
-<% if shipping_method and @order.current_step == 'billing' %>
+<% if shipping_method and @order.current_step != 'shipping' %>
 	<tr class="shipping_line">
 		<td><%= t"orders.shipping_costs" %></td>
 		<td colspan="2"><%= shipping_method.name %></td>
@@ -26,7 +26,11 @@
 <% end %>
 <tr class="total">
 	<td><b>TOTAL</b></td>
-	<% total = (current_cart.total_price + shipping_method.price).to_money.exchange_to(session[:currency]) %>
+	<% if shipping_method and @order.current_step != 'shipping' %>
+		<% total = (current_cart.total_price + shipping_method.price).to_money.exchange_to(session[:currency]) %>
+	<% else %>
+		<% total = current_cart.total_price.to_money.exchange_to(session[:currency]) %>
+	<% end %>
 	<td colspan="3" class="price">
 		<div style="position: relative">
 		<b><%= number_to_currency(total) %></b>
