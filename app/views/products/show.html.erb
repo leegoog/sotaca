@@ -52,6 +52,10 @@ show_empty = function () {
 	jQuery.facebox({ div: '#just_added' });
 	return false;
 }
+show_wishlist = function () {
+	jQuery.facebox({ div: '#wishlist_added' });
+	return false;
+}
 
 	$(document).ready(function () {
 
@@ -65,15 +69,11 @@ show_empty = function () {
 		} else {
 			// product is not on stock
 			$("#just_added").html(prepare_emtpy());
-		}   
-		$('#add_to_cart_img').hover(
-				function () { 
-					 $(this).attr("src", "/images/add_to_cart_pink.png");
-					},
-				function () {
-					$(this).attr("src", "/images/add_to_cart_grey.png");
-				}
-			);
+		}
+		   
+		$('#wishlist_link').click(function () {
+			show_wishlist();
+		});
 		
 			
 			
@@ -200,6 +200,10 @@ show_empty = function () {
 	<div id="just_added" style="display:none;">
 		<!-- content will be dynamically added -->
 		
+	</div>
+	<div id="wishlist_added" style="display:none;">
+		<!-- content will be dynamically added -->
+		added to wishlist!
 	</div>
 	<div id="tell_a_friend_mail" style="display:none;">
 		<%= render 'social_share_form' %>

@@ -9,6 +9,15 @@
 		});
 	$(window).load(function() {
 		$('.loading').fadeOut('slow');
+		
+		$('.product').hover(function () {
+			$(this).append("<a class='remove_from_wishlist_link' title='remove from wishlist'>X</a>");
+		},
+		function () { // callback end hover
+			$(this).find("a.remove_from_wishlist_link").remove();
+		});
+		
+		
 	});
 });
  </script>
@@ -20,7 +29,7 @@
 <div id="user_adresses">
 <h2><%= t('profile.wishlist') %></h2>
 
-<div class="product_overview">
+<div class="product_overview wishlist_overview">
 	<%= render @products%>
 	<div class="clear"></div>
 </div>
