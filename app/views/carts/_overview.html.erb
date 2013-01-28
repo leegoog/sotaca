@@ -26,7 +26,7 @@
 			  <%= link_to (image_tag "continue_shopping.jpg"), products_path, :title => "continue shopping" %>
 		</td>
 	    <td>
-			<b>Sub Total <i>(incl. VAT)</i></b>
+			<b>Sub Total</b>
 	    </td>
 	    <td>
 	 		<b><%= number_to_currency (cart.total_price.exchange_to(session[:currency])) %></b>
