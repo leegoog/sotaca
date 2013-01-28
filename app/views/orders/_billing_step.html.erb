@@ -11,7 +11,7 @@
 	
 	  <%= f.input :card_number %>
 	
-	  <%= f.input :card_verification, :as => :password %>
+	  <%= f.input :card_verification, :as => :password,  :input_html => {:maxlength => 3, :size => 3, :class => 'string short_string'} %> <%= link_to "what is this?", "http://google.com", :class => "cvv_link", :target => "_blank" %>
 	
 	
 	<div class="input string optional">

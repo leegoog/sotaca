@@ -1228,3 +1228,17 @@ a.remove_from_wishlist_link:hover {
  font-weight: bold;
  color: black;
 }
+
+input.short_string {
+  width: 40px !important;
+}
+
+.cvv_link {
+  position: absolute;
+  left: 170px;
+  bottom: 85px;
+}
+
+.padding_10 {
+  padding: 10px 40px 0 0;
+}
