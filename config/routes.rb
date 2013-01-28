@@ -89,6 +89,8 @@ Sotaca::Application.routes.draw do
   match 'wishlist' => "wishlists#show", :as => 'wishlist'
   
   match 'add_to_wishlist' => "users#add_to_wishlist", :as => 'add_to_wishlist'
+  
+  match 'remove_from_wishlist' => "users#remove_from_wishlist", :as => 'remove_from_wishlist'
 
   match 'home' => "pages#home"
 
