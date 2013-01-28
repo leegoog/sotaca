@@ -134,7 +134,7 @@ show_wishlist = function () {
 		</div>
 		<div class="subheadline">
 			<% if current_user && current_user.wishlist.products.include?(@product) %>
-				<%= t "products.in_wishlist" %>
+				<%= link_to t("products.in_wishlist"), wishlist_url %>
 			<% else %>
 				<%= link_to t('products.add_to_wishlist'), add_to_wishlist_url(:product_id => @product.id), :method => :post, :remote => true, :id => 'wishlist_link' %>
 			<% end %>
@@ -203,7 +203,7 @@ show_wishlist = function () {
 	</div>
 	<div id="wishlist_added" style="display:none;">
 		<!-- content will be dynamically added -->
-		added to wishlist!
+		added to wishlist! <%= link_to "undo", remove_from_wishlist_url(:product_id => @product.id), :method => :post, :remote => true %>
 	</div>
 	<div id="tell_a_friend_mail" style="display:none;">
 		<%= render 'social_share_form' %>
