@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:add_to_wishlist]
+  before_filter :authenticate_user!
   
   def index
     @users = User.all
