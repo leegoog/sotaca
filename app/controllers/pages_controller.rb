@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    @image = StartImage.first
   end
 
   def just_in

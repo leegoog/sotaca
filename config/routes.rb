@@ -1,5 +1,7 @@
 Sotaca::Application.routes.draw do
 
+  resources :start_images
+
   resources :wishlists
 
   resources :adresses

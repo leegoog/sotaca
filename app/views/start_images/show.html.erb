@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Link:</b>
+  <%= @start_image.link %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @start_image.image_url(:big).to_s %>
+</p>
+
+
+<%= link_to 'Edit', edit_start_image_path(@start_image) %> |
+<%= link_to 'Back', start_images_path %>
