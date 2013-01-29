@@ -60,13 +60,13 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "blog_image"
     t.integer  "comments_count", :default => 0
     t.integer  "likes_count",    :default => 0
   end
 
   create_table "assets", :force => true do |t|
     t.integer  "product_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
@@ -103,6 +103,14 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.datetime "updated_at"
   end
 
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "article_set_id"
@@ -110,9 +118,6 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "comments", ["article_set_id"], :name => "comments_article_set_id_fk"
-  add_index "comments", ["user_id"], :name => "comments_user_id_fk"
 
   create_table "countries", :force => true do |t|
     t.string  "iso"
@@ -130,8 +135,6 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.string   "img"
   end
 
-  add_index "images", ["product_id"], :name => "images_product_id_fk"
-
   create_table "line_items", :force => true do |t|
     t.integer  "unit_price",    :default => 0, :null => false
     t.integer  "product_id"
@@ -141,8 +144,6 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.datetime "updated_at"
     t.integer  "stock_item_id"
   end
-
-  add_index "line_items", ["cart_id"], :name => "line_items_cart_id_fk"
 
   create_table "order_statuses", :force => true do |t|
     t.string   "name"
@@ -201,9 +202,6 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.datetime "updated_at"
   end
 
-  add_index "product_likes", ["product_id"], :name => "product_likes_product_id_fk"
-  add_index "product_likes", ["user_id"], :name => "product_likes_user_id_fk"
-
   create_table "product_translations", :force => true do |t|
     t.integer  "product_id"
     t.string   "locale"
@@ -224,7 +222,7 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.string   "title"
     t.string   "subtitle"
     t.string   "currency",     :default => "GBP"
-    t.boolean  "legacy",       :default => false
+    t.boolean  "legacy"
     t.string   "product_code"
     t.integer  "category_id"
   end
@@ -321,15 +319,5 @@ ActiveRecord::Schema.define(:version => 20130129155222) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_foreign_key "comments", "article_sets", :name => "comments_article_set_id_fk", :dependent => :delete
-  add_foreign_key "comments", "users", :name => "comments_user_id_fk", :dependent => :delete
-
-  add_foreign_key "images", "products", :name => "images_product_id_fk", :dependent => :delete
-
-  add_foreign_key "line_items", "carts", :name => "line_items_cart_id_fk", :dependent => :delete
-
-  add_foreign_key "product_likes", "products", :name => "product_likes_product_id_fk", :dependent => :delete
-  add_foreign_key "product_likes", "users", :name => "product_likes_user_id_fk", :dependent => :delete
 
 end

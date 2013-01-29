@@ -7,7 +7,7 @@
 
 	<div class="inputs file_input">
 		
-		<%= image_tag @start_image.image_url(:thumb) %>
+		<%= image_tag @start_image.image_url(:thumb) if @start_image.image_url %>
 		
     <%= f.file_field :image %>
   </div>
