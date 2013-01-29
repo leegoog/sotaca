@@ -3,7 +3,7 @@
 		<span class="loading"></span>
 		<span class="photo">
 		<% if product.assets.first %>
-			<%= link_to(image_tag(product.assets.first.image.url(:thumb).to_s), product, :title => product.title )%>
+			<% link_to(image_tag(product.assets.first.image_url(:thumb).to_s), product, :title => product.title )%>
 		<% else %>
 			<%= link_to(image_tag('dummy.jpg', :width => '140'), product, :title => product.title )%>
 		<% end %>
