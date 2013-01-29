@@ -58,7 +58,11 @@ class Product < ActiveRecord::Base
   
   # overriding rails' to_param method to get a speaking, seo friendlier URI
   def to_param
-    "#{id}-#{title.parameterize}"
+    if title
+      "#{id}-#{title.parameterize}"
+    else
+      "#{id}"
+    end
   end
   
   def full_name

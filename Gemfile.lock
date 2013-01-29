@@ -253,7 +253,7 @@ DEPENDENCIES
   nifty-generators
   pg
   rack-ssl
-  rails (~> 3.0.20)
+  rails (= 3.0.20)
   rails3-jquery-autocomplete
   redcarpet
   resque
