@@ -1,4 +1,5 @@
 <% title t 'pages.home' %>
 
-
-<%= link_to image_tag(@image.image_url(:big)), @image.link,:id => "homeimage" %>
+<% if @image.image_url %>
+	<%= link_to image_tag(@image.image_url(:big)), @image.link,:id => "homeimage" %>
+<% end %>
