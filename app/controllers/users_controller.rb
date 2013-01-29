@@ -53,6 +53,7 @@ class UsersController < ApplicationController
         }
       format.js
     end
+  end
 
 
   def update
