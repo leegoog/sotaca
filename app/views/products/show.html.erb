@@ -148,7 +148,7 @@ show_wishlist = function () {
 	<div class="column" style="width:auto">
 		<div id="main_image">
 			  <% if @product.assets.first %>	
-			  	<% image_tag @product.assets.first.image_url(:big).to_s %>
+			  	<%= image_tag @product.assets.first.image_url(:big).to_s %>
 			  <% else %>
 				<%= image_tag "dummy.jpg" %>
 			  <% end %>
