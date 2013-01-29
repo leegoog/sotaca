@@ -1,0 +1,20 @@
+<%= simple_form_for @start_image, :html => {:multipart => true} do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :link %>
+  </div>
+
+	<div class="inputs file_input">
+		
+		<%= image_tag @start_image.image_url(:thumb) %>
+		
+    <%= f.file_field :image %>
+  </div>
+
+ 
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
