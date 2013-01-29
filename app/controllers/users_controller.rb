@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     end
   end
   
+  
   def remove_from_wishlist
     @product = Product.find(params[:product_id])
     current_user.remove_from_wishlist(@product)
@@ -52,6 +53,7 @@ class UsersController < ApplicationController
         }
       format.js
     end
+
 
   def update
     @user = User.find(params[:id]) || current_user
