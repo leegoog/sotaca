@@ -45,8 +45,8 @@ class ApplicationController < ActionController::Base
   # check if there is a user with language settings, if not use the deault language or the one from the params
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    if params[:locale] == 'cn'
-      session[:currency] = 'CNY'
+    if params[:locale] == 'cn' || params[:locale] == 'us'
+      session[:currency] = 'USD'
     elsif params[:locale] == 'eu'
       session[:currency] = 'EUR'
     else

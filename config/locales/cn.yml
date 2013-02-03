@@ -330,10 +330,10 @@ cn:
     currency:
       format:
         format: "%u %n"
-        unit: "CN¥"
+        unit: "US $"
         separator: "."
         delimiter: ","
-        precision: 0
+        precision: 2
         significant: false
         strip_insignificant_zeros: false
     percentage:
