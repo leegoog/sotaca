@@ -937,6 +937,17 @@ table.translations {
 	color: #fff;
 	text-decoration: none;
 }
+#stepper .nohover a:hover {
+  background-color: white !important;
+  color: #000;
+  cursor: default;
+}
+
+#stepper .active a:hover {
+	background-color: #95006A !important;
+	color: #fff;
+	text-decoration: none;
+}
 
 #order_frame {
     border-right: 1px solid;

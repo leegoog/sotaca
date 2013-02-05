@@ -2,13 +2,13 @@
 	<div class="step">
 		<%= link_to t("orders.steps.cart"), current_cart_url, :title => "back to cart" %>
 	</div>
-	<div class="step <%= 'active' if order.shipping? %>">
+	<div class="step nohover <%= 'active' if order.shipping? %>">
 		<%= link_to t("orders.steps.shipping"), new_order_path, :order_step => "shipping" %>
 	</div>
-    <div class="step <%= 'active' if order.billing? %>">
+    <div class="step nohover <%= 'active' if order.billing? %>">
 		<%= link_to t("orders.steps.billing"), new_order_path, :order_step => "shipping"  %>    	
     </div>
-    <div class="step <%= 'active' if order.confirmation? %>">
+    <div class="step nohover <%= 'active' if order.confirmation? %>">
     	<%= link_to t("orders.steps.confirmation"), new_order_path, :order_step => "shipping"  %>    	
     </div>
 <div id="heart"><%= image_tag "like.jpg", :width => 42, :height => 38 %></div>
