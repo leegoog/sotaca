@@ -181,12 +181,13 @@ en:
     index: 'Index'
     our_story:
       title: 'Our Story'
-      text1: 'It has always been our passion to share the things that interest inspire us with people who appreciate them and we are convinced that good things always come back to you when you help other people.'
+      If you are a journalist or stylist you are welcome contact us at press@sotaca1898.com or  for more information. We also happy to sharing our product /picture with you, and more people. Just inform us same email with your website/blog address.: 'It has always been our passion to share the things that interest inspire us with people who appreciate them and we are convinced that good things always come back to you when you help other people.'
       text2: 'We have created SOTACA1898 to be more than just another online retailer. We want to be known as an inspiring location for creative exchanges on fashion and design issues. Our goal is to provide interesting and high quality fashion and design products, and we believe that every product has a story behind it. We love to share their stories with you and we hope that our products give you as much pleasure as they do us. '
       text3: 'We also strongly support independent creative designer products and you are welcome to contact us if you have innovative ideas.'
     info: 'Info'
     just_in: 'Just in'
-    press: 'Press'
+    press:
+      text1: 'If you are a journalist or stylist you are welcome contact us at <a href="mailto:press@sotaca1898.com">press@sotaca1898.com</a> or  for more information.<br> We also happy to sharing our product /picture with you, and more people. Just inform us same email with your website/blog address.'
     shop: 'Shop'
     terms: 'Terms'
     terms_text: ''
