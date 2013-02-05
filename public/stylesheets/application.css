@@ -160,7 +160,7 @@ text-decoration: none;
 #content{
     border: 2px solid black;
     margin-top: 20px;
-    min-height: 200px;
+    min-height: 400px;
     padding: 20px;
     position: relative;
 }
