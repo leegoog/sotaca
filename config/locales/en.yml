@@ -187,7 +187,7 @@ en:
     info: 'Info'
     just_in: 'Just in'
     press:
-      text1: 'If you are a journalist or stylist you are welcome contact us at <a href="mailto:press@sotaca1898.com">press@sotaca1898.com</a> or  for more information.<br> We also happy to sharing our product /picture with you, and more people. Just inform us same email with your website/blog address.'
+      text1: 'If you are a journalist or stylist you are welcome contact us at <a href="mailto:press@sotaca1898.com">press@sotaca1898.com</a> or  for more information.<br> We also happy to sharing our product /picture with you, and more people. Just inform us same email with your <br>website/blog address.'
     shop: 'Shop'
     terms: 'Terms'
     terms_text: ''
