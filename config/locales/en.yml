@@ -5,7 +5,7 @@ en:
   welcome: "Welcome"
   home: "Home"
   checkout: "Checkout"
-  adress_book: "Adress Book"
+  adress_book: "Address Book"
   english: 'English'
   chinese: "中文"
   needs_login: "You need to log in before."
@@ -20,11 +20,11 @@ en:
     
   cart:
     shopping_bag: "Shopping Bag"
-    is_empty: "Your cart is empty."
-    empty: "Empty cart"
-    to_the_cart: "to the cart"
+    is_empty: "Your shopping cart is empty."
+    empty: "Empty shopping cart"
+    to_the_cart: "Go to the shopping cart"
     continue_shopping: "Continue Shopping"
-    items_in_cart: " item(s) in cart"
+    items_in_cart: " item(s) in shopping cart"
 
   
   ordering:
