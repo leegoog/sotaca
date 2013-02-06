@@ -6,32 +6,32 @@
 
 <div class="order_detail">
 	<p>
-		<b>Order#:</b> <%= @order.order_nr %>
+		<b><%= t("orders.order_nr") %>:</b> <%= @order.order_nr %>
 	</p>
 	<p>
-		<b>Order Date:</b> <%= @order.created_at.strftime("%B %d, %Y, %H:%M") %>
+		<b><%= t("orders.date") %>:</b> <%= @order.created_at.strftime("%B %d, %Y, %H:%M") %>
 	</p>
 	<p>
-		<b>Name:</b> <%= "#{@order.first_name} #{@order.last_name}" %>
+		<b><%= t("orders.name") %>:</b> <%= "#{@order.first_name} #{@order.last_name}" %>
 	</p>
 	<p>
-		<b>Shipping Adress:</b> <%= "#{@order.adress1} #{@order.adress2}, #{@order.zipcode} #{@order.city}, #{@order.country}" %>
+		<b><%= t("adress.shipping") %>:</b> <%= "#{@order.adress1} #{@order.adress2}, #{@order.zipcode} #{@order.city}, #{@order.country}" %>
 	</p>
 	<p>
-		<b>Payment Method:</b> <%= @order.express_payer_id? ? "Paypal" : "Credit Card" %>
+		<b><%= t("orders.payment_method") %>:</b> <%= @order.express_payer_id? ? "Paypal" : "Credit Card" %>
 	</p>
 
 	<p>
-		<b>Articles:</b> <%= "#{pluralize(@order.cart.total_items, 'Article')} (#{number_to_currency (@order.cart.total_price.to_money.exchange_to("GBP"))})" %>
+		<b><%= t("orders.articles") %>:</b> <%= "#{pluralize(@order.cart.total_items, 'Article')} (#{number_to_currency (@order.cart.total_price.to_money.exchange_to("GBP"))})" %>
 	</p>
 	<p>
 		<table class="pretty" cellpadding="5" cellspacing="3" border="1">
 			<tr>
-				<th>image</th>
-				<th>title</th>
-				<th>reference</th>
-				<th>quantity</th>
-				<th>price</th>
+				<th><%= t("orders.image") %></th>
+				<th><%= t("orders.title") %></th>
+				<th><%= t("orders.reference_nr") %></th>
+				<th><%= t("orders.quantity") %></th>
+				<th><%= t("orders.price") %></th>
 			</tr>
 		<% @order.cart.line_items.each do |li| %>
 		<tr>
@@ -48,16 +48,16 @@
 		</table>
 	</p>
 	<p>
-		<b>Shipping Method:</b> <%= "#{@order.shipping_method.name} (#{number_to_currency (@order.shipping_method.price.to_money.exchange_to("GBP"))})" %>
+		<b><%= t("orders.shipping_method") %>:</b> <%= "#{@order.shipping_method.name} (#{number_to_currency (@order.shipping_method.price.to_money.exchange_to("GBP"))})" %>
 	</p>
 	<p>
-		<b>Total:</b> <%= number_to_currency (@order.total_price.to_money.exchange_to("GBP")) %>
+		<b><%= t("orders.total") %>:</b> <%= number_to_currency (@order.total_price.to_money.exchange_to("GBP")) %>
 	</p>
 	<p>
-		<b>Order status:</b> <%= @order.order_status.name %>
+		<b><%= t("orders.status") %>:</b> <%= @order.order_status.name %>
 	</p>		
 	<br/>
 	<p>
-		<%= link_to "<< All orders", orders_path %>
+		<%= link_to t("orders.all_orders"), orders_path %>
 	</p>
 </div>

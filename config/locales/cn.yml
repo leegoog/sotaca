@@ -130,7 +130,7 @@ cn:
     my_account: "我的帐户"
     
   contact_text:
-    text1: "我们希望的是听到你的声音，因为所有会员的意见或者建议对我们来说都很重要. 我们很感谢可以通过你们的留言让我们做得更好。<br> 请将你的意见或建议填写在以下空白处并选择相关的种类"
+    text1: "我们希望的是听到你的声音，因为所有会员的意见或者建议对我们来说都很重要. 我们很感谢可以通过你们的留言让我们做得更好。 请将你的意见或建议填写在以下空白处并选择相关的种类"
     text2: "请提供你的订单号码以方便我们可以及时回复你的问题。"
     text3: "请提供商品货号以方便我们可以及时回复你的问题。"
  
@@ -167,6 +167,17 @@ cn:
     status: "订单状态"
     order_value: "订单状态"
     order_details: "订单详情"
+    name: "姓名"
+    payment_method: "付款方式"
+    articles: "商品"
+    image: "商品图片"
+    title: "商品名称"
+    reference_nr: "商品货号"
+    quantity: "数量"
+    price: "价格"
+    shipping_method: "快递方式"
+    total: "总价"
+    all_orders: "<< all orders"
 
   sets:
     rotate_left: "向左旋转"
