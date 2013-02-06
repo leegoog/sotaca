@@ -12,6 +12,8 @@ class Order < ActiveRecord::Base
     # shipping method
     belongs_to :shipping_method
     
+    validates_presence_of :cart_id, :on => :create
+    
     #status
     belongs_to :order_status
     
