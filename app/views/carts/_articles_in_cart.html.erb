@@ -26,7 +26,7 @@
 			<div style="position: relative; width: inherit; height: inherit;">
 			<b><%= number_to_currency(line_item.full_price.exchange_to(session[:currency])) %></b>
 			<span class="remove_item">
-				<%= link_to t("cart.remove"), line_item, :confirm => t("cart.confirm_remove"), :method => :delete %>
+				<%= link_to t("cart.remove"), line_item, :confirm => t("confirm_remove"), :method => :delete %>
 			</span>
 			</div>
 		  </td>
