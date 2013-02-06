@@ -160,9 +160,13 @@ text-decoration: none;
 #content{
     border: 2px solid black;
     margin-top: 20px;
-    min-height: 400px;
+    min-height: 380px;
     padding: 20px;
     position: relative;
+}
+
+#content p {
+  line-height: 18px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
