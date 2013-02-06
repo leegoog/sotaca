@@ -170,7 +170,7 @@ text-decoration: none;
   padding-right: 40px;
 }
 
-.fixed_h1 p {
+.fixed_h1 p, .squared p {
   line-height: 14px !important;
   padding-right: 0px !important;
 }
@@ -1262,4 +1262,10 @@ input.short_string {
 
 .padding_10 {
   padding: 10px 40px 0 0;
+}
+
+.extrabig {
+  padding: 5px 10px !important;
+  background-color: #93006B !important;
+  color: white !important;
 }

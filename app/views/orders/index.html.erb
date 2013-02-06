@@ -9,11 +9,11 @@
 
 <table class="order_overview">
   <tr>
-	<th>Order number</th>
-  <th>Date</th>
-	<th>Status</th>
-	<th>Order value</th>
-	<th>Order Details</th>
+	<th><%= t 'orders.order_nr' %></th>
+  <th><%= t 'orders.date' %></th>
+	<th><%= t 'orders.status' %></th>
+	<th><%= t 'orders.order_value' %></th>
+	<th><%= t 'orders.order_details' %></th>
  </tr>
 
 <% if !@orders.blank? %>
@@ -28,7 +28,7 @@
     </tr>
   <% end %>
 <% else %>
-  No orders yet.
+  <%= t 'orders.no_orders_yet' %>
 <% end %>
 
 </table>

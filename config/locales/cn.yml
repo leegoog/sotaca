@@ -39,6 +39,12 @@ cn:
     continue_shopping: "继续购物"
     items_in_cart: " 件商品已添加至购物袋"
     just_added: "你已将 "
+    article: "商品名称"
+    details: "商品详情"
+    quantity: "数量"
+    price: "价格"
+    remove: "删除"
+    confirm_remove: "请点击OK确认删除这件商品"
 
     
   ordering:
@@ -85,6 +91,8 @@ cn:
     cart: '购物'
     empty: '清空'
     items: '产品'
+    color: "颜色"
+    size: "尺寸"
 
   products:
     related: '你或许也喜欢'
@@ -149,6 +157,13 @@ cn:
       confirmation: '确认订单'
     shipping_costs: "快递费"
     summary: "订单详情"
+    my_orders: "我的订单"
+    no_orders_yet: "你还没有订单呢."
+    order_nr: "订单号."
+    date: "日期"
+    status: "订单状态"
+    order_value: "订单状态"
+    order_details: "订单详情"
 
   sets:
     rotate_left: "向左旋转"
