@@ -16,6 +16,7 @@ en:
   account_page: "This is your account home page. You can use this area to manage and edit your personal details, check on orders and tell us what you think of SOTACA1898."
   tell_us_what_you_think: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
   required_fields: "* Required Fields"
+  confirm_remove: "Press OK to confirm remove this item from your shopping cart."
   
     
   cart:
@@ -30,7 +31,6 @@ en:
     quantity: "Quantity"
     price: "Price"
     remove: "remove"
-    confirm_remove: "Press OK to confirm remove this item from your shopping cart."
 
   
   ordering:

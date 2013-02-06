@@ -12,6 +12,7 @@ cn:
   welcome: "Hi"
   by_creating: "为了更方便客户购物和查询你的订单详情，我们建议你注册加入SOTACA189， 成为会员的同时也方便你随时参加SOTACA1898定期的在线活动。"
   required_fields: "* 必填信息"
+  confirm_remove: "请点击OK确认删除这件商品"
   
   social_share_button:
     share_to: 分享到%{name}
@@ -44,7 +45,6 @@ cn:
     quantity: "数量"
     price: "价格"
     remove: "删除"
-    confirm_remove: "请点击OK确认删除这件商品"
 
     
   ordering:
