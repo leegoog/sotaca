@@ -93,6 +93,8 @@ cn:
     items: '产品'
     color: "颜色"
     size: "尺寸"
+    unit_price: "单价"
+    empty_card: "清空购物袋"
 
   products:
     related: '你或许也喜欢'

@@ -39,11 +39,11 @@
 			<%# form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>  
 		      <%# hidden_field_tag :cmd, "_s-xclick" %>  
 		      <%# hidden_field_tag :encrypted, cart.paypal_encrypted(products_url, payment_notifications_url, cart.line_items.first.unit_price.currency_as_string ) %>  
-		        <p><%= button_to t("actions.checkout"), new_order_url, :class => "funkybutton extrabig" %></p>  
+		        <p><%= link_to t("actions.checkout"), new_order_url, :class => "funkybutton extrabig" %></p>  
 		    <%# end %>
 		</td>	
 	</tr>
 	</table>
 	<p>
-	  <%= link_to "Emtpy Cart", cart, :confirm => 'Empty the cart?', :method => :delete %>
+	  <%= link_to t("store.empty_cart"), cart, :confirm => 'Empty the cart?', :method => :delete %>
 	</p>
