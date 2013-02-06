@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<td class="label"><%= f.label t"contact.type" %></td>
-		<td class="input"><%= f.select :support_type, options_for_select([ "Whole Sale"]) %></td>
+		<td class="input"><%= f.select :support_type, options_for_select([ t("contact.types.type5")]) %></td>
 	</tr>
 	<tr>
 		<td class="label"><%= f.label t"contact.message" %>*</td>
@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<td class="label"></td>
-		<td class="input small"><%= f.submit "Submit" %></td>
+		<td class="input small"><%= f.submit t('actions.submit') %></td>
 	</tr>
 </table>
 

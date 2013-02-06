@@ -167,6 +167,7 @@ text-decoration: none;
 
 #content p {
   line-height: 18px;
+  padding-right: 40px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
