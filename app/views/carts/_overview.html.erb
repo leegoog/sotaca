@@ -26,7 +26,7 @@
 			  <%= link_to t("cart.continue_shopping"), products_path, :class => "funkybutton extrabig" %>
 		</td>
 	    <td>
-			<b>Sub Total</b>
+			<b><%= t("store.sub_total")%></b>
 	    </td>
 	    <td>
 	 		<b><%= number_to_currency (cart.total_price.exchange_to(session[:currency])) %></b>
