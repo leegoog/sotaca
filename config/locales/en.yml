@@ -165,6 +165,7 @@ en:
     size: "Size"
     unit_price: "Unit price"
     empty_cart: "Empty my cart"
+    sub_total: "Sub total"
     
   contact_text:
     text1: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
