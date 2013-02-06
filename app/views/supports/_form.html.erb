@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<td class="label"><%= f.label t"contact.type" %></td>
-		<td class="input"><%= f.select :support_type, options_for_select([ "Feedback", "Question", "Complaint", "Other"]) %></td>
+		<td class="input"><%= f.select :support_type, options_for_select([  t("contact.types.type6"), t("contact.types.type1"), t("contact.types.type2"), t("contact.types.type3"), t("contact.types.type4")]) %></td>
 	</tr>
 	<tr>
 		<td class="label"><%= f.label t"contact.order_nr" %></td>
@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" style="font-size: 11px">
-			<i>If your request is regarding a specific order, please provide the order number</i>
+			<i><%= t('contact_text.text2') %></i>
 		</td>
 	</tr>
 	<tr>
@@ -30,7 +30,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" style="font-size: 11px">
-			<i>If your query is regarding an item, please enter the item ID</i>
+			<i><%= t('contact_text.text3') %></i>
 		</td>
 	</tr>
 	<tr>
@@ -39,7 +39,7 @@
 	</tr>
 	<tr>
 		<td class="label"></td>
-		<td class="input small"><%= f.submit "Submit" %></td>
+		<td class="input small"><%= f.submit t('actions.submit') %></td>
 	</tr>
 </table>
 

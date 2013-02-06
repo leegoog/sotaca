@@ -117,6 +117,11 @@ cn:
     email_settings: "察看或者更新登陆信息"
     tell_us: "我们希望听到你的声音，所有会员的意见或者建议对我们来说都很重要."
     my_account: "我的帐户"
+    
+  contact_text:
+    text1: "我们希望的是听到你的声音，因为所有会员的意见或者建议对我们来说都很重要. 我们很感谢可以通过你们的留言让我们做得更好。 请将你的意见或建议填写在以下空白处并选择相关的种类"
+    text2: "请提供你的订单号码以方便我们可以及时回复你的问题。"
+    text3: "请提供商品货号以方便我们可以及时回复你的问题。"
  
   pages:
     blog: '博客'
@@ -150,9 +155,27 @@ cn:
     rotate_right: "向右旋转"
     move_back: "图片至后"
     move_forward: "图片至前"
-    discard: "清除Set"  
+    discard: "清除Set"
+
+
+  contact:
+    name: '输入姓名'
+    email: '输入你的邮箱'
+    subject: '主题' 
+    type: '选择问题类型'
+    order_nr: '订单号'
+    item_id: '商品号'
+    message: '输入留言'
+    validation_error: '请输入所有带 (*) 的部分.'  
     
-    
+    types:
+      type1: "网站建议"
+      type2: "购物问题"
+      type3: "投诉"
+      type4: "其他"
+      type5: “项目合作”
+      type6: "关于订单"
+  
   faq:
     general: "常规问题"
     payment: "付款信息"
