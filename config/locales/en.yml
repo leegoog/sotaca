@@ -25,6 +25,12 @@ en:
     to_the_cart: "Go to the shopping cart"
     continue_shopping: "Continue Shopping"
     items_in_cart: " item(s) in shopping cart"
+    article: "Article"
+    details: "Details"
+    quantity: "Quantity"
+    price: "Price"
+    remove: "remove"
+    confirm_remove: "Press OK to confirm remove this item from your shopping cart."
 
   
   ordering:
@@ -155,6 +161,8 @@ en:
     empty: 'empty'
     items: 'item(s)'
     shopping_bag: 'Shopping bag'
+    color: "Color"
+    size: "Size"
     
   contact_text:
     text1: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
@@ -237,6 +245,13 @@ en:
     shipping_costs: "Shipping Costs"
     summary: "Order summary"
     my_orders: "My Orders"
+    no_orders_yet: "No orders yet."
+    order_nr: "Order Nr."
+    date: "Date"
+    status: "Status"
+    order_value: "Order value"
+    order_details: "Order details"
+    
   
   products:
     related: 'Other products you may like'
