@@ -4,5 +4,6 @@
 
 <p>
   <%= link_to "Show", @product %> |
+	<%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", products_path %>
 </p>
