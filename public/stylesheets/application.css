@@ -170,6 +170,11 @@ text-decoration: none;
   padding-right: 40px;
 }
 
+.fixed_h1 p {
+  line-height: 14px;
+  padding-right: 0px;
+}
+
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 10px;
   margin: 20px 0 0 0;
