@@ -166,6 +166,8 @@ en:
     unit_price: "Unit price"
     empty_cart: "Empty my cart"
     sub_total: "Sub total"
+    your_order: "Your order"
+    
     
   contact_text:
     text1: "We love to hear feedback from you. Let us know what you think about how we can improve your shopping experience at SOTACA1898. We really appreciate it. To provide your feedback, please types your message in the space provided then click submit."
@@ -254,6 +256,18 @@ en:
     status: "Status"
     order_value: "Order value"
     order_details: "Order details"
+    name: "Name"
+    payment_method: "Payment method"
+    articles: "Article(s)"
+    image: "Image"
+    title: "Title"
+    reference_nr: "Reference"
+    quantity: "Quantity"
+    price: "price"
+    shipping_method: "Shipping method"
+    total: "Total"
+    all_orders: "<< all orders"
+    
     
   
   products:
