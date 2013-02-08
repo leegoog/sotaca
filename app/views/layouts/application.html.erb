@@ -110,7 +110,10 @@
 			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "terms") %>"><a href="/terms/?locale=<%= I18n.locale %>"><%= t 'pages.terms' %></a></li>
 			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "press") %>"><a href="/press/?locale=<%= I18n.locale %>"><%= t 'faq.press' %></a></li>
 			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "whole_sale") %>"><a href="/whole_sale/?locale=<%= I18n.locale %>"><%= t 'pages.whole_sale' %></a></li>
-					
+		</ul>
+		<div class="copyright">
+			All rights reserved &copy; <%= Time.now.year %> sotaca1898.com
+		</div>
 	</div>
 	<br/><br/>
   </body>
