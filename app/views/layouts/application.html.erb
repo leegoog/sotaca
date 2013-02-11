@@ -7,6 +7,19 @@
 	<%= favicon_link_tag %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-38334659-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
   </head>
   <body>
 	<div id="container">
@@ -97,7 +110,10 @@
 			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "terms") %>"><a href="/terms/?locale=<%= I18n.locale %>"><%= t 'pages.terms' %></a></li>
 			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "press") %>"><a href="/press/?locale=<%= I18n.locale %>"><%= t 'faq.press' %></a></li>
 			<li class="<%= "active" if (params[:controller] == "pages" && params[:action] == "whole_sale") %>"><a href="/whole_sale/?locale=<%= I18n.locale %>"><%= t 'pages.whole_sale' %></a></li>
-					
+		</ul>
+		<div class="copyright">
+			All rights reserved &copy; <%= Time.now.year %> sotaca1898.com
+		</div>
 	</div>
 	<br/><br/>
   </body>
