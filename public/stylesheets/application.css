@@ -1269,3 +1269,7 @@ input.short_string {
   background-color: #93006B !important;
   color: white !important;
 }
+
+.copyright {
+  float:right;
+}
