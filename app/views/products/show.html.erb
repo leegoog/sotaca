@@ -140,7 +140,7 @@ show_wishlist = function () {
 			<% end %>
 		</div>
 		<div>
-			<%= social_share_button_tag("Sotaca 1898 - #{@product.title}") %>
+			<%= social_share_button_tag("Sotaca 1898 - #{@product.title}", :image => @product.assets.first.image_url(:big).to_s, :url => product_url(@product) ) %>
 		</div>
 
 		</div>
