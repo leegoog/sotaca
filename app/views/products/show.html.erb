@@ -2,7 +2,7 @@
 <% available =  @product.stock_items.to_a.sum(&:amount) > 0 ? true : false %>
 <% content_for (:head) do %>
 
-
+<script type="text/javascript" src="http://assets.pinterest.com/js/pinit.js"></script>
 <meta property="og:title" content="Sotaca 1898 - <%= @product.title %>"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="<%= product_url(@product) %>"/>
@@ -127,7 +127,7 @@ show_wishlist = function () {
 		</div>		
 		<div class="subheadline">
 			<% if available %>
-				<%= link_to t('products.add_to_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true,  :id => 'add_product_link', :title => t('products.add_to_cart'), :onclick => "show_cart_info();" %>
+				<%= link_to t('products.add_to_shopping_cart'), line_items_path(:product_id => @product), :method => :post, :remote => true,  :id => 'add_product_link', :title => t('products.add_to_shopping_cart'), :onclick => "show_cart_info();" %>
 			<% else %>
 			  <%= link_to t('products.add_to_shopping_cart'), nil, :remote => true, :onclick => "show_empty();"  %>
 			<% end %>
@@ -157,9 +157,9 @@ show_wishlist = function () {
 			<div class="add_to_cart_btn">
 				<% if available %>
 					<%= link_to t("products.add_to_cart"), line_items_path(:product_id => @product), :id => "add_to_cart_button", :method => :post, :remote => true, 
-					:title => t('products.add_to_cart'), :onclick => "#{ params[:locale] === "cn" ? "show_cart_info_cn();" : "show_cart_info();" }"%>
+					:title => t('products.add_to_shopping_cart'), :onclick => "#{ params[:locale] === "cn" ? "show_cart_info_cn();" : "show_cart_info();" }"%>
 				<% else %>
-				  <%= link_to t("products.add_to_cart"), nil, :id => "add_to_cart_button", :remote => true, :onclick => "show_empty();" %>
+				  <%= link_to t("products.add_to_cart"), nil, :id => "add_to_cart_button", :remote => true, 	:title => t('products.add_to_shopping_cart'), :onclick => "show_empty();" %>
 				<% end %>
 			</div>
 		</div>

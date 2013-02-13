@@ -35,9 +35,9 @@ en:
   
   ordering:
     sort_by: "sort by"
-    newest: "newest items"
-    price_inc: "price incr."
-    price_dec: "price decr."
+    newest: "just in"
+    price_inc: "price (low-high)"
+    price_dec: "price (high-low)"
   
   actions:
     checkout: "Checkout"
@@ -164,7 +164,7 @@ en:
     color: "Color"
     size: "Size"
     unit_price: "Unit price"
-    empty_cart: "Empty my cart"
+    empty_cart: "Empty my shopping cart"
     sub_total: "Sub total"
     your_order: "Your order"
     
@@ -243,7 +243,7 @@ en:
     
   orders:
     steps:
-      cart: 'Cart'
+      cart: 'Shopping Cart'
       billing: 'Payment Details'
       shipping: 'Shipping Details'
       confirmation: 'Confirm your order'
@@ -251,7 +251,7 @@ en:
     summary: "Order summary"
     my_orders: "My Orders"
     no_orders_yet: "No orders yet."
-    order_nr: "Order Nr."
+    order_nr: "Order No"
     date: "Date"
     status: "Status"
     order_value: "Order value"
@@ -277,7 +277,7 @@ en:
     details: 'Details'
     size_fit: 'Size & Fit'
     add_to_shopping_cart: 'Add to shopping cart'    
-    add_to_cart: 'Add to cart'    
+    add_to_cart: 'Add to cart'
     add_to_wishlist: 'Add to wishlist'
     tell_a_friend: 'Tell a friend'
     uncategorized: "not yet categorized"
