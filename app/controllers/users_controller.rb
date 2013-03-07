@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { 
         flash[:notice] = "Removed #{@product.title} from wishlist."
-        redirect_to product_path(@product)
+        redirect_to wishlist_url
         }
       format.js
     end
