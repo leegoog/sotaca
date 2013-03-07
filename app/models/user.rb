@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   
   def remove_from_wishlist(product)
     if wishlist.products.include?(product)
-      wishlist.products.remove(product)
+      wishlist.products.delete(product)
       wishlist.save
     end
   end
