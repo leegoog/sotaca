@@ -145,6 +145,18 @@ text-decoration: none;
 #main_navi ul li#search_field img.search_button {
 	padding: 1px;
 }
+#main_navi ul li.spacer{
+width: 190px;
+}
+#main_navi ul li.social_icon{
+padding: 5px 0;
+}
+#main_navi ul li.social_icon a img{
+	margin-top: -2px;
+}
+#main_navi ul li.social_icon:hover, #main_navi ul li.spacer:hover {
+	background-color: #000;
+}
 
 #search {
   margin: 2px 3px 0 0 ;
