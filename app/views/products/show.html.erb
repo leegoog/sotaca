@@ -9,7 +9,7 @@
 <meta property="og:image" content="<%= @product.assets.first.image_url(:big).to_s %>"/>
 <meta property="og:site_name" content="Sotaca 1898"/>
 <meta property="og:description"
-      content="Sotaca 1898 - Description goes here."/>
+      content="Sotaca 1898 - <%= @product.title %> - <%= markdown(@product.description) %>"/>
 
  <script type="text/javascript" charset="utf-8">
 var product_available = <%= available %>;
