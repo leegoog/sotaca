@@ -9,7 +9,7 @@ Sotaca::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
-  config.action_mailer.default_url_options = { :host => 'sotaca.dev' }
+  config.action_mailer.default_url_options = { :host => 'sotaca1898.com' }
 
 
   # Show full error reports and disable caching
