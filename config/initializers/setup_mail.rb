@@ -13,7 +13,7 @@ ActionMailer::Base.smtp_settings = {
   :port                 => 80,  
   :domain               => "www.sotaca1898.com",  
   :user_name            => "info@sotaca1898.com",  
-  :password             => "redarmy111",  
+  :password             => "sotaca18981898",  
   :authentication       => "plain",  
   :enable_starttls_auto => true  
 }
