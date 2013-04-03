@@ -23,7 +23,7 @@ Sotaca::Application.configure do
   # See everything in the log (default is :info)
   config.log_level = :debug
 
-  config.action_mailer.default_url_options = { :host => 'sotaca.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'www.sotaca1898.com' }
   config.action_mailer.delivery_method = :smtp #|| :sendmail #:smtp
   config.action_mailer.perform_deliveries = true
 
