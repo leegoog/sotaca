@@ -281,9 +281,8 @@ en:
     add_to_wishlist: 'Add to wishlist'
     tell_a_friend: 'Tell a friend'
     uncategorized: "not yet categorized"
-    out_of_stock: "SOLD"
     in_wishlist: "In my Wishlist"
-    out_of_stock: "out of stock"
+    out_of_stock: "SOLD"
 
   cart:
     product: 'Article'
