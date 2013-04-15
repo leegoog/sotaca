@@ -21,7 +21,7 @@ Sotaca::Application.configure do
   # just comment this out and Rails will serve the files
 
   # See everything in the log (default is :info)
-  config.log_level = :debug
+  config.log_level = :warn
 
   config.action_mailer.default_url_options = { :host => 'sotaca1898.com' }
   config.action_mailer.delivery_method = :smtp #|| :sendmail #:smtp
@@ -51,7 +51,6 @@ Sotaca::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
-  config.log_level = :warn
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
