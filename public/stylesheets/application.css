@@ -295,7 +295,6 @@ margin: -10px 0 20px -35px;
 	height: 200px;
 	float: left;
 	padding: 10px;
-	border: 1px solid #666;
 	margin: 2.5px;
 	position: relative;
 	font-size: 12px;
@@ -393,7 +392,6 @@ margin: -10px 0 20px -35px;
 
 
 #content .product_detail #main_image {
-	border: 1px solid;
 	width: 550px;
 	height: 520px;
 	text-align: center;
