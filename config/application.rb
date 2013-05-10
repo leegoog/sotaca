@@ -6,6 +6,12 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+config = YAML.load(File.read(File.expand_path('../app_config.yml', __FILE__)))
+config.merge! config.fetch(Rails.env, {})
+config.each do |key, value|
+  ENV[key] = value unless value.kind_of? Hash
+end
+
 module Sotaca
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -37,9 +43,9 @@ module Sotaca
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-    
-    
-    
+
+
+
     if Rails.env.test?
       initializer :after => :initialize_dependency_mechanism do
       ActiveSupport::Dependencies.mechanism = :load

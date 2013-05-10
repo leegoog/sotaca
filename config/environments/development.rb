@@ -20,38 +20,38 @@ Sotaca::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.delivery_method       = :smtp
   config.action_mailer.perform_deliveries    = true
-  
+
   config.log_level = :debug
-  
+
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-  
+
   config.after_initialize do
    ActiveMerchant::Billing::Base.mode = :test # :production
    # paypal credentials as hash
    paypal_options = {
-     :login => "tmaxim_1353583741_biz_api1.gmail.com",
-     :password => "1353583810",
-     :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AuFHlWIFdTBe5D.OUM41TxF5wLLb"
+     :login => ENV['paypal_email'],
+     :password => ENV['paypal_secret'],
+     :signature => ENV['paypal_signature']
     }
-    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'  
-    ActiveMerchant::Billing::PaypalGateway.default_currency = 'GBP'  
-    
-    ActiveMerchant::Billing::PaypalGateway.logger = Logger.new(STDOUT) 
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
+    ActiveMerchant::Billing::PaypalGateway.default_currency = 'GBP'
+
+    ActiveMerchant::Billing::PaypalGateway.logger = Logger.new(STDOUT)
     ActiveMerchant::Billing::PaypalGateway.wiredump_device = File.open("#{Rails.root}/log/paypal.log", "a+")
-    ActiveMerchant::Billing::PaypalGateway.wiredump_device.sync = true    
+    ActiveMerchant::Billing::PaypalGateway.wiredump_device.sync = true
     # standard gateway
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     # gateway for paypal express checkout
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-    
-    
+
+
     ### BULLET ###
-    
+
     # Bullet.enable = true
     # Bullet.alert = true
     # Bullet.bullet_logger = true
@@ -60,9 +60,9 @@ Sotaca::Application.configure do
     # Bullet.rails_logger = true
     # Bullet.airbrake = false
     # Bullet.disable_browser_cache = true
-    
-    
+
+
   end
-  
+
 end
 

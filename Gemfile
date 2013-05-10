@@ -7,10 +7,10 @@ gem 'rails', '3.0.20'
 
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
@@ -23,8 +23,8 @@ gem 'rails', '3.0.20'
 
 # authhorization
 gem 'devise'
-gem 'bcrypt-ruby', :require => "bcrypt" 
-gem 'cancan'  
+gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'cancan'
 
 # database
 gem "mysql2", "~> 0.2.7"
@@ -88,6 +88,6 @@ group :development do
   gem 'bullet'
 end
 
-group :test do    
+group :test do
 
 end
