@@ -6,4 +6,3 @@ tmp/*
 config/database.yml
 config/app_config.yml
 sass-cache/*
-config/app_config.yml
