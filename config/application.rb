@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+ActionController::Base.config.relative_url_root = ''
 config = YAML.load(File.read(File.expand_path('../app_config.yml', __FILE__)))
 config.merge! config.fetch(Rails.env, {})
 config.each do |key, value|

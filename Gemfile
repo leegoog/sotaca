@@ -86,6 +86,7 @@ group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'heroku'
   gem 'bullet'
+  gem 'jammit'
 end
 
 group :test do
